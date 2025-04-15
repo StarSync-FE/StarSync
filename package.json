@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint": "stylelint './src/**/*.styles.js' --fix",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -21,6 +21,10 @@
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react-swc": "^3.8.0",
     "globals": "^15.15.0",
+    "postcss-styled-syntax": "^0.7.1",
+    "stylelint": "^16.18.0",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-order": "^6.0.4",
     "vite": "^6.2.0"
   }
 }
