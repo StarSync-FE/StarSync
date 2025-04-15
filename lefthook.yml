@@ -5,3 +5,8 @@ pre-commit:
       glob: "src/**/*.style.js"
       run: npx stylelint {staged_files} --fix
       stage_fixed: true
+
+prepare-commit-msg:
+commands:
+  template:
+    run: node .github/scripts/copy-template.js {1}
