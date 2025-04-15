@@ -1,0 +1,7 @@
+pre-commit:
+  parallel: true
+  commands:
+    stylelint:
+      glob: "src/**/*.style.js"
+      run: npx stylelint {staged_files} --fix
+      stage_fixed: true
