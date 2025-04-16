@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { BASE_URL } from '../constants/api';
 
-const fetchData = async () => {
+const fetchData = async (endpoint) => {
   try {
-    const response = await axios.get('https://fandom-k-api.vercel.app/api-endpoint');
+    const response = await axios.get(`${BASE_URL}${endpoint}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching data:', error);
