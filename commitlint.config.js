@@ -2,7 +2,7 @@ export default {
   parserPreset: {
     parserOpts: {
       headerPattern:
-        /^(🎨|📰|✨|📝|💄|🐎|📚|🐛|🚑|🔥|🚜|🔨|💎|🔖|🚀|♻️)\s?(Feat|Fix|Chore|Style|Docs|Refactor):\s(.+?)(?:\s+\(#\d+\))?$/u,
+        /^(🎨|📰|✨|📝|💄|🐎|📚|🐛|🚑|🔥|🚜|🔨|💎|🔖|🚀|♻️|📦)\s?(Feat|Fix|Chore|Style|Docs|Refactor):\s(.+?)(?:\s+\(#\d+\))?$/u,
       headerCorrespondence: ['emoji', 'type', 'subject'],
     },
   },
