@@ -1,9 +1,11 @@
-import React from 'react';
-const RadioButton = () => {
+/** @jsxImportSource @emotion/react */
+import * as S from './radioButton.styles';
+const RadioButton = ({ children, itemLabel, isSelected, style }) => {
   return (
-    <div>
-      <input type="radio" />
-    </div>
+    <label htmlFor={itemLabel} css={[S.buttonArea, style]}>
+      {children}
+      <input type="radio" name={itemLabel} />
+    </label>
   );
 };
 
