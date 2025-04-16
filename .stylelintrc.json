@@ -4,7 +4,7 @@
   "customSyntax": "postcss-styled-syntax",
   "rules": {
     "declaration-empty-line-before": [
-      "always",
+      "never",
       {
         "ignore": ["first-nested", "after-comment", "after-declaration", "inside-single-line-block"]
       }
@@ -13,7 +13,7 @@
     "order/properties-order": [
       {
         "groupName": "Display & Flow",
-        "emptyLineBefore": "always",
+        "emptyLineBefore": "never",
         "noEmptyLineBetween": true,
         "properties": [
           "display",
@@ -29,13 +29,13 @@
       },
       {
         "groupName": "Positioning",
-        "emptyLineBefore": "always",
+        "emptyLineBefore": "never",
         "noEmptyLineBetween": true,
         "properties": ["position", "inset", "top", "right", "bottom", "left", "z-index"]
       },
       {
         "groupName": "Flex & Grid Layout",
-        "emptyLineBefore": "always",
+        "emptyLineBefore": "never",
         "noEmptyLineBetween": true,
         "properties": [
           "flex",
@@ -63,7 +63,7 @@
       },
       {
         "groupName": "Box Model",
-        "emptyLineBefore": "always",
+        "emptyLineBefore": "never",
         "noEmptyLineBetween": true,
         "properties": [
           "box-sizing",
@@ -87,7 +87,7 @@
       },
       {
         "groupName": "Border & Outline",
-        "emptyLineBefore": "always",
+        "emptyLineBefore": "never",
         "noEmptyLineBetween": true,
         "properties": [
           "border",
@@ -102,7 +102,7 @@
       },
       {
         "groupName": "Typography",
-        "emptyLineBefore": "always",
+        "emptyLineBefore": "never",
         "noEmptyLineBetween": true,
         "properties": [
           "font",
@@ -123,7 +123,7 @@
       },
       {
         "groupName": "Color & Background",
-        "emptyLineBefore": "always",
+        "emptyLineBefore": "never",
         "noEmptyLineBetween": true,
         "properties": [
           "color",
@@ -140,13 +140,13 @@
       },
       {
         "groupName": "Interaction",
-        "emptyLineBefore": "always",
+        "emptyLineBefore": "never",
         "noEmptyLineBetween": true,
         "properties": ["cursor", "pointer-events", "user-select"]
       },
       {
         "groupName": "Transition & Animation",
-        "emptyLineBefore": "always",
+        "emptyLineBefore": "never",
         "noEmptyLineBetween": true,
         "properties": [
           "transition",
@@ -167,7 +167,7 @@
       },
       {
         "groupName": "Etc",
-        "emptyLineBefore": "always",
+        "emptyLineBefore": "never",
         "noEmptyLineBetween": true,
         "properties": [
           "clip-path",
