@@ -1,4 +1,4 @@
-import List from './pages/List';
+import List from './pages/List/List';
 
 function App() {
   return (
