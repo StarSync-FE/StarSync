@@ -1,21 +1,15 @@
+import App from '@/App';
+import ErrorBoundary from '@/components/ErrorBoundary.jsx';
+import PendingUI from '@/components/PendingUI.jsx';
+import { ENDPOINTS } from '@/constants/api';
+import { handleAction } from '@/utils/actions';
+import fetchData from '@/utils/fetchData';
 import { lazy } from 'react';
-import { createBrowserRouter, useNavigation } from 'react-router-dom';
-import App from '../App';
-import ErrorBoundary from '../components/ErrorBoundary';
-import { handleAction } from '../utils/actions';
-import fetchData from '../utils/fetchData';
+import { createBrowserRouter } from 'react-router-dom';
 
-const Idols = lazy(() => import('../pages/Idols'));
-const Donations = lazy(() => import('../pages/Donations'));
-const Chart = lazy(() => import('../pages/Chart'));
-const UploadImage = lazy(() => import('../pages/UploadImage'));
-
-const PendingUI = ({ children }) => {
-  const navigation = useNavigation();
-  const isLoading = navigation.state === 'loading';
-
-  return isLoading ? <div>Loading...</div> : children;
-};
+const LandingPage = lazy(() => import('@/pages/LandingPage'));
+const ListPage = lazy(() => import('@/pages/ListPage'));
+const MyPage = lazy(() => import('@/pages/MyPage'));
 
 const router = createBrowserRouter([
   {
@@ -28,45 +22,42 @@ const router = createBrowserRouter([
     errorElement: <ErrorBoundary />,
     children: [
       {
-        path: '15-1/idols',
+        index: true,
         element: (
           <PendingUI>
-            <Idols />
+            <LandingPage />
           </PendingUI>
         ),
-        loader: async () => fetchData('/15-1/idols'),
-        action: async ({ request }) => handleAction(request, '/15-1/idols'),
+      },
+      {
+        path: 'list',
+        element: (
+          <PendingUI>
+            <ListPage />
+          </PendingUI>
+        ),
+        loader: async () => {
+          const [idols, donations, chart] = await Promise.all([
+            fetchData(ENDPOINTS.GET_IDOLS),
+            fetchData(ENDPOINTS.GET_DONATIONS),
+            fetchData(ENDPOINTS.GET_CHART),
+          ]);
+          return { idols, donations, chart };
+        },
+        action: async ({ request }) => {
+          return handleAction(request);
+        },
         errorElement: <ErrorBoundary />,
       },
       {
-        path: '15-1/donations',
+        path: 'mypage',
         element: (
           <PendingUI>
-            <Donations />
+            <MyPage />
           </PendingUI>
         ),
-        loader: async () => fetchData('/15-1/donations'),
-        action: async ({ request }) => handleAction(request, '/15-1/donations'),
-        errorElement: <ErrorBoundary />,
-      },
-      {
-        path: '15-1/chart',
-        element: (
-          <PendingUI>
-            <Chart />
-          </PendingUI>
-        ),
-        loader: async () => fetchData('/15-1/chart'),
-        errorElement: <ErrorBoundary />,
-      },
-      {
-        path: 'images/upload',
-        element: (
-          <PendingUI>
-            <UploadImage />
-          </PendingUI>
-        ),
-        action: async ({ request }) => handleAction(request, '/images/upload'),
+        loader: async () => fetchData(ENDPOINTS.GET_IDOLS),
+        action: async ({ request }) => handleAction(request, ENDPOINTS.GET_IDOLS),
         errorElement: <ErrorBoundary />,
       },
     ],
