@@ -2,7 +2,7 @@
 
 import getButtonStyle from './customButton.styles';
 
-const CustomButton = ({ type, isRound = false, disabled = false, custom = {} }) => {
+const CustomButton = ({ type, isRound = false, disabled = false, custom = {}, onCilck }) => {
   const { color, border } = custom;
   const sizeMap = {
     modal: { width: 29.5, height: 4.2 },
@@ -17,7 +17,7 @@ const CustomButton = ({ type, isRound = false, disabled = false, custom = {} }) 
   const buttonStyle = getButtonStyle(selectedSize, isRound, disabled, color, border);
 
   return (
-    <button type="button" css={buttonStyle} disabled={disabled}>
+    <button type="button" css={buttonStyle} disabled={disabled} onClick={onCilck}>
       TEST
     </button>
   );
