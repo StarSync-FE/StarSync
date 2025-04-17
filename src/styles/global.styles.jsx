@@ -22,6 +22,7 @@ const resetStyle = css`
 html {
   box-sizing: border-box;
   font-size: 62.5%; /* 1rem = 10px */
+  font-family: 'Pretendard', sans-serif;
 }
 
 *, *::before, *::after {
@@ -31,7 +32,6 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Pretendard', sans-serif !important;
   color: var(--white);
   background: var(--black-deep);
   -webkit-font-smoothing: antialiased; /* 텍스트를 부드럽게 렌더링 (WebKit) */
