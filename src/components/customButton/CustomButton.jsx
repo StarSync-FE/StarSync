@@ -13,10 +13,10 @@ const CustomButton = ({ type, isRound, disabled }) => {
 
   const selectedSize = sizeMap[type] || sizeMap.modal;
 
-  const buttonStyle = getButtonStyle(selectedSize, isRound);
+  const buttonStyle = getButtonStyle(selectedSize, isRound, disabled);
 
   return (
-    <button type="button" css={buttonStyle}>
+    <button type="button" css={buttonStyle} disabled={disabled}>
       TEST
     </button>
   );
