@@ -10,11 +10,15 @@ export const wrapper = css`
   font-family: Pretendard, sans-serif;
 `;
 
+export const carousel = css`
+  margin: 12rem 0
+`;
+
 function ListPage() {
   return (
     <div css={wrapper}>
       <Charge />
-      <div>캐러셀</div>
+      <div css={carousel}>캐러셀</div>
       <Chart />
     </div>
   );
