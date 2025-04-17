@@ -2,7 +2,6 @@ import App from '@/App.jsx';
 import ErrorBoundary from '@/components/ErrorBoundary.jsx';
 import PendingUI from '@/components/PendingUI.jsx';
 import { ENDPOINTS } from '@/constants/api';
-import { handleAction } from '@/utils/actions';
 import fetchData from '@/utils/fetchData';
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
@@ -38,15 +37,14 @@ const router = createBrowserRouter([
           </PendingUI>
         ),
         loader: async () => {
+          const gender = 'female';
+          const chartUrl = `${ENDPOINTS.GET_CHART.replace('{gender}', gender)}?gender=${gender}`;
           const [idols, donations, chart] = await Promise.all([
             fetchData(ENDPOINTS.GET_IDOLS),
             fetchData(ENDPOINTS.GET_DONATIONS),
-            fetchData(ENDPOINTS.GET_CHART),
+            fetchData(chartUrl),
           ]);
           return { idols, donations, chart };
-        },
-        action: async ({ request }) => {
-          return handleAction(request);
         },
         errorElement: <ErrorBoundary />,
       },

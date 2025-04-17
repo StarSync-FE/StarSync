@@ -2,6 +2,7 @@ import Charge from '@/components/charge/Charge';
 import Chart from '@/components/chart/Chart';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { useLoaderData } from 'react-router-dom';
 
 export const wrapper = css`
   padding: 20px;
@@ -11,6 +12,11 @@ export const wrapper = css`
 `;
 
 function ListPage() {
+  const { idols, donations, chart } = useLoaderData(); // 여기서 데이터 받음
+  console.log(idols);
+  console.log(donations);
+  console.log(chart);
+
   return (
     <div css={wrapper}>
       <Charge />
