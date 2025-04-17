@@ -1,9 +1,9 @@
-import List from './pages/List/List';
+import ListPage from './pages/list/ListPage';
 
 function App() {
   return (
     <>
-      <List />
+      <ListPage />
     </>
   );
 }
