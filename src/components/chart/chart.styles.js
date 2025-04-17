@@ -14,7 +14,8 @@ export const chartSectionHeader = css`
   justify-content: space-between;
 
   div {
-    font-weight: 900;
+    font-weight: 700;
+  
   }
 
   button {
@@ -58,16 +59,17 @@ export const idolListButton = css`
     border: none;
     border-radius: 0.2rem;
     padding: 1rem 10.5rem;
+    font-size: 1rem;
     cursor: pointer;
-
-    &:hover {
-      background-color: #181D26;
-      border-bottom: 1px solid white;
-    }
     
     div {
       width: 7.5rem;
     }
+`;
+
+export const activeButton = css`
+  background-color: #181D26;
+  border-bottom: 1px solid white;
 `;
 
 export const idolList = css`
