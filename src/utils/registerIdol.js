@@ -2,6 +2,17 @@ import { ENDPOINTS } from '@/constants/api';
 import { newIdol } from '@/data/idols';
 import axiosInstance from './axiosInstance';
 
+/**
+ * 아이돌 데이터를 서버에 등록합니다.
+ *
+ * @param {Object|Object[]} idolsData - 등록할 아이돌 데이터 또는 데이터 배열
+ * @returns {Promise<Object[]>} 등록된 아이돌 데이터 배열
+ *
+ * @throws {Error} 서버 요청 중 발생한 에러
+ *
+ * @example
+ * registerIdols([{ name: '아이돌1', group: '그룹1' }]);
+ */
 export const registerIdols = async (idolsData) => {
   try {
     const idolsArray = Array.isArray(idolsData) ? idolsData : [idolsData];

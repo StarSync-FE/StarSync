@@ -1,7 +1,7 @@
+import { UI_ERRORS } from '@/constants/errors';
+import NotFoundPage from '@/pages/error/NotFoundPage';
+import ServerErrorPage from '@/pages/error/ServerErrorPage';
 import React from 'react';
-import { UI_ERRORS } from '../constants/errors';
-import NotFoundPage from '../pages/error/NotFoundPage';
-import ServerErrorPage from '../pages/error/ServerErrorPage';
 
 const ErrorBoundary = ({ error }) => {
   if (!error) {
