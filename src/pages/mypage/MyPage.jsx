@@ -1,13 +1,8 @@
 import { useLoaderData } from 'react-router-dom';
 
 export default function MyPage() {
-  const idols = useLoaderData(); // 여기서 idol 리스트를 받음
+  const idols = useLoaderData(); // 여기서 데이터 받음
+  console.log(idols);
 
-  return (
-    <ul>
-      {idols.map((idol) => (
-        <li key={idol.id}>{idol.name}</li>
-      ))}
-    </ul>
-  );
+  return <ul>아이돌</ul>;
 }

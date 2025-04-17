@@ -11,12 +11,13 @@
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
-    "axios": "^1.8.4",
     "@emotion/styled": "^11.14.0",
+    "axios": "^1.8.4",
     "facepaint": "^1.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router": "^7.5.0"
+    "react-router": "^7.5.0",
+    "react-router-dom": "^7.5.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

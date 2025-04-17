@@ -1,9 +1,18 @@
 import React from 'react';
-import { HTTP_ERRORS } from '../constants/errors';
-import NotFoundPage from '../pages/NotFoundPage';
-import ServerErrorPage from '../pages/ServerErrorPage';
+import { UI_ERRORS } from '../constants/errors';
+import NotFoundPage from '../pages/error/NotFoundPage';
+import ServerErrorPage from '../pages/error/ServerErrorPage';
 
 const ErrorBoundary = ({ error }) => {
+  if (!error) {
+    return (
+      <div>
+        <h1>에러발생</h1>
+        <p>{UI_ERRORS.UNKNOWN}</p>
+      </div>
+    );
+  }
+
   if (error.status === 404) {
     return <NotFoundPage />;
   }
@@ -15,7 +24,7 @@ const ErrorBoundary = ({ error }) => {
   return (
     <div>
       <h1>에러발생</h1>
-      <p>{error.message || HTTP_ERRORS.UNKNOWN_ERROR}</p>
+      <p>{error.message || UI_ERRORS.UNKNOWN}</p>
     </div>
   );
 };

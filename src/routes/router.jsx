@@ -1,4 +1,4 @@
-import App from '@/App';
+import App from '@/App.jsx';
 import ErrorBoundary from '@/components/ErrorBoundary.jsx';
 import PendingUI from '@/components/PendingUI.jsx';
 import { ENDPOINTS } from '@/constants/api';
@@ -7,9 +7,10 @@ import fetchData from '@/utils/fetchData';
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
-const LandingPage = lazy(() => import('@/pages/LandingPage'));
-const ListPage = lazy(() => import('@/pages/ListPage'));
-const MyPage = lazy(() => import('@/pages/MyPage'));
+const LandingPage = lazy(() => import('@/pages/landing/LandingPage'));
+const ListPage = lazy(() => import('@/pages/list/ListPage'));
+const MyPage = lazy(() => import('@/pages/mypage/MyPage'));
+// const IdolRegisterPage = lazy(() => import('@/pages/dev/IdolRegisterPage'));
 
 const router = createBrowserRouter([
   {
@@ -56,10 +57,23 @@ const router = createBrowserRouter([
             <MyPage />
           </PendingUI>
         ),
-        loader: async () => fetchData(ENDPOINTS.GET_IDOLS),
-        action: async ({ request }) => handleAction(request, ENDPOINTS.GET_IDOLS),
+        loader: async () => {
+          const idols = await fetchData(ENDPOINTS.GET_IDOLS);
+          return idols;
+        },
         errorElement: <ErrorBoundary />,
       },
+      // {
+      //   path: 'dev/idol-register',
+      //   element: (
+      //     <PendingUI>
+      //       <IdolRegisterPage />
+      //     </PendingUI>
+      //   ),
+      //   loader: async () => fetchData(ENDPOINTS.GET_IDOLS),
+      //   action: async ({ request }) => handleAction(request, ENDPOINTS.POST_IDOL),
+      //   errorElement: <ErrorBoundary />,
+      // },
     ],
   },
 ]);
