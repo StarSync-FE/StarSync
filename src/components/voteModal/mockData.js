@@ -6,7 +6,7 @@ export const girls = [
   { name: '에스타 카리나', img: credit, id: 3, rank: 3, votes: 80 },
   { name: '아이브 안유진', img: credit, id: 4, rank: 4, votes: 70 },
   { name: '엔믹스 설윤', img: credit, id: 5, rank: 5, votes: 60 },
-  { name: '엔믹스 설윤', img: credit, id: 5, rank: 5, votes: 60 },
+  { name: '소녀시대 윤아', img: credit, id: 5, rank: 5, votes: 60 },
 ];
 
 export const boys = [

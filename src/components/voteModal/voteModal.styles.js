@@ -14,7 +14,7 @@ export const headerBox = css({
 
 export const voteRadioButton = css({
   margin: 'auto',
-  width: '477px',
+  width: '327px',
   height: '70px',
   paddingBottom: '8px',
 });

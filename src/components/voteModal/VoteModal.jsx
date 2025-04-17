@@ -1,4 +1,3 @@
-import iconUrl from '../../assets/icons/exit-icon.png';
 import * as mockData from './mockData';
 
 import { useState } from 'react';
@@ -8,11 +7,18 @@ import RadioButton from '../radioButton/RadioButton';
 import * as S from './voteModal.styles';
 
 const VoteModal = () => {
+  const [currentItem, setcurrentItem] = useState({});
+
   return (
     <div css={S.ModalWrapper}>
       {mockData.girls.map((item) => {
         return (
-          <RadioButton style={S.voteRadioButton} key={item.name} itemLabel={'voteGirlsIdol'}>
+          <RadioButton
+            style={S.voteRadioButton}
+            key={item.name}
+            itemLabel={'voteGirlsIdol'}
+            name={`voteGirlsIdol-${item.name}`}
+          >
             <div css={S.memberInfoBox}>
               <Avatar imgUrl={item.img} />
               <span css={S.rankNumber}>{item.rank}</span>
@@ -28,6 +34,7 @@ const VoteModal = () => {
       <p css={S.guideQuote}>
         투표하는 데 <b css={S.highlightText}>1000 크레딧</b>이 소요됩니다.
       </p>
+      <RadioButton>야호</RadioButton>
     </div>
   );
 };
