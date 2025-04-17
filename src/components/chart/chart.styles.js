@@ -88,12 +88,14 @@ export const activeButton = css`
 
 export const idolList = css`
   margin-top: 1rem;
+  padding-bottom: 0.5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.2rem;
 
   li {
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
     border-bottom: 1px solid #181D26;
     display: flex;
     justify-content: space-between;
