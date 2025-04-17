@@ -8,6 +8,9 @@ import * as S from './voteModal.styles';
 
 const VoteModal = () => {
   const [currentItem, setcurrentItem] = useState({});
+  const selectItem = (e) => {
+    console.log(e.target.value);
+  };
 
   return (
     <div css={S.ModalWrapper}>
@@ -18,6 +21,7 @@ const VoteModal = () => {
             key={item.name}
             itemLabel={'voteGirlsIdol'}
             name={`voteGirlsIdol-${item.name}`}
+            onClick={selectItem}
           >
             <div css={S.memberInfoBox}>
               <Avatar imgUrl={item.img} />
@@ -34,7 +38,6 @@ const VoteModal = () => {
       <p css={S.guideQuote}>
         투표하는 데 <b css={S.highlightText}>1000 크레딧</b>이 소요됩니다.
       </p>
-      <RadioButton>야호</RadioButton>
     </div>
   );
 };
