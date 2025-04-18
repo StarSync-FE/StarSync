@@ -12,18 +12,20 @@ const getButtonStyle = (type, isRound, disabled) => css`
   font-size: ${type.fontSize}rem;
   font-weight: 600;
   line-height: 1;
-  background: ${disabled ? 'var(--gray)' : 'linear-gradient(90deg, var(--orange) 0%, var(--pink) 100%)'};
+  background: linear-gradient(90deg, var(--orange) 0%, var(--pink) 100%);
 
   &:hover {
-      opacity: 0.8;
+    opacity: 0.8;
   }
 
   &:disabled {
-    cursor: not-allowed;
+  background: var(--gray);
+  color: var(--white);
+  cursor: not-allowed;
 
-    &:hover {
-        opacity: 1;
-    }
+  &:hover {
+    opacity: 1;
+  }
 }
 `;
 
