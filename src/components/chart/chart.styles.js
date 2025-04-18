@@ -11,19 +11,21 @@ export const chartSection = css`
 
 export const chartSectionHeader = css`
   display: flex;
+  align-items: center;
   justify-content: space-between;
 
   div {
-    font-weight: 900;
+    font-size: 1.5rem;
+    font-weight: 700;
   }
 
   button {
     width: 8rem;
     height: 2rem;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: 900;
     color: white;
     background-color: #F96D69;
     cursor: pointer;
@@ -32,49 +34,68 @@ export const chartSectionHeader = css`
     }
 
     div {
+    font-size: 0.75rem;
     display: flex;
     align-items: center;
-    margin-left: 0.3rem;
+    justify-content: center;
     gap: 0.4rem;
 
     img {
     width: 1rem;
     height: 1rem;
     }
+
+    span {
+      font-weight: 900;
+    }
   }
 }
 `;
 
 export const tabButtonWrapper = css`
+  margin-top: 2rem;
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 1rem;
+
+  button {
+    padding: 1.5rem 15rem;
+  }
 `;
 
 export const idolListButton = css`
-    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 4rem;
+    margin: 0 auto;
     background-color: black;
     color: white;
     border: none;
     border-radius: 0.2rem;
-    padding: 1rem 10.5rem;
+    padding: 1rem 0;
+    font-size: 1rem;
     cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+`;
 
-    &:hover {
-      background-color: #181D26;
-      border-bottom: 1px solid white;
-    }
-    
-    div {
-      width: 7.5rem;
-    }
+export const activeButton = css`
+  background-color: #181D26;
+  border-bottom: 1px solid white;
 `;
 
 export const idolList = css`
   margin-top: 1rem;
+  padding-bottom: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
 
   li {
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
     border-bottom: 1px solid #181D26;
     display: flex;
     justify-content: space-between;
@@ -90,7 +111,8 @@ export const idolList = css`
     img {
       width: 4rem;
       height: 4rem;
-      border: 2px solid #ddd;
+      border: 2px solid white;
+      box-shadow: 0 0 0 0.1rem #F96D69;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -98,9 +120,9 @@ export const idolList = css`
 `;
 
 export const moreButton = css`
+  font-size: 1.2rem;
   display: flex;
   margin: 2rem auto;
-  padding-top: 1rem;
   background-color: black;
   color: white;
   border: 1px solid white;
