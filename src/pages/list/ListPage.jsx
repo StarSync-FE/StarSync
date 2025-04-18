@@ -12,7 +12,7 @@ export const wrapper = css`
 `;
 
 export const carousel = css`
-  margin: 10rem 0
+  margin: 10rem 0;
 `;
 
 function ListPage() {
