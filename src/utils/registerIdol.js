@@ -3,7 +3,7 @@ import { newIdol } from '@/data/idols';
 import axiosInstance from './axiosInstance';
 
 /**
- * 아이돌 데이터를 서버에 등록합니다.
+ * 아이돌 데이터를 서버에 등록합니다. 혹시 나중에 필요할 수도 있어서 당장 쓰진 않지만 일단 둬 볼게요.
  *
  * @param {Object|Object[]} idolsData - 등록할 아이돌 데이터 또는 데이터 배열
  * @returns {Promise<Object[]>} 등록된 아이돌 데이터 배열

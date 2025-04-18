@@ -9,7 +9,6 @@ import { createBrowserRouter } from 'react-router-dom';
 const LandingPage = lazy(() => import('@/pages/landing/LandingPage'));
 const ListPage = lazy(() => import('@/pages/list/ListPage'));
 const MyPage = lazy(() => import('@/pages/mypage/MyPage'));
-// const IdolRegisterPage = lazy(() => import('@/pages/dev/IdolRegisterPage'));
 
 const router = createBrowserRouter([
   {
@@ -61,17 +60,6 @@ const router = createBrowserRouter([
         },
         errorElement: <ErrorBoundary />,
       },
-      // {
-      //   path: 'dev/idol-register',
-      //   element: (
-      //     <PendingUI>
-      //       <IdolRegisterPage />
-      //     </PendingUI>
-      //   ),
-      //   loader: async () => fetchData(ENDPOINTS.GET_IDOLS),
-      //   action: async ({ request }) => handleAction(request, ENDPOINTS.POST_IDOL),
-      //   errorElement: <ErrorBoundary />,
-      // },
     ],
   },
 ]);

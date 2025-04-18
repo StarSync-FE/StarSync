@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://fandom-k-api.vercel.app';
+export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export const ENDPOINTS = {
   GET_IDOLS: '/15-1/idols',
