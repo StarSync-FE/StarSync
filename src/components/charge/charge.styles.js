@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 export const creditWrapper = css`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 2rem;
   margin: 2rem 0;
