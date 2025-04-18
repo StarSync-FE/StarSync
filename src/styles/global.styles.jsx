@@ -3,25 +3,26 @@ import { Global, css } from '@emotion/react';
 
 const resetStyle = css`
 :root {
-  --black: #181d26;
-  --black-deep: #00200E;
+  --black: #181D26; 
+  --black-deep: #02000E;
   --gray: #828282;
   --gray-dark: #67666E;
   --gray-light: #A3A5A8;
+  --gray-cool: #8C92AB;
   --white: #F7F7F8;
-  --white-soft: #8C92AB;
   --orange: #F96D69;
   --pink: #FE5493;
-  --pink-purple: #ea2fb6;
-  --sky-blue: #1c9efb;
-  --indigo: #3d2fa9;
-  --bright-pink: #ed56c2;
-  --violet: #8d42fb;
+  --pink-bright: #ED56C2;
+  --pink-purple: #EA2FB6;
+  --blue-sky: #1C9EFB;
+  --blue-dark: #3D2FA9;
+  --purple: #8D42FB;
 }
 
 html {
   box-sizing: border-box;
   font-size: 62.5%; /* 1rem = 10px */
+  font-family: 'Pretendard', sans-serif;
 }
 
 *, *::before, *::after {
@@ -31,9 +32,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Pretendard', sans-serif !important;
   color: var(--white);
-  background: var(--black);
+  background: var(--black-deep);
   -webkit-font-smoothing: antialiased; /* 텍스트를 부드럽게 렌더링 (WebKit) */
   -moz-osx-font-smoothing: grayscale;  /* 텍스트를 부드럽게 렌더링 (macOS Firefox) */
   line-height: 1.4;
