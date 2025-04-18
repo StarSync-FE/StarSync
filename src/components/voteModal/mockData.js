@@ -1,9 +1,9 @@
-import credit from '../../assets/images/하치와레.png';
+import credit from '@/assets/images/hachiware.png';
 
 export const girls = [
   { name: '에스파 윈터', img: credit, id: 1, rank: 1, votes: 100 },
   { name: '뉴진스 하니', img: credit, id: 2, rank: 2, votes: 90 },
-  { name: '에스타 카리나', img: credit, id: 3, rank: 3, votes: 80 },
+  { name: '에스파 카리나', img: credit, id: 3, rank: 3, votes: 80 },
   { name: '아이브 안유진', img: credit, id: 4, rank: 4, votes: 70 },
   { name: '엔믹스 설윤', img: credit, id: 5, rank: 5, votes: 60 },
   { name: '소녀시대 윤아', img: credit, id: 5, rank: 5, votes: 60 },

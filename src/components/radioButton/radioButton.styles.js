@@ -1,24 +1,24 @@
 import { css } from '@emotion/react';
 
-export const buttonArea = css({
-  borderBottom: 'solid 1px #FFFFFF1A',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
+export const buttonArea = css`
+  border-bottom: solid 1px #FFFFFF1A,
+  display: flex,
+  justify-content: space-between,
+  align-items: center,
 
-  '& input[type="radio"]': {
-    appearance: 'none',
-    width: '16px',
-    height: '16px',
-    border: '4px solid white',
-    backgroundColor: '#8C92AB',
-    borderRadius: '50%',
-    outline: 'none',
-    cursor: 'pointer',
+  & input[type="radio"] {
+    appearance: none,
+    width: 1.6rem,
+    height: 1.6rem,
+    border: 0.4rem solid white,
+    background-color: #8C92AB,
+    border-radius: 50%,
+    outline: none,
+    cursor: pointer,
   },
-  '& input[type="radio"]:checked': {
-    backgroundColor: '#F96D69',
-    border: '4px solid #ffffff',
-    boxShadow: '0 0 0 1px #F96D69',
+  & input[type="radio"]:checked {
+    background-color: #F96D69,
+    border: 0.4rem solid #ffffff,
+    box-shadow: 0 0 0 0.1rem #F96D69,
   },
-});
+`;

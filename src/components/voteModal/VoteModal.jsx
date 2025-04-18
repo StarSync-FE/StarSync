@@ -1,8 +1,8 @@
 import * as mockData from './mockData';
 
+import Avatar from '@/components/avatar/Avatar';
+import RadioButton from '@/components/radioButton/RadioButton';
 import { useState } from 'react';
-import Avatar from '../avatar/Avatar';
-import RadioButton from '../radioButton/RadioButton';
 /** @jsxImportSource @emotion/react */
 import * as S from './voteModal.styles';
 
