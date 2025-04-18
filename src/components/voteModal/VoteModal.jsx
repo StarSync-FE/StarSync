@@ -14,21 +14,21 @@ const VoteModal = () => {
 
   return (
     <div css={S.ModalWrapper}>
-      {mockData.girls.map((item) => {
+      {mockData.girls.map((girl) => {
         return (
           <RadioButton
             style={S.voteRadioButton}
-            key={item.name}
+            key={girl.name}
             itemLabel={'voteGirlsIdol'}
-            name={`voteGirlsIdol-${item.name}`}
+            name={`voteGirlsIdol-${girl.name}`}
             onClick={selectItem}
           >
             <div css={S.memberInfoBox}>
-              <Avatar imgUrl={item.img} />
-              <span css={S.rankNumber}>{item.rank}</span>
+              <Avatar imgUrl={girl.img} />
+              <span css={S.rankNumber}>{girl.rank}</span>
               <div css={S.voteBox}>
-                <p css={S.idolName}>{item.name}</p>
-                <p css={S.votes}>{item.votes}표</p>
+                <p css={S.idolName}>{girl.name}</p>
+                <p css={S.votes}>{girl.votes}표</p>
               </div>
             </div>
           </RadioButton>
