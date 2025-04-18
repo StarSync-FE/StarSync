@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 export const ModalWrapper = css`
   width: 47.7rem;
   height: 69.3rem;
-  background-color: #181D26;
+  background-color: var(--black);
   border-radius: 1.2rem;
 `;
 
@@ -28,11 +28,11 @@ export const exitIcon = css`
 export const title = css`
   font-size: 1.8rem;
   font-weight: 500;
-  color: #F7F7F8;
+  color: var(--white);
 `;
 
 export const rankNumber = css`
-  color: #F96D69;
+  color: var(--orange);
   font-size: 1.4rem;
   font-weight: 400;
   padding: 0 1.2rem;
@@ -53,7 +53,7 @@ export const voteBox = css`
 `;
 
 export const idolName = css`
-  color: #ffffff;
+  color: var(--white);
   font-weight: 500;
 `;
 
@@ -64,11 +64,11 @@ export const votes = css`
 
 export const guideQuote = css`
   text-align: center;
-  color: #ffffff;
+  color: var(--white);
   font-size: 1.2rem;
   font-weight: 500;
 `;
 
 export const highlightText = css`
-  color: #F96D69;
+  color: var(--orange);
 `;

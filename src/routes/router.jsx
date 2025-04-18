@@ -1,6 +1,6 @@
 import App from '@/App.jsx';
-import ErrorBoundary from '@/components/ErrorBoundary.jsx';
-import PendingUI from '@/components/PendingUI.jsx';
+import ErrorBoundary from '@/components/feedback/ErrorBoundary.jsx';
+import PendingUI from '@/components/feedback/PendingUI.jsx';
 import { ENDPOINTS } from '@/constants/api';
 import fetchData from '@/utils/fetchData';
 import { lazy } from 'react';
