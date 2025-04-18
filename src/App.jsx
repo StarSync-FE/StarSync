@@ -1,10 +1,10 @@
-import ListPage from './pages/list/ListPage';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
-    <>
-      <ListPage />
-    </>
+    <main>
+      <Outlet />
+    </main>
   );
 }
 
