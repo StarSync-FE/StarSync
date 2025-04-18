@@ -13,10 +13,6 @@ const ErrorBoundary = ({ error }) => {
     );
   }
 
-  if (error.status === 404) {
-    return <NotFoundPage />;
-  }
-
   if (error.status >= 500) {
     return <ServerErrorPage />;
   }
