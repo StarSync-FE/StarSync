@@ -53,7 +53,7 @@ const CustomButton = ({
   return (
     <button
       type={type}
-      css={[buttonStyle, style && css(style)]}
+      css={[style && css(style), buttonStyle]}
       disabled={disabled}
       onClick={onClick}
     >
