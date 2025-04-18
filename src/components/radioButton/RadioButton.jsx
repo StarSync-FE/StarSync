@@ -1,11 +1,14 @@
+import { useEffect } from 'react';
 /** @jsxImportSource @emotion/react */
 import * as S from './radioButton.styles';
-const RadioButton = ({ children, itemLabel, isSelected, style }) => {
+const RadioButton = ({ children, itemLabel, name, isSelected, style }) => {
   return (
-    <label htmlFor={itemLabel} css={[S.buttonArea, style]}>
-      {children}
-      <input type="radio" name={itemLabel} />
-    </label>
+    <>
+      <label htmlFor={name} css={[S.buttonArea, style]}>
+        {children}
+        <input type="radio" name={itemLabel} id={name} />
+      </label>
+    </>
   );
 };
 

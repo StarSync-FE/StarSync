@@ -10,8 +10,8 @@ export const buttonArea = css({
     appearance: 'none',
     width: '16px',
     height: '16px',
-    border: '1px solid #8C92AB',
-
+    border: '4px solid white',
+    backgroundColor: '#8C92AB',
     borderRadius: '50%',
     outline: 'none',
     cursor: 'pointer',
