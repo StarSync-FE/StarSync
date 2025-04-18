@@ -1,3 +1,6 @@
+import credit from '@/assets/images/hachiware.png';
+import stupid from '@/assets/images/stupid.png';
+
 //mockData
 export const girls = [
   { name: '에스파 윈터', img: credit, id: 1, rank: 1, votes: 100 },
