@@ -10,7 +10,7 @@ const getButtonStyle = (type, isRound, disabled) => css`
   border: none;
   border-radius: ${isRound ? '2.4rem' : '0.3rem'};
   font-size: ${type.fontSize}rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   background: ${disabled ? 'var(--gray)' : 'linear-gradient(90deg, var(--orange) 0%, var(--pink) 100%)'};
 
