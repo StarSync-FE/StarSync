@@ -8,10 +8,13 @@ import getButtonStyle from './customButton.styles';
  * @property {'modal' | 'modalChart' | 'carousel' | 'vote' | 'landing'} [variant='modal'] - 버튼의 변형 유형 (예: 'modal', 'carousel', 'vote', 'landing' 등). 기본값은 'modal'.
  * @property {boolean} [isRound=false] - 버튼이 원형인지 여부. 기본값은 false.
  * @property {boolean} [disabled=false] - 버튼이 비활성화 상태인지 여부. 기본값은 false.
- * @property {Object} [style] - 버튼에 추가적인 스타일을 적용할 수 있는 객체.
+ * @property {React.CSSProperties} [style] - 버튼에 추가적인 스타일을 적용할 수 있는 객체.
  * @property {(e: React.MouseEvent<HTMLButtonElement>) => void} [onClick] - 버튼 클릭 시 실행될 이벤트 핸들러.
  * @property {React.ReactNode} children - 버튼 내부에 표시될 내용.
  *
+ */
+
+/**
  * CustomButton 컴포넌트는 다양한 스타일과 크기를 가진 버튼을 렌더링합니다.
  * 버튼의 타입, 스타일, 크기, 클릭 이벤트 등을 설정할 수 있습니다.
  *
@@ -20,11 +23,11 @@ import getButtonStyle from './customButton.styles';
  * @param {string} [props.variant='modal'] - 버튼의 변형 유형 (예: 'modal', 'carousel', 'vote', 'landing' 등). 기본값은 'modal'.
  * @param {boolean} [props.isRound=false] - 버튼이 원형인지 여부. 기본값은 false.
  * @param {boolean} [props.disabled=false] - 버튼이 비활성화 상태인지 여부. 기본값은 false.
- * @param {Object} [props.style] - 버튼에 추가적인 스타일을 적용할 수 있는 객체.
+ * @param {React.CSSProperties} [props.style] - 버튼에 추가적인 스타일을 적용할 수 있는 객체.
  * @param {function} [props.onClick] - 버튼 클릭 시 실행될 이벤트 핸들러.
  * @param {React.ReactNode} [props.children] - 버튼 내부에 표시될 내용.
  *
- * @returns {React.Element} 렌더링된 버튼 요소
+ * @returns {JSX.Element} 렌더링된 버튼 요소
  *
  * @example
  * // 여러 props를 사용한 CustomButton 예시
