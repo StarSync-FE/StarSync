@@ -1,6 +1,5 @@
 import credit from '@/assets/images/credit.jpg';
-import chargeComma from '@/utils/chargeComma';
-/** @jsxImportSource @emotion/react */
+import addCommas from '@/utils/addCommas';
 import * as S from './charge.styles';
 
 const Charge = () => {
@@ -10,7 +9,7 @@ const Charge = () => {
         <div>내 크레딧</div>
         <div css={S.credit}>
           <img src={credit} alt="크레딧" />
-          <span>{chargeComma(1000000)}</span>
+          <span>{addCommas(1000000)}</span>
         </div>
       </div>
       <button type="button">충전하기</button>
