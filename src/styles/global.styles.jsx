@@ -21,8 +21,8 @@ const resetStyle = css`
 
 html {
   box-sizing: border-box;
+  font-family: Pretendard, sans-serif;
   font-size: 62.5%; /* 1rem = 10px */
-  font-family: 'Pretendard', sans-serif;
 }
 
 *, *::before, *::after {
@@ -32,11 +32,11 @@ html {
 body {
   margin: 0;
   padding: 0;
+  line-height: 1.4;
   color: var(--white);
   background: var(--black-deep);
   -webkit-font-smoothing: antialiased; /* 텍스트를 부드럽게 렌더링 (WebKit) */
   -moz-osx-font-smoothing: grayscale;  /* 텍스트를 부드럽게 렌더링 (macOS Firefox) */
-  line-height: 1.4;
 }
 
 ul, ol, li {
@@ -50,20 +50,20 @@ a, button {
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
 label,
 input,
 select,
 textarea {
-  font: inherit;
-  color: inherit;
   border: none;
   outline: none;
   box-shadow: none;
+  font: inherit;
+  color: inherit;
 }
 
 
