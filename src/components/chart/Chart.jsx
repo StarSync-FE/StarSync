@@ -12,7 +12,7 @@ function Chart() {
   };
 
   return (
-    <div css={S.chartSection}>
+    <div>
       <div css={S.chartSectionHeader}>
         <div>이달의 차트</div>
         <button type="button">
