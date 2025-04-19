@@ -3,8 +3,8 @@ import { css } from '@emotion/react';
 export const creditWrapper = css`
   display: flex;
   justify-content: space-between;
-  padding: 2rem;
   margin: 2rem 0;
+  padding: 2rem;
   border: 1px solid white;
   border-radius: 8px;
   font-weight: 700;
@@ -36,9 +36,9 @@ export const credit = css`
   font-weight: 500;
 
   img {
-    margin-top: 0.2rem;
     width: 24px;
     height: 24px;
+    margin-top: 0.2rem;
   }
 
   span {

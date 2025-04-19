@@ -11,8 +11,8 @@ export const chartSection = css`
 
 export const chartSectionHeader = css`
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 
   div {
     font-size: 1.5rem;
@@ -29,16 +29,17 @@ export const chartSectionHeader = css`
     color: white;
     background-color: #F96D69;
     cursor: pointer;
+
     &:hover {
       background-color: #FE5493;
     }
 
     div {
-    font-size: 0.75rem;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     gap: 0.4rem;
+    font-size: 0.75rem;
 
     img {
     width: 1rem;
@@ -53,10 +54,10 @@ export const chartSectionHeader = css`
 `;
 
 export const tabButtonWrapper = css`
-  margin-top: 2rem;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
 
   button {
     padding: 1.5rem 15rem;
@@ -70,15 +71,15 @@ export const idolListButton = css`
     width: 100%;
     height: 4rem;
     margin: 0 auto;
-    background-color: black;
-    color: white;
+    padding: 1rem 0;
     border: none;
     border-radius: 0.2rem;
-    padding: 1rem 0;
     font-size: 1rem;
-    cursor: pointer;
     text-align: center;
     white-space: nowrap;
+    color: white;
+    background-color: black;
+    cursor: pointer;
 `;
 
 export const activeButton = css`
@@ -87,20 +88,20 @@ export const activeButton = css`
 `;
 
 export const idolList = css`
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: 1fr 1fr;
   margin-top: 1rem;
   padding-bottom: 0.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
 
   li {
-    padding-bottom: 1rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid #181D26;
     display: flex;
     justify-content: space-between;
-    list-style: none;
+    margin-bottom: 0.5rem;
+    padding-bottom: 1rem;
     text-align: center;
+    border-bottom: 1px solid #181D26;
+    list-style: none;
 
     span {
       display: flex;
@@ -112,22 +113,22 @@ export const idolList = css`
       width: 4rem;
       height: 4rem;
       border: 2px solid white;
-      box-shadow: 0 0 0 0.1rem #F96D69;
       border-radius: 50%;
+      box-shadow: 0 0 0 0.1rem #F96D69;
       object-fit: cover;
     }
   }
 `;
 
 export const moreButton = css`
-  font-size: 1.2rem;
   display: flex;
   margin: 2rem auto;
-  background-color: black;
-  color: white;
+  padding: 0.5rem 5rem;
   border: 1px solid white;
   border-radius: 0.2rem;
-  padding: 0.5rem 5rem;
+  font-size: 1.2rem;
+  color: white;
+  background-color: black;
   cursor: pointer;
 
   &:hover {
