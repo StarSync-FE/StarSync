@@ -1,8 +1,8 @@
-import * as mockData from './mockData';
+import * as mockData from '@/data/mockData';
 
+import Avatar from '@/components/avatar/Avatar';
+import RadioButton from '@/components/radioButton/RadioButton';
 import { useState } from 'react';
-import Avatar from '../avatar/Avatar';
-import RadioButton from '../radioButton/RadioButton';
 /** @jsxImportSource @emotion/react */
 import * as S from './voteModal.styles';
 
@@ -14,21 +14,21 @@ const VoteModal = () => {
 
   return (
     <div css={S.ModalWrapper}>
-      {mockData.girls.map((item) => {
+      {mockData.girls.map((girl) => {
         return (
           <RadioButton
             style={S.voteRadioButton}
-            key={item.name}
+            key={girl.name}
             itemLabel={'voteGirlsIdol'}
-            name={`voteGirlsIdol-${item.name}`}
+            name={`voteGirlsIdol-${girl.name}`}
             onClick={selectItem}
           >
             <div css={S.memberInfoBox}>
-              <Avatar imgUrl={item.img} />
-              <span css={S.rankNumber}>{item.rank}</span>
+              <Avatar imgUrl={girl.img} />
+              <span css={S.rankNumber}>{girl.rank}</span>
               <div css={S.voteBox}>
-                <p css={S.idolName}>{item.name}</p>
-                <p css={S.votes}>{item.votes}표</p>
+                <p css={S.idolName}>{girl.name}</p>
+                <p css={S.votes}>{girl.votes}표</p>
               </div>
             </div>
           </RadioButton>
