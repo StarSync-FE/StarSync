@@ -1,5 +1,5 @@
-import Charge from '@/components/charge/Charge';
-import Chart from '@/components/chart/Chart';
+import Charge from '@/components/charge';
+import Chart from '@/components/chart';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useLoaderData } from 'react-router-dom';
@@ -12,10 +12,10 @@ export const wrapper = css`
 `;
 
 export const carousel = css`
-  margin: 12rem 0
+  margin: 10rem 0;
 `;
 
-function ListPage() {
+const ListPage = () => {
   const { idols, donations, chart } = useLoaderData(); // 여기서 데이터 받음
   console.log(idols);
   console.log(donations);
@@ -28,6 +28,6 @@ function ListPage() {
       <Chart />
     </div>
   );
-}
+};
 
 export default ListPage;

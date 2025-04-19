@@ -1,14 +1,5 @@
 import { css } from '@emotion/react';
 
-export const chartSection = css`
-  margin-top: 2.5rem;
-
-  p {
-    font-size: 0.9rem;
-    color: #6b7280;
-  }
-`;
-
 export const chartSectionHeader = css`
   display: flex;
   justify-content: space-between;
@@ -26,12 +17,11 @@ export const chartSectionHeader = css`
     border-radius: 0.3rem;
     font-size: 0.8rem;
     font-weight: 900;
-    color: white;
-    background-color: #F96D69;
+    background-color: var(--orange);
     cursor: pointer;
 
     &:hover {
-      background-color: #FE5493;
+      background-color: var(--pink);
     }
 
     div {
@@ -71,7 +61,7 @@ export const idolListButton = css`
     width: 100%;
     height: 4rem;
     margin: 0 auto;
-    padding: 1rem 0;
+    background-color: black;
     border: none;
     border-radius: 0.2rem;
     font-size: 1rem;
@@ -83,8 +73,8 @@ export const idolListButton = css`
 `;
 
 export const activeButton = css`
-  background-color: #181D26;
-  border-bottom: 1px solid white;
+  background-color: var(--black);
+  border-bottom: 1px solid var(--white);
 `;
 
 export const idolList = css`
@@ -95,6 +85,9 @@ export const idolList = css`
   padding-bottom: 0.5rem;
 
   li {
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--gray-dark);
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.5rem;
@@ -112,7 +105,8 @@ export const idolList = css`
     img {
       width: 4rem;
       height: 4rem;
-      border: 2px solid white;
+      border: 2px solid var(--white);
+      box-shadow: 0 0 2px 1.6px var(--orange);
       border-radius: 50%;
       box-shadow: 0 0 0 0.1rem #F96D69;
       object-fit: cover;
@@ -123,8 +117,8 @@ export const idolList = css`
 export const moreButton = css`
   display: flex;
   margin: 2rem auto;
-  padding: 0.5rem 5rem;
-  border: 1px solid white;
+  background-color: var(--black-deep);
+  border: 1px solid var(--white);
   border-radius: 0.2rem;
   font-size: 1.2rem;
   color: white;
@@ -132,6 +126,6 @@ export const moreButton = css`
   cursor: pointer;
 
   &:hover {
-    background-color: #181D26;
+    background-color: var(--black);
   }
 `;
