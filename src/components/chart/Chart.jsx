@@ -1,6 +1,6 @@
-import credit from '@/assets/images/credit.jpg';
+import creditImg from '@/assets/images/credit.jpg';
+import mockData from '@/data/mockData';
 import { useState } from 'react';
-import mockData from '../../data/mockData';
 import * as S from './chart.styles';
 
 function Chart() {
@@ -16,7 +16,7 @@ function Chart() {
         <div>이달의 차트</div>
         <button type="button">
           <div>
-            <img src={credit} alt="차트" />
+            <img src={creditImg} alt="차트" />
             <span>차트 투표하기</span>
           </div>
         </button>
