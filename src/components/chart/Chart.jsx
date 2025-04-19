@@ -3,7 +3,7 @@ import mockData from '@/data/mockData';
 import { useState } from 'react';
 import * as S from './chart.styles';
 
-function Chart() {
+const Chart = () => {
   const [selectedTab, setSelectedTab] = useState('girls');
 
   const handleTabClick = (e) => {
@@ -76,6 +76,6 @@ function Chart() {
       </div>
     </div>
   );
-}
+};
 
 export default Chart;

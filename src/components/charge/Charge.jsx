@@ -1,20 +1,21 @@
 import credit from '@/assets/images/credit.jpg';
+import addCommas from '@/utils/addCommas';
 import { useState } from 'react';
 import mockData from '../../data/mockData';
 import Modal from '../modal';
 import RadioButton from '../radioButton';
 import * as S from './charge.styles';
 
-function Charge() {
+const Charge = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
-
+  
   return (
     <div css={S.creditWrapper}>
       <div>
         <div>내 크레딧</div>
         <div css={S.credit}>
           <img src={credit} alt="크레딧" />
-          <span>0</span>
+          <span>{addCommas(1000000)}</span>
         </div>
       </div>
       <button type="button" onClick={() => setIsModalOpen(true)}>
@@ -41,6 +42,6 @@ function Charge() {
       </Modal>
     </div>
   );
-}
+};
 
 export default Charge;
