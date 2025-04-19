@@ -1,7 +1,6 @@
 import credit from '@/assets/images/credit.jpg';
 import { useState } from 'react';
 import mockData from '../../data/mockData';
-/** @jsxImportSource @emotion/react */
 import * as S from './chart.styles';
 
 function Chart() {

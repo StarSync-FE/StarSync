@@ -1,5 +1,4 @@
 import exit from '@/assets/icons/exit-icon.png';
-/** @jsxImportSource @emotion/react */
 import * as S from './modal.styles';
 
 function Modal({ isOpen, onClose, children, style }) {

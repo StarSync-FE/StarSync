@@ -3,7 +3,6 @@ import { useState } from 'react';
 import mockData from '../../data/mockData';
 import Modal from '../modal';
 import RadioButton from '../radioButton';
-/** @jsxImportSource @emotion/react */
 import * as S from './charge.styles';
 
 function Charge() {
