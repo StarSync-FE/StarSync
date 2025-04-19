@@ -1,3 +1,3 @@
-import voteModel from './voteModal';
+import VoteModal from './VoteModal';
 
-export default voteModel;
+export default VoteModal;
