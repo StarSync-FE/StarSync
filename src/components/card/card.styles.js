@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 export const wrapper = css`
   position: relative;
   width: 28.2rem;
-  height: 29.3rem;
+  height: 28.5rem;
 `;
 
 export const gradient = css`
@@ -31,9 +31,6 @@ export const button = css`
   bottom: 7%;
   left: 50%;
   transform: translateX(-50%);
-  width: 23.3rem;
-  height: 4rem;
-  background: lightcoral;
   z-index: 1;
 `;
 
