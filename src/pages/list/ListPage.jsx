@@ -12,10 +12,10 @@ export const wrapper = css`
 `;
 
 export const carousel = css`
-  margin: 12rem 0
+  margin: 12rem 0;
 `;
 
-function ListPage() {
+const ListPage = () => {
   const { idols, donations, chart } = useLoaderData(); // 여기서 데이터 받음
   console.log(idols);
   console.log(donations);
@@ -28,6 +28,6 @@ function ListPage() {
       <Chart />
     </div>
   );
-}
+};
 
 export default ListPage;

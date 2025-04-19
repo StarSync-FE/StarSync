@@ -30,7 +30,7 @@ const boys = [
   { name: '비투비 육성재', img: stupid, id: 10, rank: 10, votes: 10 },
 ];
 
-function Chart() {
+const Chart = () => {
   const [selectedTab, setSelectedTab] = useState('girls');
 
   const handleTabClick = (e) => {
@@ -103,6 +103,6 @@ function Chart() {
       </div>
     </div>
   );
-}
+};
 
 export default Chart;

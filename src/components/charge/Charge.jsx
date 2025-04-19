@@ -3,7 +3,7 @@ import chargeComma from '@/utils/chargeComma';
 /** @jsxImportSource @emotion/react */
 import * as S from './charge.styles';
 
-function Charge() {
+const Charge = () => {
   return (
     <div css={S.creditWrapper}>
       <div>
@@ -16,6 +16,6 @@ function Charge() {
       <button type="button">충전하기</button>
     </div>
   );
-}
+};
 
 export default Charge;
