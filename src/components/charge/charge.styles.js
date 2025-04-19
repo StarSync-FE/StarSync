@@ -4,15 +4,11 @@ export const creditWrapper = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 2rem 4rem;
   margin: 2rem 0;
   border: 1px solid var(--white);
   border-radius: 0.5rem;
   font-weight: 700;
-
-  div {
-    margin-left: 0.7rem;
-  }
 
   button {
     width: 5rem;
