@@ -78,7 +78,7 @@ h1, h2, h3, h4, h5, h6,
 p, span, strong,
 ul, ol, li,
 div, a, img, 
-form, label, article, footer, header, nav, section {
+form, label, article, figure, footer, header, nav, section {
   margin: 0;
   padding: 0;
   border: 0;
