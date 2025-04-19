@@ -1,17 +1,15 @@
-function Modal({ isOpen, onClose, children }) {
+import exit from '@/assets/icons/exit-icon.png';
+/** @jsxImportSource @emotion/react */
+import * as S from './modal.styles';
+
+function Modal({ isOpen, onClose, children, style }) {
   if (!isOpen) return null;
 
-  const handleModalClose = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
-        <button type="button" className="" onClick={handleModalClose}>
-          &times;
+    <div>
+      <div>
+        <button type="button" onClick={onClose} css={[S.modalStyles, style]}>
+          <img src={exit} alt="닫기" />
         </button>
         {children}
       </div>
