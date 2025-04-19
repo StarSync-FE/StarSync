@@ -1,5 +1,5 @@
-import Charge from '@/components/charge/Charge';
-import Chart from '@/components/chart/Chart';
+import Charge from '@/components/charge';
+import Chart from '@/components/chart';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useLoaderData } from 'react-router-dom';
@@ -12,7 +12,7 @@ export const wrapper = css`
 `;
 
 export const carousel = css`
-  margin: 12rem 0;
+  margin: 10rem 0;
 `;
 
 const ListPage = () => {

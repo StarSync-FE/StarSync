@@ -1,5 +1,5 @@
-/** @jsxImportSource @emotion/react */
 import * as S from './radioButton.styles';
+
 const RadioButton = ({ children, itemLabel, name, style, handleSelect }) => {
   const idolMember = name.split('-');
 

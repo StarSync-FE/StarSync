@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import VoteModal from './components/voteModal/VoteModal';
+import VoteModal from './components/voteModal';
 
 function App() {
   return (
