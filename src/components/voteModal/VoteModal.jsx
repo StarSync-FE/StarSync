@@ -1,9 +1,7 @@
-import * as mockData from '@/data/mockData';
-
 import Avatar from '@/components/avatar/Avatar';
 import RadioButton from '@/components/radioButton/RadioButton';
+import mockData from '@/data/mockData';
 import { useState } from 'react';
-/** @jsxImportSource @emotion/react */
 import * as S from './voteModal.styles';
 
 const VoteModal = () => {
