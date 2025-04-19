@@ -13,7 +13,7 @@ import axiosInstance from './axiosInstance';
  * @example
  * registerIdols([{ name: '아이돌1', group: '그룹1' }]);
  */
-export const registerIdols = async (idolsData) => {
+const registerIdols = async (idolsData) => {
   try {
     const idolsArray = Array.isArray(idolsData) ? idolsData : [idolsData];
 
@@ -34,3 +34,5 @@ registerIdols(newIdol)
   .catch((error) => {
     console.error('요청 실패:', error);
   });
+
+export default registerIdols;
