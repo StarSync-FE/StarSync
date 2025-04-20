@@ -24,7 +24,6 @@ const resetStyle = css`
 
 *, *::before, *::after {
   box-sizing: border-box;
-}
 
 html {
   font-size: 62.5%; /* 1rem = 10px */
@@ -34,6 +33,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  line-height: 1.4;
   color: var(--white);
   background: var(--black-deep);
   -webkit-font-smoothing: antialiased; /* 텍스트를 부드럽게 렌더링 (WebKit) */
@@ -52,9 +52,9 @@ a{
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
 label,
@@ -67,6 +67,8 @@ button {
   border: none;
   outline: none;
   box-shadow: none;
+  font: inherit;
+  color: inherit;
 }
 
 button {
