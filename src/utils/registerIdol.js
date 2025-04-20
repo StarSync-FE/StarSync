@@ -1,4 +1,4 @@
-import { ENDPOINTS } from '@/constants/api';
+import { ENDPOINTS } from '@/constants/api/api';
 import { newIdol } from '@/data/idols';
 import axiosInstance from './api/axiosInstance';
 

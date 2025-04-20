@@ -2,7 +2,7 @@ import App from '@/App.jsx';
 import { ErrorBoundary, PendingUI } from '@/components/feedback';
 import { ENDPOINTS } from '@/constants/api';
 import { NotFoundPage } from '@/pages/error';
-import { fetchData } from '@/utils';
+import { fetchData } from '@/utils/api';
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 

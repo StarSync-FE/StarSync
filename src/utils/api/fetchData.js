@@ -1,4 +1,4 @@
-import { STATUS_CODES } from '@/constants';
+import { STATUS_CODES } from '@/constants/statusCodes';
 import axiosInstance from './axiosInstance';
 
 /**
