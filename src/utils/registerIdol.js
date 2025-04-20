@@ -1,6 +1,6 @@
 import { ENDPOINTS } from '@/constants/api';
 import { newIdol } from '@/data/idols';
-import axiosInstance from './axiosInstance';
+import axiosInstance from './api/axiosInstance';
 
 /**
  * 아이돌 데이터를 서버에 등록합니다. 혹시 나중에 필요할 수도 있어서 당장 쓰진 않지만 일단 둬 볼게요.

@@ -1,5 +1,5 @@
 import credit from '@/assets/images/credit.jpg';
-import addCommas from '@/utils/addCommas';
+import addCommas from '@/utils/format/addCommas';
 import { useState } from 'react';
 import mockData from '../../data/mockData';
 import Modal from '../modal';
