@@ -2,7 +2,7 @@ pre-commit:
   parallel: true
   commands:
     stylelint:
-      glob: "src/**/*.styles.js"
+      glob: "src/**/*.styles.{js,jsx}"
       run: npx stylelint {staged_files} --fix
       stage_fixed: true
     biome:
