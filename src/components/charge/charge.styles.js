@@ -2,10 +2,10 @@ import { css } from '@emotion/react';
 
 export const creditWrapper = css`
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 2rem 4rem;
+  align-items: center;
   margin: 2rem 0;
+  padding: 2.5rem 4rem;
   border: 1px solid var(--white);
   border-radius: 0.5rem;
   font-weight: 700;
@@ -33,9 +33,9 @@ export const credit = css`
   font-weight: 500;
 
   img {
-    margin-top: 0.2rem;
     width: 1.5rem;
     height: 1.5rem;
+    margin-top: 0.2rem;
   }
 
   span {
