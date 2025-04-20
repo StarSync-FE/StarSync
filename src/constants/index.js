@@ -1,3 +1,3 @@
 export * from './api';
 export * from './errors';
-export { default as statusCodes } from './statusCodes';
+export { default as STATUS_CODES } from './statusCodes';
