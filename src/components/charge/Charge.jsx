@@ -1,14 +1,14 @@
 import credit from '@/assets/images/credit.jpg';
+import mockData from '@/data/mockData';
 import addCommas from '@/utils/addCommas';
 import { useState } from 'react';
-import mockData from '../../data/mockData';
 import Modal from '../modal';
 import RadioButton from '../radioButton';
 import * as S from './charge.styles';
 
 const Charge = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
-  
+
   return (
     <div css={S.creditWrapper}>
       <div>
@@ -25,12 +25,11 @@ const Charge = () => {
         <div css={S.modalContent}>
           <h2>크레딧 충전하기</h2>
           <div css={S.radioButtons}>
-            {mockData.charge.map((item) => (
-              <RadioButton key={item.id} name="charge" itemLabel={item.name} isSelected={false}>
+            {mockData.prices.map((price) => (
+              <RadioButton key={price.id} name="charge" priceLabel={price.name} isSelected={false}>
                 <div css={S.radioButtonContent}>
                   <img src={credit} alt="크레딧" />
-                  <span>{item.name}</span>
-                  <span>{item.price}</span>
+                  <span>{price.value}</span>
                 </div>
               </RadioButton>
             ))}
