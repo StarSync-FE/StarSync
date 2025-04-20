@@ -1,6 +1,5 @@
 import Charge from '@/components/charge';
 import Chart from '@/components/chart';
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useLoaderData } from 'react-router-dom';
 
