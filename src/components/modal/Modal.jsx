@@ -5,8 +5,8 @@ function Modal({ isOpen, onClose, children, style }) {
   if (!isOpen) return null;
 
   return (
-    <div>
-      <div>
+    <div css={S.overlay}>
+      <div css={S.container}>
         <button type="button" onClick={onClose} css={[S.modalStyles, style]}>
           <img src={exit} alt="닫기" />
         </button>
