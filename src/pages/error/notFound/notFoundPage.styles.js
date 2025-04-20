@@ -16,6 +16,15 @@ const auroraMove = keyframes`
 
 `;
 
+const glow = keyframes`
+  0%, 100% {
+    text-shadow: 0 0 8px var(--pink), 0 0 16px var(--blue-sky), 0 0 24px var(--purple);
+  }
+  50% {
+    text-shadow: 0 0 12px var(--pink), 0 0 24px var(--blue-sky), 0 0 36px var(--purple);
+  }
+`;
+
 export const auroraStyle = css`
   display: flex;
   overflow: hidden;
@@ -24,8 +33,6 @@ export const auroraStyle = css`
   align-items: center;
   width: 100vw;
   height: 100vh;
-
-  /* font-family: Arial, sans-serif; */
   color: var(--white);
   background: var(--black-deep);
   text-shadow: 2px 2px 4px rgb(0 0 0 / 70%);
@@ -52,18 +59,31 @@ export const textStyle = css`
   padding: 0 2rem;
   text-align: center;
 
+ 
   h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-size: 6rem;
+    font-weight: 900;
+    letter-spacing: 0.5rem;
+    color: var(--white);
+    animation: ${glow} 2s infinite ease-in-out;
+    ${media({ fontSize: ['6rem', '8rem', '10rem', '12rem', '14rem'] })}
+}
+
+  
+
+  h2 {
+    margin-bottom: 2rem;
+    font-size: 3rem;
     font-weight: 700;
     color: var(--white);
-    ${media({ fontSize: ['4rem', '5rem', '6rem', '7rem'] })}
+    ${media({ fontSize: ['3rem', '3rem', '4rem', '5rem', '6rem'] })}
   }
 
   p {
-    font-size: 2.4rem;
+    font-size: 1.8rem; 
     font-weight: 400;
-    color: var(--gray-cool);
-    ${media({ fontSize: ['1.8rem', '2rem', '2.4rem', '2.8rem'] })}
+    color: var(--pink);
+    ${media({ fontSize: ['1.8rem', '2rem', '2.4rem', '2.8rem', '3rem'] })}
   }
 `;

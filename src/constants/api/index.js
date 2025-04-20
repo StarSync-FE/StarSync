@@ -1,2 +1,2 @@
-export { default as base } from './base';
-export { default as endpoints } from './endpoints';
+export { default as BASE_URL } from './base';
+export { default as ENDPOINTS } from './endpoints';
