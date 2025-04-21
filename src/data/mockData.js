@@ -34,19 +34,6 @@ const mockData = {
   ],
 };
 
-export const boys = [
-  { name: '보이넥스트도어 명재현', img: stupid, id: 1, rank: 1, votes: 100 },
-  { name: '아스트로 차은우', img: stupid, id: 2, rank: 2, votes: 90 },
-  { name: '보이넥스트도어 태산', img: stupid, id: 3, rank: 3, votes: 80 },
-  { name: '라이즈 원빈', img: stupid, id: 4, rank: 4, votes: 70 },
-  { name: '방탄소년단 뷔', img: stupid, id: 5, rank: 5, votes: 60 },
-  { name: '빅뱅 지드래곤', img: stupid, id: 6, rank: 6, votes: 50 },
-  { name: '뉴이스트 황민현', img: stupid, id: 7, rank: 7, votes: 40 },
-  { name: '워너원 박지훈', img: stupid, id: 8, rank: 8, votes: 30 },
-  { name: '데이식스 원필', img: stupid, id: 9, rank: 9, votes: 20 },
-  { name: '비투비 육성재', img: stupid, id: 10, rank: 10, votes: 10 },
-];
-
 export const donations = [
   {
     id: 671,
@@ -241,4 +228,3 @@ export const donations = [
 ];
 
 export default mockData;
-
