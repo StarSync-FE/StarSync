@@ -1,6 +1,7 @@
-import creditImg from '@/assets/images/credit.jpg';
+import chartImg from '@/assets/images/chart.png';
 import mockData from '@/data/mockData';
 import { useState } from 'react';
+import CustomButton from '../customButton';
 import * as S from './chart.styles';
 
 const Chart = () => {
@@ -14,12 +15,12 @@ const Chart = () => {
     <div>
       <div css={S.chartSectionHeader}>
         <div>이달의 차트</div>
-        <button type="button">
+        <CustomButton>
           <div>
-            <img src={creditImg} alt="차트" />
+            <img src={chartImg} alt="차트" />
             <span>차트 투표하기</span>
           </div>
-        </button>
+        </CustomButton>
       </div>
 
       <div>
