@@ -20,7 +20,8 @@ const resetStyle = css`
   --blue-dark: #3D2FA9;
   --purple: #8D42FB;
   --light-green: #A6FF4D;
-}
+
+} 
 
 *, *::before, *::after {
   box-sizing: border-box;

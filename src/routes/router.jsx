@@ -1,5 +1,6 @@
 import App from '@/App.jsx';
-import { ErrorBoundary, PendingUI } from '@/components/feedback';
+import { ErrorBoundary } from '@/components/error';
+import { PendingUI } from '@/components/loadingStatus';
 import { ENDPOINTS } from '@/constants/api';
 import { NotFoundPage } from '@/pages/error';
 import { fetchData } from '@/utils/api';
@@ -68,18 +69,17 @@ const router = createBrowserRouter([
           </PendingUI>
         ),
         loader: async () => {
-          throw new Response('서버 에러 테스트', {
+          throw new Response('서버에 문제가 발생했습니다. 잠시 후 다시 시도해주세요.', {
             status: 500,
-            statusText: 'Server Error!',
+            statusText: 'Internal Server Error',
           });
         },
-        errorElement: <ErrorBoundary />,
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
       },
     ],
-  },
-  {
-    path: '*',
-    element: <NotFoundPage />,
   },
 ]);
 
