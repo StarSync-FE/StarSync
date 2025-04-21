@@ -1,3 +1,4 @@
+import media from '@/styles/responsive';
 import { css } from '@emotion/react';
 
 const getButtonStyle = (size, isRound) => css`
@@ -5,8 +6,17 @@ const getButtonStyle = (size, isRound) => css`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  width: ${size.width}; 
-  height: ${size.height};  
+  width: ${size.mobileWidth ?? size.width}; 
+  height: ${size.mobileHeight ?? size.height};
+  ${media({
+    width: [size.mobileWidth ?? size.width, size.mobileWidth ?? size.width, size.width, size.width],
+    height: [
+      size.mobileHeight ?? size.height,
+      size.mobileHeight ?? size.height,
+      size.height,
+      size.height,
+    ],
+  })};
   border: none;
   border-radius: ${isRound ? '2.4rem' : '0.3rem'};
   font-size: ${size.fontSize};
