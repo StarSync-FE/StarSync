@@ -28,8 +28,9 @@ const resetStyle = css`
 
 html {
   font-family: Pretendard, sans-serif;
+  font-size: 62.5%;  /* 62.5% = 1rem */
   ${media({
-    fontSize: ['62.5%', '62.5%', '12px', '14px', undefined] /* 62.5% = 1rem */,
+    fontSize: ['62.5%', '62.5%', '12px', '14px', undefined],
   })}
 }
 
