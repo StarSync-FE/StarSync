@@ -18,7 +18,7 @@ const getButtonStyle = (size, isRound) => css`
     ],
   })};
   border: none;
-  border-radius: ${isRound ? '2.4rem' : '0.3rem'};
+  border-radius: ${isRound ? '24px' : '3px'};
   font-size: ${size.fontSize};
   font-weight: 600;
   line-height: 1;
