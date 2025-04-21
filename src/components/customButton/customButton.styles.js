@@ -19,8 +19,8 @@ const getButtonStyle = (type, isRound, disabled) => css`
   }
 
   &:disabled {
-  background: var(--gray);
   color: var(--white);
+  background: var(--gray);
   cursor: not-allowed;
 
   &:hover {
