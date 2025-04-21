@@ -2,12 +2,19 @@ import MococoImg from '@/assets/icons/mococo-no-background.png';
 import CustomButton from '@/components/customButton';
 import mockData from '@/data/mockData';
 import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/format';
+import { useEffect, useState } from 'react';
 import * as S from './card.styles';
 
 const Card = () => {
+  const [isActive, setIsActive] = useState(false);
   const test = mockData.donations[0];
   const daysLeft = getDaysRemaining(test.deadline);
   const percent = `${getDonationPercentage(test.targetDonation, test.receivedDonations)}%`;
+  const isCompleted = daysLeft > 0;
+
+  useEffect(() => {
+    setIsActive(isCompleted);
+  }, [isCompleted]);
 
   return (
     <article css={S.card}>
@@ -21,9 +28,9 @@ const Card = () => {
         </figure>
 
         {/* 버튼 */}
-        <CustomButton type="button" variant="carousel" style={S.button}>
+        <CustomButton type="button" variant="carousel" style={S.button} disabled={!isActive}>
           <img src={MococoImg} alt="모코코" css={S.icon} />
-          기분 좋은 향이 솔솔~
+          {isActive ? '기분 좋은 향이 솔솔~' : '후원 마감'}
         </CustomButton>
       </div>
 
