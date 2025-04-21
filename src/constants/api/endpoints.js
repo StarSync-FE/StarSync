@@ -1,6 +1,4 @@
-export const BASE_URL = import.meta.env.VITE_BASE_URL;
-
-export const ENDPOINTS = {
+const ENDPOINTS = {
   GET_IDOLS: '/15-1/idols',
   ADD_IDOL: '/15-1/idols',
   UPDATE_IDOL: '/15-1/idols/{id}',
@@ -14,3 +12,5 @@ export const ENDPOINTS = {
   GET_CHART: '/15-1/charts/{gender}',
   UPLOAD_IMAGE: '/images/upload',
 };
+
+export default ENDPOINTS;

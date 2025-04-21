@@ -5,6 +5,7 @@ import App from './App.jsx';
 import router from './routes/router';
 import GlobalStyle from './styles/Global.styles';
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GlobalStyle />

@@ -1,5 +1,5 @@
 import credit from '@/assets/images/credit.jpg';
-import addCommas from '@/utils/addCommas';
+import addCommas from '@/utils/format/addCommas';
 import { useState } from 'react';
 import mockData from '../../data/mockData';
 import Modal from '../modal';
@@ -8,7 +8,7 @@ import * as S from './charge.styles';
 
 const Charge = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
-  
+
   return (
     <div css={S.creditWrapper}>
       <div>

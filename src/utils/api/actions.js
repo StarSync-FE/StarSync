@@ -15,7 +15,7 @@ import fetchData from './fetchData';
  * @example
  * handleAction(request, '/api/resource', { suffixEndpoint: '/details' });
  */
-export const handleAction = async (request, baseEndpoint, options = {}) => {
+const handleAction = async (request, baseEndpoint, options = {}) => {
   const method = request.method;
   const contentType = request.headers.get('Content-Type') || '';
   let body;
@@ -52,3 +52,5 @@ export const handleAction = async (request, baseEndpoint, options = {}) => {
 
   throw new Error(CONSOLE_ERRORS.UNSUPPORTED_METHOD + method);
 };
+
+export default handleAction;
