@@ -1,3 +1,5 @@
+import { UI_ERRORS } from '@/constants/errors';
+
 /**
  * 숫자를 천 단위로 콤마(,)를 추가한 문자열로 변환합니다.
  *
@@ -16,7 +18,7 @@ const chargeComma = (num) => {
   if (num === null || num === undefined) return '0';
   if (num === 0) return '0';
   if (typeof num !== 'number') {
-    throw new Error('Input must be a number');
+    throw new Error(UI_ERRORS.REQUIRE_NUMBER);
   }
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
