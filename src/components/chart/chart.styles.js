@@ -4,11 +4,7 @@ export const chartSectionHeader = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  div {
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
+  font-size: 1.5rem;
 
   button {
     width: 8rem;
@@ -18,7 +14,6 @@ export const chartSectionHeader = css`
     font-size: 0.8rem;
     font-weight: 900;
     background-color: var(--orange);
-    cursor: pointer;
 
     &:hover {
       background-color: var(--pink);
@@ -62,7 +57,7 @@ export const idolListButton = css`
     height: 4rem;
     margin: 0 auto;
     border: none;
-    border-radius: 0.2rem;
+    border-radius: 3.2px;
     font-size: 1rem;
     text-align: center;
     white-space: nowrap;
@@ -103,7 +98,6 @@ export const idolList = css`
       border: 2px solid var(--white);
       border-radius: 50%;
       box-shadow: 0 0 2px 1.6px var(--orange);
-      box-shadow: 0 0 0 0.1rem #F96D69;
       object-fit: cover;
     }
   }
@@ -113,7 +107,7 @@ export const moreButton = css`
   display: flex;
   margin: 2rem auto;
   border: 1px solid var(--white);
-  border-radius: 0.2rem;
+  border-radius: 3.2px;
   font-size: 1.2rem;
   color: var(--white-full);
   background-color: var(--black-full);

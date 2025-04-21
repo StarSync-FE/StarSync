@@ -19,7 +19,6 @@ export const creditWrapper = css`
     font-weight: 700;
     color: var(--orange);
     background-color: var(--black);
-    cursor: pointer;
   }
 `;
 
