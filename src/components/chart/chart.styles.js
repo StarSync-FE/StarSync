@@ -104,6 +104,10 @@ export const idolList = css`
 
 export const moreButton = css`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 2.5rem;
   margin: 2rem auto;
   border: 1px solid var(--white);
   border-radius: 3.2px;
