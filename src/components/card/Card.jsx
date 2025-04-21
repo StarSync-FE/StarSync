@@ -7,6 +7,7 @@ import * as S from './card.styles';
 const Card = () => {
   const test = mockData.donations[0];
   const daysLeft = getDaysRemaining(test.deadline);
+  const percent = `${getDonationPercentage(test.targetDonation, test.receivedDonations)}%`;
 
   return (
     <article css={S.card}>
@@ -44,7 +45,7 @@ const Card = () => {
 
           {/* 진행 바 */}
           <div css={S.progressBar}>
-            <div css={S.progressFill} />
+            <div css={S.progressFill(percent)} />
           </div>
         </div>
       </div>

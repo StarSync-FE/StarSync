@@ -94,8 +94,8 @@ export const progressBar = css`
   background-color: var(--white);
 `;
 
-export const progressFill = css`
-  width: 50%;
+export const progressFill = (percent) => css`
+  width: ${percent};
   height: 100%;
   background-color: var(--pink);
 `;
