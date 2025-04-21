@@ -1,6 +1,6 @@
 import MococoImg from '@/assets/icons/mococo-no-background.png';
 import CustomButton from '@/components/customButton';
-import { donations } from '../../data/mockData';
+import { donations } from '@/data/mockData';
 import * as S from './card.styles';
 
 const Card = () => {
