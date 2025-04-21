@@ -1,18 +1,14 @@
-import { useState } from 'react';
-/** @jsxImportSource @emotion/react */
 import * as S from './avatar.styles';
 
-const Avatar = ({ imgUrl, isSelected }) => {
+const Avatar = ({ imgUrl, isSelected = true, profileSize, onSelectToggle }) => {
   return (
-    <>
-      <div
-        css={[isSelected && S.imageSelected, S.imageWrapper]}
-        onClick={() => setIsSelected(true)}
-        onKeyDown={() => setIsSelected(true)}
-      >
-        <img src={imgUrl} alt="" css={S.image} />
-      </div>
-    </>
+    <div
+      css={[isSelected && S.imageSelected, S.imageWrapper(profileSize)]}
+      onClick={onSelectToggle}
+      onKeyDown={onSelectToggle}
+    >
+      <img src={imgUrl} alt="" css={S.image} />
+    </div>
   );
 };
 
