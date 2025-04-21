@@ -12,7 +12,6 @@ const CreditChargeModal = ({ onClose }) => {
           <RadioButton key={price.id} name="charge" itemLabel={price.name}>
             <div css={S.radioButtonContent}>
               <img src={creditImg} alt="크레딧" />
-
               <span>{price.value}</span>
             </div>
           </RadioButton>
