@@ -6,19 +6,19 @@ export const buttonArea = css`
   justify-content: space-between;
   align-items: center;
 
-  & input[type="radio"] {
-    appearance: none;
-    width: 1.6rem;
-    height: 1.6rem;
-    border: 0.4rem solid white;
-    background-color: var(--gray-cool);
+  input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    border: 4px solid white;
     border-radius: 50%;
     outline: none;
-    cursor: pointer;
+    background-color: var(--gray-cool);
+    appearance: none;
   }
-  & input[type="radio"]:checked {
+
+  input[type="radio"]:checked {
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 1.6px var(--orange);
     background-color: var(--orange);
-    border: 0.4rem solid #ffffff;
-    box-shadow: 0 0 0 0.1rem var(--orange);
   }
 `;
