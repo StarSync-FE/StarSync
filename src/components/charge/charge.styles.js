@@ -5,7 +5,7 @@ export const creditWrapper = css`
   justify-content: space-between;
   align-items: center;
   margin: 2rem 0;
-  padding: 2rem 4rem;
+  padding: 2.5rem 4rem;
   border: 1px solid var(--white);
   border-radius: 0.5rem;
   font-weight: 700;
@@ -19,7 +19,6 @@ export const creditWrapper = css`
     font-weight: 700;
     color: var(--orange);
     background-color: var(--black);
-    cursor: pointer;
   }
 `;
 
@@ -39,23 +38,8 @@ export const credit = css`
   }
 
   span {
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--orange);
-  }
-`;
-
-export const radioButtonContent = css`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  img {
-    width: 1rem;
-    height: 1rem;
-  }
-
-  span {
-    font-weight: 700;
   }
 `;

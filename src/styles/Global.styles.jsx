@@ -1,5 +1,5 @@
-/** @jsxImportSource @emotion/react */
 import { Global, css } from '@emotion/react';
+import media from './responsive';
 
 const resetStyle = css`
 :root {
@@ -28,8 +28,12 @@ const resetStyle = css`
 
 html {
   font-family: Pretendard, sans-serif;
-  font-size: 62.5%; /* 1rem = 10px */
+  font-size: 10px;
+  ${media({
+    fontSize: ['10px', '10px', '12px', '14px', '14px'],
+  })}
 }
+
 
 body {
   margin: 0;
@@ -73,6 +77,11 @@ button {
   background: none;
   cursor: pointer;
 }
+
+input[type="radio"] {
+  cursor: pointer;
+}
+
 
 h1, h2, h3, h4, h5, h6,
 p, span, strong,

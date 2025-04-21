@@ -2,7 +2,7 @@ import { STATUS_CODES } from '@/constants/statusCodes';
 import axiosInstance from './axiosInstance';
 
 /**
- * 주어진 엔드포인트로 API 요청을 보내고 데이터를 반환합니다.
+ * 주어진 엔드포인트로 API 요청을 보내고 데이터를 반환합니다. 주로 GET요청을 처리합니다.
  *
  * @param {string} endpoint - 요청을 보낼 API 엔드포인트 URL
  * @param {Object} [options={}] - 요청 옵션 (method, body 등)

@@ -4,8 +4,12 @@ import mockData from '@/data/mockData';
 import { useState } from 'react';
 import * as S from './voteModal.styles';
 
-const VoteModal = () => {
-  const [isSelected, setIsSelected] = useState(false);
+const VoteModal = ({ onClose }) => {
+  const [currentItem, setcurrentItem] = useState({});
+  const selectItem = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <div css={S.ModalWrapper}>
       {mockData.girls.map((girl) => {
@@ -28,7 +32,9 @@ const VoteModal = () => {
           </RadioButton>
         );
       })}
-      <button type="button">투표하기</button>
+      <button type="button" onClick={onClose}>
+        투표하기
+      </button>
       <p css={S.guideQuote}>
         투표하는 데 <b css={S.highlightText}>1000 크레딧</b>이 소요됩니다.
       </p>

@@ -1,6 +1,5 @@
 import { UI_ERRORS } from '@/constants/errors';
-import NotFoundPage from '@/pages/error/NotFoundPage';
-import ServerErrorPage from '@/pages/error/ServerErrorPage';
+import { ServerErrorPage } from '@/pages/error';
 import React from 'react';
 
 const ErrorBoundary = ({ error }) => {
@@ -11,10 +10,6 @@ const ErrorBoundary = ({ error }) => {
         <p>{UI_ERRORS.UNKNOWN}</p>
       </div>
     );
-  }
-
-  if (error.status === 404) {
-    return <NotFoundPage />;
   }
 
   if (error.status >= 500) {

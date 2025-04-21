@@ -17,7 +17,7 @@ export const voteRadioButton = css`
   width: 32.7rem;
   height: 7rem;
   margin: auto;
-  border-bottom: solid 1px #FFFFFF1A;
+  padding-bottom: 0.8rem;
 `;
 
 export const exitIcon = css`
