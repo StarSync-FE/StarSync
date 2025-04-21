@@ -1,4 +1,4 @@
-import credit from '@/assets/images/credit.jpg';
+import creditImg from '@/assets/images/credit.jpg';
 import RadioButton from '@/components/radioButton';
 import mockData from '@/data/mockData';
 import * as S from './creditChargeModal.styles';
@@ -11,7 +11,7 @@ const CreditChargeModal = ({ onClose }) => {
         {mockData.prices.map((price) => (
           <RadioButton key={price.id} name="charge" priceLabel={price.name} isSelected={false}>
             <div css={S.radioButtonContent}>
-              <img src={credit} alt="크레딧" />
+              <img src={creditImg} alt="크레딧" />
               <span>{price.value}</span>
             </div>
           </RadioButton>

@@ -1,4 +1,4 @@
-import credit from '@/assets/images/credit.jpg';
+import creditImg from '@/assets/images/credit.jpg';
 import addCommas from '@/utils/addCommas';
 import * as S from './charge.styles';
 
@@ -8,7 +8,7 @@ const Charge = ({ setModalType }) => {
       <div>
         <div>내 크레딧</div>
         <div css={S.credit}>
-          <img src={credit} alt="크레딧" />
+          <img src={creditImg} alt="크레딧" />
           <span>{addCommas(1000000)}</span>
         </div>
       </div>
