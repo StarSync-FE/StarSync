@@ -28,9 +28,9 @@ const mockData = {
     { name: '비투비 육성재', img: stupid, id: 10, rank: 10, votes: 10 },
   ],
   prices: [
-    { value: '100', id: 1 },
-    { value: '500', id: 2 },
-    { value: '1000', id: 3 },
+    { name: 'charge', value: '100', id: 1 },
+    { name: 'charge', value: '500', id: 2 },
+    { name: 'charge', value: '1000', id: 3 },
   ],
 };
 
