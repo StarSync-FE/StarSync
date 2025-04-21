@@ -1,3 +1,4 @@
+import addIcon from '@/assets/icons/plus-icon.png';
 import Avatar from '@/components/avatar';
 import AvatarButton from '@/components/avatarButton';
 import CustomButton from '@/components/customButton';
@@ -22,7 +23,7 @@ const MyPage = () => {
   // }, [myIdol, allIdols]);
 
   return (
-    <div>
+    <div css={S.myPageWrapper}>
       <h2>내가 관심있는 아이돌</h2>
       <section css={S.horizonList}>
         {myIdol.map((idol) => {
@@ -35,11 +36,11 @@ const MyPage = () => {
           );
         })}
       </section>
-      <h2>관심 있는 아이돌을 추가해보세요.</h2>
-      <section>
+      <h2 css={S.title}>관심 있는 아이돌을 추가해보세요.</h2>
+      <section css={S.IdolList}>
         {allIdols.map((idol) => {
           return (
-            <div key={idol.id}>
+            <div key={idol.id} css={S.allProfileSize}>
               <Avatar imgUrl={idol.profilePicture} onSelectToggle={() => addMyIdol(idol)} />
               <h3 css={S.idolName}>{idol.name}</h3>
               <p css={S.groupName}>{idol.group}</p>
@@ -47,7 +48,10 @@ const MyPage = () => {
           );
         })}
       </section>
-      <CustomButton>추가하기</CustomButton>
+      <CustomButton type="button" isRound={true} style={S.customButtonStyle}>
+        <img src={addIcon} alt="addIcon" css={S.buttonIcon} />
+        추가하기
+      </CustomButton>
     </div>
   );
 };
