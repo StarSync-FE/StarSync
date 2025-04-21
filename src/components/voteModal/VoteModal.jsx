@@ -2,16 +2,12 @@ import * as mockData from '@/data/mockData';
 
 import Avatar from '@/components/avatar/Avatar';
 import RadioButton from '@/components/radioButton/RadioButton';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import * as S from './voteModal.styles';
 
 const VoteModal = () => {
-  const [currentItem, setcurrentItem] = useState({});
-  const selectItem = (e) => {
-    console.log(e.target.value);
-  };
-
+  const [isSelected, setIsSelected] = useState(false);
   return (
     <div css={S.ModalWrapper}>
       {mockData.girls.map((girl) => {
@@ -21,7 +17,7 @@ const VoteModal = () => {
             key={girl.name}
             itemLabel={'voteGirlsIdol'}
             name={`voteGirlsIdol-${girl.name}`}
-            onClick={selectItem}
+            onSelect={() => setIsSelected(true)}
           >
             <div css={S.memberInfoBox}>
               <Avatar imgUrl={girl.img} />
