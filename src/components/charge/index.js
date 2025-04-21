@@ -1,3 +1,1 @@
-import Charge from './Charge';
-
-export default Charge;
+export { default } from './Charge';
