@@ -1,6 +1,7 @@
 import MococoImg from '@/assets/icons/mococo-no-background.png';
 import CustomButton from '@/components/customButton';
 import mockData from '@/data/mockData';
+import addCommas from '@/utils/format';
 import * as S from './card.styles';
 
 const Card = () => {
@@ -43,7 +44,7 @@ const Card = () => {
           <div css={S.statusBar}>
             <div css={S.statusLeft}>
               <img src={MococoImg} alt="프리티" css={S.icon} />
-              <p>{test.receivedDonations.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
+              <p>{addCommas(test.receivedDonations)}</p>
             </div>
             <p>{days}일 남음</p>
           </div>
