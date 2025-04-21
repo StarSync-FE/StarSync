@@ -9,7 +9,6 @@ export const modalStyles = css`
   padding: 0;
   border: none;
   background: transparent;
-  cursor: pointer;
 
   img {
     width: 70%;

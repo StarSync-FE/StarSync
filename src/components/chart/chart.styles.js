@@ -63,7 +63,6 @@ export const idolListButton = css`
     white-space: nowrap;
     color: white;
     background-color: black;
-    cursor: pointer;
 `;
 
 export const activeButton = css`
@@ -111,7 +110,6 @@ export const moreButton = css`
   font-size: 1.2rem;
   color: var(--white-full);
   background-color: var(--black-full);
-  cursor: pointer;
 
   &:hover {
     background-color: var(--black);
