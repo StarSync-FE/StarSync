@@ -3,7 +3,7 @@ import RadioButton from '@/components/radioButton';
 import mockData from '@/data/mockData';
 import * as S from './donationModal.styles';
 
-const CreditChargeModal = ({ onClose }) => {
+const DonationModal = ({ onClose }) => {
   return (
     <div css={S.modalContent}>
       <h2>크레딧 충전하기</h2>
@@ -24,4 +24,4 @@ const CreditChargeModal = ({ onClose }) => {
   );
 };
 
-export default CreditChargeModal;
+export default DonationModal;
