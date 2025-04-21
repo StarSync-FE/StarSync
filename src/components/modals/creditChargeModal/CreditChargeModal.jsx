@@ -9,7 +9,7 @@ const CreditChargeModal = ({ onClose }) => {
       <h2>크레딧 충전하기</h2>
       <div css={S.radioButtons}>
         {mockData.prices.map((price) => (
-          <RadioButton key={price.id} name="charge" priceLabel={price.name} isSelected={false}>
+          <RadioButton key={price.id} name="charge" itemLabel={price.name}>
             <div css={S.radioButtonContent}>
               <img src={creditImg} alt="크레딧" />
               <span>{price.value}</span>
