@@ -3,8 +3,8 @@ import { css } from '@emotion/react';
 export const ModalWrapper = css`
   width: 47.7rem;
   height: 69.3rem;
-  background-color: var(--black);
   border-radius: 1.2rem;
+  background-color: var(--black);
 `;
 
 export const headerBox = css`
@@ -14,9 +14,9 @@ export const headerBox = css`
 `;
 
 export const voteRadioButton = css`
-  margin: auto;
   width: 32.7rem;
   height: 7rem;
+  margin: auto;
   border-bottom: solid 1px #FFFFFF1A;
 `;
 
@@ -32,18 +32,19 @@ export const title = css`
 `;
 
 export const rankNumber = css`
-  color: var(--orange);
+  padding: 0 1.2rem;
   font-size: 1.4rem;
   font-weight: 400;
-  padding: 0 1.2rem;
+  color: var(--orange);
 `;
 
 export const memberInfoBox = css`
   display: flex;
   align-items: center;
+
   & p {
-    font-size: 1.4rem;
     margin: 0;
+    font-size: 1.4rem;
   };
 `;
 
@@ -53,20 +54,20 @@ export const voteBox = css`
 `;
 
 export const idolName = css`
-  color: var(--white);
   font-weight: 500;
+  color: var(--white);
 `;
 
 export const votes = css`
-  color: rgba(255, 255, 255, 0.6);
   font-weight: 400;
+  color: rgb(255 255 255 / 60%);
 `;
 
 export const guideQuote = css`
-  text-align: center;
-  color: var(--white);
   font-size: 1.2rem;
   font-weight: 500;
+  text-align: center;
+  color: var(--white);
 `;
 
 export const highlightText = css`
