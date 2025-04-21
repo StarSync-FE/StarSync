@@ -11,8 +11,8 @@ import { useLoaderData } from 'react-router-dom';
 
 export const wrapper = css`
   padding: 20px;
-  background-color: black;
-  color: white;
+  background-color: var(--black-full);
+  color: var(--white-full);
   font-family: Pretendard, sans-serif;
 `;
 

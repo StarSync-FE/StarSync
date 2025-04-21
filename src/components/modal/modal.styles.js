@@ -4,16 +4,16 @@ export const modalStyles = css`
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   padding: 0;
   border: none;
   background: transparent;
   cursor: pointer;
 
   img {
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 70%;
     pointer-events: none; /* 이미지가 클릭 이벤트 먹지 않도록 */
     object-fit: contain;
   }
@@ -36,6 +36,6 @@ export const overlay = css`
 export const container = css`
   position: relative;
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background-color: var(--black);
 `;
