@@ -15,7 +15,7 @@ export const radioButtons = css`
     gap: 1rem;
     padding: 1rem;
     border: 1px solid #ccc;
-    border-radius: 0.5rem;
+    border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;

@@ -36,6 +36,6 @@ export const overlay = css`
 export const container = css`
   position: relative;
   padding: 2rem;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   background-color: var(--black);
 `;
