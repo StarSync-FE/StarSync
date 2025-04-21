@@ -89,7 +89,7 @@ export const icon = css`
 export const progressBar = css`
   overflow: hidden;
   position: relative;
-  width: 28.2rem;
+  width: 100%;
   height: 0.1rem;
   background-color: var(--white);
 `;
