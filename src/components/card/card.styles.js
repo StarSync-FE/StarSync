@@ -1,9 +1,15 @@
 import { css } from '@emotion/react';
 
+export const card = css`
+  width: 28.5rem;
+  height: 100%;
+`;
+
 export const wrapper = css`
+  overflow: hidden;
   position: relative;
-  width: 28.2rem;
-  height: 28.5rem;
+  width: 100%;
+  border-radius: 8px;
 `;
 
 export const gradient = css`
@@ -13,15 +19,14 @@ export const gradient = css`
   z-index: 1;
   width: 100%;
   height: 100%;
-  border-radius: 0.8rem;
   background: linear-gradient(360deg, #000, transparent);
   pointer-events: none;
 `;
 
 export const image = css`
-  width: 28.2rem;
+  z-index: 0;
+  width: 100%;
   height: 28.3rem;
-  border-radius: 0.8rem;
   object-fit: cover;
   object-position: center;
 `;
@@ -30,7 +35,7 @@ export const button = css`
   position: absolute;
   bottom: 7%;
   left: 50%;
-  z-index: 1;
+  z-index: 2;
   transform: translateX(-50%);
 `;
 

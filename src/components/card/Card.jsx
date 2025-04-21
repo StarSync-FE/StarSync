@@ -18,20 +18,22 @@ const Card = () => {
   const days = calculateDaysLeft(test.createdAt, test.deadline);
 
   return (
-    <article css={S.wrapper}>
+    <article css={S.card}>
       {/* 그라디언트 오버레이 */}
-      <div css={S.gradient} />
+      <div css={S.wrapper}>
+        <div css={S.gradient} />
 
-      {/* 이미지 figure의 margin는 임시 입니다.*/}
-      <figure style={{ margin: 0 }}>
-        <img src={test.idol.profilePicture} alt="큐티" css={S.image} />
-      </figure>
+        {/* 이미지 figure의 margin는 임시 입니다.*/}
+        <figure>
+          <img src={test.idol.profilePicture} alt="큐티" css={S.image} />
+        </figure>
 
-      {/* 버튼 */}
-      <CustomButton type="button" variant="carousel" style={S.button}>
-        <img src={MococoImg} alt="모코코" css={S.icon} />
-        기분 좋은 향이 솔솔~
-      </CustomButton>
+        {/* 버튼 */}
+        <CustomButton type="button" variant="carousel" style={S.button}>
+          <img src={MococoImg} alt="모코코" css={S.icon} />
+          기분 좋은 향이 솔솔~
+        </CustomButton>
+      </div>
 
       {/* 텍스트 및 진행 정보 */}
       <div css={S.content}>
