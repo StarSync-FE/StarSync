@@ -14,7 +14,7 @@ import { UI_ERRORS } from '@/constants/errors';
  * chargeComma(null);    // "0"
  * chargeComma(undefined); // "0"
  */
-const chargeComma = (num) => {
+const addCommas = (num) => {
   if (num === null || num === undefined) return '0';
   if (num === 0) return '0';
   if (typeof num !== 'number') {
@@ -23,4 +23,4 @@ const chargeComma = (num) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
-export default chargeComma;
+export default addCommas;
