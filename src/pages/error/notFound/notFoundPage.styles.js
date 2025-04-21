@@ -62,7 +62,8 @@ export const textStyle = css`
  
   h1 {
     margin-bottom: 1rem;
-    font-size: 6rem;
+
+    /* font-size: 6rem; */
     font-weight: 900;
     letter-spacing: 0.5rem;
     color: var(--white);
