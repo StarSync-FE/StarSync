@@ -44,18 +44,3 @@ export const credit = css`
     color: var(--orange);
   }
 `;
-
-export const radioButtonContent = css`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  img {
-    width: 1rem;
-    height: 1rem;
-  }
-
-  span {
-    font-weight: 700;
-  }
-`;
