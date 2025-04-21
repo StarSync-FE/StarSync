@@ -8,7 +8,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 const LandingPage = lazy(() => import('@/pages/landing/LandingPage'));
 const ListPage = lazy(() => import('@/pages/list/ListPage'));
-const MyPage = lazy(() => import('@/pages/mypage/MyPage'));
+const MyPage = lazy(() => import('@/pages/my/MyPage'));
 
 const router = createBrowserRouter([
   {
