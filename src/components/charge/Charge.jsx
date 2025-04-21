@@ -1,3 +1,4 @@
+
 import creditImg from '@/assets/images/credit.jpg';
 import addCommas from '@/utils/addCommas';
 import * as S from './charge.styles';
