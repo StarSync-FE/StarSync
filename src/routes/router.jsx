@@ -60,6 +60,21 @@ const router = createBrowserRouter([
         },
         errorElement: <ErrorBoundary />,
       },
+      {
+        path: 'test-error',
+        element: (
+          <PendingUI>
+            <div>서버 에러 테스트 페이지입니다</div>
+          </PendingUI>
+        ),
+        loader: async () => {
+          throw new Response('서버 에러 테스트', {
+            status: 500,
+            statusText: 'Server Error!',
+          });
+        },
+        errorElement: <ErrorBoundary />,
+      },
     ],
   },
   {
