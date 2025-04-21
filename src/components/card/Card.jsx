@@ -1,21 +1,13 @@
 import MococoImg from '@/assets/icons/mococo-no-background.png';
 import CustomButton from '@/components/customButton';
 import mockData from '@/data/mockData';
-import addCommas from '@/utils/format';
+import { addCommas, getDaysRemaining } from '@/utils/format';
 import * as S from './card.styles';
 
 const Card = () => {
   const test = mockData.donations[0];
 
-  const calculateDaysLeft = (createdAt, deadline) => {
-    const createdDate = new Date(createdAt);
-    const deadlineDate = new Date(deadline);
-    const timeDifference = deadlineDate - createdDate;
-    const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24)); // 밀리초 -> 일로 변환
-    return daysLeft;
-  };
-
-  const days = calculateDaysLeft(test.createdAt, test.deadline);
+  const daysLeft = getDaysRemaining(test.deadline);
 
   return (
     <article css={S.card}>
@@ -48,7 +40,7 @@ const Card = () => {
               <img src={MococoImg} alt="프리티" css={S.icon} />
               <p>{addCommas(test.receivedDonations)}</p>
             </div>
-            <p>{days}일 남음</p>
+            <p>{daysLeft > 1 ? `D-${daysLeft}` : daysLeft === 1 ? '오늘 마감' : '마감 완료'}</p>
           </div>
 
           {/* 진행 바 */}
