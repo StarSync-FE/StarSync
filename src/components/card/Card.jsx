@@ -1,10 +1,10 @@
 import MococoImg from '@/assets/icons/mococo-no-background.png';
 import CustomButton from '@/components/customButton';
-import { donations } from '@/data/mockData';
+import mockData from '@/data/mockData';
 import * as S from './card.styles';
 
 const Card = () => {
-  const test = donations[0];
+  const test = mockData.donations[0];
 
   const calculateDaysLeft = (createdAt, deadline) => {
     const createdDate = new Date(createdAt);
