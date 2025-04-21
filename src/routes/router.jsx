@@ -1,8 +1,8 @@
 import App from '@/App.jsx';
-import ErrorBoundary from '@/components/feedback/ErrorBoundary.jsx';
-import PendingUI from '@/components/feedback/PendingUI.jsx';
+import { ErrorBoundary, PendingUI } from '@/components/feedback';
 import { ENDPOINTS } from '@/constants/api';
-import fetchData from '@/utils/fetchData';
+import { NotFoundPage } from '@/pages/error';
+import { fetchData } from '@/utils/api';
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
@@ -61,6 +61,10 @@ const router = createBrowserRouter([
         errorElement: <ErrorBoundary />,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />,
   },
 ]);
 

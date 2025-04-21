@@ -61,7 +61,6 @@ export const idolListButton = css`
     width: 100%;
     height: 4rem;
     margin: 0 auto;
-    background-color: black;
     border: none;
     border-radius: 0.2rem;
     font-size: 1rem;
@@ -85,14 +84,12 @@ export const idolList = css`
   padding-bottom: 0.5rem;
 
   li {
-    padding-bottom: 1rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid var(--gray-dark);
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.5rem;
     padding-bottom: 1rem;
     text-align: center;
+    border-bottom: 1px solid var(--gray-dark);
     border-bottom: 1px solid #181D26;
     list-style: none;
 
@@ -106,8 +103,8 @@ export const idolList = css`
       width: 4rem;
       height: 4rem;
       border: 2px solid var(--white);
-      box-shadow: 0 0 2px 1.6px var(--orange);
       border-radius: 50%;
+      box-shadow: 0 0 2px 1.6px var(--orange);
       box-shadow: 0 0 0 0.1rem #F96D69;
       object-fit: cover;
     }
@@ -117,11 +114,11 @@ export const idolList = css`
 export const moreButton = css`
   display: flex;
   margin: 2rem auto;
-  background-color: var(--black-deep);
   border: 1px solid var(--white);
   border-radius: 0.2rem;
   font-size: 1.2rem;
   color: white;
+  background-color: var(--black-deep);
   background-color: black;
   cursor: pointer;
 
