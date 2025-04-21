@@ -1,1 +1,1 @@
-export { default as addCommas } from './addCommas';
+export { default } from './addCommas';
