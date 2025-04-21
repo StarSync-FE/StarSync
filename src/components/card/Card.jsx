@@ -1,12 +1,11 @@
 import MococoImg from '@/assets/icons/mococo-no-background.png';
 import CustomButton from '@/components/customButton';
 import mockData from '@/data/mockData';
-import { addCommas, getDaysRemaining } from '@/utils/format';
+import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/format';
 import * as S from './card.styles';
 
 const Card = () => {
   const test = mockData.donations[0];
-
   const daysLeft = getDaysRemaining(test.deadline);
 
   return (
