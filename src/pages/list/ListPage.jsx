@@ -1,9 +1,9 @@
 import Charge from '@/components/charge';
 import Chart from '@/components/chart';
 import Modal from '@/components/modal';
-import CreditChargeModal from '@/components/modals/creditChargeModal/CreditChargeModal';
-import CreditLackModal from '@/components/modals/creditLackModal/CreditLackModal';
-import DonationModal from '@/components/modals/donationModal/DonationModal';
+import CreditChargeModal from '@/components/modals/creditChargeModal';
+import CreditLackModal from '@/components/modals/creditLackModal';
+import DonationModal from '@/components/modals/donationModal';
 import VoteModal from '@/components/modals/voteModal';
 import { css } from '@emotion/react';
 import { useState } from 'react';
