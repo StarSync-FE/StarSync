@@ -3,9 +3,8 @@ import { PendingUI } from './components/loadingStatus';
 
 function App() {
   const navigation = useNavigation();
-  const isLoading = navigation.state === 'loading';
-  console.log('isLoading:', isLoading);
-  console.log('Navigation State:', navigation.state);
+  const isLoading = navigation.state !== 'idle'; // 'loading' 또는 'submitting'
+  console.log(navigation.state);
 
   return (
     <>

@@ -1,11 +1,13 @@
+import { UI_ERRORS } from '@/constants/errors';
+import { STATUS_CODES } from '@/constants/statusCodes';
 import * as S from '@/pages/error/styles';
 import { useRouteError } from 'react-router-dom';
 
 const ServerErrorPage = () => {
   const error = useRouteError();
-  const status = error?.status || 500;
+  const status = error?.status || STATUS_CODES.SERVER_ERROR;
   const message = error?.statusText || 'Internal Server Error';
-  const data = error?.data || '서버에 문제가 발생했습니다. 잠시 후 다시 시도해주세요.';
+  const data = error?.data || UI_ERRORS.SERVER;
 
   return (
     <div css={S.auroraStyle(S.serverErrorColors)}>
