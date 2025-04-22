@@ -71,7 +71,7 @@ const Chart = () => {
           </ul>
         )}
         <button type="button" css={S.moreButton}>
-          더보기
+          더 보기
         </button>
       </div>
     </div>
