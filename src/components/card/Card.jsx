@@ -18,23 +18,17 @@ const Card = () => {
 
   return (
     <article css={S.card}>
-      {/* 그라디언트 오버레이 */}
       <div css={S.wrapper}>
-        <div css={S.gradient} />
-
-        {/* 이미지 figure의 margin는 임시 입니다.*/}
         <figure>
           <img src={test.idol.profilePicture} alt="큐티" css={S.image} />
         </figure>
 
-        {/* 버튼 */}
         <CustomButton type="button" variant="carousel" style={S.button} disabled={!isActive}>
           <img src={MococoImg} alt="모코코" css={S.icon} />
-          {isActive ? '기분 좋은 향이 솔솔~' : '후원 마감'}
+          {isActive ? '후원하기' : '후원 마감'}
         </CustomButton>
       </div>
 
-      {/* 텍스트 및 진행 정보 */}
       <div css={S.content}>
         <div css={S.header}>
           <p css={S.subTitle}>{test.subtitle}</p>
@@ -50,7 +44,6 @@ const Card = () => {
             <p>{daysLeft > 1 ? `D-${daysLeft}` : daysLeft === 1 ? '오늘 마감' : '마감 완료'}</p>
           </div>
 
-          {/* 진행 바 */}
           <div css={S.progressBar}>
             <div css={S.progressFill(percent)} />
           </div>

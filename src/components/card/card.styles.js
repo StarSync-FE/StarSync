@@ -10,20 +10,22 @@ export const wrapper = css`
   position: relative;
   width: 100%;
   border-radius: 8px;
-`;
 
-export const gradient = css`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(360deg, #000, transparent);
-  pointer-events: none;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(360deg, #000, transparent);
+    pointer-events: none; ;
+  }
 `;
 
 export const image = css`
+  display: inline;
   z-index: 0;
   width: 100%;
   height: 28.3rem;
