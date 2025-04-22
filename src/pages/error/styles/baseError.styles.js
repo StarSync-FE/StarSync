@@ -1,31 +1,28 @@
 import media from '@/styles/responsive';
 import { css, keyframes } from '@emotion/react';
 
-const auroraMove = keyframes`
-0% {
-  background-position: 0% 0%, 100% 0%, 50% 100%;
-}
-
-50% {
-  background-position: 50% 50%, 50% 0%, 0% 100%;
-}
-
-100% {
-  background-position: 100% 100%, 0% 50%, 50% 0%;
-}
-
-`;
-
-const glow = keyframes`
-  0%, 100% {
-    text-shadow: 0 0 8px var(--light-green), 0 0 16px var(--blue-sky), 0 0 24px var(--purple);
+export const auroraMove = keyframes`
+  0% {
+    background-position: 0% 0%, 100% 0%, 50% 100%;
   }
   50% {
-    text-shadow: 0 0 12px var(--light-green), 0 0 24px var(--blue-sky), 0 0 36px var(--purple);
+    background-position: 50% 50%, 50% 0%, 0% 100%;
+  }
+  100% {
+    background-position: 100% 100%, 0% 50%, 50% 0%;
   }
 `;
 
-export const auroraStyle = css`
+export const glow = (colors) => keyframes`
+  0%, 100% {
+    text-shadow: 0 0 8px ${colors[0]}, 0 0 16px ${colors[1]}, 0 0 24px ${colors[2]};
+  }
+  50% {
+    text-shadow: 0 0 12px ${colors[0]}, 0 0 24px ${colors[1]}, 0 0 36px ${colors[2]};
+  }
+`;
+
+export const auroraStyle = (colors) => css`
   display: flex;
   overflow: hidden;
   position: relative;
@@ -43,9 +40,9 @@ export const auroraStyle = css`
     left: 0;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, var(--purple), transparent 70%),
-                radial-gradient(circle, var(--light-green), transparent 70%),
-                radial-gradient(circle, var(--blue-sky), transparent 70%);
+    background: radial-gradient(circle, ${colors[0]}, transparent 70%),
+                radial-gradient(circle, ${colors[1]}, transparent 70%),
+                radial-gradient(circle, ${colors[2]}, transparent 70%);
     background-position: 0% 0%, 100% 0%, 50% 100%;
     background-size: 50% 50%;
     animation: ${auroraMove} 10s infinite alternate;
@@ -54,23 +51,19 @@ export const auroraStyle = css`
   }
 `;
 
-export const textStyle = css`
+export const textStyle = (fontColor, glowAnimation) => css`
   z-index: 1;
   padding: 0 2rem;
   text-align: center;
 
- 
   h1 {
     margin-bottom: 1rem;
-    font-size: 6rem;
     font-weight: 900;
     letter-spacing: 0.5rem;
     color: var(--white);
-    animation: ${glow} 2s infinite ease-in-out;
+    animation: ${glowAnimation} 2s infinite ease-in-out;
     ${media({ fontSize: ['6rem', '8rem', '10rem', '12rem', '14rem'] })}
-}
-
-  
+  }
 
   h2 {
     margin-bottom: 2rem;
@@ -81,9 +74,9 @@ export const textStyle = css`
   }
 
   p {
-    font-size: 1.8rem; 
+    font-size: 1.8rem;
     font-weight: 400;
-    color: var(--light-green);
+    color: ${fontColor};
     ${media({ fontSize: ['1.8rem', '2rem', '2.4rem', '2.8rem', '3rem'] })}
   }
 `;
