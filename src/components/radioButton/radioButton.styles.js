@@ -5,21 +5,21 @@ export const buttonArea = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 
-  & input[type="radio"] {
-    width: 1.6rem;
-    height: 1.6rem;
-    border: 0.4rem solid white;
+  input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    border: 4px solid white;
     border-radius: 50%;
     outline: none;
     background-color: var(--gray-cool);
-    cursor: pointer;
     appearance: none;
   }
 
-  & input[type="radio"]:checked {
-    border: 0.4rem solid #fff;
-    box-shadow: 0 0 0 0.1rem var(--orange);
+  input[type="radio"]:checked {
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 1.6px var(--orange);
     background-color: var(--orange);
   }
 `;

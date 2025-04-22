@@ -1,19 +1,19 @@
-import credit from '@/assets/images/credit.jpg';
+import mococoImg from '@/assets/images/mococo.jpg';
 import stupid from '@/assets/images/stupid.png';
 
 //mockData
 const mockData = {
   girls: [
-    { name: '에스파 윈터', img: credit, id: 1, rank: 1, votes: 100 },
-    { name: '뉴진스 하니', img: credit, id: 2, rank: 2, votes: 90 },
-    { name: '에스파 카리나', img: credit, id: 3, rank: 3, votes: 80 },
-    { name: '아이브 안유진', img: credit, id: 4, rank: 4, votes: 70 },
-    { name: '엔믹스 설윤', img: credit, id: 5, rank: 5, votes: 60 },
-    { name: '에스파 닝닝', img: credit, id: 6, rank: 6, votes: 50 },
-    { name: '아이브 레이', img: credit, id: 7, rank: 7, votes: 40 },
-    { name: '블랙핑크 제니', img: credit, id: 8, rank: 8, votes: 30 },
-    { name: '베이비몬스터 아현', img: credit, id: 9, rank: 9, votes: 20 },
-    { name: '여자아이들 민니', img: credit, id: 10, rank: 10, votes: 10 },
+    { name: '에스파 윈터', img: mococoImg, id: 1, rank: 1, votes: 100 },
+    { name: '뉴진스 하니', img: mococoImg, id: 2, rank: 2, votes: 90 },
+    { name: '에스파 카리나', img: mococoImg, id: 3, rank: 3, votes: 80 },
+    { name: '아이브 안유진', img: mococoImg, id: 4, rank: 4, votes: 70 },
+    { name: '엔믹스 설윤', img: mococoImg, id: 5, rank: 5, votes: 60 },
+    { name: '에스파 닝닝', img: mococoImg, id: 6, rank: 6, votes: 50 },
+    { name: '아이브 레이', img: mococoImg, id: 7, rank: 7, votes: 40 },
+    { name: '블랙핑크 제니', img: mococoImg, id: 8, rank: 8, votes: 30 },
+    { name: '베이비몬스터 아현', img: mococoImg, id: 9, rank: 9, votes: 20 },
+    { name: '여자아이들 민니', img: mococoImg, id: 10, rank: 10, votes: 10 },
   ],
   boys: [
     { name: '보이넥스트도어 명재현', img: stupid, id: 1, rank: 1, votes: 100 },

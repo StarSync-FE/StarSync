@@ -5,6 +5,7 @@ const UI_ERRORS = {
   FORBIDDEN: '권한이 없습니다.',
   NOT_FOUND: '요청한 리소스를 찾을 수 없습니다.',
   UNKNOWN: '알 수 없는 오류가 발생했습니다.',
+  REQUIRE_NUMBER: '숫자를 입력해주세요.',
 };
 
 export default UI_ERRORS;
