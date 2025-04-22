@@ -1,5 +1,5 @@
 ---
-name: Today I Learn
+name: Today I Learned
 about: TIL 용 템플릿 입니다.
 title: "`[TIL]` 주제이름"
 labels: "\U0001F4A1TIL"
