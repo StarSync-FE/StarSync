@@ -1,4 +1,4 @@
-import Header from '@/components/header';
+import { Header } from '@/components/header';
 import { LAYOUT } from '@/constants/layout';
 import { Outlet, useLocation } from 'react-router-dom';
 
