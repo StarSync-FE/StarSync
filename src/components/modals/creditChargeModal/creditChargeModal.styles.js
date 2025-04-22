@@ -74,4 +74,10 @@ export const buttonStyle = css`
     width: 24px;
     height: 24px;
   }
+  
+  p {
+    margin-right: 12px;
+    font-size: 14px;
+    font-weight: 700;
+  }
 `;

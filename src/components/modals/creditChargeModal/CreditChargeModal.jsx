@@ -26,7 +26,7 @@ const CreditChargeModal = ({ onClose }) => {
       </div>
       <CustomButton onClick={onClose} style={S.buttonStyle}>
         <img src={creditWhiteImg} alt="크레딧" />
-        충전하기
+        <p>충전하기</p>
       </CustomButton>
     </div>
   );
