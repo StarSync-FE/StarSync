@@ -1,27 +1,34 @@
 import { css } from '@emotion/react';
 
-export const wrapper = css`
-  position: relative;
-  width: 28.2rem;
-  height: 28.5rem;
+export const card = css`
+  width: 28.5rem;
+  height: 100%;
 `;
 
-export const gradient = css`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
+export const wrapper = css`
+  overflow: hidden;
+  position: relative;
   width: 100%;
-  height: 100%;
-  border-radius: 0.8rem;
-  background: linear-gradient(360deg, #000, transparent);
-  pointer-events: none;
+  border-radius: 8px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(360deg, #000, transparent);
+    pointer-events: none; ;
+  }
 `;
 
 export const image = css`
-  width: 28.2rem;
+  display: inline;
+  z-index: 0;
+  width: 100%;
   height: 28.3rem;
-  border-radius: 0.8rem;
   object-fit: cover;
   object-position: center;
 `;
@@ -30,7 +37,7 @@ export const button = css`
   position: absolute;
   bottom: 7%;
   left: 50%;
-  z-index: 1;
+  z-index: 2;
   transform: translateX(-50%);
 `;
 
@@ -84,13 +91,13 @@ export const icon = css`
 export const progressBar = css`
   overflow: hidden;
   position: relative;
-  width: 28.2rem;
+  width: 100%;
   height: 0.1rem;
   background-color: var(--white);
 `;
 
-export const progressFill = css`
-  width: 50%;
+export const progressFill = (percent) => css`
+  width: ${percent};
   height: 100%;
   background-color: var(--pink);
 `;
