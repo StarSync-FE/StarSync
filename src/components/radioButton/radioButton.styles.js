@@ -5,6 +5,7 @@ export const buttonArea = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 
   input[type="radio"] {
     width: 16px;
