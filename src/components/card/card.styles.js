@@ -10,28 +10,28 @@ export const gradient = css`
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  background: linear-gradient(360deg, #000000, transparent);
   border-radius: 0.8rem;
-  z-index: 1;
+  background: linear-gradient(360deg, #000, transparent);
   pointer-events: none;
 `;
 
 export const image = css`
   width: 28.2rem;
   height: 28.3rem;
+  border-radius: 0.8rem;
   object-fit: cover;
   object-position: center;
-  border-radius: 0.8rem;
 `;
 
 export const button = css`
   position: absolute;
   bottom: 7%;
   left: 50%;
-  transform: translateX(-50%);
   z-index: 1;
+  transform: translateX(-50%);
 `;
 
 export const content = css`
@@ -82,15 +82,15 @@ export const icon = css`
 `;
 
 export const progressBar = css`
+  overflow: hidden;
   position: relative;
   width: 28.2rem;
   height: 0.1rem;
   background-color: var(--white);
-  overflow: hidden;
 `;
 
 export const progressFill = css`
-  background-color: var(--pink);
   width: 50%;
   height: 100%;
+  background-color: var(--pink);
 `;
