@@ -9,7 +9,7 @@ export const modalContent = css`
   padding: 24px 16px 0;
 
   h2 {
-    margin: 0.5rem 0;
+    margin: 0.2rem 0 0.7rem;
     font-size: 18px;
   }
 
@@ -67,9 +67,6 @@ export const radioButtonContent = css`
 `;
 
 export const buttonStyle = css` 
-  width: 300px;
-  height: 42px;
-
   img {
     width: 24px;
     height: 24px;

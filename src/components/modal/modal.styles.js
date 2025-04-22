@@ -22,18 +22,11 @@ export const container = css`
 
 export const modalStyles = css`
   position: absolute;
-  top: 1.2rem;
-  right: 1rem;
+  top: 1.8rem;
+  right: 1.7rem;
   width: 2rem;
   height: 2rem;
   padding: 0;
   border: none;
   background: transparent;
-
-  img {
-    width: 70%;
-    height: 70%;
-    pointer-events: none; /* 이미지가 클릭 이벤트 먹지 않도록 */
-    object-fit: contain;
-  }
 `;
