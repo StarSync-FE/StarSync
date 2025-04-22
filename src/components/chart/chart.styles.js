@@ -27,8 +27,8 @@ export const chartSectionHeader = css`
     font-size: 0.75rem;
 
     img {
-    width: 1rem;
-    height: 1rem;
+    width: 1.4rem;
+    height: 1.4rem;
     }
 
     span {
@@ -114,9 +114,9 @@ export const moreButton = css`
   border-radius: 3.2px;
   font-size: 1.2rem;
   color: var(--white-full);
-  background-color: var(--black-full);
+  background-color: var(--black);
 
   &:hover {
-    background-color: var(--black);
+    background-color: var(--black-full);
   }
 `;
