@@ -1,10 +1,6 @@
 import { Charge } from '@/components/charge';
 import { Chart } from '@/components/chart';
-import { Modal } from '@/components/modal';
-import { CreditChargeModal } from '@/components/modals/creditChargeModal';
-import { CreditLackModal } from '@/components/modals/creditLackModal';
-import { DonationModal } from '@/components/modals/donationModal';
-import { VoteModal } from '@/components/modals/voteModal';
+import { ListModal } from '@/components/list';
 import { css } from '@emotion/react';
 import { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
@@ -22,23 +18,6 @@ export const carousel = css`
 
 const ListPage = () => {
   const [modalType, setModalType] = useState(null); // 모달 타입 상태 관리
-  const closeModal = () => setModalType(null); // 모달 닫기 함수
-  const renderModalContent = () => {
-    // 모달 내용 렌더링 함수
-    switch (modalType) {
-      case 'creditCharge':
-        return <CreditChargeModal onClose={closeModal} />;
-      case 'creditLack':
-        return <CreditLackModal onClose={closeModal} />;
-      case 'donation':
-        return <DonationModal onClose={closeModal} />;
-      case 'vote':
-        return <VoteModal onClose={closeModal} />;
-      default:
-        return null;
-    }
-  };
-
   const { idols, donations, chart } = useLoaderData(); // 여기서 데이터 받음
   console.log(idols);
   console.log(donations);
@@ -50,9 +29,7 @@ const ListPage = () => {
       <div css={carousel}>캐러셀</div>
       <Chart />
 
-      <Modal isOpen={modalType !== null} onClose={closeModal}>
-        {renderModalContent()}
-      </Modal>
+      <ListModal modalType={modalType} setModalType={setModalType} />
     </div>
   );
 };
