@@ -1,5 +1,4 @@
 import { Global, css } from '@emotion/react';
-import media from './responsive';
 
 const resetStyle = css`
 :root {
@@ -12,7 +11,9 @@ const resetStyle = css`
   --gray-cool: #8C92AB;
   --white: #F7F7F8;
   --white-full: #FFF;
+  --white-alpha-10: #FFFFFF1A;
   --orange: #F96D69;
+  --orange-deep: #F86F65;
   --pink: #FE5493;
   --pink-bright: #ED56C2;
   --pink-purple: #EA2FB6;
@@ -28,10 +29,7 @@ const resetStyle = css`
 
 html {
   font-family: Pretendard, sans-serif;
-  font-size: 10px;
-  ${media({
-    fontSize: ['10px', '10px', '12px', '14px', '14px'],
-  })}
+  font-size: 62.5%; /* 62.5% = 10px */
 }
 
 

@@ -1,5 +1,7 @@
 import creditImg from '@/assets/images/credit.png';
-import addCommas from '@/utils/format';
+import creditImg from '@/assets/images/credit.jpg';
+import { addCommas } from '@/utils/format';
+
 import * as S from './charge.styles';
 
 const Charge = ({ setModalType }) => {
