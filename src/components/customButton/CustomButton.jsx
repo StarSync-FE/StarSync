@@ -53,11 +53,17 @@ const CustomButton = ({
   children,
 }) => {
   const sizeMap = {
-    modal: { width: 29.5, height: 4.2, fontSize: 1.4 },
-    modalChart: { width: 47.7, height: 4.2, mobileWidth: 32.7, fontSize: 1.4 },
-    carousel: { width: 23.4, height: 4, mobileWidth: 14.2, mobileHeight: 3.1, fontSize: 1.3 },
-    vote: { width: 12.8, height: 3.2, fontSize: 1.3 },
-    landing: { width: 47.7, height: 4.8, mobileWidth: 23, fontSize: 1.4 },
+    modal: { width: '29.5rem', height: '4.2rem', fontSize: '1.4rem' },
+    modalChart: { width: '47.7rem', height: '4.2rem', mobileWidth: '32.7rem', fontSize: '1.4rem' },
+    carousel: {
+      width: '23.4rem',
+      height: '4rem',
+      mobileWidth: '14.2rem',
+      mobileHeight: '3.1rem',
+      fontSize: '1.3rem',
+    },
+    vote: { width: '12.8rem', height: '3.2rem', fontSize: '1.3rem' },
+    landing: { width: '47.7rem', height: '4.8rem', mobileWidth: '23rem', fontSize: '1.4rem' },
   };
 
   const selectedSize = sizeMap[variant] || sizeMap.modal;
