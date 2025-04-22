@@ -16,7 +16,6 @@ export const overlay = css`
 
 export const container = css`
   position: relative;
-  padding: 1.5rem;
   border-radius: 8px;
   background-color: var(--black);
 `;
