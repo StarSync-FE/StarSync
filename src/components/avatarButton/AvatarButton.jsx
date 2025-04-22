@@ -5,7 +5,7 @@ import * as S from './avatarButton.styles';
 const AvatarButton = ({ imgUrl, boxSize }) => {
   return (
     <div css={S.avatarWrapper}>
-      <div css={S.avatarBox(boxSize)}>
+      <div css={S.avatarBox}>
         <button type="button" css={S.exitButton}>
           <img src={exitIcon} css={S.buttonImage} alt="exitIcon" />
         </button>

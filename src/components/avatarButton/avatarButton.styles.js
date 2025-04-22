@@ -11,18 +11,18 @@ export const avatarWrapper = css`
   
 `;
 
-export const avatarBox = (boxSize = 6) => css`
+export const avatarBox = css`
   position: relative;
-  width: ${boxSize}rem;
+  width: 6rem;
   `;
 
-export const exitButton = () => css`
+export const exitButton = css`
   position: absolute;
   right: 0;
   z-index: 1;
   box-sizing: border-box;
-  width: 22px;
-  padding: 5px;
+  width: 2.2rem;
+  padding: 0.5rem;
   border: 2px solid var(--black-deep);
   border-radius: 50%;
   background-color: var(--white);

@@ -7,14 +7,17 @@ import { useLoaderData } from 'react-router-dom';
 import * as S from './myPage.styles';
 const MyPage = () => {
   const idols = useLoaderData(); // 여기서 데이터 받음
-  const [myIdol, setMyIdol] = useState([]);
   const [allIdols, setAllIdols] = useState(idols.list);
+  const [myIdol, setMyIdol] = useState([]);
+  const [seletedProfiles, setSelectedProfiles] = useState([]);
 
-  const addMyIdol = (idol) => {
-    console.log(idol);
+  const toggleProfile = (idol) => {
+    setSelectedProfiles((prev) => ({
+      ...prev,
+      [idol.id]: !prev[idol.id],
+    }));
     setMyIdol([...myIdol, idol]);
   };
-
   return (
     <div css={S.myPageWrapper}>
       <h2 css={S.title}>내가 관심있는 아이돌</h2>
@@ -22,7 +25,7 @@ const MyPage = () => {
         {myIdol.map((idol) => {
           return (
             <div key={idol.id}>
-              <AvatarButton size={6} imgUrl={idol.profilePicture} />
+              <AvatarButton imgUrl={idol.profilePicture} />
               <h3 css={S.idolName}>{idol.name}</h3>
               <p css={S.groupName}>{idol.group}</p>
             </div>
@@ -35,7 +38,11 @@ const MyPage = () => {
           {allIdols.map((idol) => {
             return (
               <div key={idol.id} css={S.allProfileSize}>
-                <Avatar imgUrl={idol.profilePicture} onSelectToggle={() => addMyIdol(idol)} />
+                <Avatar
+                  imgUrl={idol.profilePicture}
+                  onSelectToggle={() => toggleProfile(idol)}
+                  isSelected={seletedProfiles[idol.id]}
+                />
                 <h3 css={S.idolName}>{idol.name}</h3>
                 <p css={S.groupName}>{idol.group}</p>
               </div>

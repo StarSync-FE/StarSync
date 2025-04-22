@@ -1,6 +1,6 @@
 import * as S from './avatar.styles';
 
-const Avatar = ({ imgUrl, isSelected = true, profileSize, onSelectToggle }) => {
+const Avatar = ({ imgUrl, isSelected = false, profileSize, onSelectToggle }) => {
   return (
     <div
       css={[isSelected && S.imageSelected, S.imageWrapper(profileSize)]}
