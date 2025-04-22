@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import * as S from './myPage.styles';
 const MyPage = () => {
-  const idols = useLoaderData(); // 여기서 데이터 받음
+  const idols = useLoaderData();
   const [allIdols, setAllIdols] = useState(idols.list);
   const [myIdol, setMyIdol] = useState([]);
   const [seletedProfiles, setSelectedProfiles] = useState([]);
