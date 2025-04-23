@@ -41,13 +41,18 @@ const fetchData = async (endpoint, options = {}) => {
     return response.data;
   } catch (error) {
     const status = error.response?.status;
+    const statusText = error.response?.statusText;
+    const errorData = error.response?.data;
 
     if (status >= STATUS_CODES.SERVER_ERROR) {
-      throw new Response(null, { status: STATUS_CODES.SERVER_ERROR }); // React Router에서 throw new Response(...)를 쓰면, 해당 라우트에 정의된 errorElement로 자동 이동
+      throw new Response(JSON.stringify(errorData), { status, statusText });
     }
 
     if (status === STATUS_CODES.NOT_FOUND) {
-      throw new Response(null, { status: STATUS_CODES.NOT_FOUND });
+      throw new Response(JSON.stringify(errorData), {
+        status,
+        statusText,
+      });
     }
 
     throw error; // 나머지 에러는 각 컴포넌트에서 처리

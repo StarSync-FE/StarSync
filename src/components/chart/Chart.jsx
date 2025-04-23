@@ -1,5 +1,5 @@
 import chartImg from '@/assets/images/chart.png';
-import mockData from '@/data/mockData';
+import { mockData } from '@/data/mockData';
 import { useState } from 'react';
 import CustomButton from '../customButton';
 import * as S from './chart.styles';
@@ -45,10 +45,10 @@ const Chart = () => {
 
         {selectedTab === 'girls' && (
           <ul css={S.idolList}>
-            {mockData.girls.map((girl) => (
+            {mockData.map((girl) => (
               <li key={girl.id}>
                 <span>
-                  <img src={girl.img} alt={girl.name} />
+                  <img src={girl.profilePicture} alt={girl.name} />
                   <span>{girl.rank}</span>
                   <span>{girl.name}</span>
                 </span>
@@ -59,10 +59,10 @@ const Chart = () => {
         )}
         {selectedTab === 'boys' && (
           <ul css={S.idolList}>
-            {mockData.boys.map((boy) => (
+            {mockData.map((boy) => (
               <li key={boy.id}>
                 <span>
-                  <img src={boy.img} alt={boy.name} />
+                  <img src={boy.profilePicture} alt={boy.name} />
                   <span>{boy.rank}</span>
                   <span>{boy.name}</span>
                 </span>

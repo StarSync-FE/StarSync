@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 
 export const buttonArea = css`
-  border-bottom: solid 1px #FFFFFF1A;
   display: flex;
   justify-content: space-between;
   align-items: center;

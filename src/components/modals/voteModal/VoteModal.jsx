@@ -1,6 +1,6 @@
 import Avatar from '@/components/avatar/Avatar';
 import RadioButton from '@/components/radioButton/RadioButton';
-import mockData from '@/data/mockData';
+import { mockData } from '@/data/mockData';
 import { useState } from 'react';
 import * as S from './voteModal.styles';
 
@@ -19,7 +19,7 @@ const VoteModal = ({ onClose }) => {
             key={girl.name}
             itemLabel={'voteGirlsIdol'}
             name={`voteGirlsIdol-${girl.name}`}
-            onClick={selectItem}
+            onSelect={() => setIsSelected(true)}
           >
             <div css={S.memberInfoBox}>
               <Avatar imgUrl={girl.img} />
