@@ -1,6 +1,6 @@
 import { ErrorBoundary } from '@/components/error';
 import { ENDPOINTS } from '@/constants/api';
-import { fetchData } from '@/utils/api';
+import { requestGet } from '@/utils/api';
 import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -30,9 +30,9 @@ const router = createBrowserRouter([
               const gender = 'female';
               const chartUrl = `${ENDPOINTS.GET_CHART.replace('{gender}', gender)}?gender=${gender}`;
               const [idols, donations, chart] = await Promise.all([
-                fetchData(ENDPOINTS.GET_IDOLS),
-                fetchData(ENDPOINTS.GET_DONATIONS),
-                fetchData(chartUrl),
+                requestGet(ENDPOINTS.GET_IDOLS),
+                requestGet(ENDPOINTS.GET_DONATIONS),
+                requestGet(chartUrl),
               ]);
               return { idols, donations, chart };
             },
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
           return {
             Component: MyPage,
             loader: async () => {
-              const idols = await fetchData(ENDPOINTS.GET_IDOLS);
+              const idols = await requestGet(ENDPOINTS.GET_IDOLS);
               return idols;
             },
           };
