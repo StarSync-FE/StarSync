@@ -7,7 +7,6 @@ export const avatarWrapper = css`
   justify-content: center;
   align-items: center;
   width: 100%;
-  
 `;
 
 export const avatarBox = css`
