@@ -1,12 +1,12 @@
 import * as S from './radioButton.styles';
 
-const RadioButton = ({ children, itemLabel, name, style, handleSelect, isChecked }) => {
+const RadioButton = ({ children, itemLabel, style, name, handleSelect, isChecked }) => {
   const idolMember = name.split('-');
 
   return (
     <label
       htmlFor={name}
-      css={[S.buttonArea, style, isChecked && S.activeStyle]}
+      css={[S.buttonArea, isChecked && style]}
       onClick={handleSelect}
       onKeyDown={handleSelect}
       value={idolMember[1]}
