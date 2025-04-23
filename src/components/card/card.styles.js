@@ -1,8 +1,12 @@
+import media from '@/styles/responsive';
 import { css } from '@emotion/react';
 
 export const card = css`
   width: 28.5rem;
   height: 100%;
+  ${media({
+    width: ['15.8rem', '15.8rem', '28.2rem', '28.2rem'],
+  })}
 `;
 
 export const wrapper = css`
@@ -28,7 +32,10 @@ export const image = css`
   display: inline;
   z-index: 0;
   width: 100%;
-  height: 28.3rem;
+  height: 20.6rem;
+  ${media({
+    height: ['20.6rem', '20.6rem', '29.3rem', '29.3rem'],
+  })}
   object-fit: cover;
   object-position: center;
 `;
@@ -45,6 +52,9 @@ export const content = css`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+  ${media({
+    gap: ['2rem', '2rem', '2.4rem', '2.4rem'],
+  })}
 `;
 
 export const header = css`
@@ -52,18 +62,27 @@ export const header = css`
   flex-direction: column;
   gap: 0.8rem;
   margin-top: 1.2rem;
-`;
 
-export const subTitle = css`
-  font-size: 1.6rem;
-  font-weight: 400;
-  color: var(--gray);
-`;
+  p {
+    font-size: 1.6rem;
+    ${media({
+      fontSize: ['1.4rem', '1.4rem', '1.6rem', '1.6rem'],
+    })}
+    font-weight: 400;
+    color: var(--gray);
+  }
 
-export const title = css`
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: var(--white);
+  h2 {
+    overflow: hidden;
+    font-size: 1.8rem;
+    ${media({
+      fontSize: ['1.4rem', '1.4rem', '1.8rem', '1.8rem'],
+    })}
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--white);
+  }
 `;
 
 export const info = css`
@@ -75,6 +94,16 @@ export const info = css`
 export const statusBar = css`
   display: flex;
   justify-content: space-between;
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 400; 
+    color: var(--white);
+  }
+
+  & > div > p {
+    color: var(--orange);
+  }
 `;
 
 export const statusLeft = css`
