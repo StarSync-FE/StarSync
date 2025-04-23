@@ -1,70 +1,95 @@
-import App from '@/App.jsx';
-import { ErrorBoundary, PendingUI } from '@/components/feedback';
+import { ErrorBoundary } from '@/components/error';
 import { ENDPOINTS } from '@/constants/api';
-import { NotFoundPage } from '@/pages/error';
 import { fetchData } from '@/utils/api';
-import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-
-const LandingPage = lazy(() => import('@/pages/landing/LandingPage'));
-const ListPage = lazy(() => import('@/pages/list/ListPage'));
-const MyPage = lazy(() => import('@/pages/mypage/MyPage'));
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <PendingUI>
-        <App />
-      </PendingUI>
-    ),
+    lazy: async () => {
+      const { default: App } = await import('@/App.jsx');
+      return { Component: App };
+    },
     errorElement: <ErrorBoundary />,
     children: [
       {
         index: true,
-        element: (
-          <PendingUI>
-            <LandingPage />
-          </PendingUI>
-        ),
+
+        lazy: async () => {
+          const { default: LandingPage } = await import('@/pages/landing/LandingPage');
+          return { Component: LandingPage };
+        },
       },
       {
         path: 'list',
-        element: (
-          <PendingUI>
-            <ListPage />
-          </PendingUI>
-        ),
-        loader: async () => {
-          const gender = 'female';
-          const chartUrl = `${ENDPOINTS.GET_CHART.replace('{gender}', gender)}?gender=${gender}`;
-          const [idols, donations, chart] = await Promise.all([
-            fetchData(ENDPOINTS.GET_IDOLS),
-            fetchData(ENDPOINTS.GET_DONATIONS),
-            fetchData(chartUrl),
-          ]);
-          return { idols, donations, chart };
+        lazy: async () => {
+          const { default: ListPage } = await import('@/pages/list/ListPage');
+          return {
+            Component: ListPage,
+            loader: async () => {
+              const gender = 'female';
+              const chartUrl = `${ENDPOINTS.GET_CHART.replace('{gender}', gender)}?gender=${gender}`;
+              const [idols, donations, chart] = await Promise.all([
+                fetchData(ENDPOINTS.GET_IDOLS),
+                fetchData(ENDPOINTS.GET_DONATIONS),
+                fetchData(chartUrl),
+              ]);
+              return { idols, donations, chart };
+            },
+          };
         },
-        errorElement: <ErrorBoundary />,
       },
       {
         path: 'mypage',
+        lazy: async () => {
+          const { default: MyPage } = await import('@/pages/mypage/MyPage');
+          return {
+            Component: MyPage,
+            loader: async () => {
+              const idols = await fetchData(ENDPOINTS.GET_IDOLS);
+              return idols;
+            },
+          };
+        },
+      },
+      {
+        path: 'test-error',
+        lazy: async () => ({
+          Component: () => <div>서버 에러 테스트 페이지입니다</div>,
+          loader: async () => {
+            throw new Response('서버에 문제가 발생했습니다. 잠시 후 다시 시도해주세요.', {
+              status: 500,
+              statusText: 'Internal Server Error',
+            });
+          },
+        }),
+      },
+      {
+        path: '*',
+        lazy: async () => {
+          const { NotFoundPage } = await import('@/pages/error');
+          return { Component: NotFoundPage };
+        },
+      },
+      {
+        path: 'test-error',
         element: (
           <PendingUI>
-            <MyPage />
+            <div>서버 에러 테스트 페이지입니다</div>
           </PendingUI>
         ),
         loader: async () => {
-          const idols = await fetchData(ENDPOINTS.GET_IDOLS);
-          return idols;
+          throw new Response('서버에 문제가 발생했습니다. 잠시 후 다시 시도해주세요.', {
+            status: 500,
+            statusText: 'Internal Server Error',
+          });
         },
-        errorElement: <ErrorBoundary />,
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
       },
     ],
-  },
-  {
-    path: '*',
-    element: <NotFoundPage />,
   },
 ]);
 

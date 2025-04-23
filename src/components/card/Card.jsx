@@ -31,8 +31,8 @@ const Card = () => {
 
       <div css={S.content}>
         <div css={S.header}>
-          <p css={S.subTitle}>{test.subtitle}</p>
-          <h2 css={S.title}>{test.title}</h2>
+          <p>{test.subtitle}</p>
+          <h2>{test.title}</h2>
         </div>
 
         <div css={S.info}>
