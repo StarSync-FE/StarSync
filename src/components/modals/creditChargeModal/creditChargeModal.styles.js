@@ -49,10 +49,16 @@ export const radioButtons = css`
     }
 `;
 
+export const activeStyle = (isChecked) => css`
+  border: 1px solid var(--orange) !important;
+  color: var(--gray);
+`;
+
 export const radioButtonContent = css`
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  margin-left: 1rem;
   padding: 0.5rem;
 
   img {

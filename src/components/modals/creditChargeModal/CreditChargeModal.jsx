@@ -38,7 +38,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
             key={price.id}
             name={price.value}
             itemLabel={price.name}
-            style={S.labelStyle}
+            style={S.activeStyle} // ✅ 스타일 prop으로 전달
             handleSelect={() => handleRadioSelect(price.value)}
             isChecked={selectedValue === price.value}
           >
