@@ -83,8 +83,10 @@ const router = createBrowserRouter([
               const CURSOR = 0;
               const url = `${ENDPOINTS.GET_IDOLS}?limit=${LIMIT}&cursor=${CURSOR}`;
 
+              let idols;
+
               try {
-                const idols = await requestGet(url);
+                idols = await requestGet(url);
                 console.log('✅ idols:', idols);
               } catch (err) {
                 console.error('❌ idols 에러:', err?.response?.data || err.message);
