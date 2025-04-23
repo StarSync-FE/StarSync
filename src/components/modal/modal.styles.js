@@ -20,10 +20,10 @@ export const container = css`
   background-color: var(--black);
 `;
 
-export const modalStyles = css`
+export const buttonStyles = css`
   position: absolute;
-  top: 1.8rem;
-  right: 1.7rem;
+  top: 2.4rem;
+  right: 2.2rem;
   width: 2rem;
   height: 2rem;
   padding: 0;
