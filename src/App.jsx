@@ -15,11 +15,6 @@ function App() {
     <>
       {isLoading && <PendingUI />}
       {!isLanding && <Header />}
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/list">List</Link>
-        <Link to="/mypage">My Page</Link>
-      </nav>
       <main style={{ paddingTop: !isLanding ? `${LAYOUT.HEADER_HEIGHT}px` : 0 }}>
         <Outlet />
       </main>
