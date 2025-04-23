@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 export const myPageWrapper = css`
   margin: auto;
-
+  
   ${media({ width: ['calc(100% - 4.8rem)', 'calc(100% - 4.8rem)', 'calc(100% - 4.8rem)', 'calc(100% - 72rem)', 'calc(100% - 72rem)'] })}
   h2:nth-child(3) {
     ${media({ margin: ['3.2rem 0 1.6rem', '3.2rem 0 1.6rem', '3.2rem 0 5.7rem', '4rem 0 3.2rem', '4rem 0 3.2rem'] })}
@@ -16,7 +16,7 @@ export const horizonList = css`
   overflow-x: scroll;
   width: 100%;
   ${media({ gap: ['3.2rem', '3.2rem', '2.4rem', '2.4rem', '2.4rem'] })}
-  min-height: 123px;
+  min-height: 12.3rem;
   padding: 0 2.4rem 3.2rem;
   border-bottom: 1px solid var(--white-alpha-10);
 `;
@@ -61,10 +61,35 @@ export const idolList = css`
 `;
 
 export const customButtonStyle = css`
-  width: 255px;
-  height: 48px;
+  width: 25.5rem;
+  height: 4.8rem;
   margin: 2.4rem 6.4rem 3.4rem;
 `;
 export const buttonIcon = css`
   width: 2.4rem;
+`;
+
+// 이전, 다음 버튼 컴포넌트
+export const arrowButton = css`
+  width: 2.9rem;
+  height: 13.5rem;
+  background-color: #1B1B1BCC;
+
+  &:active {
+    background-color:rgb(184 184 184);
+  }
+`;
+
+export const prev = css`
+  position: absolute;
+  top: 35rem;
+  left: 32rem;
+  z-index: 1111;
+`;
+
+export const next = css`
+  position: absolute;
+  top: 35rem;
+  right: 32rem;
+  z-index: 1111;
 `;
