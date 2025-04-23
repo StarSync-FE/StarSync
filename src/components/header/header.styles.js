@@ -1,7 +1,6 @@
 import { LAYOUT } from '@/constants/layout';
-import { css } from '@emotion/react';
-
 import media from '@/styles/responsive';
+import { css } from '@emotion/react';
 
 export const headerWrapper = css`
   display: flex;
@@ -16,17 +15,44 @@ export const headerWrapper = css`
   background-color: var(--black-deep);
 `;
 
-export const logoButton = css`
+export const landingButton = css`
+  position: absolute;
+  left: 2rem;
+  border: none;
+  background: none;
+
+  ${media({
+    left: ['2rem', '4rem', '6rem', '8rem'],
+  })}
+`;
+
+export const landingImage = css`
+  width: 2.4rem;
+  height: 2.4rem;
+  object-fit: contain;
+
+  ${media({
+    width: ['2.4rem', '3rem', '3.6rem', '3.6rem'],
+    height: ['2.4rem', '3rem', '3.6rem', '3.6rem'],
+  })}
+`;
+
+export const textLogoButton = css`
   position: absolute;
   left: 50%;
+  max-width: 10rem;
   border: none;
   background: none;
   transform: translateX(-50%);
+
+  ${media({
+    maxWidth: ['10rem', '12rem', '14rem', '18rem'],
+  })}
 `;
 
-/* 텍스트 로고 변경시 추가 구현 예정 */
-export const logoImage = css`
+export const textLogoImage = css`
   width: 100%;
+  object-fit: contain;
 `;
 
 export const profileButton = css`
@@ -34,15 +60,20 @@ export const profileButton = css`
   right: 2rem;
   border: none;
   background: none;
-  
+
   ${media({
     right: ['2rem', '4rem', '6rem', '8rem'],
   })}
 `;
 
 export const profileImage = css`
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 2.4rem;
+  height: 2.4rem;
   border-radius: 50%;
   object-fit: cover;
+
+  ${media({
+    width: ['2.4rem', '3rem', '3.6rem', '3.6rem'],
+    height: ['2.4rem', '3rem', '3.6rem', '3.6rem'],
+  })}
 `;
