@@ -1,4 +1,6 @@
-import creditImg from '@/assets/images/credit.jpg';
+import creditWhiteImg from '@/assets/images/credit-white.png';
+import creditImg from '@/assets/images/credit.png';
+import CustomButton from '@/components/customButton';
 import RadioButton from '@/components/radioButton';
 import mockData from '@/data/mockData';
 import * as S from './creditChargeModal.styles';
@@ -9,7 +11,12 @@ const CreditChargeModal = ({ onClose }) => {
       <h2>크레딧 충전하기</h2>
       <div css={S.radioButtons}>
         {mockData.prices.map((price) => (
-          <RadioButton key={price.id} name="charge" itemLabel={price.name}>
+          <RadioButton
+            key={price.id}
+            name={price.value}
+            itemLabel={price.name}
+            style={S.labelStyle}
+          >
             <div css={S.radioButtonContent}>
               <img src={creditImg} alt="크레딧" />
               <span>{price.value}</span>
@@ -17,9 +24,10 @@ const CreditChargeModal = ({ onClose }) => {
           </RadioButton>
         ))}
       </div>
-      <button type="button" onClick={onClose}>
-        충전하기
-      </button>
+      <CustomButton onClick={onClose} style={S.buttonStyle}>
+        <img src={creditWhiteImg} alt="크레딧" />
+        <p>충전하기</p>
+      </CustomButton>
     </div>
   );
 };

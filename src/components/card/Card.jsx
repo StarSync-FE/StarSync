@@ -1,38 +1,34 @@
 import MococoImg from '@/assets/icons/mococo-no-background.png';
 import CustomButton from '@/components/customButton';
-import { donations } from '../../data/mockData';
+import mockData from '@/data/mockData';
+import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/format';
+import { useEffect, useState } from 'react';
 import * as S from './card.styles';
 
 const Card = () => {
-  const test = donations[0];
+  const [isActive, setIsActive] = useState(false);
+  const test = mockData.donations[0];
+  const daysLeft = getDaysRemaining(test.deadline);
+  const percent = `${getDonationPercentage(test.targetDonation, test.receivedDonations)}%`;
+  const isCompleted = daysLeft > 0;
 
-  const calculateDaysLeft = (createdAt, deadline) => {
-    const createdDate = new Date(createdAt);
-    const deadlineDate = new Date(deadline);
-    const timeDifference = deadlineDate - createdDate;
-    const daysLeft = Math.ceil(timeDifference / (1000 * 3600 * 24)); // 밀리초 -> 일로 변환
-    return daysLeft;
-  };
-
-  const days = calculateDaysLeft(test.createdAt, test.deadline);
+  useEffect(() => {
+    setIsActive(isCompleted);
+  }, [isCompleted]);
 
   return (
-    <article css={S.wrapper}>
-      {/* 그라디언트 오버레이 */}
-      <div css={S.gradient} />
+    <article css={S.card}>
+      <div css={S.wrapper}>
+        <figure>
+          <img src={test.idol.profilePicture} alt="큐티" css={S.image} />
+        </figure>
 
-      {/* 이미지 figure의 margin는 임시 입니다.*/}
-      <figure style={{ margin: 0 }}>
-        <img src={test.idol.profilePicture} alt="큐티" css={S.image} />
-      </figure>
+        <CustomButton type="button" variant="carousel" style={S.button} disabled={!isActive}>
+          <img src={MococoImg} alt="모코코" css={S.icon} />
+          {isActive ? '후원하기' : '후원 마감'}
+        </CustomButton>
+      </div>
 
-      {/* 버튼 */}
-      <CustomButton type="button" variant="carousel" style={S.button}>
-        <img src={MococoImg} alt="모코코" css={S.icon} />
-        기분 좋은 향이 솔솔~
-      </CustomButton>
-
-      {/* 텍스트 및 진행 정보 */}
       <div css={S.content}>
         <div css={S.header}>
           <p css={S.subTitle}>{test.subtitle}</p>
@@ -43,14 +39,13 @@ const Card = () => {
           <div css={S.statusBar}>
             <div css={S.statusLeft}>
               <img src={MococoImg} alt="프리티" css={S.icon} />
-              <p>{test.receivedDonations.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
+              <p>{addCommas(test.receivedDonations)}</p>
             </div>
-            <p>{days}일 남음</p>
+            <p>{daysLeft > 1 ? `D-${daysLeft}` : daysLeft === 1 ? '오늘 마감' : '마감 완료'}</p>
           </div>
 
-          {/* 진행 바 */}
           <div css={S.progressBar}>
-            <div css={S.progressFill} />
+            <div css={S.progressFill(percent)} />
           </div>
         </div>
       </div>

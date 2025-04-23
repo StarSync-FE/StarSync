@@ -1,4 +1,4 @@
-import credit from '@/assets/images/credit.jpg';
+import mococoImg from '@/assets/images/mococo.jpg';
 import stupid from '@/assets/images/stupid.png';
 
 //mockData
