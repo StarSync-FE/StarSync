@@ -10,13 +10,13 @@ const ListModal = ({ modalType, setModalType }) => {
   const renderModalContent = () => {
     switch (modalType) {
       case 'creditCharge':
-        return <CreditChargeModal onClose={closeModal} />;
+        return <CreditChargeModal />;
       case 'creditLack':
-        return <CreditLackModal onClose={closeModal} />;
+        return <CreditLackModal />;
       case 'donation':
-        return <DonationModal onClose={closeModal} />;
+        return <DonationModal />;
       case 'vote':
-        return <VoteModal onClose={closeModal} />;
+        return <VoteModal />;
       default:
         return null;
     }
