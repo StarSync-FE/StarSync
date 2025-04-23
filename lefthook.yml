@@ -3,7 +3,7 @@ pre-commit:
   commands:
     stylelint:
       glob: "src/**/*.styles.{js,jsx}"
-      run: npx stylelint {staged_files} --fix
+      run: npx stylelint {staged_files} --fix --max-warnings=0
       stage_fixed: true
     biome:
       glob: "*.{js,ts,jsx,tsx,json,jsonc}"
@@ -13,6 +13,8 @@ pre-commit:
 pre-push:
   parallel: true
   commands:
+    stylelint:
+      run: npx stylelint "src/**/*.styles.{js,jsx}" --max-warnings=0
     audit-check:
       run: npm audit
 

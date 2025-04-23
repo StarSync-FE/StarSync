@@ -1,6 +1,6 @@
 import Avatar from '@/components/avatar/Avatar';
 import RadioButton from '@/components/radioButton/RadioButton';
-import mockData from '@/data/mockData';
+import { mockData } from '@/data/mockData';
 import { useState } from 'react';
 import * as S from './voteModal.styles';
 
