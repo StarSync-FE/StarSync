@@ -3,7 +3,7 @@ import creditImg from '@/assets/images/credit.png';
 import CustomButton from '@/components/customButton';
 import RadioButton from '@/components/radioButton';
 import mockData from '@/data/mockData';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as S from './creditChargeModal.styles';
 
 const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
@@ -38,7 +38,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
             key={price.id}
             name={price.value}
             itemLabel={price.name}
-            style={S.labelStyle}
+            style={S.activeStyle} // ✅ 스타일 prop으로 전달
             handleSelect={() => handleRadioSelect(price.value)}
             isChecked={selectedValue === price.value}
           >
