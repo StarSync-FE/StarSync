@@ -3,7 +3,7 @@ import { Charge } from '@/components/charge';
 import { Chart } from '@/components/chart';
 import { ListModal } from '@/components/list';
 import { css } from '@emotion/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 export const wrapper = css`
@@ -19,18 +19,37 @@ export const carousel = css`
 
 const ListPage = () => {
   const [modalType, setModalType] = useState(null); // 모달 타입 상태 관리
+  const [credit, setCredit] = useState(0); // 크레딧 상태 관리
   const { idols, donations, chart } = useLoaderData(); // 여기서 데이터 받음
-  console.log(idols);
-  console.log(donations);
-  console.log(chart);
+
+  // localStorage에서 크레딧 값을 불러옴
+  useEffect(() => {
+    const storedCredit = localStorage.getItem('selectedCredit');
+    if (storedCredit) {
+      setCredit(Number(storedCredit));
+    } else {
+      localStorage.setItem('selectedCredit', '0');
+      setCredit(0);
+    }
+  }, []);
+
+  const updateCredit = (newCredit) => {
+    setCredit(newCredit);
+    localStorage.setItem('selecteCredit', newCredit);
+  };
 
   return (
     <div css={wrapper}>
       <Charge setModalType={setModalType} />
       <Carousel />
+      <Charge credit={credit} setModalType={setModalType} /> {/* Charge에 credit 전달 */}
       <Chart />
-
-      <ListModal modalType={modalType} setModalType={setModalType} />
+      <ListModal
+        modalType={modalType}
+        setModalType={setModalType}
+        credit={credit}
+        updateCredit={updateCredit}
+      />
     </div>
   );
 };

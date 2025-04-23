@@ -6,9 +6,28 @@ import { mockData } from '@/data/mockData';
 import { useState } from 'react';
 import * as S from './creditChargeModal.styles';
 
-const CreditChargeModal = () => {
-  // 로컬 스토리지 데이터 연동할 예정
-  const [localStorage, setLocalStorage] = useState(null);
+const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
+  const [selectedValue, setSelectedValue] = useState(null);
+
+  const handleRadioSelect = (value) => {
+    setSelectedValue(value);
+  };
+
+  const handleCharge = () => {
+    if (!selectedValue) {
+      alert('충전할 크레딧을 선택해주세요!');
+      return;
+    }
+
+    const prev = credit; // ListPage에서 전달받은 credit
+    const newTotal = prev + Number(selectedValue);
+    localStorage.setItem('selectedCredit', newTotal);
+    updateCredit(newTotal); // 업데이트된 credit을 ListPage에 전달
+    alert(`크레딧 ${selectedValue} 충전 완료! 총 보유: ${newTotal}`);
+
+    // 모달 닫기 로직
+    onClose();
+  };
 
   return (
     <div css={S.modalContent}>
@@ -20,6 +39,8 @@ const CreditChargeModal = () => {
             name={price.value}
             itemLabel={price.name}
             style={S.labelStyle}
+            handleSelect={() => handleRadioSelect(price.value)}
+            isChecked={selectedValue === price.value}
           >
             <div css={S.radioButtonContent}>
               <img src={creditImg} alt="크레딧" />
@@ -28,7 +49,7 @@ const CreditChargeModal = () => {
           </RadioButton>
         ))}
       </div>
-      <CustomButton onClick={setLocalStorage} style={S.buttonStyle}>
+      <CustomButton onClick={handleCharge} style={S.buttonStyle}>
         <img src={creditWhiteImg} alt="크레딧" />
         <p>충전하기</p>
       </CustomButton>
