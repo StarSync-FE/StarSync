@@ -7,8 +7,8 @@ const router = createBrowserRouter([
   {
     path: '/',
     lazy: async () => {
-      const { default: App } = await import('@/App.jsx');
-      return { Component: App };
+      const { default: Root } = await import('@/Root.jsx');
+      return { Component: Root };
     },
     errorElement: <ErrorBoundary />,
     children: [

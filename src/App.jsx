@@ -1,25 +1,24 @@
-import { Header } from '@/components/header';
-import { LAYOUT } from '@/constants/layout';
-import { Link, Outlet, useLocation, useNavigation } from 'react-router-dom';
-import { PendingUI } from './components/loadingStatus';
+import { useEffect, useState } from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { SplashScreen } from './components/loadingStatus/splashScreen';
 
-function App() {
-  const navigation = useNavigation();
-  const isLoading = navigation.state !== 'idle'; // 'loading' 또는 'submitting'
-  console.log(navigation.state);
+export default function App({ router }) {
+  const [showSplashScreen, setShowSplashScreen] = useState(true);
 
-  const { pathname } = useLocation();
-  const isLanding = pathname === '/';
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional polling without deps
+  useEffect(() => {
+    const splashScreenInterval = setInterval(() => {
+      const navState = router.state.navigation.state;
 
-  return (
-    <>
-      {isLoading && <PendingUI />}
-      {!isLanding && <Header />}
-      <main style={{ paddingTop: !isLanding ? `${LAYOUT.HEADER_HEIGHT}px` : 0 }}>
-        <Outlet />
-      </main>
-    </>
-  );
+      if (navState === 'idle') {
+        setShowSplashScreen(false);
+        clearInterval(splashScreenInterval);
+      }
+    }, 1000);
+
+    () => clearInterval(splashScreenInterval);
+  }, []);
+
+
+  return <>{showSplashScreen ? <SplashScreen /> : <RouterProvider router={router} />}</>;
 }
-
-export default App;
