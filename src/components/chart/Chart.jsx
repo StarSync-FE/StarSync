@@ -1,6 +1,7 @@
-import creditImg from '@/assets/images/credit.jpg';
-import mockData from '@/data/mockData';
+import chartImg from '@/assets/images/chart.png';
+import { mockData } from '@/data/mockData';
 import { useState } from 'react';
+import CustomButton from '../customButton';
 import * as S from './chart.styles';
 
 const Chart = () => {
@@ -14,12 +15,12 @@ const Chart = () => {
     <div>
       <div css={S.chartSectionHeader}>
         <div>이달의 차트</div>
-        <button type="button">
+        <CustomButton>
           <div>
-            <img src={creditImg} alt="차트" />
+            <img src={chartImg} alt="차트" />
             <span>차트 투표하기</span>
           </div>
-        </button>
+        </CustomButton>
       </div>
 
       <div>
@@ -44,10 +45,10 @@ const Chart = () => {
 
         {selectedTab === 'girls' && (
           <ul css={S.idolList}>
-            {mockData.girls.map((girl) => (
+            {mockData.map((girl) => (
               <li key={girl.id}>
                 <span>
-                  <img src={girl.img} alt={girl.name} />
+                  <img src={girl.profilePicture} alt={girl.name} />
                   <span>{girl.rank}</span>
                   <span>{girl.name}</span>
                 </span>
@@ -58,10 +59,10 @@ const Chart = () => {
         )}
         {selectedTab === 'boys' && (
           <ul css={S.idolList}>
-            {mockData.boys.map((boy) => (
+            {mockData.map((boy) => (
               <li key={boy.id}>
                 <span>
-                  <img src={boy.img} alt={boy.name} />
+                  <img src={boy.profilePicture} alt={boy.name} />
                   <span>{boy.rank}</span>
                   <span>{boy.name}</span>
                 </span>

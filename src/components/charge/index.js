@@ -1,1 +1,1 @@
-export { default } from './Charge';
+export { default as Charge } from './Charge';

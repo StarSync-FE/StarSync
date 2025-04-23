@@ -1,6 +1,6 @@
 import MococoImg from '@/assets/icons/mococo-no-background.png';
 import CustomButton from '@/components/customButton';
-import mockData from '@/data/mockData';
+import { mockData } from '@/data/mockData';
 import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/format';
 import { useEffect, useState } from 'react';
 import * as S from './card.styles';
@@ -31,8 +31,8 @@ const Card = () => {
 
       <div css={S.content}>
         <div css={S.header}>
-          <p css={S.subTitle}>{test.subtitle}</p>
-          <h2 css={S.title}>{test.title}</h2>
+          <p>{test.subtitle}</p>
+          <h2>{test.title}</h2>
         </div>
 
         <div css={S.info}>

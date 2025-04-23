@@ -21,7 +21,8 @@ const resetStyle = css`
   --blue-dark: #3D2FA9;
   --purple: #8D42FB;
   --light-green: #A6FF4D;
-}
+
+} 
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -31,7 +32,6 @@ html {
   font-family: Pretendard, sans-serif;
   font-size: 62.5%; /* 62.5% = 10px */
 }
-
 
 body {
   margin: 0;
