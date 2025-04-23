@@ -5,27 +5,10 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/splash.css" />
     <title>Fandom-K | StarSync</title>
   </head>
-
   <body>
-    <div id="splash">
-      <img src="/logo_star.png" alt="Rolling Star" class="rolling-star" />
-      <img src="/logo.png" alt="Final Logo" class="final-star" />
-    </div>
-
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-          const splash = document.getElementById('splash');
-          splash?.remove();
-        }, []); // 앱이 준비된 순간 바로 제거
-
-      });
-    </script>
   </body>
 </html>

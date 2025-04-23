@@ -1,7 +1,5 @@
 import starImg from '@/assets/images/star.png';
 import { css, keyframes } from '@emotion/react';
-import React from 'react';
-import { useNavigation } from 'react-router-dom';
 
 const rotate = keyframes`
   0% {
