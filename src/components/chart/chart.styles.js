@@ -83,7 +83,8 @@ export const idolList = css`
     margin-bottom: 0.5rem;
     padding-bottom: 1rem;
     text-align: center;
-    border-bottom: 1px solid var(--gray-dark);
+    border-bottom: 1px solid #181D26;
+    list-style: none;
 
     span {
       display: flex;
@@ -95,8 +96,8 @@ export const idolList = css`
       width: 4rem;
       height: 4rem;
       border: 2px solid var(--white);
-      border-radius: 50%;
       box-shadow: 0 0 2px 1.6px var(--orange);
+      box-shadow: 0 0 0 0.1rem #F96D69;
       object-fit: cover;
     }
   }

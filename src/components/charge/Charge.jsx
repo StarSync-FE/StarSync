@@ -1,4 +1,3 @@
-import creditImg from '@/assets/images/credit.png';
 import creditImg from '@/assets/images/credit.jpg';
 import { addCommas } from '@/utils/format';
 
