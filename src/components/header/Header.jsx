@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header css={S.headerWrapper}>
       <Link to="/" css={S.landingButton}>
-        <img src={logoImg} alt="StarSync 이미지지 로고" css={S.landingImage} />
+        <img src={logoImg} alt="StarSync 이미지 로고" css={S.landingImage} />
       </Link>
 
       <Link to="/list" css={S.textLogoButton}>
