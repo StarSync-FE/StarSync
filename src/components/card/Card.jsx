@@ -1,6 +1,6 @@
 import MococoImg from '@/assets/icons/mococo-no-background.png';
 import CustomButton from '@/components/customButton';
-import mockData from '@/data/mockData';
+import { mockData } from '@/data/mockData';
 import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/format';
 import { useEffect, useState } from 'react';
 import * as S from './card.styles';

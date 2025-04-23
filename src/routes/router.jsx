@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: 'mypage',
         lazy: async () => {
-          const { default: MyPage } = await import('@/pages/mypage/MyPage');
+          const { default: MyPage } = await import('@/pages/my/MyPage');
           return {
             Component: MyPage,
             loader: async () => {

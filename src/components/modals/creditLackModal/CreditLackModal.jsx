@@ -1,6 +1,6 @@
 import creditImg from '@/assets/images/credit.png';
 import RadioButton from '@/components/radioButton';
-import mockData from '@/data/mockData';
+import { mockData } from '@/data/mockData';
 import * as S from './creditLackModal.styles';
 
 const CreditLackModal = ({ onClose }) => {

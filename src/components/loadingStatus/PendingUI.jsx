@@ -1,4 +1,3 @@
-
 import { css } from '@emotion/react';
 import { useNavigation } from 'react-router-dom';
 import * as S from './pendingUI.styles';
@@ -19,14 +18,11 @@ const stars = [
   { id: 13, top: '50%', left: '90%', width: 30, height: 30 },
 ];
 
-import { useNavigation } from 'react-router-dom';
-
 const PendingUI = ({ children }) => {
   const navigation = useNavigation();
   const isLoading = navigation.state === 'loading';
 
   return isLoading ? (
-
     <div css={S.pendingStyle}>
       <div css={S.backgroundStarsStyle}>
         {stars.map(({ id, top, left, width, height }) => (
@@ -42,7 +38,6 @@ const PendingUI = ({ children }) => {
           />
         ))}
       </div>
-
     </div>
   ) : (
     children
