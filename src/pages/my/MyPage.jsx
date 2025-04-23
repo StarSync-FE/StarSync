@@ -18,8 +18,8 @@ const Button = ({ iconImage, styles }) => {
 };
 
 const MyPage = () => {
-  const idols = useLoaderData();
-  const [allIdols, setAllIdols] = useState(idols.list);
+  const { list, nextCursor } = useLoaderData();
+  const [allIdols, setAllIdols] = useState(list);
   const [myIdol, setMyIdol] = useState([]);
   const [seletedProfiles, setSelectedProfiles] = useState([]);
 
