@@ -19,7 +19,7 @@ const VoteModal = ({ onClose }) => {
             key={girl.name}
             itemLabel={'voteGirlsIdol'}
             name={`voteGirlsIdol-${girl.name}`}
-            onClick={selectItem}
+            onSelect={() => setIsSelected(true)}
           >
             <div css={S.memberInfoBox}>
               <Avatar imgUrl={girl.img} />

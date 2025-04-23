@@ -1,8 +1,15 @@
-/** @jsxImportSource @emotion/react */
 import * as S from './avatar.styles';
 
-const Avatar = ({ imgUrl }) => {
-  return <img src={imgUrl} alt="" css={S.image} />;
+const Avatar = ({ imgUrl, isSelected = false, profileSize, onSelectToggle }) => {
+  return (
+    <div
+      css={[isSelected && S.imageSelected, S.imageWrapper(profileSize)]}
+      onClick={onSelectToggle}
+      onKeyDown={onSelectToggle}
+    >
+      <img src={imgUrl} alt="" css={S.image} />
+    </div>
+  );
 };
 
 export default Avatar;

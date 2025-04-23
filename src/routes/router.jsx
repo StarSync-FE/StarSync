@@ -71,6 +71,24 @@ const router = createBrowserRouter([
           return { Component: NotFoundPage };
         },
       },
+      {
+        path: 'test-error',
+        element: (
+          <PendingUI>
+            <div>서버 에러 테스트 페이지입니다</div>
+          </PendingUI>
+        ),
+        loader: async () => {
+          throw new Response('서버에 문제가 발생했습니다. 잠시 후 다시 시도해주세요.', {
+            status: 500,
+            statusText: 'Internal Server Error',
+          });
+        },
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
+      },
     ],
   },
 ]);

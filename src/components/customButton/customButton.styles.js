@@ -5,7 +5,6 @@ const getButtonStyle = (size, isRound) => css`
   display:inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
   width: ${size.mobileWidth ?? size.width}; 
   height: ${size.mobileHeight ?? size.height};
   ${media({

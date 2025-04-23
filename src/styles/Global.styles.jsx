@@ -33,7 +33,6 @@ html {
   font-size: 62.5%; /* 62.5% = 10px */
 }
 
-
 body {
   margin: 0;
   padding: 0;

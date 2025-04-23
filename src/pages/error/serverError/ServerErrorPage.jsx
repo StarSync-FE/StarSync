@@ -1,3 +1,4 @@
+
 import { UI_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import * as S from '@/pages/error/styles';
@@ -8,6 +9,7 @@ const ServerErrorPage = () => {
   const status = error?.status || STATUS_CODES.SERVER_ERROR;
   const message = error?.statusText || 'Internal Server Error';
   const data = error?.data || UI_ERRORS.SERVER;
+
 
   return (
     <div css={S.auroraStyle(S.serverErrorColors)}>
