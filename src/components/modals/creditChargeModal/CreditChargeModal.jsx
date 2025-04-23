@@ -3,9 +3,13 @@ import creditImg from '@/assets/images/credit.png';
 import CustomButton from '@/components/customButton';
 import RadioButton from '@/components/radioButton';
 import mockData from '@/data/mockData';
+import { useState } from 'react';
 import * as S from './creditChargeModal.styles';
 
-const CreditChargeModal = ({ onClose }) => {
+const CreditChargeModal = () => {
+  // 로컬 스토리지 데이터 연동할 예정
+  const [localStorage, setLocalStorage] = useState(null);
+
   return (
     <div css={S.modalContent}>
       <h2>크레딧 충전하기</h2>
@@ -24,7 +28,7 @@ const CreditChargeModal = ({ onClose }) => {
           </RadioButton>
         ))}
       </div>
-      <CustomButton onClick={onClose} style={S.buttonStyle}>
+      <CustomButton onClick={setLocalStorage} style={S.buttonStyle}>
         <img src={creditWhiteImg} alt="크레딧" />
         <p>충전하기</p>
       </CustomButton>
