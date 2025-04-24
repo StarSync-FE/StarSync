@@ -4,7 +4,7 @@ import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/form
 import { useEffect, useState } from 'react';
 import * as S from './card.styles';
 
-const Card = ({ data }) => {
+const Card = ({ data, setModalType }) => {
   const [isActive, setIsActive] = useState(false);
   const daysLeft = getDaysRemaining(data.deadline);
   const percent = `${getDonationPercentage(data.targetDonation, data.receivedDonations)}%`;
@@ -14,6 +14,10 @@ const Card = ({ data }) => {
     setIsActive(isCompleted);
   }, [isCompleted]);
 
+  const handleClick = () => {
+    setModalType('donation');
+  };
+
   return (
     <article css={S.card}>
       <div css={S.wrapper}>
@@ -21,7 +25,13 @@ const Card = ({ data }) => {
           <img src={data.idol.profilePicture} alt={data.idol.name} css={S.image} />
         </figure>
 
-        <CustomButton type="button" variant="carousel" style={S.button} disabled={!isActive}>
+        <CustomButton
+          type="button"
+          variant="carousel"
+          style={S.button}
+          disabled={!isActive}
+          onClick={handleClick}
+        >
           <img src={MococoImg} alt="모코코" css={S.icon} />
           {isActive ? '후원하기' : '후원 마감'}
         </CustomButton>
