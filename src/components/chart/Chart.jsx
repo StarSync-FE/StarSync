@@ -8,10 +8,10 @@ import * as S from './chart.styles';
 const Chart = ({ data }) => {
   const [selectedTab, setSelectedTab] = useState('females');
   const [femaleData, setFemaleData] = useState(data.idols || []);
-  const [maleData, setBoyData] = useState([]);
+  const [maleData, setMaleData] = useState([]);
   const [femaleCursor, setFemaleCursor] = useState(0);
-  const [maleCursor, setBoyCursor] = useState(0);
-  const [hasMoreBoys, setHasMoreBoys] = useState(true);
+  const [maleCursor, setMaleCursor] = useState(0);
+  const [hasMoreMales, setHasMoreMales] = useState(true);
   const [hasMoreFemales, setHasMoreFemales] = useState(true);
 
   const PAGESIZE = 10;
@@ -29,14 +29,14 @@ const Chart = ({ data }) => {
     }
 
     if (selectedTab === 'males') {
-      setBoyData([]);
-      setBoyCursor(0);
-      fetchBoyData(0);
-      setHasMoreBoys(true);
+      setMaleData([]);
+      setMaleCursor(0);
+      fetchMaleData(0);
+      setHasMoreMales(true);
     }
   }, [selectedTab]);
 
-  const fetchBoyData = async (cursor) => {
+  const fetchMaleData = async (cursor) => {
     try {
       const response = await requestGet(
         `${ENDPOINTS.GET_CHART}?gender=male&pageSize=${PAGESIZE}&cursor=${cursor}`,
@@ -48,13 +48,13 @@ const Chart = ({ data }) => {
       // nextCursor가 null인 경우 더 이상 데이터를 요청하지 않도록 설정
       if (cursor === null) {
         console.log('더 이상 남자 아이돌 데이터가 없습니다.');
-        setBoyCursor(null); // 더 이상 데이터를 요청하지 않도록 maleCursor를 null로 설정
+        setMaleCursor(null); // 더 이상 데이터를 요청하지 않도록 maleCursor를 null로 설정
         return; // 더 이상 요청하지 않음
       }
 
-      setBoyData((prevData) => [...prevData, ...newData]);
-      setBoyCursor(nextCursor); // 새로운 커서를 설정하여 다음 데이터를 요청할 준비를 합니다.
-      if (nextCursor === null) setHasMoreBoys(false);
+      setMaleData((prevData) => [...prevData, ...newData]);
+      setMaleCursor(nextCursor); // 새로운 커서를 설정하여 다음 데이터를 요청할 준비를 합니다.
+      if (nextCursor === null) setHasMoreMales(false);
     } catch (error) {
       console.error(error);
     }
@@ -158,8 +158,8 @@ const Chart = ({ data }) => {
                 </li>
               ))}
             </ul>
-            {hasMoreBoys && (
-              <button type="button" css={S.moreButton} onClick={() => fetchBoyData(maleCursor)}>
+            {hasMoreMales && (
+              <button type="button" css={S.moreButton} onClick={() => fetchMaleData(maleCursor)}>
                 더 보기
               </button>
             )}
