@@ -42,11 +42,7 @@ export const carouselContainer = css`
   overflow-x: scroll;
   width: 100%;
   scroll-snap-type: x mandatory;
-
-  ${media({
-    overflowX: ['scroll', 'scroll', 'hidden', 'hidden'],
-    scrollSnapType: ['x mandatory', 'x mandatory', 'none', 'none'],
-  })}
+  scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
     display: none;
