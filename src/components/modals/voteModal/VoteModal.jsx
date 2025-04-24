@@ -1,10 +1,9 @@
 import Avatar from '@/components/avatar/Avatar';
+import CustomButton from '@/components/customButton';
 import RadioButton from '@/components/radioButton/RadioButton';
 import { ENDPOINTS } from '@/constants/api';
-import { mockData } from '@/data/mockData';
 import { requestGet } from '@/utils/api';
 import { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router';
 import * as S from './voteModal.styles';
 
 const VoteModal = ({ gender }) => {
@@ -25,33 +24,36 @@ const VoteModal = ({ gender }) => {
     };
     load();
   }, [gender]);
-
-  console.log(gender);
+  console.log(idols);
   return (
     <div css={S.ModalWrapper}>
-      {idols.length > 0
-        ? idols.map((idol) => {
-            return (
-              <RadioButton
-                style={S.voteRadioButton}
-                key={idol.name}
-                itemLabel={'voteGirlsIdol'}
-                name={`voteGirlsIdol-${idol.name}`}
-                onSelect={() => setIsSelected(true)}
-              >
-                <div css={S.memberInfoBox}>
-                  <Avatar imgUrl={idol.img} />
-                  <span css={S.rankNumber}>{idol.rank}</span>
-                  <div css={S.voteBox}>
-                    <p css={S.idolName}>{idol.name}</p>
-                    <p css={S.votes}>{idol.votes}표</p>
-                  </div>
+      <h2 css={S.title}>이달의 여자 아이돌</h2>
+      <div css={[S.itemsWrapper, S.scrollStyle]}>
+        {idols.length > 0
+          ? idols.map((idol) => {
+              return (
+                <div key={idol.name} css={S.idolItem}>
+                  <RadioButton
+                    style={S.voteRadioButton}
+                    itemLabel={'voteGirlsIdol'}
+                    name={`voteGirlsIdol-${idol.name}`}
+                    onSelect={() => setIsSelected(true)}
+                  >
+                    <div css={S.memberInfoBox}>
+                      <Avatar imgUrl={idol.profilePicture} style={S.avatar} />
+                      <span css={S.rankNumber}>{idol.rank}</span>
+                      <div css={S.voteBox}>
+                        <p css={S.idolName}>{idol.name}</p>
+                        <p css={S.votes}>{idol.totalVotes}표</p>
+                      </div>
+                    </div>
+                  </RadioButton>
                 </div>
-              </RadioButton>
-            );
-          })
-        : console.log('idols가 없음')}
-      <button type="button">투표하기</button>
+              );
+            })
+          : console.log('idols가 없음')}
+      </div>
+      <CustomButton style={S.buttonStyle}>투표하기</CustomButton>
       <p css={S.guideQuote}>
         투표하는 데 <b css={S.highlightText}>1000 크레딧</b>이 소요됩니다.
       </p>
