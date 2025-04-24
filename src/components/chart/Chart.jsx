@@ -50,9 +50,10 @@ const Chart = () => {
                 <span>
                   <img src={girl.profilePicture} alt={girl.name} />
                   <span>{girl.rank}</span>
+                  <span>{girl.group}</span>
                   <span>{girl.name}</span>
                 </span>
-                <span>{girl.votes}표</span>
+                <span>{girl.totalVotes}표</span>
               </li>
             ))}
           </ul>
