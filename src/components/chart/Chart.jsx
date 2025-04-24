@@ -54,6 +54,7 @@ const Chart = ({ data }) => {
 
       setMaleData((prevData) => [...prevData, ...newData]);
       setMaleCursor(nextCursor); // 새로운 커서를 설정하여 다음 데이터를 요청할 준비를 합니다.
+
       if (nextCursor === null) setHasMoreMales(false);
     } catch (error) {
       console.error(error);
@@ -119,11 +120,11 @@ const Chart = ({ data }) => {
         {selectedTab === 'females' && (
           <>
             <ul css={S.idolList}>
-              {femaleData.map((female) => (
+              {femaleData.map((female, index) => (
                 <li key={female.id}>
                   <span>
                     <img src={female.profilePicture} alt={female.name} />
-                    <span css={S.rankStyle}>{female.rank}</span>
+                    <span css={S.rankStyle}>{index + 1}</span>
                     <span>{female.group}</span>
                     <span>{female.name}</span>
                   </span>
@@ -146,11 +147,11 @@ const Chart = ({ data }) => {
         {selectedTab === 'males' && (
           <>
             <ul css={S.idolList}>
-              {maleData.map((male) => (
+              {maleData.map((male, index) => (
                 <li key={male.id}>
                   <span>
                     <img src={male.profilePicture} alt={male.name} />
-                    <span css={S.rankStyle}>{male.rank}</span>
+                    <span css={S.rankStyle}>{index + 1}</span>
                     <span>{male.group}</span>
                     <span>{male.name}</span>
                   </span>
