@@ -32,9 +32,9 @@ const router = createBrowserRouter([
               const LIMIT = 10;
               const CURSOR = 0;
               const GENDER = 'female';
-              const idolsUrl = `${ENDPOINTS.GET_IDOLS}?limit=${LIMIT}&cursor=${CURSOR}`;
+              const idolsUrl = `${ENDPOINTS.GET_IDOLS}?pageSize=${LIMIT}&cursor=${CURSOR}`;
               const donationsUrl = ENDPOINTS.GET_DONATIONS;
-              const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${GENDER}&limit=${LIMIT}&cursor=${CURSOR}`;
+              const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${GENDER}&pageSize=${LIMIT}&cursor=${CURSOR}`;
 
               let idols;
               let donations;
@@ -81,7 +81,7 @@ const router = createBrowserRouter([
             loader: async () => {
               const LIMIT = 30;
               const CURSOR = 0;
-              const url = `${ENDPOINTS.GET_IDOLS}?limit=${LIMIT}&cursor=${CURSOR}`;
+              const url = `${ENDPOINTS.GET_IDOLS}?pageSize=${LIMIT}&cursor=${CURSOR}`;
 
               let idols;
 
