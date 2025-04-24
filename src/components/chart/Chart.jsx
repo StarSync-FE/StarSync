@@ -5,8 +5,7 @@ import { useEffect, useState } from 'react';
 import CustomButton from '../customButton';
 import * as S from './chart.styles';
 
-const Chart = ({ data }) => {
-  const [selectedTab, setSelectedTab] = useState('females');
+const Chart = ({ data, setModalType, selectedTab, setSelectedTab }) => {
   const [femaleData, setFemaleData] = useState(data.idols || []);
   const [maleData, setMaleData] = useState([]);
   const [femaleCursor, setFemaleCursor] = useState(0);
