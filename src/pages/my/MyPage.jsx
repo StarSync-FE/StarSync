@@ -17,8 +17,8 @@ const Button = ({ iconImage, styles }) => {
 };
 
 const MyPage = () => {
-  const idols = useLoaderData();
-  const [allIdols, setAllIdols] = useState([]);
+  const { list, nextCursor } = useLoaderData();
+  const [allIdols, setAllIdols] = useState(list);
   const [myIdol, setMyIdol] = useState([]);
   const [seletedProfiles, setSelectedProfiles] = useState({});
 
@@ -30,12 +30,12 @@ const MyPage = () => {
     const myIdolIds = new Set(parsedMyIdols.map((idol) => String(idol.id)));
     setMyIdol(parsedMyIdols);
 
-    const originalAllIdols = idols?.list || [];
+    const originalAllIdols = list || []; // ✅ 여기 변경
     const filtered = originalAllIdols.filter((idol) => !myIdolIds.has(String(idol.id)));
 
     setAllIdols(filtered);
     localStorage.setItem('allIdols', JSON.stringify(filtered));
-  }, [idols]);
+  }, [list]);
 
   const toggleProfile = (idol) => {
     setSelectedProfiles((prev) => ({

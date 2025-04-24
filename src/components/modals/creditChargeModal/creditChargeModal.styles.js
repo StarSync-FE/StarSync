@@ -4,13 +4,13 @@ export const modalContent = css`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 327px;
-  height: 372px;
+  width: 32.7rem;
+  height: 37.2rem;
   padding: 24px 16px 0;
 
   h2 {
-    margin: 0.2rem 0 0.7rem;
-    font-size: 18px;
+    margin: 0.2rem 0 1rem;
+    font-size: 1.8rem;
   }
 
   button {
@@ -28,53 +28,60 @@ export const modalContent = css`
 export const radioButtons = css`
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.8rem;
     box-sizing: border-box;
-    width: 295px;
+    width: 29.5rem;
+    margin-bottom: 0.5rem;
     padding: 0.4rem;
     font-size: 1rem;
-    font-weight: 500;
     cursor: pointer;
 
     label {
-      width: 290px;
-      height: 62px;
+      width: 29rem;
+      height: 6.2rem;
       border: 1px solid var(--white);
       border-radius: 8px;
       transition: border-color 0.3s ease;
 
       input {
-        margin-right: 23px;
+        margin-right: 2.3rem;
       }
     }
+`;
+
+export const activeStyle = (isChecked) => css`
+  border: 1px solid var(--orange) !important;
+  color: var(--gray);
 `;
 
 export const radioButtonContent = css`
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  margin-left: 1rem;
   padding: 0.5rem;
 
   img {
-    width: 24px;
-    height: 24px;
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
   span {
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
   }
 `;
 
 export const buttonStyle = css` 
+
   img {
-    width: 24px;
-    height: 24px;
+    width: 2.3rem;
+    height: 2.4rem;
   }
   
   p {
-    margin-right: 12px;
-    font-size: 14px;
+    margin-right: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 700;
   }
 `;
