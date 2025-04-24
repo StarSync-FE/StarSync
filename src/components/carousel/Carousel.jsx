@@ -10,24 +10,6 @@ const Carousel = ({ data: initialData, setModalType }) => {
   const [itemsPerView, setItemsPerView] = useState(4);
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    const fetchLatestDonations = async () => {
-      try {
-        const response = await requestGet(ENDPOINTS.GET_DONATIONS);
-        if (response?.list) {
-          setData(response);
-        }
-      } catch (error) {
-        console.error('캐러셀 업데이트 실패', error);
-      }
-    };
-    setData(initialData);
-
-    const intervalId = setInterval(fetchLatestDonations, 5000);
-
-    return () => clearInterval(intervalId);
-  }, [initialData]);
-
   // data.list의 길이를 사용
   const donationsLength = data?.list?.length || 0;
 
@@ -45,6 +27,24 @@ const Carousel = ({ data: initialData, setModalType }) => {
     const newMaxIndex = Math.max(0, donationsLength - calculatedItemsPerView);
     setCurrentIndex((prev) => Math.min(prev, newMaxIndex));
   }, [donationsLength]);
+
+  useEffect(() => {
+    const fetchLatestDonations = async () => {
+      try {
+        const response = await requestGet(ENDPOINTS.GET_DONATIONS);
+        if (response?.list) {
+          setData(response);
+        }
+      } catch (error) {
+        console.error('캐러셀 업데이트 실패', error);
+      }
+    };
+    setData(initialData);
+
+    const intervalId = setInterval(fetchLatestDonations, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [initialData]);
 
   useEffect(() => {
     updateItemsPerView();
