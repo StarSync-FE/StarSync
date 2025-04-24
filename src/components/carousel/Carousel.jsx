@@ -29,24 +29,6 @@ const Carousel = ({ data: initialData, setModalType }) => {
   }, [donationsLength]);
 
   useEffect(() => {
-    const fetchLatestDonations = async () => {
-      try {
-        const response = await requestGet(ENDPOINTS.GET_DONATIONS);
-        if (response?.list) {
-          setData(response);
-        }
-      } catch (error) {
-        console.error('캐러셀 업데이트 실패', error);
-      }
-    };
-    setData(initialData);
-
-    const intervalId = setInterval(fetchLatestDonations, 5000);
-
-    return () => clearInterval(intervalId);
-  }, [initialData]);
-
-  useEffect(() => {
     updateItemsPerView();
     window.addEventListener('resize', updateItemsPerView);
     return () => window.removeEventListener('resize', updateItemsPerView);
