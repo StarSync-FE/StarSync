@@ -5,7 +5,7 @@ export const myPageWrapper = css`
   margin: auto;
   
   ${media({ width: ['calc(100% - 4.8rem)', 'calc(100% - 4.8rem)', 'calc(100% - 4.8rem)', 'calc(100% - 72rem)', 'calc(100% - 72rem)'] })}
-  h2:nth-child(3) {
+  h2:nth-of-type(3) {
     ${media({ margin: ['3.2rem 0 1.6rem', '3.2rem 0 1.6rem', '3.2rem 0 5.7rem', '4rem 0 3.2rem', '4rem 0 3.2rem'] })}
     margin: 3.2rem 0 5.7rem;
   }
