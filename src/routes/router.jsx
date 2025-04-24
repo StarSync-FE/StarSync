@@ -1,5 +1,5 @@
-import { ApiErrorBoundary, ErrorBoundary, GlobalErrorBoundary } from '@/components/error';
-import { BASE_URL, ENDPOINTS } from '@/constants/api';
+import { ApiErrorBoundary, GlobalErrorBoundary } from '@/components/error';
+import { ENDPOINTS } from '@/constants/api';
 import { THROWN_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import { requestGet } from '@/utils/api';
@@ -96,46 +96,59 @@ const router = createBrowserRouter([
           return {
             Component: MyPage,
             loader: async () => {
-              throw new Response('로그인 필요', {
-                status: 401,
-                statusText: 'Unauthorized',
-              });
+              const LIMIT = 30;
+              const CURSOR = 0;
+              const url = `${ENDPOINTS.GET_IDOLS}?pageSize=${LIMIT}&cursor=${CURSOR}`;
+
+              let idols;
+
+              try {
+                idols = await requestGet(url);
+                console.log('✅ idols:', idols);
+              } catch (err) {
+                console.error('❌ idols 에러:', err?.response?.data || err.message);
+              }
+
+              if (Array.isArray(idols) && idols.length === 0) {
+                throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
+                  status: STATUS_CODES.NOT_FOUND,
+                });
+              }
+
+              if (!idols) {
+                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
+                  status: STATUS_CODES.SERVER_ERROR,
+                });
+              }
+
+              return idols;
             },
-            // loader: async () => {
-            //   const LIMIT = 30;
-            //   const CURSOR = 0;
-            //   const url = `${ENDPOINTS.GET_IDOLS}?pageSize=${LIMIT}&cursor=${CURSOR}`;
-
-            //   let idols;
-
-            //   try {
-            //     idols = await requestGet(url);
-            //     console.log('✅ idols:', idols);
-            //   } catch (err) {
-            //     console.error('❌ idols 에러:', err?.response?.data || err.message);
-            //   }
-
-            //   if (Array.isArray(idols) && idols.length === 0) {
-            //     throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
-            //       status: STATUS_CODES.NOT_FOUND,
-            //     });
-            //   }
-
-            //   if (!idols) {
-            //     throw new Response(THROWN_ERRORS.FETCH_FAILED, {
-            //       status: STATUS_CODES.SERVER_ERROR,
-            //     });
-            //   }
-
-            //   return idols;
-            // },
           };
         },
       },
       {
-        path: 'test-error',
+        path: 'test-api-error',
+        errorElement: <ApiErrorBoundary />,
         lazy: async () => ({
-          Component: () => <div>서버 에러 테스트 페이지입니다</div>,
+          Component: () => <div>API 에러 테스트 페이지입니다</div>,
+          loader: async () => {
+            throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
+              status: STATUS_CODES.NOT_FOUND,
+            });
+          },
+        }),
+      },
+      {
+        path: 'test-render-error',
+        lazy: async () => {
+          const { default: TestRenderError } = await import('@/components/test/TestRenderError');
+          return { Component: TestRenderError };
+        },
+      },
+      {
+        path: 'test-global-error',
+        lazy: async () => ({
+          Component: () => <div>글로벌 서버 에러 테스트 페이지입니다</div>,
           loader: async () => {
             throw new Response(THROWN_ERRORS.SERVER_ERROR, {
               status: STATUS_CODES.SERVER_ERROR,

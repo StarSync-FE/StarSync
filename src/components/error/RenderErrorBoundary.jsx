@@ -1,8 +1,5 @@
 import { UI_ERRORS } from '@/constants/errors';
-import { STATUS_CODES } from '@/constants/statusCodes';
-import { ServerErrorPage } from '@/pages/error';
 import { Component } from 'react';
-import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
 import CustomButton from '../customButton';
 import * as S from './errorBoundary.styles';
 
