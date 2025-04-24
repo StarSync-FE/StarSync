@@ -6,13 +6,13 @@ import CustomButton from '../customButton';
 import * as S from './chart.styles';
 
 const Chart = ({ data }) => {
-  const [selectedTab, setSelectedTab] = useState('girls');
-  const [girlData, setGirlData] = useState(data.idols || []);
-  const [boyData, setBoyData] = useState([]);
-  const [girlCursor, setGirlCursor] = useState(0);
-  const [boyCursor, setBoyCursor] = useState(0);
+  const [selectedTab, setSelectedTab] = useState('females');
+  const [femaleData, setFemaleData] = useState(data.idols || []);
+  const [maleData, setBoyData] = useState([]);
+  const [femaleCursor, setFemaleCursor] = useState(0);
+  const [maleCursor, setBoyCursor] = useState(0);
   const [hasMoreBoys, setHasMoreBoys] = useState(true);
-  const [hasMoreGirls, setHasMoreGirls] = useState(true);
+  const [hasMoreFemales, setHasMoreFemales] = useState(true);
 
   const PAGESIZE = 10;
 
@@ -22,13 +22,13 @@ const Chart = ({ data }) => {
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (selectedTab === 'girls') {
-      setGirlData(data.idols || []);
-      setGirlCursor(0);
-      setHasMoreGirls(true);
+    if (selectedTab === 'female') {
+      setFemaleData(data.idols || []);
+      setFemaleCursor(0);
+      setHasMoreFemales(true);
     }
 
-    if (selectedTab === 'boys') {
+    if (selectedTab === 'males') {
       setBoyData([]);
       setBoyCursor(0);
       fetchBoyData(0);
@@ -48,7 +48,7 @@ const Chart = ({ data }) => {
       // nextCursor가 null인 경우 더 이상 데이터를 요청하지 않도록 설정
       if (cursor === null) {
         console.log('더 이상 남자 아이돌 데이터가 없습니다.');
-        setBoyCursor(null); // 더 이상 데이터를 요청하지 않도록 boyCursor를 null로 설정
+        setBoyCursor(null); // 더 이상 데이터를 요청하지 않도록 maleCursor를 null로 설정
         return; // 더 이상 요청하지 않음
       }
 
@@ -60,9 +60,9 @@ const Chart = ({ data }) => {
     }
   };
 
-  const fetchMoreGirls = async (cursor) => {
+  const fetchMoreFemales = async (cursor) => {
     let updatedCursor = cursor;
-    if (updatedCursor === 0 && girlData.length === 10) {
+    if (updatedCursor === 0 && femaleData.length === 10) {
       updatedCursor = data.nextCursor;
     }
     try {
@@ -73,12 +73,12 @@ const Chart = ({ data }) => {
       const nextCursor = response?.nextCursor;
       if (cursor === null) {
         console.log('더 이상 여자 아이돌 데이터가 없습니다.');
-        setGirlCursor(null); // 더 이상 데이터를 요청하지 않도록 boyCursor를 null로 설정
+        setFemaleCursor(null); // 더 이상 데이터를 요청하지 않도록 maleCursor를 null로 설정
         return; // 더 이상 요청하지 않음
       }
-      setGirlData((prevData) => [...prevData, ...newData]);
-      setGirlCursor(nextCursor);
-      if (nextCursor === null) setHasMoreGirls(false);
+      setFemaleData((prevData) => [...prevData, ...newData]);
+      setFemaleCursor(nextCursor);
+      if (nextCursor === null) setHasMoreFemales(false);
     } catch (error) {
       console.error(error);
     }
@@ -100,62 +100,66 @@ const Chart = ({ data }) => {
         <div css={S.tabButtonWrapper}>
           <button
             type="button"
-            css={[S.idolListButton, selectedTab === 'girls' && S.activeButton]}
-            value="girls"
+            css={[S.idolListButton, selectedTab === 'females' && S.activeButton]}
+            value="females"
             onClick={handleTabClick}
           >
             이달의 여자 아이돌
           </button>
           <button
             type="button"
-            css={[S.idolListButton, selectedTab === 'boys' && S.activeButton]}
-            value="boys"
+            css={[S.idolListButton, selectedTab === 'males' && S.activeButton]}
+            value="males"
             onClick={handleTabClick}
           >
             이달의 남자 아이돌
           </button>
         </div>
 
-        {selectedTab === 'girls' && (
+        {selectedTab === 'females' && (
           <>
             <ul css={S.idolList}>
-              {girlData.map((girl) => (
-                <li key={girl.id}>
+              {femaleData.map((female) => (
+                <li key={female.id}>
                   <span>
-                    <img src={girl.profilePicture} alt={girl.name} />
-                    <span css={S.rankStyle}>{girl.rank}</span>
-                    <span>{girl.group}</span>
-                    <span>{girl.name}</span>
+                    <img src={female.profilePicture} alt={female.name} />
+                    <span css={S.rankStyle}>{female.rank}</span>
+                    <span>{female.group}</span>
+                    <span>{female.name}</span>
                   </span>
-                  <span>{girl.totalVotes}표</span>
+                  <span>{female.totalVotes}표</span>
                 </li>
               ))}
             </ul>
-            {hasMoreGirls && (
-              <button type="button" css={S.moreButton} onClick={() => fetchMoreGirls(girlCursor)}>
+            {hasMoreFemales && (
+              <button
+                type="button"
+                css={S.moreButton}
+                onClick={() => fetchMoreFemales(femaleCursor)}
+              >
                 더 보기
               </button>
             )}
           </>
         )}
 
-        {selectedTab === 'boys' && (
+        {selectedTab === 'males' && (
           <>
             <ul css={S.idolList}>
-              {boyData.map((boy) => (
-                <li key={boy.id}>
+              {maleData.map((male) => (
+                <li key={male.id}>
                   <span>
-                    <img src={boy.profilePicture} alt={boy.name} />
-                    <span css={S.rankStyle}>{boy.rank}</span>
-                    <span>{boy.group}</span>
-                    <span>{boy.name}</span>
+                    <img src={male.profilePicture} alt={male.name} />
+                    <span css={S.rankStyle}>{male.rank}</span>
+                    <span>{male.group}</span>
+                    <span>{male.name}</span>
                   </span>
-                  <span>{boy.totalVotes}표</span>
+                  <span>{male.totalVotes}표</span>
                 </li>
               ))}
             </ul>
             {hasMoreBoys && (
-              <button type="button" css={S.moreButton} onClick={() => fetchBoyData(boyCursor)}>
+              <button type="button" css={S.moreButton} onClick={() => fetchBoyData(maleCursor)}>
                 더 보기
               </button>
             )}
