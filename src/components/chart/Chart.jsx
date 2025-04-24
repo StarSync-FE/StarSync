@@ -20,9 +20,9 @@ const Chart = ({ data }) => {
     setSelectedTab(e.currentTarget.value);
   };
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Only need to reset and fetch data when tab changes
   useEffect(() => {
-    if (selectedTab === 'female') {
+    if (selectedTab === 'females') {
       setFemaleData(data.idols || []);
       setFemaleCursor(0);
       setHasMoreFemales(true);
