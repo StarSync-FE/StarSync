@@ -2,7 +2,7 @@ import creditWhiteImg from '@/assets/images/credit-white.png';
 import creditImg from '@/assets/images/credit.png';
 import CustomButton from '@/components/customButton';
 import RadioButton from '@/components/radioButton';
-import { mockData } from '@/data/mockData';
+import { prices } from '@/data/mockData';
 import * as S from './creditChargeModal.styles';
 
 const CreditChargeModal = ({ onClose }) => {
@@ -10,7 +10,7 @@ const CreditChargeModal = ({ onClose }) => {
     <div css={S.modalContent}>
       <h2>크레딧 충전하기</h2>
       <div css={S.radioButtons}>
-        {mockData.prices.map((price) => (
+        {prices.map((price) => (
           <RadioButton
             key={price.id}
             name={price.value}
