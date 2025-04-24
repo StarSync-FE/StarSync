@@ -34,7 +34,6 @@ const ListPage = () => {
 
   const updateCredit = (newCredit) => {
     setCredit(newCredit);
-    localStorage.setItem('selecteCredit', newCredit);
   };
 
   return (
