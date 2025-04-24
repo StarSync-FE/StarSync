@@ -8,9 +8,9 @@ import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import * as S from './myPage.styles';
 
-const Button = ({ iconImage, styles }) => {
+const Button = ({ iconImage, styles, goToPage }) => {
   return (
-    <button type="button" css={[S.arrowButton, styles]}>
+    <button type="button" css={[S.arrowButton, styles]} onClick={goToPage}>
       <img src={iconImage === 'prev' ? prevIcon : nextIcon} alt="" />
     </button>
   );
@@ -21,6 +21,13 @@ const MyPage = () => {
   const [allIdols, setAllIdols] = useState(list ?? []);
   const [myIdol, setMyIdol] = useState([]);
   const [selectedProfiles, setSelectedProfiles] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 16;
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const currentIdols = allIdols.slice(startIndex, endIndex);
+  const maxPage = Math.ceil(allIdols.length / pageSize);
 
   useEffect(() => {
     const savedMyIdols = localStorage.getItem('myIdol');
@@ -92,6 +99,7 @@ const MyPage = () => {
       return next;
     });
   };
+
   return (
     <div css={S.myPageWrapper}>
       <h2 css={S.title}>내가 관심있는 아이돌</h2>
@@ -109,9 +117,17 @@ const MyPage = () => {
 
       <h2 css={S.title}>관심 있는 아이돌을 추가해보세요.</h2>
       <div css={S.idolListWrapper}>
-        <Button iconImage={'prev'} styles={S.prev} />
+        <Button
+          iconImage={'prev'}
+          styles={S.prev}
+          goToPage={() => {
+            if (currentPage > 1) {
+              setCurrentPage((prev) => prev - 1);
+            }
+          }}
+        />
         <section css={S.idolList}>
-          {allIdols.map((idol) => {
+          {currentIdols.map((idol) => {
             return (
               <div key={idol.id} css={S.allProfileSize}>
                 <Avatar
@@ -125,7 +141,15 @@ const MyPage = () => {
             );
           })}
         </section>
-        <Button iconImage={'next'} styles={S.next} />
+        <Button
+          iconImage={'next'}
+          styles={S.next}
+          goToPage={() => {
+            if (currentPage < maxPage) {
+              setCurrentPage((prev) => prev + 1);
+            }
+          }}
+        />
       </div>
       <div css={S.customButtonWrapper}>
         <CustomButton type="button" isRound={true} style={S.customButtonStyle} onClick={addMyIdols}>
