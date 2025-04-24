@@ -5,7 +5,29 @@ import RadioButton from '@/components/radioButton';
 import { prices } from '@/data/mockData';
 import * as S from './creditChargeModal.styles';
 
-const CreditChargeModal = ({ onClose }) => {
+const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
+  const [selectedValue, setSelectedValue] = useState(null);
+
+  const handleRadioSelect = (value) => {
+    setSelectedValue(value);
+  };
+
+  const handleCharge = () => {
+    if (!selectedValue) {
+      alert('충전할 크레딧을 선택해주세요!');
+      return;
+    }
+
+    const prev = credit; // ListPage에서 전달받은 credit
+    const newTotal = prev + Number(selectedValue);
+    localStorage.setItem('selectedCredit', newTotal);
+    updateCredit(newTotal); // 업데이트된 credit을 ListPage에 전달
+    alert(`크레딧 ${selectedValue} 충전 완료! 총 보유: ${newTotal}`);
+
+    // 모달 닫기 로직
+    onClose();
+  };
+
   return (
     <div css={S.modalContent}>
       <h2>크레딧 충전하기</h2>
@@ -15,7 +37,9 @@ const CreditChargeModal = ({ onClose }) => {
             key={price.id}
             name={price.value}
             itemLabel={price.name}
-            style={S.labelStyle}
+            style={S.activeStyle} // ✅ 스타일 prop으로 전달
+            handleSelect={() => handleRadioSelect(price.value)}
+            isChecked={selectedValue === price.value}
           >
             <div css={S.radioButtonContent}>
               <img src={creditImg} alt="크레딧" />
@@ -24,7 +48,7 @@ const CreditChargeModal = ({ onClose }) => {
           </RadioButton>
         ))}
       </div>
-      <CustomButton onClick={onClose} style={S.buttonStyle}>
+      <CustomButton onClick={handleCharge} style={S.buttonStyle}>
         <img src={creditWhiteImg} alt="크레딧" />
         <p>충전하기</p>
       </CustomButton>

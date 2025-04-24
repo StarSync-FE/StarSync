@@ -1,5 +1,5 @@
+import media from '@/styles/responsive';
 import { css } from '@emotion/react';
-
 export const avatarWrapper = css`
   display: flex;
   position: relative;
@@ -7,13 +7,11 @@ export const avatarWrapper = css`
   justify-content: center;
   align-items: center;
   width: 100%;
-  width: max-content;
-  
 `;
 
 export const avatarBox = css`
   position: relative;
-  width: 6rem;
+  ${media({ width: ['10rem', '7rem', '10rem', '10rem', '10rem'] })}
   `;
 
 export const exitButton = css`
@@ -21,7 +19,8 @@ export const exitButton = css`
   right: 0;
   z-index: 1;
   box-sizing: border-box;
-  width: 2.2rem;
+  ${media({ width: ['3.1rem', '2.2rem', '3.1rem', '3.1rem', '3.1rem'] })}
+  ${media({ height: ['3.1rem', '2.2rem', '3.1rem', '3.1rem', '3.1rem'] })}
   padding: 0.5rem;
   border: 2px solid var(--black-deep);
   border-radius: 50%;
@@ -29,5 +28,7 @@ export const exitButton = css`
   `;
 
 export const buttonImage = css`
+  ${media({ width: ['0.8rem', '0.8rem', '1.1rem', '1.1rem', '1.1rem'] })}
   width: 100%;
+  margin: auto;
 `;
