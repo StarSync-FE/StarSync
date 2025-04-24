@@ -7,7 +7,7 @@ const NotFoundPage = () => {
   const error = useRouteError();
   const status = error?.status || STATUS_CODES.NOT_FOUND;
   const statusText = 'Page Not Found';
-  const uiMessage = UI_ERRORS.NOT_FOUND;
+  const uiMessage = UI_ERRORS.PAGE.NOT_FOUND;
 
   console.error('🔍 에러 data:', error?.data);
 

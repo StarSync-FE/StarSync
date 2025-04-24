@@ -1,6 +1,6 @@
-import { ErrorBoundary } from '@/components/error';
+import { ApiErrorBoundary, ErrorBoundary, GlobalErrorBoundary } from '@/components/error';
 import { BASE_URL, ENDPOINTS } from '@/constants/api';
-import { CONSOLE_ERRORS } from '@/constants/errors';
+import { THROWN_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import { requestGet } from '@/utils/api';
 import { createBrowserRouter } from 'react-router-dom';
@@ -12,7 +12,7 @@ const router = createBrowserRouter([
       const { default: Root } = await import('@/Root.jsx');
       return { Component: Root };
     },
-    errorElement: <ErrorBoundary />,
+    errorElement: <GlobalErrorBoundary />,
     children: [
       {
         index: true,
@@ -24,6 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'list',
+        errorElement: <ApiErrorBoundary />,
         lazy: async () => {
           const { default: ListPage } = await import('@/pages/list/ListPage');
           return {
@@ -61,10 +62,25 @@ const router = createBrowserRouter([
                 console.error('❌ chart 에러:', err?.response?.data || err.message);
               }
 
+              // 404: 정상 응답이지만 빈 배열
+              if (
+                Array.isArray(idols) &&
+                idols.length === 0 &&
+                Array.isArray(donations) &&
+                donations.length === 0 &&
+                Array.isArray(chart) &&
+                chart.length === 0
+              ) {
+                throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
+                  status: STATUS_CODES.NOT_FOUND,
+                });
+              }
+
+              // 500: 요청 자체 실패 (undefined)
               if (!idols || !donations || !chart) {
-                throw new Response(CONSOLE_ERRORS.FETCH_FAILED, {
+                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
                   status: STATUS_CODES.SERVER_ERROR,
-                }); //데이터 로딩 자체가 실패한 상태니까 사용자 입장에서는 "앱 내부의 로직 문제나 서버 이상"처럼 보이는 상황이라 500으로 던짐
+                });
               }
 
               return { idols, donations, chart };
@@ -74,32 +90,45 @@ const router = createBrowserRouter([
       },
       {
         path: 'mypage',
+        errorElement: <ApiErrorBoundary />,
         lazy: async () => {
           const { default: MyPage } = await import('@/pages/my/MyPage');
           return {
             Component: MyPage,
             loader: async () => {
-              const LIMIT = 30;
-              const CURSOR = 0;
-              const url = `${ENDPOINTS.GET_IDOLS}?limit=${LIMIT}&cursor=${CURSOR}`;
-
-              let idols;
-
-              try {
-                idols = await requestGet(url);
-                console.log('✅ idols:', idols);
-              } catch (err) {
-                console.error('❌ idols 에러:', err?.response?.data || err.message);
-              }
-
-              if (!idols) {
-                throw new Response(CONSOLE_ERRORS.FETCH_FAILED, {
-                  status: STATUS_CODES.SERVER_ERROR,
-                });
-              }
-
-              return idols;
+              throw new Response('로그인 필요', {
+                status: 401,
+                statusText: 'Unauthorized',
+              });
             },
+            // loader: async () => {
+            //   const LIMIT = 30;
+            //   const CURSOR = 0;
+            //   const url = `${ENDPOINTS.GET_IDOLS}?limit=${LIMIT}&cursor=${CURSOR}`;
+
+            //   let idols;
+
+            //   try {
+            //     idols = await requestGet(url);
+            //     console.log('✅ idols:', idols);
+            //   } catch (err) {
+            //     console.error('❌ idols 에러:', err?.response?.data || err.message);
+            //   }
+
+            //   if (Array.isArray(idols) && idols.length === 0) {
+            //     throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
+            //       status: STATUS_CODES.NOT_FOUND,
+            //     });
+            //   }
+
+            //   if (!idols) {
+            //     throw new Response(THROWN_ERRORS.FETCH_FAILED, {
+            //       status: STATUS_CODES.SERVER_ERROR,
+            //     });
+            //   }
+
+            //   return idols;
+            // },
           };
         },
       },
@@ -108,7 +137,7 @@ const router = createBrowserRouter([
         lazy: async () => ({
           Component: () => <div>서버 에러 테스트 페이지입니다</div>,
           loader: async () => {
-            throw new Response(CONSOLE_ERRORS.SERVER_ERROR, {
+            throw new Response(THROWN_ERRORS.SERVER_ERROR, {
               status: STATUS_CODES.SERVER_ERROR,
             });
           },

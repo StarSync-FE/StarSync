@@ -7,7 +7,7 @@ const ServerErrorPage = () => {
   const error = useRouteError();
   const status = error?.status || STATUS_CODES.SERVER_ERROR;
   const statusText = 'Internal Server Error';
-  const uiMessage = UI_ERRORS.SERVER;
+  const uiMessage = UI_ERRORS.SERVER.DEFAULT;
 
   console.error('🔍 에러 data:', error?.data);
 
