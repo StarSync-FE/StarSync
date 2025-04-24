@@ -56,7 +56,7 @@ const Chart = ({ data }) => {
       setBoyCursor(nextCursor); // 새로운 커서를 설정하여 다음 데이터를 요청할 준비를 합니다.
       if (nextCursor === null) setHasMoreBoys(false);
     } catch (error) {
-      console.err(error);
+      console.error(error);
     }
   };
 
@@ -80,7 +80,7 @@ const Chart = ({ data }) => {
       setGirlCursor(nextCursor);
       if (nextCursor === null) setHasMoreGirls(false);
     } catch (error) {
-      console.err(error);
+      console.error(error);
     }
   };
 
