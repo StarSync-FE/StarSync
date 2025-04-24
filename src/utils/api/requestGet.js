@@ -13,9 +13,7 @@ import axiosInstance from './axiosInstance';
  * const data = await requestGet('/api/idols');
  */
 const requestGet = async (endpoint) => {
-  console.log('[GET 요청 endpoint]', endpoint);
   const response = await axiosInstance.get(endpoint);
-  console.log('[axiosInstance get요청 이후]', response);
   return response.data;
 };
 
