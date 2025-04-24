@@ -51,7 +51,6 @@ export const carouselContainer = css`
 
 export const carouselTrack = css`
   display: flex;
-  position: relative;
   gap: 1.2rem;
   transition: transform 0.3s ease-in-out;
 
@@ -66,8 +65,8 @@ export const carouselTrack = css`
 `;
 
 export const carouselItem = css`
-  flex-basis: 28.5rem;
-  min-width: 28.5rem;
+  flex-basis: 15.8rem;
+  min-width: 15.8rem;
 
   ${media({
     flexBasis: ['15.8rem', '15.8rem', '28.2rem', '28.2rem'],
