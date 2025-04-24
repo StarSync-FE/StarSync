@@ -19,9 +19,9 @@ const Button = ({ iconImage, styles }) => {
 
 const MyPage = () => {
   const { list, nextCursor } = useLoaderData();
-  const [allIdols, setAllIdols] = useState(list);
+  const [allIdols, setAllIdols] = useState(list ?? []);
   const [myIdol, setMyIdol] = useState([]);
-  const [seletedProfiles, setSelectedProfiles] = useState([]);
+  const [selectedProfiles, setSelectedProfiles] = useState([]);
 
   const toggleProfile = (idol) => {
     setSelectedProfiles((prev) => {
@@ -34,7 +34,7 @@ const MyPage = () => {
     });
   };
   const addMyIdols = () => {
-    const selectedIds = Object.entries(seletedProfiles)
+    const selectedIds = Object.entries(selectedProfiles)
       .filter(([_, isSelected]) => isSelected)
       .map(([id]) => id);
 
@@ -91,7 +91,7 @@ const MyPage = () => {
                 <Avatar
                   imgUrl={idol.profilePicture}
                   onSelectToggle={() => toggleProfile(idol)}
-                  isSelected={seletedProfiles[idol.id]}
+                  isSelected={selectedProfiles[idol.id]}
                 />
                 <h3 css={S.idolName}>{idol.name}</h3>
                 <p css={S.groupName}>{idol.group}</p>
