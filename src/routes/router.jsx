@@ -1,5 +1,5 @@
 import { ErrorBoundary } from '@/components/error';
-import { ENDPOINTS } from '@/constants/api';
+import { BASE_URL, ENDPOINTS } from '@/constants/api';
 import { CONSOLE_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import { requestGet } from '@/utils/api';
