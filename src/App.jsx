@@ -19,6 +19,5 @@ export default function App({ router }) {
     () => clearInterval(splashScreenInterval);
   }, []);
 
-
   return <>{showSplashScreen ? <SplashScreen /> : <RouterProvider router={router} />}</>;
 }
