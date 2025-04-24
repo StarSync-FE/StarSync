@@ -1,7 +1,6 @@
 import nextIcon from '@/assets/icons/next-icon.png';
 import addIcon from '@/assets/icons/plus-icon.png';
 import prevIcon from '@/assets/icons/prev-icon.png';
-
 import Avatar from '@/components/avatar';
 import AvatarButton from '@/components/avatarButton';
 import CustomButton from '@/components/customButton';
@@ -19,20 +18,32 @@ const Button = ({ iconImage, styles }) => {
 
 const MyPage = () => {
   const idols = useLoaderData();
-  const [allIdols, setAllIdols] = useState(idols.list);
+  const [allIdols, setAllIdols] = useState([]);
   const [myIdol, setMyIdol] = useState([]);
-  const [seletedProfiles, setSelectedProfiles] = useState([]);
+  const [seletedProfiles, setSelectedProfiles] = useState({});
+
+  useEffect(() => {
+    const savedMyIdols = localStorage.getItem('myIdol');
+    const savedAllIdols = localStorage.getItem('allIdols');
+
+    const parsedMyIdols = savedMyIdols ? JSON.parse(savedMyIdols) : [];
+    const myIdolIds = new Set(parsedMyIdols.map((idol) => String(idol.id)));
+    setMyIdol(parsedMyIdols);
+
+    const originalAllIdols = idols?.list || [];
+    const filtered = originalAllIdols.filter((idol) => !myIdolIds.has(String(idol.id)));
+
+    setAllIdols(filtered);
+    localStorage.setItem('allIdols', JSON.stringify(filtered));
+  }, [idols]);
 
   const toggleProfile = (idol) => {
-    setSelectedProfiles((prev) => {
-      const next = {
-        ...prev,
-        [idol.id]: !prev[idol.id],
-      };
-      console.log('선택 상태:', next);
-      return next;
-    });
+    setSelectedProfiles((prev) => ({
+      ...prev,
+      [idol.id]: !prev[idol.id],
+    }));
   };
+
   const addMyIdols = () => {
     const selectedIds = Object.entries(seletedProfiles)
       .filter(([_, isSelected]) => isSelected)
@@ -40,32 +51,46 @@ const MyPage = () => {
 
     const selectedIdols = allIdols.filter((idol) => selectedIds.includes(String(idol.id)));
 
-    // 중복 제거해서 myIdol에 추가
     setMyIdol((prev) => {
       const existingIds = new Set(prev.map((i) => String(i.id)));
       const newAdditions = selectedIdols.filter((idol) => !existingIds.has(String(idol.id)));
-      return [...prev, ...newAdditions];
+      const updated = [...prev, ...newAdditions];
+      localStorage.setItem('myIdol', JSON.stringify(updated));
+      return updated;
     });
 
-    // 선택 상태 초기화
     setSelectedProfiles({});
 
-    // 전체 아이돌 목록에서 제거
-    setAllIdols((prev) => prev.filter((idol) => !selectedIds.includes(String(idol.id))));
+    setAllIdols((prev) => {
+      const updated = prev.filter((idol) => !selectedIds.includes(String(idol.id)));
+      localStorage.setItem('allIdols', JSON.stringify(updated));
+      return updated;
+    });
   };
-  const removeMyIdol = (idolId) => {
-    const removed = myIdol.find((idol) => idol.id === idolId);
-    if (!removed) return;
 
-    setMyIdol((prev) => prev.filter((idol) => idol.id !== idolId));
+  const removeMyIdol = (id) => {
+    setMyIdol((prev) => {
+      const updated = prev.filter((idol) => idol.id !== id);
+      const removed = prev.find((idol) => idol.id === id);
+      localStorage.setItem('myIdol', JSON.stringify(updated));
+
+      if (removed) {
+        setAllIdols((prevAll) => {
+          const withoutRemoved = prevAll.filter((idol) => idol.id !== removed.id);
+          const updatedAll = [...withoutRemoved, removed];
+          localStorage.setItem('allIdols', JSON.stringify(updatedAll));
+          return updatedAll;
+        });
+      }
+
+      return updated;
+    });
 
     setSelectedProfiles((prev) => {
       const next = { ...prev };
-      delete next[idolId];
+      delete next[id];
       return next;
     });
-
-    setAllIdols((prev) => [...prev, removed]);
   };
   return (
     <div css={S.myPageWrapper}>
@@ -98,13 +123,18 @@ const MyPage = () => {
               </div>
             );
           })}
+          <CustomButton
+            type="button"
+            isRound={true}
+            style={S.customButtonStyle}
+            onClick={addMyIdols}
+          >
+            <img src={addIcon} alt="addIcon" css={S.buttonIcon} />
+            추가하기
+          </CustomButton>
         </section>
-        <CustomButton type="button" isRound={true} style={S.customButtonStyle} onClick={addMyIdols}>
-          <img src={addIcon} alt="addIcon" css={S.buttonIcon} />
-          추가하기
-        </CustomButton>
+        <Button iconImage={'next'} styles={S.next} />
       </div>
-      <Button iconImage={'next'} styles={S.next} />
     </div>
   );
 };

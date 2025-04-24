@@ -45,15 +45,12 @@ export const title = css`
   font-weight: 700;
 `;
 export const idolListWrapper = css`
-  display: flex;
-  overflow-y: hidden;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  border: 1px solid pink;
 `;
 export const idolList = css`
   display: grid;
   max-width: 100%;
+  background-color: white;
   ${media({ gap: ['1.7rem', '1.7rem', '2.4rem', '2.4rem', '2.4rem'] })}
   ${media({ gridTemplateColumns: ['repeat(3, 9.8rem)', 'repeat(3, 9.8rem)', 'repeat(4, 12.8rem)', 'repeat(8, 12.8rem)', 'repeat(8, 12.8rem)'] })}
   ${media({ gridTemplaterRows: ['1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr'] })};
