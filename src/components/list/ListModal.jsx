@@ -22,7 +22,7 @@ const ListModal = ({ modalType, setModalType, credit, updateCredit, gender }) =>
       case 'donation':
         return <DonationModal />;
       case 'vote':
-        return <VoteModal gender={gender} />;
+        return <VoteModal gender={gender} updateCredit={updateCredit} />;
       default:
         return null;
     }
