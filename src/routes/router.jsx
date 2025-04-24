@@ -1,4 +1,4 @@
-import { ApiErrorBoundary, GlobalErrorBoundary } from '@/components/error';
+import { ApiErrorBoundary, GlobalErrorBoundary, RenderErrorBoundary } from '@/components/error';
 import { ENDPOINTS } from '@/constants/api';
 import { THROWN_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
@@ -19,7 +19,13 @@ const router = createBrowserRouter([
 
         lazy: async () => {
           const { default: LandingPage } = await import('@/pages/landing/LandingPage');
-          return { Component: LandingPage };
+          return {
+            Component: () => (
+              <RenderErrorBoundary>
+                <LandingPage />
+              </RenderErrorBoundary>
+            ),
+          };
         },
       },
       {
@@ -28,7 +34,11 @@ const router = createBrowserRouter([
         lazy: async () => {
           const { default: ListPage } = await import('@/pages/list/ListPage');
           return {
-            Component: ListPage,
+            Component: () => (
+              <RenderErrorBoundary>
+                <ListPage />
+              </RenderErrorBoundary>
+            ),
             loader: async () => {
               const LIMIT = 10;
               const CURSOR = 0;
@@ -94,7 +104,11 @@ const router = createBrowserRouter([
         lazy: async () => {
           const { default: MyPage } = await import('@/pages/my/MyPage');
           return {
-            Component: MyPage,
+            Component: () => (
+              <RenderErrorBoundary>
+                <MyPage />
+              </RenderErrorBoundary>
+            ),
             loader: async () => {
               const LIMIT = 30;
               const CURSOR = 0;
@@ -127,6 +141,19 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: 'test-render-error',
+        lazy: async () => {
+          const { default: TestRenderError } = await import('@/components/test/TestRenderError');
+          return {
+            Component: () => (
+              <RenderErrorBoundary>
+                <TestRenderError />
+              </RenderErrorBoundary>
+            ),
+          };
+        },
+      },
+      {
         path: 'test-api-error',
         errorElement: <ApiErrorBoundary />,
         lazy: async () => ({
@@ -138,13 +165,7 @@ const router = createBrowserRouter([
           },
         }),
       },
-      {
-        path: 'test-render-error',
-        lazy: async () => {
-          const { default: TestRenderError } = await import('@/components/test/TestRenderError');
-          return { Component: TestRenderError };
-        },
-      },
+
       {
         path: 'test-global-error',
         lazy: async () => ({

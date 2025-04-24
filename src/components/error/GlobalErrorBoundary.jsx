@@ -1,5 +1,3 @@
-import { UI_ERRORS } from '@/constants/errors';
-import { STATUS_CODES } from '@/constants/statusCodes';
 import { ServerErrorPage } from '@/pages/error';
 import { useRouteError } from 'react-router-dom';
 
