@@ -125,9 +125,4 @@ export const moreButton = css`
   &:hover {
     background-color: var(--black-full);
   }
-
-  &:disabled {
-    background-color: var(--gray-500); /* 예: 비활성화 시 회색 배경 */
-    cursor: not-allowed;
-  }
 `;
