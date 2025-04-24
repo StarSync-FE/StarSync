@@ -1,1 +1,1 @@
-export { default } from './DonationModal';
+export { default as DonationModal } from './DonationModal';

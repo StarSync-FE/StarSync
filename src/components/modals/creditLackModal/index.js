@@ -1,1 +1,1 @@
-export { default } from './CreditLackModal';
+export { default as CreditLackModal } from './CreditLackModal';
