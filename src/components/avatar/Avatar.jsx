@@ -1,9 +1,9 @@
 import * as S from './avatar.styles';
 
-const Avatar = ({ imgUrl, isSelected = false, profileSize, onSelectToggle }) => {
+const Avatar = ({ imgUrl, isSelected = false, profileSize, onSelectToggle, style }) => {
   return (
     <div
-      css={[isSelected && S.imageSelected, S.imageWrapper(profileSize)]}
+      css={[isSelected && S.imageSelected, S.imageWrapper(profileSize), style]}
       onClick={onSelectToggle}
       onKeyDown={onSelectToggle}
     >
