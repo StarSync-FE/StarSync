@@ -30,9 +30,14 @@ class RenderErrorBoundary extends Component {
     this.state = { hasError: false };
   }
 
+  // ❗ 여기서는 상태만 유도 (side-effect ❌)
   static getDerivedStateFromError(error) {
-    console.error('🟥 렌더링 중 에러 발생:', error);
     return { hasError: true };
+  }
+
+  // ✅ 여기는 side-effect 가능 (로깅, 전송 등)
+  componentDidCatch(error, info) {
+    console.error('🟥 렌더링 중 에러 발생:', error, info?.componentStack);
   }
 
   render() {

@@ -10,7 +10,7 @@
  * 사용자에게 노출되는 에러 메시지는 `UI_ERRORS`에서 별도로 관리합니다.
  *
  * @example
- * throw new Response(THROWN_ERROR_MESSAGES.FETCH_FAILED, {
+ * throw new Response(THROWN_ERROR.FETCH_FAILED, {
  *   status: 500,
  * });
  */

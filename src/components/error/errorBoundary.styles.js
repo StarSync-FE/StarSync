@@ -1,17 +1,21 @@
+import media from '@/styles/responsive';
 import { css } from '@emotion/react';
 
 export const wrapper = css`
   max-width: 480px;
   margin: 2rem auto;
   padding: 2rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--white);
   border-radius: 12px;
   text-align: center;
-  color: #333;
-  background: #fff8f8;
+  color: var(--black);
+  background: var(--white);
 
   h2 {
     margin-bottom: 2rem;
+    line-height: 2rem;
+    white-space: pre-line;
+    ${media({ whiteSpace: ['pre-line', 'pre-line', 'normal', 'normal', 'normal'] })}
   }
 `;
 
