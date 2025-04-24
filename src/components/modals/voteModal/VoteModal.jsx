@@ -7,27 +7,29 @@ import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import * as S from './voteModal.styles';
 
-const VoteModal = ({ gender = 'female' }) => {
+const VoteModal = ({ gender }) => {
   const [idols, setIdols] = useState([]);
   const loadData = async (gender) => {
     const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${gender}&pageSize=30&`;
     const response = await requestGet(chartUrl);
     return response;
   };
+
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (!gender) return;
 
     const load = async () => {
-      const result = await loadData(gender === 'girls' ? 'female' : 'male');
+      const result = await loadData(gender === 'females' ? 'female' : 'male');
       setIdols(result.idols);
-      console.log(`${gender === 'girls' ? '여자' : '남자'} 아이돌`, result.idols);
     };
     load();
   }, [gender]);
+
+  console.log(gender);
   return (
     <div css={S.ModalWrapper}>
-      {/* {idols.length > 0
+      {idols.length > 0
         ? idols.map((idol) => {
             return (
               <RadioButton
@@ -52,7 +54,7 @@ const VoteModal = ({ gender = 'female' }) => {
       <button type="button">투표하기</button>
       <p css={S.guideQuote}>
         투표하는 데 <b css={S.highlightText}>1000 크레딧</b>이 소요됩니다.
-      </p> */}
+      </p>
     </div>
   );
 };
