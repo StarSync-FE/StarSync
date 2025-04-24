@@ -1,4 +1,4 @@
-import MococoImg from '@/assets/icons/mococo-no-background.png';
+import creditImg from '@/assets/images/credit.png';
 import CustomButton from '@/components/customButton';
 import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/format';
 import { useEffect, useState } from 'react';
@@ -32,7 +32,6 @@ const Card = ({ data, setModalType }) => {
           disabled={!isActive}
           onClick={handleClick}
         >
-          <img src={MococoImg} alt="모코코" css={S.icon} />
           {isActive ? '후원하기' : '후원 마감'}
         </CustomButton>
       </div>
@@ -46,7 +45,7 @@ const Card = ({ data, setModalType }) => {
         <div css={S.info}>
           <div css={S.statusBar}>
             <div css={S.statusLeft}>
-              <img src={MococoImg} alt="프리티" css={S.icon} />
+              <img src={creditImg} alt="크레딧" css={S.icon} />
               <p>{addCommas(data.receivedDonations)}</p>
             </div>
             <p>{daysLeft > 1 ? `D-${daysLeft}` : daysLeft === 1 ? '오늘 마감' : '마감 완료'}</p>
