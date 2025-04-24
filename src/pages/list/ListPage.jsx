@@ -1,3 +1,4 @@
+import { Carousel } from '@/components/carousel';
 import { Charge } from '@/components/charge';
 import { Chart } from '@/components/chart';
 import { Modal } from '@/components/modal';
@@ -47,7 +48,7 @@ const ListPage = () => {
   return (
     <div css={wrapper}>
       <Charge setModalType={setModalType} />
-      <div css={carousel}>캐러셀</div>
+      <Carousel />
       <Chart />
 
       <Modal isOpen={modalType !== null} onClose={closeModal}>
