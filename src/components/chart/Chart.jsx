@@ -7,7 +7,7 @@ import * as S from './chart.styles';
 
 const Chart = ({ data }) => {
   const [selectedTab, setSelectedTab] = useState('girls');
-  const [girlData, setGirlData] = useState([]);
+  const [girlData, setGirlData] = useState(data.idols || []);
   const [boyData, setBoyData] = useState([]);
   const [girlCursor, setGirlCursor] = useState(0);
   const [boyCursor, setBoyCursor] = useState(0);
@@ -20,11 +20,11 @@ const Chart = ({ data }) => {
     setSelectedTab(e.currentTarget.value);
   };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (selectedTab === 'girls') {
-      setGirlData([]);
+      setGirlData(data.idols || []);
       setGirlCursor(0);
-      fetchMoreGirls(0);
       setHasMoreGirls(true);
     }
 
@@ -54,32 +54,35 @@ const Chart = ({ data }) => {
 
       setBoyData((prevData) => [...prevData, ...newData]);
       setBoyCursor(nextCursor); // 새로운 커서를 설정하여 다음 데이터를 요청할 준비를 합니다.
+      if (nextCursor === null) setHasMoreBoys(false);
     } catch (error) {
-      setHasMoreBoys(false);
+      console.err(error);
     }
   };
 
   const fetchMoreGirls = async (cursor) => {
-    if (cursor === 0 && girlData.length > 0) return; // 이미 데이터 있음 → 중복 호출 방지
+    console.log(cursor);
+    console.log(girlData.length);
+    let updatedCursor = cursor;
+    if (updatedCursor === 0 && girlData.length === 10) {
+      updatedCursor = data.nextCursor;
+    }
     try {
       const response = await requestGet(
-        `${ENDPOINTS.GET_CHART}?gender=female&pageSize=${PAGESIZE}&cursor=${cursor}`,
+        `${ENDPOINTS.GET_CHART}?gender=female&pageSize=${PAGESIZE}&cursor=${updatedCursor}`,
       );
-
       const newData = response?.idols || [];
       const nextCursor = response?.nextCursor;
-
       if (cursor === null) {
         console.log('더 이상 여자 아이돌 데이터가 없습니다.');
-        setGirlCursor(null);
-        return;
+        setGirlCursor(null); // 더 이상 데이터를 요청하지 않도록 boyCursor를 null로 설정
+        return; // 더 이상 요청하지 않음
       }
-
       setGirlData((prevData) => [...prevData, ...newData]);
       setGirlCursor(nextCursor);
+      if (nextCursor === null) setHasMoreGirls(false);
     } catch (error) {
-      console.error('여자 아이돌 데이터를 불러오는 데 실패했어요', error);
-      setHasMoreGirls(false);
+      console.err(error);
     }
   };
 
@@ -135,7 +138,6 @@ const Chart = ({ data }) => {
                 더 보기
               </button>
             )}
-            {!hasMoreGirls && <div>더 이상 불러올 데이터가 없습니다.</div>}
           </>
         )}
 
@@ -147,23 +149,17 @@ const Chart = ({ data }) => {
                   <span>
                     <img src={boy.profilePicture} alt={boy.name} />
                     <span css={S.rankStyle}>{boy.rank}</span>
-                    <span>{boy.group}</span>
                     <span>{boy.name}</span>
                   </span>
                   <span>{boy.totalVotes}표</span>
                 </li>
               ))}
             </ul>
-            {
-              <button
-                type="button"
-                css={S.moreButton}
-                onClick={() => fetchBoyData(boyCursor)}
-                disabled={!hasMoreBoys}
-              >
+            {hasMoreBoys && (
+              <button type="button" css={S.moreButton} onClick={() => fetchBoyData(boyCursor)}>
                 더 보기
               </button>
-            }
+            )}
           </>
         )}
       </div>
