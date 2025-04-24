@@ -78,7 +78,7 @@ export const buttonIcon = css`
 // 이전, 다음 버튼 컴포넌트
 export const arrowButton = css`
   z-index: 1111;
-  width: 2.9rem;
+  min-width: 2.9rem;
   height: 13.5rem;
   background-color: #1B1B1BCC;
 
