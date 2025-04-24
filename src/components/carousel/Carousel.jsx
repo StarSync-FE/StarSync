@@ -36,7 +36,7 @@ const Carousel = ({ data: initialData, setModalType }) => {
           setData(response);
         }
       } catch (error) {
-        console.error('캐러셀 업데이트 실패', error);
+        console.error('임시 테스트용 에러', error);
       }
     };
     setData(initialData);
