@@ -23,7 +23,7 @@ function Modal({ isOpen, onClose, children }) {
   return (
     <div css={S.overlay}>
       <div css={S.container}>
-        <button type="button" onClick={onClose} css={S.modalStyles}>
+        <button type="button" onClick={onClose} css={S.buttonStyles}>
           <img src={exitImg} alt="닫기" />
         </button>
         {children}

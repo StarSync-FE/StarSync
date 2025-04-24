@@ -1,12 +1,12 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
+import App from './App';
 import router from './routes/router';
 import GlobalStyle from './styles/Global.styles';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GlobalStyle />
-    <RouterProvider router={router} />
+    <App router={router} />
   </StrictMode>,
 );

@@ -8,23 +8,16 @@ const ErrorBoundary = () => {
 
   if (isRouteErrorResponse(error)) {
     if (error.status >= STATUS_CODES.SERVER_ERROR) {
+      console.error('🔴 서버 에러:', error);
       return <ServerErrorPage />;
     }
 
-    return (
-      <div>
-        <h1>라우터 에러 발생</h1>
-        <p>{error.statusText || UI_ERRORS.UNKNOWN}</p>
-      </div>
-    );
+    console.warn('🟡 라우터 에러:', error);
+    return <ServerErrorPage />;
   }
 
-  return (
-    <div>
-      <h1>예상치 못한 일반 에러 발생</h1>
-      <p>{error?.message || UI_ERRORS.UNKNOWN}</p>
-    </div>
-  );
+  console.error('⚠️ 예상치 못한 일반 에러:', error);
+  return <ServerErrorPage />;
 };
 
 export default ErrorBoundary;

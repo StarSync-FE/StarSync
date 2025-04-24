@@ -1,14 +1,16 @@
 import { ErrorBoundary } from '@/components/error';
-import { ENDPOINTS } from '@/constants/api';
-import { fetchData } from '@/utils/api';
+import { BASE_URL, ENDPOINTS } from '@/constants/api';
+import { CONSOLE_ERRORS } from '@/constants/errors';
+import { STATUS_CODES } from '@/constants/statusCodes';
+import { requestGet } from '@/utils/api';
 import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
     path: '/',
     lazy: async () => {
-      const { default: App } = await import('@/App.jsx');
-      return { Component: App };
+      const { default: Root } = await import('@/Root.jsx');
+      return { Component: Root };
     },
     errorElement: <ErrorBoundary />,
     children: [
@@ -27,13 +29,44 @@ const router = createBrowserRouter([
           return {
             Component: ListPage,
             loader: async () => {
-              const gender = 'female';
-              const chartUrl = `${ENDPOINTS.GET_CHART.replace('{gender}', gender)}?gender=${gender}`;
-              const [idols, donations, chart] = await Promise.all([
-                fetchData(ENDPOINTS.GET_IDOLS),
-                fetchData(ENDPOINTS.GET_DONATIONS),
-                fetchData(chartUrl),
-              ]);
+              const LIMIT = 10;
+              const CURSOR = 0;
+              const GENDER = 'female';
+              const idolsUrl = `${ENDPOINTS.GET_IDOLS}?limit=${LIMIT}&cursor=${CURSOR}`;
+              const donationsUrl = ENDPOINTS.GET_DONATIONS;
+              const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${GENDER}&limit=${LIMIT}&cursor=${CURSOR}`;
+
+              let idols;
+              let donations;
+              let chart;
+
+              try {
+                idols = await requestGet(idolsUrl);
+                console.log('✅ idols:', idols);
+              } catch (err) {
+                console.error('❌ idols 에러:', err?.response?.data || err.message);
+              }
+
+              try {
+                donations = await requestGet(donationsUrl);
+                console.log('✅ donations:', donations);
+              } catch (err) {
+                console.error('❌ donations 에러:', err?.response?.data || err.message);
+              }
+
+              try {
+                chart = await requestGet(chartUrl);
+                console.log('✅ chart:', chart);
+              } catch (err) {
+                console.error('❌ chart 에러:', err?.response?.data || err.message);
+              }
+
+              if (!idols || !donations || !chart) {
+                throw new Response(CONSOLE_ERRORS.FETCH_FAILED, {
+                  status: STATUS_CODES.SERVER_ERROR,
+                }); //데이터 로딩 자체가 실패한 상태니까 사용자 입장에서는 "앱 내부의 로직 문제나 서버 이상"처럼 보이는 상황이라 500으로 던짐
+              }
+
               return { idols, donations, chart };
             },
           };
@@ -46,7 +79,25 @@ const router = createBrowserRouter([
           return {
             Component: MyPage,
             loader: async () => {
-              const idols = await fetchData(ENDPOINTS.GET_IDOLS);
+              const LIMIT = 30;
+              const CURSOR = 0;
+              const url = `${ENDPOINTS.GET_IDOLS}?limit=${LIMIT}&cursor=${CURSOR}`;
+
+              let idols;
+
+              try {
+                idols = await requestGet(url);
+                console.log('✅ idols:', idols);
+              } catch (err) {
+                console.error('❌ idols 에러:', err?.response?.data || err.message);
+              }
+
+              if (!idols) {
+                throw new Response(CONSOLE_ERRORS.FETCH_FAILED, {
+                  status: STATUS_CODES.SERVER_ERROR,
+                });
+              }
+
               return idols;
             },
           };
@@ -57,21 +108,20 @@ const router = createBrowserRouter([
         lazy: async () => ({
           Component: () => <div>서버 에러 테스트 페이지입니다</div>,
           loader: async () => {
-            throw new Response('서버에 문제가 발생했습니다. 잠시 후 다시 시도해주세요.', {
-              status: 500,
-              statusText: 'Internal Server Error',
+            throw new Response(CONSOLE_ERRORS.SERVER_ERROR, {
+              status: STATUS_CODES.SERVER_ERROR,
             });
           },
         }),
       },
-      {
-        path: '*',
-        lazy: async () => {
-          const { NotFoundPage } = await import('@/pages/error');
-          return { Component: NotFoundPage };
-        },
-      },
     ],
+  },
+  {
+    path: '*',
+    lazy: async () => {
+      const { NotFoundPage } = await import('@/pages/error');
+      return { Component: NotFoundPage };
+    },
   },
 ]);
 
