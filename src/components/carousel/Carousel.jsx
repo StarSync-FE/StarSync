@@ -1,13 +1,35 @@
 import { Card } from '@/components/card';
-import { donations } from '@/data/mockData';
+import { ENDPOINTS } from '@/constants/api';
+import { requestGet } from '@/utils/api';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './carousel.styles';
 
-const Carousel = () => {
+const Carousel = ({ data: initialData, setModalType }) => {
+  const [data, setData] = useState(initialData);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
   const containerRef = useRef(null);
-  const donationsLength = donations.length;
+
+  useEffect(() => {
+    const fetchLatestDonations = async () => {
+      try {
+        const response = await requestGet(ENDPOINTS.GET_DONATIONS);
+        if (response?.list) {
+          setData(response);
+        }
+      } catch (error) {
+        console.error('캐러셀 업데이트 실패', error);
+      }
+    };
+    setData(initialData);
+
+    const intervalId = setInterval(fetchLatestDonations, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [initialData]);
+
+  // data.list의 길이를 사용
+  const donationsLength = data?.list?.length || 0;
 
   const updateItemsPerView = useCallback(() => {
     if (!containerRef.current) return;
@@ -30,7 +52,7 @@ const Carousel = () => {
     return () => window.removeEventListener('resize', updateItemsPerView);
   }, [updateItemsPerView]);
 
-  const maxIndex = Math.max(0, donations.length - itemsPerView);
+  const maxIndex = Math.max(0, donationsLength - itemsPerView);
 
   const handleNext = () => {
     setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
@@ -71,9 +93,9 @@ const Carousel = () => {
               '--slide-offset': `-${getSlideOffset()}px`,
             }}
           >
-            {donations.map((donation) => (
-              <div key={donation.id} css={S.carouselItem}>
-                <Card data={donation} />
+            {data?.list?.map((item) => (
+              <div key={item.id} css={S.carouselItem}>
+                <Card data={item} setModalType={setModalType} />
               </div>
             ))}
           </div>
