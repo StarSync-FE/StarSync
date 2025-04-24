@@ -20,7 +20,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://fandom-k-api.vercel.app',
+        target: env.VITE_API_PROXY_TARGET,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
