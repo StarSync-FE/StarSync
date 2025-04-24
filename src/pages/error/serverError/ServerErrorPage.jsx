@@ -1,3 +1,4 @@
+import CustomButton from '@/components/customButton';
 import { UI_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import * as S from '@/pages/error/styles';
@@ -17,6 +18,14 @@ const ServerErrorPage = () => {
         <h1>{status}</h1>
         <h2>{statusText}</h2>
         <p>{uiMessage}</p>
+        <CustomButton
+          variant="error"
+          isRound="true"
+          style={S.errorButtonStyle}
+          onClick={() => window.location.reload()} //여기도 onButtonClick으로 바뀌면 변경
+        >
+          다시 시도
+        </CustomButton>
       </div>
     </div>
   );

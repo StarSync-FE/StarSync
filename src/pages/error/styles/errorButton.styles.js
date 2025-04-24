@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 export const errorButtonStyle = css`
   display: inline-block;
+  width: 16rem;
   padding: 1.2rem 2.4rem;
   border: 2px solid rgb(255 255 255 / 30%);
   box-shadow: 0 0 12px rgb(0 255 255 / 20%);

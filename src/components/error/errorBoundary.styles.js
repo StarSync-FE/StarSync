@@ -14,3 +14,9 @@ export const wrapper = css`
     margin-bottom: 2rem;
   }
 `;
+
+export const retryButtonStyle = css`
+  width: 100%;
+  border-radius: 8px;
+  color: var(--white-full); 
+`;

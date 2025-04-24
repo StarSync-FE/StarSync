@@ -3,7 +3,6 @@ import CustomButton from '@/components/customButton';
 import { UI_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import * as S from '@/pages/error/styles';
-import { errorButtonStyle } from '@/pages/error/styles';
 import { Link, useRouteError } from 'react-router-dom';
 
 const NotFoundPage = () => {
@@ -21,7 +20,7 @@ const NotFoundPage = () => {
         <h2>{statusText}</h2>
         <p>{uiMessage}</p>
         <Link to="/">
-          <CustomButton variant="error" isRound="true" style={errorButtonStyle}>
+          <CustomButton variant="error" isRound="true" style={S.errorButtonStyle}>
             <img src={logoImg} alt="StarSync 로고" css={S.logoIconStyle} />
             StarSync 홈
           </CustomButton>

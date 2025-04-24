@@ -42,10 +42,7 @@ class RenderErrorBoundary extends Component {
           <h2>⚠️ {UI_ERRORS.UNKNOWN}</h2>
           <CustomButton
             variant="error"
-            style={{
-              color: 'var(--white-full)',
-              borderRadius: '8px',
-            }}
+            style={S.retryButtonStyle}
             onClick={() => window.location.reload()} // 컨벤션에 따라 onButtonClick 등으로 바뀌면 수정 예정
           >
             다시 시도

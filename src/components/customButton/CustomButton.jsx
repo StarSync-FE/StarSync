@@ -65,7 +65,6 @@ const CustomButton = ({
     vote: { width: '12.8rem', height: '3.2rem', fontSize: '1.3rem' },
     landing: { width: '47.7rem', height: '4.8rem', mobileWidth: '23rem', fontSize: '1.4rem' },
     error: {
-      width: '100%',
       height: '4.2rem',
       fontSize: '1.4rem',
     },
