@@ -20,7 +20,7 @@ const MyPage = () => {
   const { list, nextCursor } = useLoaderData();
   const [allIdols, setAllIdols] = useState(list ?? []);
   const [myIdol, setMyIdol] = useState([]);
-  const [seletedProfiles, setSelectedProfiles] = useState({});
+  const [selectedProfiles, setSelectedProfiles] = useState({});
 
   useEffect(() => {
     const savedMyIdols = localStorage.getItem('myIdol');
