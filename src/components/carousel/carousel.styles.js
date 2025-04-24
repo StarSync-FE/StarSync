@@ -2,35 +2,36 @@ import media from '@/styles/responsive';
 import { css } from '@emotion/react';
 
 export const arrowIcon = css`
-  width: 0.8rem;
   height: 1.4rem;
   fill: none;
   stroke: var(--white);
-  stroke-width: 0.2rem;
+  stroke-width: 0.3rem;
 `;
 
 export const wrapper = css`
   width: 100%;
+  margin-block: 4rem;
 `;
 
 export const carouselTitle = css`
-  margin: 4rem 0 2rem;
-  padding: 0 2rem;
+  margin-inline: 2rem;
+  margin-bottom: 1.6rem;
   font-size: 2.4rem;
   font-weight: 700;
   color: var(--white);
 
   ${media({
     fontSize: ['2rem', '2rem', '2.4rem', '2.4rem'],
-    marginTop: ['3rem', '3rem', '4rem', '4rem'],
+    marginInline: ['2rem', '2rem', '8rem', '8rem'],
+    marginBottom: ['1.6rem', '1.6rem', '2.4rem', '3.2rem'],
   })}
 `;
 
 export const viewportArea = css`
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding: 0 2rem;
+  gap: 0;
+  padding-inline: 2rem;
 
   ${media({
     gap: ['0', '0', '2rem', '2rem'],
@@ -38,24 +39,23 @@ export const viewportArea = css`
 `;
 
 export const carouselContainer = css`
+  overflow-x: scroll;
   width: 100%;
-  margin: 0 auto;
+  scroll-snap-type: x mandatory;
 
   ${media({
     overflowX: ['scroll', 'scroll', 'hidden', 'hidden'],
     scrollSnapType: ['x mandatory', 'x mandatory', 'none', 'none'],
-    scrollBehavior: ['smooth', 'smooth', 'auto', 'auto'],
   })}
 
   &::-webkit-scrollbar {
     display: none;
   }
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 `;
 
 export const carouselTrack = css`
   display: flex;
+  position: relative;
   gap: 1.2rem;
   transition: transform 0.3s ease-in-out;
 
@@ -66,17 +66,15 @@ export const carouselTrack = css`
       'translateX(var(--slide-offset))',
       'translateX(var(--slide-offset))',
     ],
-    gap: ['1.2rem', '1.2rem', '1.2rem', '1.2rem'],
   })}
 `;
 
 export const carouselItem = css`
-  flex: 0 0 28.5rem;
+  flex-basis: 28.5rem;
   min-width: 28.5rem;
-  scroll-snap-align: start;
 
   ${media({
-    flex: ['0 0 15.8rem', '0 0 15.8rem', '0 0 28.2rem', '0 0 28.2rem'],
+    flexBasis: ['15.8rem', '15.8rem', '28.2rem', '28.2rem'],
     minWidth: ['15.8rem', '15.8rem', '28.2rem', '28.2rem'],
   })}
 `;
@@ -85,18 +83,19 @@ export const navigationButton = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 4rem;
-  height: 7.8rem;
-  border-radius: 0.6rem;
+  width: 40px;
+  height: 78px;
+  border-radius: 6px;
   background-color: var(--black);
   transition: opacity 0.2s;
 
   &:disabled {
     opacity: 0;
     cursor: default;
+    pointer-events: none;
   }
 
-  &:not(:disabled):hover {
+  &:hover {
     opacity: 0.8;
   }
 
