@@ -30,7 +30,7 @@ const MyPage = () => {
     const myIdolIds = new Set(parsedMyIdols.map((idol) => String(idol.id)));
     setMyIdol(parsedMyIdols);
 
-    const originalAllIdols = list || []; // ✅ 여기 변경
+    const originalAllIdols = list || [];
     const filtered = originalAllIdols.filter((idol) => !myIdolIds.has(String(idol.id)));
 
     setAllIdols(filtered);
@@ -106,9 +106,10 @@ const MyPage = () => {
           );
         })}
       </section>
+
       <h2 css={S.title}>관심 있는 아이돌을 추가해보세요.</h2>
-      <Button iconImage={'prev'} styles={S.prev} />
       <div css={S.idolListWrapper}>
+        <Button iconImage={'prev'} styles={S.prev} />
         <section css={S.idolList}>
           {allIdols.map((idol) => {
             return (
@@ -123,17 +124,14 @@ const MyPage = () => {
               </div>
             );
           })}
-          <CustomButton
-            type="button"
-            isRound={true}
-            style={S.customButtonStyle}
-            onClick={addMyIdols}
-          >
-            <img src={addIcon} alt="addIcon" css={S.buttonIcon} />
-            추가하기
-          </CustomButton>
         </section>
         <Button iconImage={'next'} styles={S.next} />
+      </div>
+      <div css={S.customButtonWrapper}>
+        <CustomButton type="button" isRound={true} style={S.customButtonStyle} onClick={addMyIdols}>
+          <img src={addIcon} alt="addIcon" css={S.buttonIcon} />
+          추가하기
+        </CustomButton>
       </div>
     </div>
   );

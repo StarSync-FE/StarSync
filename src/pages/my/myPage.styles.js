@@ -45,22 +45,32 @@ export const title = css`
   font-weight: 700;
 `;
 export const idolListWrapper = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.7rem;
+  width: 100%;
+  margin: 4rem 0 0;
   border: 1px solid pink;
 `;
 export const idolList = css`
   display: grid;
-  max-width: 100%;
-  background-color: white;
+  min-width: fit-content;
+
   ${media({ gap: ['1.7rem', '1.7rem', '2.4rem', '2.4rem', '2.4rem'] })}
   ${media({ gridTemplateColumns: ['repeat(3, 9.8rem)', 'repeat(3, 9.8rem)', 'repeat(4, 12.8rem)', 'repeat(8, 12.8rem)', 'repeat(8, 12.8rem)'] })}
   ${media({ gridTemplaterRows: ['1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr'] })};
   justify-items: center;
 `;
+export const customButtonWrapper = css`
+  display: flex;
+  justify-content: center;
+  margin: 2.4rem 6.4rem 3.4rem;
+`;
 
 export const customButtonStyle = css`
   width: 25.5rem;
   height: 4.8rem;
-  margin: 2.4rem 6.4rem 3.4rem;
 `;
 export const buttonIcon = css`
   width: 2.4rem;
@@ -68,6 +78,7 @@ export const buttonIcon = css`
 
 // 이전, 다음 버튼 컴포넌트
 export const arrowButton = css`
+  z-index: 1111;
   width: 2.9rem;
   height: 13.5rem;
   background-color: #1B1B1BCC;
@@ -78,15 +89,11 @@ export const arrowButton = css`
 `;
 
 export const prev = css`
-  position: absolute;
-  top: 35rem;
+  top: 40%;
   left: 32rem;
-  z-index: 1111;
 `;
 
 export const next = css`
-  position: absolute;
-  top: 35rem;
-  right: 32rem;
-  z-index: 1111;
+  top: 40%;
+  right: 0;
 `;
