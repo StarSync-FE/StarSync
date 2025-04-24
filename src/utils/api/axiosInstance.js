@@ -1,21 +1,23 @@
-import { BASE_URL } from '@/constants/api';
 import axios from 'axios';
 
 /**
  * Axios 인스턴스
  *
- * 이 인스턴스는 공통 baseURL 설정을 포함하며,
- * 모든 API 요청에 대해 일관된 설정을 적용합니다.
+ * 현재 Vite 실행 환경(`.env.development` 또는 `.env.production`)에 따라
+ * BASE_URL을 자동으로 설정한 Axios 인스턴스를 반환합니다.
  *
- * - baseURL: .env 또는 constants에서 설정한 API 루트 경로
- * - 요청 헤더, 인터셉터, 에러 처리 등을 확장할 때 사용
+ * 이 인스턴스를 통해 공통 설정이 적용된 API 요청을 수행할 수 있습니다.
+ *
+ * @see {@link https://axios-http.com/docs/instance Axios 공식 문서 - 인스턴스}
  *
  * @example
- * import axiosInstance from '@/utils/api/axiosInstance';
- * const response = await axiosInstance.get('/example');
+ * import axiosInstance from '@/apis/axiosInstance';
+ *
+ * axiosInstance.get('/users')
+ *   .then(response => console.log(response.data));
  */
 const axiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL,
 });
 
 export default axiosInstance;
