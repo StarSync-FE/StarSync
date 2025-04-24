@@ -61,8 +61,6 @@ const Chart = ({ data }) => {
   };
 
   const fetchMoreGirls = async (cursor) => {
-    console.log(cursor);
-    console.log(girlData.length);
     let updatedCursor = cursor;
     if (updatedCursor === 0 && girlData.length === 10) {
       updatedCursor = data.nextCursor;
@@ -149,6 +147,7 @@ const Chart = ({ data }) => {
                   <span>
                     <img src={boy.profilePicture} alt={boy.name} />
                     <span css={S.rankStyle}>{boy.rank}</span>
+                    <span>{boy.group}</span>
                     <span>{boy.name}</span>
                   </span>
                   <span>{boy.totalVotes}표</span>
