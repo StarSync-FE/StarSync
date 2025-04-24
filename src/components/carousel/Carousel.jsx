@@ -1,6 +1,4 @@
 import { Card } from '@/components/card';
-import { ENDPOINTS } from '@/constants/api';
-import { requestGet } from '@/utils/api';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './carousel.styles';
 
