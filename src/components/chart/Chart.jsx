@@ -6,6 +6,7 @@ import CustomButton from '../customButton';
 import * as S from './chart.styles';
 
 const getScreenSize = () => {
+  if (typeof window === 'undefined') return 'desktop';
   const width = window.innerWidth;
   if (width <= 375) return 'mobile';
   if (width <= 744) return 'tablet';
@@ -95,9 +96,7 @@ const Chart = () => {
     try {
       const response = await requestGet(
         `${ENDPOINTS.GET_CHART}?gender=female&pageSize=${PAGESIZE}&cursor=${cursor}`,
-        {
-          signal: controller?.signal ?? false,
-        },
+        controller ? { signal: controller.signal } : undefined,
       );
 
       const newData = response?.idols || [];
@@ -105,7 +104,7 @@ const Chart = () => {
 
       // nextCursor가 null인 경우 더 이상 데이터를 요청하지 않도록 설정
       if (cursor === null) {
-        console.log('더 이상 남자 아이돌 데이터가 없습니다.');
+        console.log('더 이상 여자 아이돌 데이터가 없습니다.');
         setFemaleCursor(null); // 더 이상 데이터를 요청하지 않도록 maleCursor를 null로 설정
         return; // 더 이상 요청하지 않음
       }
