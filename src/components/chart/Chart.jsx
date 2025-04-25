@@ -5,16 +5,38 @@ import { useEffect, useState } from 'react';
 import CustomButton from '../customButton';
 import * as S from './chart.styles';
 
-const Chart = ({ data }) => {
+const getScreenSize = () => {
+  const width = window.innerWidth;
+  if (width <= 375) return 'mobile';
+  if (width <= 744) return 'tablet';
+  return 'desktop';
+};
+
+const Chart = () => {
   const [selectedTab, setSelectedTab] = useState('females');
-  const [femaleData, setFemaleData] = useState(data.idols || []);
+  const [femaleData, setFemaleData] = useState([]);
   const [maleData, setMaleData] = useState([]);
   const [femaleCursor, setFemaleCursor] = useState(0);
   const [maleCursor, setMaleCursor] = useState(0);
   const [hasMoreMales, setHasMoreMales] = useState(true);
   const [hasMoreFemales, setHasMoreFemales] = useState(true);
+  const [screenSize, setScreenSize] = useState(getScreenSize());
 
-  const PAGESIZE = 10;
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize(getScreenSize());
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // 첫 렌더링 시 체크
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  console.log(screenSize);
+
+  const PAGESIZE = screenSize === 'desktop' ? 10 : 5;
 
   const handleTabClick = (e) => {
     setSelectedTab(e.currentTarget.value);
@@ -23,8 +45,9 @@ const Chart = ({ data }) => {
   // biome-ignore lint/correctness/useExhaustiveDependencies: Only need to reset and fetch data when tab changes
   useEffect(() => {
     if (selectedTab === 'females') {
-      setFemaleData(data.idols || []);
+      setFemaleData([]);
       setFemaleCursor(0);
+      fetchFemaleData(0);
       setHasMoreFemales(true);
     }
 
@@ -34,7 +57,7 @@ const Chart = ({ data }) => {
       fetchMaleData(0);
       setHasMoreMales(true);
     }
-  }, [selectedTab]);
+  }, [selectedTab, PAGESIZE]);
 
   const fetchMaleData = async (cursor) => {
     try {
@@ -61,24 +84,30 @@ const Chart = ({ data }) => {
     }
   };
 
-  const fetchMoreFemales = async (cursor) => {
+  const fetchFemaleData = async (cursor) => {
     let updatedCursor = cursor;
     if (updatedCursor === 0 && femaleData.length === 10) {
       updatedCursor = data.nextCursor;
     }
+    console.log(cursor);
     try {
       const response = await requestGet(
-        `${ENDPOINTS.GET_CHART}?gender=female&pageSize=${PAGESIZE}&cursor=${updatedCursor}`,
+        `${ENDPOINTS.GET_CHART}?gender=female&pageSize=${PAGESIZE}&cursor=${cursor}`,
       );
+
       const newData = response?.idols || [];
       const nextCursor = response?.nextCursor;
+
+      // nextCursor가 null인 경우 더 이상 데이터를 요청하지 않도록 설정
       if (cursor === null) {
-        console.log('더 이상 여자 아이돌 데이터가 없습니다.');
+        console.log('더 이상 남자 아이돌 데이터가 없습니다.');
         setFemaleCursor(null); // 더 이상 데이터를 요청하지 않도록 maleCursor를 null로 설정
         return; // 더 이상 요청하지 않음
       }
+
       setFemaleData((prevData) => [...prevData, ...newData]);
-      setFemaleCursor(nextCursor);
+      setFemaleCursor(nextCursor); // 새로운 커서를 설정하여 다음 데이터를 요청할 준비를 합니다.
+
       if (nextCursor === null) setHasMoreFemales(false);
     } catch (error) {
       console.error(error);
@@ -136,7 +165,7 @@ const Chart = ({ data }) => {
               <button
                 type="button"
                 css={S.moreButton}
-                onClick={() => fetchMoreFemales(femaleCursor)}
+                onClick={() => fetchFemaleData(femaleCursor)}
               >
                 더 보기
               </button>
