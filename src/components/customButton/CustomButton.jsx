@@ -64,6 +64,10 @@ const CustomButton = ({
     },
     vote: { width: '12.8rem', height: '3.2rem', fontSize: '1.3rem' },
     landing: { width: '47.7rem', height: '4.8rem', mobileWidth: '23rem', fontSize: '1.4rem' },
+    error: {
+      height: '4.2rem',
+      fontSize: '1.4rem',
+    },
   };
 
   const selectedSize = sizeMap[variant] || sizeMap.modal;
@@ -83,3 +87,6 @@ const CustomButton = ({
 };
 
 export default CustomButton;
+
+// 팀의 컨벤션이 공식 HTML/DOM 이벤트 핸들러 prop 이름(onClick 등)을 그대로 쓰지 않고, onButtonClick 같은 식으로 혼란 방지
+// onClick={onClick} -> onClick={onButtonClick} 같은걸로 수정 제안
