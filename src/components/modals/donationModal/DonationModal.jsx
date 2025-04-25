@@ -1,11 +1,51 @@
 import creditImg from '@/assets/images/credit.png';
 import CustomButton from '@/components/customButton';
+import { ENDPOINTS } from '@/constants/api';
+import { requestPut } from '@/utils/api';
+import { useRef, useState } from 'react';
 import * as S from './donationModal.styles';
 
-const DonationModal = ({ data, onClose }) => {
-  const handleClick = () => {
-    console.log('후원 성공');
-    onClose();
+const DonationModal = ({ data, credit, updateCredit, onClose }) => {
+  const [donateAmount, setDonateAmount] = useState('');
+  const [hasNoMoney, setHasNoMoney] = useState(false);
+  const [isDonating, setIsDonating] = useState(false);
+  const inputRef = useRef(null);
+  const prevCredit = credit;
+
+  const handleChageAmount = (e) => {
+    const amount = e.target.value;
+    if (Number.isNaN(Number(amount))) {
+      return;
+    }
+
+    if (prevCredit < amount) {
+      setHasNoMoney(true);
+      return;
+    }
+
+    setHasNoMoney(false);
+    setDonateAmount(amount);
+  };
+
+  const handleClick = async () => {
+    setIsDonating(true);
+    const donateAmountNum = Number(donateAmount);
+    try {
+      await requestPut(ENDPOINTS.CONTRIBUTE_DONATION(data.id), {
+        amount: donateAmountNum,
+      });
+      const Total = prevCredit - donateAmountNum;
+      localStorage.setItem('selectedCredit', Total);
+      updateCredit(Total);
+
+      alert(`후원 성공 기존 : ${prevCredit}  현재 : ${Total}`);
+      onClose();
+    } catch (e) {
+      console.error('후원 처리 중 오류 발생', e);
+      alert('후원 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
+    } finally {
+      setIsDonating(true);
+    }
   };
 
   return (
@@ -20,11 +60,23 @@ const DonationModal = ({ data, onClose }) => {
           <h3>{data.title}</h3>
         </div>
       </div>
-      <div css={S.inputContent}>
+      <div css={S.inputContent(hasNoMoney)}>
         <img src={creditImg} alt="크레딧" />
-        <input placeholder="크레딧 입력" />
+        <input
+          placeholder="크레딧 입력"
+          value={donateAmount}
+          onChange={handleChageAmount}
+          ref={inputRef}
+        />
+        {hasNoMoney && <p>갖고 있는 크레딧보다 더 많이 후원할 수 없어요</p>}
       </div>
-      <CustomButton onClick={handleClick}>후원하기</CustomButton>
+      <CustomButton
+        onClick={handleClick}
+        disabled={!inputRef.current?.value || isDonating}
+        style={{ marginTop: '1.2rem' }}
+      >
+        후원하기
+      </CustomButton>
     </div>
   );
 };
