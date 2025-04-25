@@ -10,7 +10,27 @@ export const myPageWrapper = css`
     margin: 3.2rem 0 5.7rem;
   }
 `;
+export const scrollStyle = css`
+  overflow-y: auto;
+  padding-right: 12px; 
 
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--orange) 0%, var(--pink) 100%);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(255 255 255 / 70%);
+  }
+`;
 export const horizonList = css`
   display: flex;
   overflow-x: scroll;
