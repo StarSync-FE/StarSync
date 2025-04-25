@@ -50,7 +50,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
       </div>
       <CustomButton onClick={handleCharge}>
         <img src={creditWhiteImg} alt="크레딧" css={S.imgStyle} />
-        <p css={S.chargeContent}>충전하기</p>
+        <span css={S.chargeContent}>충전하기</span>
       </CustomButton>
     </div>
   );
