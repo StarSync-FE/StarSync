@@ -1,50 +1,28 @@
 import { Card } from '@/components/card';
-import { ENDPOINTS } from '@/constants/api';
-import { requestGet } from '@/utils/api';
+import { getItemMetrics } from '@/utils/carousel';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './carousel.styles';
 
-const Carousel = ({ data: initialData, setModalType }) => {
-  const [data, setData] = useState(initialData);
+const Carousel = ({ data, setModalType }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
   const containerRef = useRef(null);
 
   // data.list의 길이를 사용
-  const donationsLength = data?.list?.length || 0;
+  const itemsLength = data?.list?.length || 0;
 
   const updateItemsPerView = useCallback(() => {
     if (!containerRef.current) return;
 
     const viewportWidth = containerRef.current.offsetWidth;
-    const isMobile = window.innerWidth < 768;
-    const itemWidth = isMobile ? 158 : 282;
-    const gap = 12;
+    const { itemWidth, gap } = getItemMetrics();
     const totalItemWidth = itemWidth + gap;
     const calculatedItemsPerView = Math.floor(viewportWidth / totalItemWidth);
 
     setItemsPerView(calculatedItemsPerView);
-    const newMaxIndex = Math.max(0, donationsLength - calculatedItemsPerView);
+    const newMaxIndex = Math.max(0, itemsLength - calculatedItemsPerView);
     setCurrentIndex((prev) => Math.min(prev, newMaxIndex));
-  }, [donationsLength]);
-
-  useEffect(() => {
-    const fetchLatestDonations = async () => {
-      try {
-        const response = await requestGet(ENDPOINTS.GET_DONATIONS);
-        if (response?.list) {
-          setData(response);
-        }
-      } catch (error) {
-        console.error('캐러셀 업데이트 실패', error);
-      }
-    };
-    setData(initialData);
-
-    const intervalId = setInterval(fetchLatestDonations, 5000);
-
-    return () => clearInterval(intervalId);
-  }, [initialData]);
+  }, [itemsLength]);
 
   useEffect(() => {
     updateItemsPerView();
@@ -52,7 +30,7 @@ const Carousel = ({ data: initialData, setModalType }) => {
     return () => window.removeEventListener('resize', updateItemsPerView);
   }, [updateItemsPerView]);
 
-  const maxIndex = Math.max(0, donationsLength - itemsPerView);
+  const maxIndex = Math.max(0, itemsLength - itemsPerView);
 
   const handleNext = () => {
     setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
@@ -63,9 +41,7 @@ const Carousel = ({ data: initialData, setModalType }) => {
   };
 
   const getSlideOffset = () => {
-    const isMobile = window.innerWidth < 768;
-    const itemWidth = isMobile ? 158 : 282;
-    const gap = 12;
+    const { itemWidth, gap } = getItemMetrics();
     return currentIndex * (itemWidth + gap);
   };
 
@@ -93,11 +69,15 @@ const Carousel = ({ data: initialData, setModalType }) => {
               '--slide-offset': `-${getSlideOffset()}px`,
             }}
           >
-            {data?.list?.map((item) => (
-              <div key={item.id} css={S.carouselItem}>
-                <Card data={item} setModalType={setModalType} />
-              </div>
-            ))}
+            {data?.list?.length > 0 ? (
+              data.list.map((item) => (
+                <div key={item.id} css={S.carouselItem}>
+                  <Card data={item} setModalType={setModalType} />
+                </div>
+              ))
+            ) : (
+              <div>표시할 항목이 없습니다</div>
+            )}
           </div>
         </div>
 
