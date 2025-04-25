@@ -3,6 +3,7 @@ import CustomButton from '@/components/customButton';
 import RadioButton from '@/components/radioButton/RadioButton';
 import { ENDPOINTS } from '@/constants/api';
 import { requestGet, requestPost } from '@/utils/api';
+import { addCommas } from '@/utils/format';
 import { useEffect, useState } from 'react';
 import * as S from './voteModal.styles';
 
@@ -72,7 +73,7 @@ const VoteModal = ({ gender, updateCredit }) => {
                       <span css={S.rankNumber}>{idol.rank}</span>
                       <div css={S.voteBox}>
                         <p css={S.idolName}>{idol.name}</p>
-                        <p css={S.votes}>{idol.totalVotes}표</p>
+                        <p css={S.votes}>{addCommas(idol.totalVotes)}표</p>
                       </div>
                     </div>
                   </RadioButton>
