@@ -1,25 +1,30 @@
 import creditImg from '@/assets/images/credit.png';
-import RadioButton from '@/components/radioButton';
-import { mockData } from '@/data/mockData';
+import CustomButton from '@/components/customButton';
 import * as S from './donationModal.styles';
 
-const DonationModal = ({ onClose }) => {
+const DonationModal = ({ data, onClose }) => {
+  const handleClick = () => {
+    console.log('후원 성공');
+    onClose();
+  };
+
   return (
     <div css={S.modalContent}>
-      <h2>크레딧 충전하기</h2>
-      <div css={S.radioButtons}>
-        {mockData.prices.map((price) => (
-          <RadioButton key={price.id} name="charge" priceLabel={price.name} isSelected={false}>
-            <div css={S.radioButtonContent}>
-              <img src={credit} alt="크레딧" />
-              <span>{price.value}</span>
-            </div>
-          </RadioButton>
-        ))}
+      <h2>후원하기</h2>
+      <div css={S.wrapper}>
+        <figure>
+          <img src={data.idol.profilePicture} alt={data.idol.name} />
+        </figure>
+        <div css={S.titleContent}>
+          <p>{data.subtitle}</p>
+          <h3>{data.title}</h3>
+        </div>
       </div>
-      <button type="button" onClick={onClose}>
-        충전하기
-      </button>
+      <div css={S.inputContent}>
+        <img src={creditImg} alt="크레딧" />
+        <input placeholder="크레딧 입력" />
+      </div>
+      <CustomButton onClick={handleClick}>후원하기</CustomButton>
     </div>
   );
 };
