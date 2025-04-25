@@ -61,8 +61,8 @@ export const idolListButton = css`
     font-size: 1rem;
     text-align: center;
     white-space: nowrap;
-    color: white;
-    background-color: black;
+    color: var(--white);
+    background-color: var(--black-deep);
 `;
 
 export const activeButton = css`
@@ -89,18 +89,24 @@ export const idolList = css`
     span {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.5rem;
     }
 
     img {
       width: 4rem;
       height: 4rem;
-      border: 2px solid var(--white);
+      margin-right: .5rem;
+      border: 2px solid var(--black);
+      border-radius: 50%;
       box-shadow: 0 0 2px 1.6px var(--orange);
       box-shadow: 0 0 0 0.1rem #F96D69;
       object-fit: cover;
     }
   }
+`;
+
+export const rankStyle = css`
+  color: var(--orange);
 `;
 
 export const moreButton = css`
