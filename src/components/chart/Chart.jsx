@@ -5,8 +5,7 @@ import { useEffect, useState } from 'react';
 import CustomButton from '../customButton';
 import * as S from './chart.styles';
 
-const Chart = ({ data }) => {
-  const [selectedTab, setSelectedTab] = useState('females');
+const Chart = ({ data, setModalType, selectedTab, setSelectedTab }) => {
   const [femaleData, setFemaleData] = useState(data.idols || []);
   const [maleData, setMaleData] = useState([]);
   const [femaleCursor, setFemaleCursor] = useState(0);
@@ -88,7 +87,7 @@ const Chart = ({ data }) => {
     <div>
       <div css={S.chartSectionHeader}>
         <div>이달의 차트</div>
-        <CustomButton>
+        <CustomButton onClick={() => setModalType('vote')}>
           <div>
             <img src={chartImg} alt="차트" />
             <span>차트 투표하기</span>
