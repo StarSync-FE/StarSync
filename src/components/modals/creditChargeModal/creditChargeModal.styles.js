@@ -47,11 +47,11 @@ export const radioButtons = css`
         margin-right: 2.3rem;
       }
     }
-`;
 
-export const activeStyle = (isChecked) => css`
-  border: 1px solid var(--orange) !important;
-  color: var(--gray);
+    label:has(input[type="radio"]:checked) { 
+      border-color: var(--orange); 
+      color: var(--gray);
+    } 
 `;
 
 export const radioButtonContent = css`
