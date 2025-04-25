@@ -24,7 +24,6 @@ export const alertWrapper = css`
     height: 6rem;
     margin: auto;
     padding: 2.7rem ;
-    border: 1px solid var(--orange);
     border-radius: 3.6rem;
     color: #5C4D4D;
     background-color: #FFF0F0;
