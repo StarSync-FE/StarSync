@@ -34,7 +34,6 @@ const Chart = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-  console.log(screenSize);
 
   const PAGESIZE = screenSize === 'desktop' ? 10 : 5;
 
@@ -42,7 +41,6 @@ const Chart = () => {
     setSelectedTab(e.currentTarget.value);
   };
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: Only need to reset and fetch data when tab changes
   useEffect(() => {
     if (selectedTab === 'females') {
       setFemaleData([]);
@@ -57,7 +55,7 @@ const Chart = () => {
       fetchMaleData(0);
       setHasMoreMales(true);
     }
-  }, [selectedTab, PAGESIZE]);
+  }, [selectedTab]);
 
   const fetchMaleData = async (cursor) => {
     try {
