@@ -20,7 +20,14 @@ const ListModal = ({ modalType, setModalType, credit, updateCredit, gender, dona
       case 'creditLack':
         return <CreditLackModal />;
       case 'donation':
-        return <DonationModal data={donations} onClose={onCloseModal} />;
+        return (
+          <DonationModal
+            data={donations}
+            credit={credit}
+            updateCredit={updateCredit}
+            onClose={onCloseModal}
+          />
+        );
       case 'vote':
         return <VoteModal gender={gender} updateCredit={updateCredit} />;
       default:
