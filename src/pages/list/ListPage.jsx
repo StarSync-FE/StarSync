@@ -13,10 +13,6 @@ export const wrapper = css`
   font-family: Pretendard, sans-serif;
 `;
 
-export const carousel = css`
-  margin: 10rem 0;
-`;
-
 const ListPage = () => {
   const [modalType, setModalType] = useState(null); // 모달 타입 상태 관리
   const [credit, setCredit] = useState(0); // 크레딧 상태 관리
