@@ -13,13 +13,15 @@ const VoteModal = ({ gender, updateCredit }) => {
   const [checkedItem, setCheckedItem] = useState();
   const [showAlert, setShowAlert] = useState(false);
   const [alertContent, setAlertContent] = useState('');
+  const [alertType, setAlertType] = useState('warning');
   const loadData = async (gender) => {
     const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${gender}&pageSize=30&`;
     const response = await requestGet(chartUrl);
     return response;
   };
-  const triggerAlert = (message) => {
+  const triggerAlert = (message, type = 'warning') => {
     setAlertContent(message);
+    setAlertType(type);
     setShowAlert(true);
     setTimeout(() => {
       setShowAlert(false);
@@ -35,15 +37,16 @@ const VoteModal = ({ gender, updateCredit }) => {
         if (response) {
           localStorage.setItem('selectedCredit', Number(getCredit) - 1000);
           updateCredit(Number(getCredit) - 1000);
+          triggerAlert('투표에 성공했습니다', 'success');
         } else {
-          triggerAlert('투표에 실패했습니다');
+          triggerAlert('투표에 실패했습니다', 'warning');
         }
       } else {
         alert('크레딧이 부족합니다');
       }
     } catch (err) {
       console.error('투표 중 오류 발생:', err);
-      triggerAlert('투표 처리 중 오류가 발생했습니다');
+      triggerAlert('투표 중 오류 발생', 'warning');
     }
     throw Error;
   };
@@ -103,7 +106,7 @@ const VoteModal = ({ gender, updateCredit }) => {
       <p css={S.guideQuote}>
         투표하는 데 <b css={S.highlightText}>1000 크레딧</b>이 소요됩니다.
       </p>
-      {showAlert && <Alert content={alertContent} />}
+      {showAlert && <Alert content={alertContent} type={alertType} />}
     </div>
   );
 };
