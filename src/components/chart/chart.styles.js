@@ -73,6 +73,10 @@ export const idolList = css`
   margin-top: 1rem;
   padding-bottom: 0.5rem;
 
+  ${media({
+    gridTemplateColumns: ['1fr', '1fr', '1fr 1fr', '1fr 1fr'],
+  })}
+
   li {
     display: flex;
     justify-content: space-between;
