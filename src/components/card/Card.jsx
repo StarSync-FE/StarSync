@@ -4,7 +4,7 @@ import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/form
 import { useEffect, useState } from 'react';
 import * as S from './card.styles';
 
-const Card = ({ data, setModalType }) => {
+const Card = ({ data, setModalType, setSelectedIndex, index }) => {
   const [isActive, setIsActive] = useState(false);
   const daysLeft = getDaysRemaining(data.deadline);
   const percent = `${getDonationPercentage(data.targetDonation, data.receivedDonations)}%`;
@@ -15,6 +15,7 @@ const Card = ({ data, setModalType }) => {
   }, [isCompleted]);
 
   const handleClick = () => {
+    setSelectedIndex(index);
     setModalType('donation');
   };
 

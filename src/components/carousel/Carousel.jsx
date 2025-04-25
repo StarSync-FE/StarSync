@@ -3,7 +3,7 @@ import { getItemMetrics } from '@/utils/carousel';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './carousel.styles';
 
-const Carousel = ({ data, setModalType }) => {
+const Carousel = ({ data, setModalType, setSelectedIndex }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
   const containerRef = useRef(null);
@@ -70,9 +70,14 @@ const Carousel = ({ data, setModalType }) => {
             }}
           >
             {data?.list?.length > 0 ? (
-              data.list.map((item) => (
+              data.list.map((item, index) => (
                 <div key={item.id} css={S.carouselItem}>
-                  <Card data={item} setModalType={setModalType} />
+                  <Card
+                    data={item}
+                    setModalType={setModalType}
+                    setSelectedIndex={setSelectedIndex}
+                    index={index}
+                  />
                 </div>
               ))
             ) : (
