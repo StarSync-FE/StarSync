@@ -1,7 +1,6 @@
 import nextIcon from '@/assets/icons/next-icon.png';
 import addIcon from '@/assets/icons/plus-icon.png';
 import prevIcon from '@/assets/icons/prev-icon.png';
-
 import Avatar from '@/components/avatar';
 import AvatarButton from '@/components/avatarButton';
 import CustomButton from '@/components/customButton';
@@ -9,9 +8,9 @@ import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import * as S from './myPage.styles';
 
-const Button = ({ iconImage, styles }) => {
+const Button = ({ iconImage, styles, goToPage }) => {
   return (
-    <button type="button" css={[S.arrowButton, styles]}>
+    <button type="button" css={[S.arrowButton, styles]} onClick={goToPage}>
       <img src={iconImage === 'prev' ? prevIcon : nextIcon} alt="" />
     </button>
   );
@@ -21,18 +20,37 @@ const MyPage = () => {
   const { list, nextCursor } = useLoaderData();
   const [allIdols, setAllIdols] = useState(list ?? []);
   const [myIdol, setMyIdol] = useState([]);
-  const [selectedProfiles, setSelectedProfiles] = useState([]);
+  const [selectedProfiles, setSelectedProfiles] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 16;
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const currentIdols = allIdols.slice(startIndex, endIndex);
+  const maxPage = Math.ceil(allIdols.length / pageSize);
+
+  useEffect(() => {
+    const savedMyIdols = localStorage.getItem('myIdol');
+    const savedAllIdols = localStorage.getItem('allIdols');
+
+    const parsedMyIdols = savedMyIdols ? JSON.parse(savedMyIdols) : [];
+    const myIdolIds = new Set(parsedMyIdols.map((idol) => String(idol.id)));
+    setMyIdol(parsedMyIdols);
+
+    const originalAllIdols = list || [];
+    const filtered = originalAllIdols.filter((idol) => !myIdolIds.has(String(idol.id)));
+
+    setAllIdols(filtered);
+    localStorage.setItem('allIdols', JSON.stringify(filtered));
+  }, [list]);
 
   const toggleProfile = (idol) => {
-    setSelectedProfiles((prev) => {
-      const next = {
-        ...prev,
-        [idol.id]: !prev[idol.id],
-      };
-      console.log('선택 상태:', next);
-      return next;
-    });
+    setSelectedProfiles((prev) => ({
+      ...prev,
+      [idol.id]: !prev[idol.id],
+    }));
   };
+
   const addMyIdols = () => {
     const selectedIds = Object.entries(selectedProfiles)
       .filter(([_, isSelected]) => isSelected)
@@ -40,33 +58,48 @@ const MyPage = () => {
 
     const selectedIdols = allIdols.filter((idol) => selectedIds.includes(String(idol.id)));
 
-    // 중복 제거해서 myIdol에 추가
     setMyIdol((prev) => {
       const existingIds = new Set(prev.map((i) => String(i.id)));
       const newAdditions = selectedIdols.filter((idol) => !existingIds.has(String(idol.id)));
-      return [...prev, ...newAdditions];
+      const updated = [...prev, ...newAdditions];
+      localStorage.setItem('myIdol', JSON.stringify(updated));
+      return updated;
     });
 
-    // 선택 상태 초기화
     setSelectedProfiles({});
 
-    // 전체 아이돌 목록에서 제거
-    setAllIdols((prev) => prev.filter((idol) => !selectedIds.includes(String(idol.id))));
+    setAllIdols((prev) => {
+      const updated = prev.filter((idol) => !selectedIds.includes(String(idol.id)));
+      localStorage.setItem('allIdols', JSON.stringify(updated));
+      return updated;
+    });
   };
-  const removeMyIdol = (idolId) => {
-    const removed = myIdol.find((idol) => idol.id === idolId);
-    if (!removed) return;
 
-    setMyIdol((prev) => prev.filter((idol) => idol.id !== idolId));
+  const removeMyIdol = (id) => {
+    setMyIdol((prev) => {
+      const updated = prev.filter((idol) => idol.id !== id);
+      const removed = prev.find((idol) => idol.id === id);
+      localStorage.setItem('myIdol', JSON.stringify(updated));
+
+      if (removed) {
+        setAllIdols((prevAll) => {
+          const withoutRemoved = prevAll.filter((idol) => idol.id !== removed.id);
+          const updatedAll = [...withoutRemoved, removed];
+          localStorage.setItem('allIdols', JSON.stringify(updatedAll));
+          return updatedAll;
+        });
+      }
+
+      return updated;
+    });
 
     setSelectedProfiles((prev) => {
       const next = { ...prev };
-      delete next[idolId];
+      delete next[id];
       return next;
     });
-
-    setAllIdols((prev) => [...prev, removed]);
   };
+
   return (
     <div css={S.myPageWrapper}>
       <h2 css={S.title}>내가 관심있는 아이돌</h2>
@@ -81,11 +114,20 @@ const MyPage = () => {
           );
         })}
       </section>
+
       <h2 css={S.title}>관심 있는 아이돌을 추가해보세요.</h2>
-      <Button iconImage={'prev'} styles={S.prev} />
       <div css={S.idolListWrapper}>
+        <Button
+          iconImage={'prev'}
+          styles={S.prev}
+          goToPage={() => {
+            if (currentPage > 1) {
+              setCurrentPage((prev) => prev - 1);
+            }
+          }}
+        />
         <section css={S.idolList}>
-          {allIdols.map((idol) => {
+          {currentIdols.map((idol) => {
             return (
               <div key={idol.id} css={S.allProfileSize}>
                 <Avatar
@@ -99,12 +141,22 @@ const MyPage = () => {
             );
           })}
         </section>
+        <Button
+          iconImage={'next'}
+          styles={S.next}
+          goToPage={() => {
+            if (currentPage < maxPage) {
+              setCurrentPage((prev) => prev + 1);
+            }
+          }}
+        />
+      </div>
+      <div css={S.customButtonWrapper}>
         <CustomButton type="button" isRound={true} style={S.customButtonStyle} onClick={addMyIdols}>
           <img src={addIcon} alt="addIcon" css={S.buttonIcon} />
           추가하기
         </CustomButton>
       </div>
-      <Button iconImage={'next'} styles={S.next} />
     </div>
   );
 };

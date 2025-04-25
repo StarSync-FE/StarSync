@@ -41,7 +41,7 @@ const ListPage = () => {
     <div css={wrapper}>
       <Charge credit={credit} setModalType={setModalType} /> {/* Charge에 credit 전달 */}
       <div css={carousel}>캐러셀</div>
-      <Chart />
+      <Chart data={chart} />
       <ListModal
         modalType={modalType}
         setModalType={setModalType}

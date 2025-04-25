@@ -1,6 +1,6 @@
 import credit from '@/assets/images/credit.png';
-import mococoImg from '@/assets/images/mococo.jpg';
 import stupid from '@/assets/images/stupid.png';
+
 //mockData
 export const mockData = [
   {
@@ -210,6 +210,7 @@ export const prices = [
   { name: 'charge', value: '500', id: 2 },
   { name: 'charge', value: '1000', id: 3 },
 ];
+
 export const donations = [
   {
     id: 671,
