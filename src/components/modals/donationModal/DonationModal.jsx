@@ -14,7 +14,9 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
 
   const handleChageAmount = (e) => {
     const amount = e.target.value;
-    if (Number.isNaN(Number(amount))) {
+    const code = e.key;
+    console.log(code);
+    if (amount.startsWith('0') || Number.isNaN(Number(amount))) {
       return;
     }
 
@@ -27,9 +29,16 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
     setDonateAmount(amount);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === '.') {
+      e.preventDefault();
+    }
+  };
+
   const handleClick = async () => {
-    setIsDonating(true);
     const donateAmountNum = Number(donateAmount);
+    setIsDonating(true);
+
     try {
       await requestPut(ENDPOINTS.CONTRIBUTE_DONATION(data.id), {
         amount: donateAmountNum,
@@ -43,8 +52,6 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
     } catch (e) {
       console.error('후원 처리 중 오류 발생', e);
       alert('후원 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
-    } finally {
-      setIsDonating(true);
     }
   };
 
@@ -66,6 +73,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
           placeholder="크레딧 입력"
           value={donateAmount}
           onChange={handleChageAmount}
+          onKeyDown={handleKeyDown}
           ref={inputRef}
         />
         {hasNoMoney && <p>갖고 있는 크레딧보다 더 많이 후원할 수 없어요</p>}
