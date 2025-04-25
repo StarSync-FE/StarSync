@@ -1,1 +1,1 @@
-export { default as ITEM_DIMENSIONS } from './carouselConstants';
+export { default as CAROUSEL_CONSTANTS } from './carouselConstants';
