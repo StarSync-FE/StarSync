@@ -19,7 +19,7 @@ const VoteModal = ({ gender, updateCredit }) => {
     const voteUrl = `${ENDPOINTS.REGISTER_VOTE}`;
     const getCredit = localStorage.getItem('selectedCredit');
     try {
-      if (getCredit > 1000) {
+      if (Number(getCredit) > 1000) {
         const response = await requestPost(voteUrl, { idolId: idolId });
         if (response) {
           localStorage.setItem('selectedCredit', Number(getCredit) - 1000);
@@ -31,10 +31,10 @@ const VoteModal = ({ gender, updateCredit }) => {
         alert('크레딧이 부족합니다');
       }
     } catch (err) {
-      console.log('error발생');
+      console.error('투표 중 오류 발생:', err);
+      alert('투표 처리 중 오류가 발생했습니다');
     }
   };
-  console.log(localStorage.getItem('selectedCredit'));
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (!gender) return;
