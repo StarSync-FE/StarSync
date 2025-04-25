@@ -1,3 +1,4 @@
+import { Carousel } from '@/components/carousel';
 import { Charge } from '@/components/charge';
 import { Chart } from '@/components/chart';
 import { ListModal } from '@/components/list';
@@ -10,10 +11,6 @@ export const wrapper = css`
   background-color: var(--black-full);
   color: var(--white-full);
   font-family: Pretendard, sans-serif;
-`;
-
-export const carousel = css`
-  margin: 10rem 0;
 `;
 
 const ListPage = () => {
@@ -40,7 +37,7 @@ const ListPage = () => {
   return (
     <div css={wrapper}>
       <Charge credit={credit} setModalType={setModalType} /> {/* Charge에 credit 전달 */}
-      <div css={carousel}>캐러셀</div>
+      <Carousel data={donations} setModalType={setModalType} />
       <Chart data={chart} />
       <ListModal
         modalType={modalType}
