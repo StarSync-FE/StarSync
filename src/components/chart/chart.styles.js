@@ -1,3 +1,4 @@
+import media from '@/styles/responsive';
 import { css } from '@emotion/react';
 
 export const chartSectionHeader = css`
@@ -43,10 +44,6 @@ export const tabButtonWrapper = css`
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-
-  button {
-    padding: 1.5rem 15rem;
-  }
 `;
 
 export const idolListButton = css`
@@ -60,7 +57,6 @@ export const idolListButton = css`
     border-radius: 3.2px;
     font-size: 1rem;
     text-align: center;
-    white-space: nowrap;
     color: var(--white);
     background-color: var(--black-deep);
 `;
@@ -76,6 +72,10 @@ export const idolList = css`
   grid-template-columns: 1fr 1fr;
   margin-top: 1rem;
   padding-bottom: 0.5rem;
+
+  ${media({
+    gridTemplateColumns: ['1fr', '1fr', '1fr 1fr', '1fr 1fr'],
+  })}
 
   li {
     display: flex;

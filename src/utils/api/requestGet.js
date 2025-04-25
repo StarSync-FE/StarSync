@@ -12,8 +12,8 @@ import axiosInstance from './axiosInstance';
  * @example
  * const data = await requestGet('/api/idols');
  */
-const requestGet = async (endpoint) => {
-  const response = await axiosInstance.get(endpoint);
+const requestGet = async (endpoint, options = {}) => {
+  const response = await axiosInstance.get(endpoint, options);
   return response.data;
 };
 

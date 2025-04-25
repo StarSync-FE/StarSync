@@ -6,7 +6,7 @@ export const modalContent = css`
   gap: 1rem;
   width: 32.7rem;
   height: 37.2rem;
-  padding: 24px 16px 0;
+  padding: 2.4rem 1.6rem;
 
   h2 {
     margin: 0.2rem 0 1rem;
@@ -35,23 +35,23 @@ export const radioButtons = css`
     padding: 0.4rem;
     font-size: 1rem;
     cursor: pointer;
-
-    label {
-      width: 29rem;
-      height: 6.2rem;
-      border: 1px solid var(--white);
-      border-radius: 8px;
-      transition: border-color 0.3s ease;
-
-      input {
-        margin-right: 2.3rem;
-      }
-    }
 `;
 
-export const activeStyle = (isChecked) => css`
-  border: 1px solid var(--orange) !important;
-  color: var(--gray);
+export const buttonStyle = css`
+    width: 29rem;
+    height: 6.2rem;
+    border: 1px solid var(--white);
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+    
+    input {
+        margin-right: 2.3rem;
+    }
+
+    &:has(input[type="radio"]:checked) { 
+      border-color: var(--orange); 
+      color: var(--gray);
+    } 
 `;
 
 export const radioButtonContent = css`
@@ -72,16 +72,13 @@ export const radioButtonContent = css`
   }
 `;
 
-export const buttonStyle = css` 
+export const imgStyle = css`
+  width: 2.3rem;
+  height: 2.4rem;
+`;
 
-  img {
-    width: 2.3rem;
-    height: 2.4rem;
-  }
-  
-  p {
-    margin-right: 1.2rem;
-    font-size: 1.4rem;
-    font-weight: 700;
-  }
+export const ChargeContent = css` 
+  margin-right: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 700;
 `;
