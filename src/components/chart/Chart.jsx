@@ -22,6 +22,8 @@ const Chart = () => {
   const [hasMoreMales, setHasMoreMales] = useState(true);
   const [hasMoreFemales, setHasMoreFemales] = useState(true);
   const [screenSize, setScreenSize] = useState(getScreenSize());
+  const [isFemaleLoading, setIsFemaleLoading] = useState(false);
+  const [isMaleLoading, setIsMaleLoading] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -69,6 +71,7 @@ const Chart = () => {
 
   const fetchMaleData = async (cursor) => {
     try {
+      setIsMaleLoading(true); // 로딩 시작
       const response = await requestGet(
         `${ENDPOINTS.GET_CHART}?gender=male&pageSize=${PAGESIZE}&cursor=${cursor}`,
       );
@@ -89,11 +92,14 @@ const Chart = () => {
       if (nextCursor === null) setHasMoreMales(false);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsMaleLoading(false); // 로딩 끝
     }
   };
 
   const fetchFemaleData = async (cursor, controller) => {
     try {
+      setIsFemaleLoading(true); // 로딩 시작
       const response = await requestGet(
         `${ENDPOINTS.GET_CHART}?gender=female&pageSize=${PAGESIZE}&cursor=${cursor}`,
         controller ? { signal: controller.signal } : undefined,
@@ -102,19 +108,20 @@ const Chart = () => {
       const newData = response?.idols || [];
       const nextCursor = response?.nextCursor;
 
-      // nextCursor가 null인 경우 더 이상 데이터를 요청하지 않도록 설정
       if (cursor === null) {
         console.log('더 이상 여자 아이돌 데이터가 없습니다.');
-        setFemaleCursor(null); // 더 이상 데이터를 요청하지 않도록 maleCursor를 null로 설정
-        return; // 더 이상 요청하지 않음
+        setFemaleCursor(null);
+        return;
       }
 
       setFemaleData((prevData) => [...prevData, ...newData]);
-      setFemaleCursor(nextCursor); // 새로운 커서를 설정하여 다음 데이터를 요청할 준비를 합니다.
+      setFemaleCursor(nextCursor);
 
       if (nextCursor === null) setHasMoreFemales(false);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsFemaleLoading(false); // 로딩 끝
     }
   };
 
@@ -170,13 +177,13 @@ const Chart = () => {
                 type="button"
                 css={S.moreButton}
                 onClick={() => fetchFemaleData(femaleCursor)}
+                disabled={isFemaleLoading} // 로딩 중이면 클릭 불가
               >
-                더 보기
+                {isFemaleLoading ? '로딩 중...' : '더 보기'}
               </button>
             )}
           </>
         )}
-
         {selectedTab === 'males' && (
           <>
             <ul css={S.idolList}>
@@ -193,8 +200,13 @@ const Chart = () => {
               ))}
             </ul>
             {hasMoreMales && (
-              <button type="button" css={S.moreButton} onClick={() => fetchMaleData(maleCursor)}>
-                더 보기
+              <button
+                type="button"
+                css={S.moreButton}
+                onClick={() => fetchMaleData(maleCursor)}
+                disabled={isMaleLoading} // 로딩 중이면 클릭 불가
+              >
+                {isMaleLoading ? '로딩 중...' : '더 보기'}
               </button>
             )}
           </>
