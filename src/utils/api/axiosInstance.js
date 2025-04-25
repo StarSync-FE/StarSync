@@ -33,9 +33,9 @@ const RETRY_INTERVAL_MS = 1000;
  * - 최초 요청 시점 기준으로 최대 30초까지 재시도
  * - 재시도 간격: 1초
  * - 경과 시간 및 재시도 횟수는 콘솔에 로그 출력
- * - 30초 초과 시 UI_ERRORS.SERVER_RETRY_TIMEOUT 메시지 alert 출력 후 실패 처리
+ * - 30초 초과 시 UI_ERRORS.NETWORK.TIMEOUT 메시지 alert 출력 후 실패 처리
  *
- * @see UI_ERRORS.SERVER_RETRY_TIMEOUT
+ * @see UI_ERRORS.NETWORK.TIMEOUT
  * @see https://axios-http.com/docs/interceptors
  */
 axiosInstance.interceptors.response.use(
@@ -58,7 +58,7 @@ axiosInstance.interceptors.response.use(
     // 시간 초과 시 종료
     if (elapsed > RETRY_TIMEOUT_MS) {
       console.error('🚫 재시도 시간 초과, 요청 중단');
-      alert(UI_ERRORS.SERVER_RETRY_TIMEOUT);
+      alert(UI_ERRORS.NETWORK.TIMEOUT);
       return Promise.reject(error);
     }
 

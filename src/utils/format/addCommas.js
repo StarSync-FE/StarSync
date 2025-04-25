@@ -18,7 +18,7 @@ const addCommas = (num) => {
   if (num === null || num === undefined) return '0';
   if (num === 0) return '0';
   if (typeof num !== 'number') {
-    throw new Error(UI_ERRORS.REQUIRE_NUMBER);
+    throw new Error(UI_ERRORS.INPUT.REQUIRE_NUMBER);
   }
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };

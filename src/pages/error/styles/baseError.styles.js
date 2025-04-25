@@ -74,9 +74,13 @@ export const textStyle = (fontColor, glowAnimation) => css`
   }
 
   p {
+    margin-bottom: 3rem;
     font-size: 1.8rem;
     font-weight: 400;
+    line-height: 3rem;
+    white-space: pre-line;
     color: ${fontColor};
     ${media({ fontSize: ['1.8rem', '2rem', '2.4rem', '2.8rem', '3rem'] })}
+    ${media({ whiteSpace: ['pre-line', 'pre-line', 'normal', 'normal', 'normal'] })}
   }
 `;

@@ -1,6 +1,6 @@
-import { ErrorBoundary } from '@/components/error';
-import { BASE_URL, ENDPOINTS } from '@/constants/api';
-import { CONSOLE_ERRORS } from '@/constants/errors';
+import { ApiErrorBoundary, GlobalErrorBoundary, RenderErrorBoundary } from '@/components/error';
+import { ENDPOINTS } from '@/constants/api';
+import { THROWN_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import { requestGet } from '@/utils/api';
 import { createBrowserRouter } from 'react-router-dom';
@@ -12,22 +12,33 @@ const router = createBrowserRouter([
       const { default: Root } = await import('@/Root.jsx');
       return { Component: Root };
     },
-    errorElement: <ErrorBoundary />,
+    errorElement: <GlobalErrorBoundary />,
     children: [
       {
         index: true,
 
         lazy: async () => {
-          const { LandingPage } = await import('@/pages/landing');
-          return { Component: LandingPage };
+          const { default: LandingPage } = await import('@/pages/landing/LandingPage');
+          return {
+            Component: () => (
+              <RenderErrorBoundary>
+                <LandingPage />
+              </RenderErrorBoundary>
+            ),
+          };
         },
       },
       {
         path: 'list',
+        errorElement: <ApiErrorBoundary />,
         lazy: async () => {
           const { default: ListPage } = await import('@/pages/list/ListPage');
           return {
-            Component: ListPage,
+            Component: () => (
+              <RenderErrorBoundary>
+                <ListPage />
+              </RenderErrorBoundary>
+            ),
             loader: async () => {
               const LIMIT = 10;
               const CURSOR = 0;
@@ -61,10 +72,25 @@ const router = createBrowserRouter([
                 console.error('❌ chart 에러:', err?.response?.data || err.message);
               }
 
+              // 404: 정상 응답이지만 빈 배열
+              if (
+                Array.isArray(idols) &&
+                idols.length === 0 &&
+                Array.isArray(donations) &&
+                donations.length === 0 &&
+                Array.isArray(chart) &&
+                chart.length === 0
+              ) {
+                throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
+                  status: STATUS_CODES.NOT_FOUND,
+                });
+              }
+
+              // 500: 요청 자체 실패 (undefined)
               if (!idols || !donations || !chart) {
-                throw new Response(CONSOLE_ERRORS.FETCH_FAILED, {
+                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
                   status: STATUS_CODES.SERVER_ERROR,
-                }); //데이터 로딩 자체가 실패한 상태니까 사용자 입장에서는 "앱 내부의 로직 문제나 서버 이상"처럼 보이는 상황이라 500으로 던짐
+                });
               }
 
               return { idols, donations, chart };
@@ -74,10 +100,15 @@ const router = createBrowserRouter([
       },
       {
         path: 'mypage',
+        errorElement: <ApiErrorBoundary />,
         lazy: async () => {
           const { default: MyPage } = await import('@/pages/my/MyPage');
           return {
-            Component: MyPage,
+            Component: () => (
+              <RenderErrorBoundary>
+                <MyPage />
+              </RenderErrorBoundary>
+            ),
             loader: async () => {
               const LIMIT = 30;
               const CURSOR = 0;
@@ -92,8 +123,14 @@ const router = createBrowserRouter([
                 console.error('❌ idols 에러:', err?.response?.data || err.message);
               }
 
+              if (Array.isArray(idols) && idols.length === 0) {
+                throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
+                  status: STATUS_CODES.NOT_FOUND,
+                });
+              }
+
               if (!idols) {
-                throw new Response(CONSOLE_ERRORS.FETCH_FAILED, {
+                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
                   status: STATUS_CODES.SERVER_ERROR,
                 });
               }
@@ -104,11 +141,37 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: 'test-error',
+        path: 'test-render-error',
+        lazy: async () => {
+          const { default: TestRenderError } = await import('@/components/test/TestRenderError');
+          return {
+            Component: () => (
+              <RenderErrorBoundary>
+                <TestRenderError />
+              </RenderErrorBoundary>
+            ),
+          };
+        },
+      },
+      {
+        path: 'test-api-error',
+        errorElement: <ApiErrorBoundary />,
         lazy: async () => ({
-          Component: () => <div>서버 에러 테스트 페이지입니다</div>,
+          Component: () => <div>API 에러 테스트 페이지입니다</div>,
           loader: async () => {
-            throw new Response(CONSOLE_ERRORS.SERVER_ERROR, {
+            throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
+              status: STATUS_CODES.NOT_FOUND,
+            });
+          },
+        }),
+      },
+
+      {
+        path: 'test-global-error',
+        lazy: async () => ({
+          Component: () => <div>글로벌 서버 에러 테스트 페이지입니다</div>,
+          loader: async () => {
+            throw new Response(THROWN_ERRORS.SERVER_ERROR, {
               status: STATUS_CODES.SERVER_ERROR,
             });
           },
