@@ -46,7 +46,9 @@ const VoteModal = ({ gender, updateCredit }) => {
   }, [gender]);
   return (
     <div css={S.ModalWrapper}>
-      <h2 css={S.title}>이달의 여자 아이돌</h2>
+      <h2 css={S.title}>
+        <h2 css={S.title}>이달의 {gender === 'females' ? '여자' : '남자'} 아이돌</h2>
+      </h2>
       <div css={[S.itemsWrapper, S.scrollStyle]}>
         {idols.length > 0
           ? idols.map((idol) => {
