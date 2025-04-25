@@ -1,4 +1,12 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
+
+const shakeTitle = keyframes`
+  0% { transform: translateX(0); }
+  25% { transform: translateX(4px); }
+  50% { transform: translateX(-4px); }
+  75% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+`;
 
 /*
 이스터 에그용 체험 하고 싶으시면 
@@ -121,7 +129,13 @@ export const inputContent = (hasNomoney) => css`
       font-weight: 700;
       text-align: left;
     } 
-    ${hasNomoney && 'animation: shake 0.3s ease-in-out'}
+    
+    ${
+      hasNomoney &&
+      css`
+      animation: ${shakeTitle} 0.3s ease-in-out;
+    `
+    }
   }
 
   img {
