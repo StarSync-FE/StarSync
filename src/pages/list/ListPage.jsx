@@ -19,7 +19,7 @@ export const carousel = css`
 const ListPage = () => {
   const [modalType, setModalType] = useState(null); // 모달 타입 상태 관리
   const [credit, setCredit] = useState(0); // 크레딧 상태 관리
-  const { idols, donations, chart } = useLoaderData(); // 여기서 데이터 받음
+  const { idols, donations } = useLoaderData(); // 여기서 데이터 받음
 
   // localStorage에서 크레딧 값을 불러옴
   useEffect(() => {
@@ -40,7 +40,7 @@ const ListPage = () => {
     <div css={wrapper}>
       <Charge credit={credit} setModalType={setModalType} /> {/* Charge에 credit 전달 */}
       <div css={carousel}>캐러셀</div>
-      <Chart data={chart} />
+      <Chart />
       <ListModal
         modalType={modalType}
         setModalType={setModalType}
