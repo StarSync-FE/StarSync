@@ -41,11 +41,15 @@ const Chart = () => {
     setSelectedTab(e.currentTarget.value);
   };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
+    console.count('마운트');
+    const controller = new AbortController();
+
     if (selectedTab === 'females') {
       setFemaleData([]);
       setFemaleCursor(0);
-      fetchFemaleData(0);
+      fetchFemaleData(0, controller);
       setHasMoreFemales(true);
     }
 
@@ -55,7 +59,12 @@ const Chart = () => {
       fetchMaleData(0);
       setHasMoreMales(true);
     }
-  }, [selectedTab]);
+
+    return () => {
+      console.count('마운트 해제 및 중복 요청 취소');
+      controller.abort();
+    };
+  }, [selectedTab, screenSize]);
 
   const fetchMaleData = async (cursor) => {
     try {
@@ -82,15 +91,13 @@ const Chart = () => {
     }
   };
 
-  const fetchFemaleData = async (cursor) => {
-    let updatedCursor = cursor;
-    if (updatedCursor === 0 && femaleData.length === 10) {
-      updatedCursor = data.nextCursor;
-    }
-    console.log(cursor);
+  const fetchFemaleData = async (cursor, controller) => {
     try {
       const response = await requestGet(
         `${ENDPOINTS.GET_CHART}?gender=female&pageSize=${PAGESIZE}&cursor=${cursor}`,
+        {
+          signal: controller?.signal ?? false,
+        },
       );
 
       const newData = response?.idols || [];
