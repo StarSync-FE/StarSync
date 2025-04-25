@@ -1,4 +1,5 @@
 import chartImg from '@/assets/images/chart.png';
+import loadingSpinner from '@/assets/images/loading-spinner.gif';
 import { ENDPOINTS } from '@/constants/api';
 import { requestGet } from '@/utils/api';
 import { useEffect, useState } from 'react';
@@ -172,6 +173,11 @@ const Chart = () => {
                 </li>
               ))}
             </ul>
+            {isFemaleLoading && (
+              <div css={S.spinner}>
+                <img src={loadingSpinner} alt="로딩 스피너" />
+              </div>
+            )}
             {hasMoreFemales && (
               <button
                 type="button"
@@ -199,6 +205,11 @@ const Chart = () => {
                 </li>
               ))}
             </ul>
+            {isMaleLoading && (
+              <div css={S.spinner}>
+                <img src={loadingSpinner} alt="로딩 스피너" />
+              </div>
+            )}
             {hasMoreMales && (
               <button
                 type="button"
