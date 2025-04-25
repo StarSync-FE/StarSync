@@ -17,19 +17,18 @@ const VoteModal = ({ gender, updateCredit }) => {
   };
   const voteForIdol = async (idolId) => {
     const voteUrl = `${ENDPOINTS.REGISTER_VOTE}`;
+    const getCredit = localStorage.getItem('selectedCredit');
     try {
-      const response = await requestPost(voteUrl, { idolId: idolId });
-      if (response) {
-        alert('투표에 성공했습니다');
-        const getCredit = localStorage.getItem('selectedCredit');
-        if (getCredit < 1000) {
-          alert('크레딧이 부족합니다!');
-        } else {
+      if (getCredit > 1000) {
+        const response = await requestPost(voteUrl, { idolId: idolId });
+        if (response) {
           localStorage.setItem('selectedCredit', Number(getCredit) - 1000);
           updateCredit(Number(getCredit) - 1000);
+        } else {
+          alert('투표에 실패했습니다');
         }
       } else {
-        console.log(response);
+        alert('크레딧이 부족합니다');
       }
     } catch (err) {
       console.log('error발생');
