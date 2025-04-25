@@ -9,7 +9,6 @@ import * as S from './voteModal.styles';
 
 const VoteModal = ({ gender, updateCredit }) => {
   const [idols, setIdols] = useState([]);
-  const [selectedIdol, setSelectedIdol] = useState();
   const [checkedItem, setCheckedItem] = useState();
   const loadData = async (gender) => {
     const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${gender}&pageSize=30&`;
@@ -20,12 +19,12 @@ const VoteModal = ({ gender, updateCredit }) => {
     const voteUrl = `${ENDPOINTS.REGISTER_VOTE}`;
     const getCredit = localStorage.getItem('selectedCredit');
     try {
-      if (Number(getCredit) > 1000) {
+      if (Number(getCredit) >= 1000) {
         const response = await requestPost(voteUrl, { idolId: idolId });
         if (response) {
           localStorage.setItem('selectedCredit', Number(getCredit) - 1000);
           updateCredit(Number(getCredit) - 1000);
-          alert('투표 성공');
+          alert('투표에 성공했습니다');
         } else {
           alert('투표에 실패했습니다');
         }
@@ -46,11 +45,10 @@ const VoteModal = ({ gender, updateCredit }) => {
     };
     load();
   }, [gender, updateCredit]);
+
   return (
     <div css={S.ModalWrapper}>
-      <h2 css={S.title}>
-        <h2 css={S.title}>이달의 {gender === 'females' ? '여자' : '남자'} 아이돌</h2>
-      </h2>
+      <h2 css={S.title}>이달의 {gender === 'females' ? '여자' : '남자'} 아이돌</h2>
       <div css={[S.itemsWrapper, S.scrollStyle]}>
         {idols.length > 0
           ? idols.map((idol) => {
