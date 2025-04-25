@@ -125,6 +125,11 @@ export const moreButton = css`
   &:hover {
     background-color: var(--black-full);
   }
+
+  &:disabled {
+    cursor:not-allowed;
+    opacity: 0.6;
+  }
 `;
 
 export const spinner = css`
