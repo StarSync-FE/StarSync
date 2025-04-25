@@ -24,6 +24,7 @@ const VoteModal = ({ gender, updateCredit }) => {
         if (response) {
           localStorage.setItem('selectedCredit', Number(getCredit) - 1000);
           updateCredit(Number(getCredit) - 1000);
+          alert('투표 성공');
         } else {
           alert('투표에 실패했습니다');
         }
@@ -43,7 +44,7 @@ const VoteModal = ({ gender, updateCredit }) => {
       setIdols(result.idols);
     };
     load();
-  }, [gender]);
+  }, [gender, updateCredit]);
   return (
     <div css={S.ModalWrapper}>
       <h2 css={S.title}>
