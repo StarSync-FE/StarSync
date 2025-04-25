@@ -1,6 +1,6 @@
 import { ITEM_DIMENSIONS } from '@/constants/carousel';
 
-export const getItemMetrics = () => {
+const getItemMetrics = () => {
   const isMobile = window.innerWidth < ITEM_DIMENSIONS.MOBILE_ITEM_WIDTH;
   const itemWidth = isMobile
     ? ITEM_DIMENSIONS.MOBILE_ITEM_WIDTH
@@ -9,3 +9,5 @@ export const getItemMetrics = () => {
 
   return { itemWidth, gap };
 };
+
+export default getItemMetrics;
