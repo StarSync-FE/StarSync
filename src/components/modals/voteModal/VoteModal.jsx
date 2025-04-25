@@ -48,7 +48,6 @@ const VoteModal = ({ gender, updateCredit }) => {
       console.error('투표 중 오류 발생:', err);
       triggerAlert('투표 중 오류 발생', 'warning');
     }
-    throw Error;
   };
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
