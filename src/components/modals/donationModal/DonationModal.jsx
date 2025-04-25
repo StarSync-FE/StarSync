@@ -14,8 +14,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
 
   const handleChageAmount = (e) => {
     const amount = e.target.value;
-    const code = e.key;
-    console.log(code);
+
     if (amount.startsWith('0') || Number.isNaN(Number(amount))) {
       return;
     }
