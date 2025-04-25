@@ -40,7 +40,6 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
             itemLabel={price.name}
             style={S.activeStyle} // ✅ 스타일 prop으로 전달
             handleSelect={() => handleRadioSelect(price.value)}
-            isChecked={selectedValue === price.value}
           >
             <div css={S.radioButtonContent}>
               <img src={creditImg} alt="크레딧" />
