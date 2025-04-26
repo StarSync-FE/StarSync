@@ -1,0 +1,29 @@
+pre-commit:
+  parallel: true
+  commands:
+    stylelint:
+      glob: "src/**/*.styles.{js,jsx}"
+      run: npx stylelint {staged_files} --fix --max-warnings=0
+      stage_fixed: true
+    biome:
+      glob: "*.{js,ts,jsx,tsx,json,jsonc}"
+      run: npx @biomejs/biome check --write {staged_files}
+      stage_fixed: true
+
+pre-push:
+  parallel: true
+  commands:
+    stylelint:
+      run: npx stylelint "src/**/*.styles.{js,jsx}" --max-warnings=0
+    audit-check:
+      run: npm audit
+
+prepare-commit-msg:
+  commands:
+    template:
+      run: node .github/scripts/copy-template.js {1}
+
+commit-msg:
+  commands:
+    lint-commit-msg:
+      run: npx commitlint --edit {1}
