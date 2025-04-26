@@ -5,13 +5,7 @@ import { ListModal } from '@/components/list';
 import { css } from '@emotion/react';
 import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-
-export const wrapper = css`
-  padding: 20px;
-  background-color: var(--black-full);
-  color: var(--white-full);
-  font-family: Pretendard, sans-serif;
-`;
+import * as S from './listPage.styles';
 
 const ListPage = () => {
   const [modalType, setModalType] = useState(null); // 모달 타입 상태 관리
@@ -35,7 +29,7 @@ const ListPage = () => {
   };
 
   return (
-    <div css={wrapper}>
+    <div css={S.wrapper}>
       <Charge credit={credit} setModalType={setModalType} /> {/* Charge에 credit 전달 */}
       <Carousel data={donations} setModalType={setModalType} setSelectedIndex={setSelectedIndex} />
       <Chart
