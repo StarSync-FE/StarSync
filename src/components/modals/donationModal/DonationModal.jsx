@@ -42,11 +42,11 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
       await requestPut(ENDPOINTS.CONTRIBUTE_DONATION(data.id), {
         amount: donateAmountNum,
       });
-      const Total = prevCredit - donateAmountNum;
-      localStorage.setItem('selectedCredit', Total);
-      updateCredit(Total);
+      const total = prevCredit - donateAmountNum;
+      localStorage.setItem('selectedCredit', total);
+      updateCredit(total);
 
-      alert(`후원 성공 기존 : ${prevCredit}  현재 : ${Total}`);
+      alert(`후원 성공 기존 : ${prevCredit}  현재 : ${total}`);
       onClose();
     } catch (e) {
       console.error('후원 처리 중 오류 발생', e);
