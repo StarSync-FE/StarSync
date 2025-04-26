@@ -38,9 +38,8 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
             key={price.id}
             name={price.value}
             itemLabel={price.name}
-            style={S.activeStyle} // ✅ 스타일 prop으로 전달
+            style={S.buttonStyle} // ✅ 스타일 prop으로 전달
             handleSelect={() => handleRadioSelect(price.value)}
-            isChecked={selectedValue === price.value}
           >
             <div css={S.radioButtonContent}>
               <img src={creditImg} alt="크레딧" />
@@ -49,6 +48,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
           </RadioButton>
         ))}
       </div>
+
       <CustomButton
         onClick={handleCharge}
         onKeyDown={(e) => e.key === 'Enter' && handleCharge()}
@@ -56,6 +56,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
       >
         <img src={creditWhiteImg} alt="크레딧" />
         <p>충전하기</p>
+
       </CustomButton>
     </div>
   );

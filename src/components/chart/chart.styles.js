@@ -1,3 +1,4 @@
+import media from '@/styles/responsive';
 import { css } from '@emotion/react';
 
 export const chartSectionHeader = css`
@@ -43,10 +44,6 @@ export const tabButtonWrapper = css`
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-
-  button {
-    padding: 1.5rem 15rem;
-  }
 `;
 
 export const idolListButton = css`
@@ -60,7 +57,6 @@ export const idolListButton = css`
     border-radius: 3.2px;
     font-size: 1rem;
     text-align: center;
-    white-space: nowrap;
     color: var(--white);
     background-color: var(--black-deep);
 `;
@@ -76,6 +72,10 @@ export const idolList = css`
   grid-template-columns: 1fr 1fr;
   margin-top: 1rem;
   padding-bottom: 0.5rem;
+
+  ${media({
+    gridTemplateColumns: ['1fr', '1fr', '1fr 1fr', '1fr 1fr'],
+  })}
 
   li {
     display: flex;
@@ -124,5 +124,23 @@ export const moreButton = css`
 
   &:hover {
     background-color: var(--black-full);
+  }
+
+  &:disabled {
+    cursor:not-allowed;
+    opacity: 0.6;
+  }
+`;
+
+export const spinner = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+
+  img {
+    width: 15rem;
+    height: 15rem;
+    object-fit: contain;
   }
 `;

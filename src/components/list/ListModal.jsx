@@ -4,7 +4,7 @@ import { CreditLackModal } from '@/components/modals/creditLackModal';
 import { DonationModal } from '@/components/modals/donationModal';
 import { VoteModal } from '@/components/modals/voteModal';
 
-const ListModal = ({ modalType, setModalType, credit, updateCredit, gender }) => {
+const ListModal = ({ modalType, setModalType, credit, updateCredit, gender, donations }) => {
   const onCloseModal = () => setModalType(null);
 
   const renderModalContent = () => {
@@ -20,7 +20,15 @@ const ListModal = ({ modalType, setModalType, credit, updateCredit, gender }) =>
       case 'creditLack':
         return <CreditLackModal onClose={onCloseModal} setModalType={setModalType} />;
       case 'donation':
-        return <DonationModal />;
+        if (!donations) return null;
+        return (
+          <DonationModal
+            data={donations}
+            credit={credit}
+            updateCredit={updateCredit}
+            onClose={onCloseModal}
+          />
+        );
       case 'vote':
         return (
           <VoteModal gender={gender} updateCredit={updateCredit} setModalType={setModalType} />

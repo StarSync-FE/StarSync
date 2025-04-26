@@ -1,3 +1,4 @@
+import media from '@/styles/responsive';
 import { css } from '@emotion/react';
 
 export const ModalWrapper = css`
@@ -5,16 +6,23 @@ export const ModalWrapper = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 52.5rem;
-  height: 69.3rem;
+  ${media({
+    width: ['100vw', '80vw', '52.5rem', '52.5rem', '52.5rem'],
+    height: ['100vh', '80vh', '69.3rem', '69.3rem', '69.3rem'],
+  })}  
+  ${media({
+    overflow: ['hidden'],
+  })}
   padding: 2.4rem;
   border-radius: 1.2rem;
   background-color: var(--black);
 `;
 export const itemsWrapper = css`
   overflow-y: scroll;
-  width: 47.7rem;
-  height: 51.4rem;
+  ${media({
+    width: ['100%', '100%', '47.7rem', '47.7rem', '47.7rem'],
+    height: ['100%', '100%', '51.4rem', '51.4rem', '51.4rem'],
+  })}  
 `;
 
 export const scrollStyle = css`
