@@ -42,6 +42,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
     }
 
     setHasNoMoney(false);
+    setIsInvalidNumber(false);
     setDonateAmount(amount);
   };
 
