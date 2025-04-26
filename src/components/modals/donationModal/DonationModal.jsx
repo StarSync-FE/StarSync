@@ -79,13 +79,16 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
         />
         {hasNoMoney && <p>갖고 있는 크레딧보다 더 많이 후원할 수 없어요</p>}
       </div>
+
       <CustomButton
         onClick={handleClick}
+onKeyDown={(e) => e.key === 'Enter' && onClose()}
         disabled={!inputRef.current?.value || isDonating || hasNoMoney}
         style={{ marginTop: '1.2rem' }}
       >
         후원하기
       </CustomButton>
+
     </div>
   );
 };

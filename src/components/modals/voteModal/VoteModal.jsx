@@ -8,7 +8,7 @@ import { addCommas } from '@/utils/format';
 import { useEffect, useState } from 'react';
 import * as S from './voteModal.styles';
 
-const VoteModal = ({ gender, updateCredit }) => {
+const VoteModal = ({ gender, updateCredit, setModalType }) => {
   const [idols, setIdols] = useState([]);
   const [checkedItem, setCheckedItem] = useState();
   const [showAlert, setShowAlert] = useState(false);
@@ -42,7 +42,7 @@ const VoteModal = ({ gender, updateCredit }) => {
           triggerAlert('투표에 실패했습니다', 'warning');
         }
       } else {
-        alert('크레딧이 부족합니다');
+        setModalType('creditLack'); // 크레딧 부족 시 modalType 설정
       }
     } catch (err) {
       console.error('투표 중 오류 발생:', err);
@@ -95,10 +95,11 @@ const VoteModal = ({ gender, updateCredit }) => {
           : console.log('idols state가 없습니다')}
       </div>
       <CustomButton
+
+        onClick={() => (checkedItem ? voteForIdol(checkedItem) : null)}
+        onKeyDown={(e) => e.key === 'Enter' && checkedItem ? voteForIdol(checkedItem) : triggerAlert('투표할 아이돌을 선택해주세요');}
         style={S.buttonStyle}
-        onClick={() => {
-          checkedItem ? voteForIdol(checkedItem) : triggerAlert('투표할 아이돌을 선택해주세요');
-        }}
+
       >
         투표하기
       </CustomButton>

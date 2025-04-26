@@ -1,25 +1,23 @@
 import creditImg from '@/assets/images/credit.png';
-import RadioButton from '@/components/radioButton';
-import { mockData } from '@/data/mockData';
+import CustomButton from '@/components/customButton';
 import * as S from './creditLackModal.styles';
 
-const CreditLackModal = ({ onClose }) => {
+const CreditLackModal = ({ setModalType }) => {
   return (
     <div css={S.modalContent}>
-      <h2>크레딧 충전하기</h2>
-      <div css={S.radioButtons}>
-        {mockData.prices.map((price) => (
-          <RadioButton key={price.id} name="charge" priceLabel={price.name} isSelected={false}>
-            <div css={S.radioButtonContent}>
-              <img src={creditImg} alt="크레딧" />
-              <span>{price.value}</span>
-            </div>
-          </RadioButton>
-        ))}
+      <div css={S.contentWrapper}>
+        <img src={creditImg} alt="크레딧 부족" css={S.image} />
+        <p css={S.message}>
+          앗! 투표하기 위한 <span>크레딧</span>이 부족해요
+        </p>
       </div>
-      <button type="button" onClick={onClose}>
-        충전하기
-      </button>
+      <CustomButton
+        onClick={() => setModalType('creditCharge')}
+        onKeyDown={(e) => e.key === 'Enter' && setModalType('creditCharge')}
+        style={S.buttonStyle}
+      >
+        확인
+      </CustomButton>
     </div>
   );
 };
