@@ -20,8 +20,19 @@ import * as S from './modal.styles';
 function Modal({ isOpen, onClose, children }) {
   if (!isOpen) return null;
 
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div css={S.overlay}>
+    <div
+      css={S.overlay}
+      onClick={handleOverlayClick}
+      onKeyDown={(e) => e.key === 'Escape' && onClose()}
+      role="presentation"
+    >
       <div css={S.container}>
         <button type="button" onClick={onClose} css={S.buttonStyles}>
           <img src={exitImg} alt="닫기" />

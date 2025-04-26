@@ -6,7 +6,7 @@ import { requestGet, requestPost } from '@/utils/api';
 import { useEffect, useState } from 'react';
 import * as S from './voteModal.styles';
 
-const VoteModal = ({ gender, updateCredit }) => {
+const VoteModal = ({ gender, updateCredit, setModalType }) => {
   const [idols, setIdols] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState();
   const [checkedItem, setCheckedItem] = useState();
@@ -19,7 +19,7 @@ const VoteModal = ({ gender, updateCredit }) => {
     const voteUrl = `${ENDPOINTS.REGISTER_VOTE}`;
     const getCredit = localStorage.getItem('selectedCredit');
     try {
-      if (Number(getCredit) > 1000) {
+      if (Number(getCredit) >= 1000) {
         const response = await requestPost(voteUrl, { idolId: idolId });
         if (response) {
           localStorage.setItem('selectedCredit', Number(getCredit) - 1000);
@@ -28,7 +28,7 @@ const VoteModal = ({ gender, updateCredit }) => {
           alert('투표에 실패했습니다');
         }
       } else {
-        alert('크레딧이 부족합니다');
+        setModalType('creditLack'); // 크레딧 부족 시 modalType 설정
       }
     } catch (err) {
       console.error('투표 중 오류 발생:', err);
@@ -46,9 +46,7 @@ const VoteModal = ({ gender, updateCredit }) => {
   }, [gender]);
   return (
     <div css={S.ModalWrapper}>
-      <h2 css={S.title}>
-        <h2 css={S.title}>이달의 {gender === 'females' ? '여자' : '남자'} 아이돌</h2>
-      </h2>
+      <h2 css={S.title}>이달의 {gender === 'females' ? '여자' : '남자'} 아이돌</h2>
       <div css={[S.itemsWrapper, S.scrollStyle]}>
         {idols.length > 0
           ? idols.map((idol) => {
@@ -81,8 +79,9 @@ const VoteModal = ({ gender, updateCredit }) => {
           : console.log('idols가 없음')}
       </div>
       <CustomButton
-        style={S.buttonStyle}
         onClick={() => (checkedItem ? voteForIdol(checkedItem) : null)}
+        onKeyDown={(e) => e.key === 'Enter' && checkedItem && voteForIdol(checkedItem)}
+        style={S.buttonStyle}
       >
         투표하기
       </CustomButton>

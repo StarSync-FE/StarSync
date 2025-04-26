@@ -49,7 +49,11 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
           </RadioButton>
         ))}
       </div>
-      <CustomButton onClick={handleCharge} style={S.buttonStyle}>
+      <CustomButton
+        onClick={handleCharge}
+        onKeyDown={(e) => e.key === 'Enter' && handleCharge()}
+        style={S.buttonStyle}
+      >
         <img src={creditWhiteImg} alt="크레딧" />
         <p>충전하기</p>
       </CustomButton>

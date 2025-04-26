@@ -17,7 +17,7 @@ const DonationModal = ({ onClose }) => {
           </RadioButton>
         ))}
       </div>
-      <button type="button" onClick={onClose}>
+      <button type="button" onClick={onClose} onKeyDown={(e) => e.key === 'Enter' && onClose()}>
         충전하기
       </button>
     </div>
