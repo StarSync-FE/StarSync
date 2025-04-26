@@ -1,6 +1,10 @@
 import media from '@/styles/responsive';
 import { css } from '@emotion/react';
 
+export const chartWrapper = css`
+  margin: 7rem 0 5rem;
+`;
+
 export const chartSectionHeader = css`
   display: flex;
   justify-content: space-between;
