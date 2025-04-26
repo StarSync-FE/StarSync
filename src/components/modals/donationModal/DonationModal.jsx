@@ -83,7 +83,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
       <CustomButton
         onClick={handleClick}
         onKeyDown={(e) => e.key === 'Enter' && onClose()}
-        disabled={!inputRef.current?.value || isDonating || hasNoMoney}
+        disabled={!inputRef.current?.value || isDonating}
         style={{ marginTop: '1.2rem' }}
       >
         후원하기
