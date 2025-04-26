@@ -50,6 +50,7 @@ const CustomButton = ({
   disabled = false,
   style,
   onButtonClick,
+  onKeyDown,
   children,
 }) => {
   const sizeMap = {
@@ -80,6 +81,7 @@ const CustomButton = ({
       css={[buttonStyle, style && css(style)]}
       disabled={disabled}
       onClick={onButtonClick}
+      onKeyDown={onKeyDown}
     >
       {children}
     </button>
