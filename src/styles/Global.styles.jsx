@@ -5,23 +5,38 @@ const resetStyle = css`
   --black: #181D26; 
   --black-deep: #02000E;
   --black-full: #000;
+  --black-alpha-70: #000000B3;
+  --black-eerie-alpha-80: #1B1B1BCC;
   --gray: #828282;
   --gray-dark: #67666E;
   --gray-light: #A3A5A8;
+  --gray-light-02: #B8B8B8;
   --gray-cool: #8C92AB;
   --white: #F7F7F8;
   --white-full: #FFF;
+  --white-alpha-05: #FFFFFF0D;
   --white-alpha-10: #FFFFFF1A;
+  --white-alpha-20: #FFF3;
+  --white-alpha-30: #FFFFFF4D;
+  --white-alpha-60: #FFF9;
+  --white-alpha-70: #FFFFFFB3;
   --orange: #F96D69;
   --orange-deep: #F86F65;
+  --orange-alpha-50: #F96E6880;
   --pink: #FE5493;
   --pink-bright: #ED56C2;
   --pink-purple: #EA2FB6;
+  --pink-soft: #FFF0F0;
+  --pink-rose-alpha-50: #FE578F80;
   --blue-sky: #1C9EFB;
   --blue-dark: #3D2FA9;
+  --blue-navy: #272F3D;
   --purple: #8D42FB;
   --light-green: #A6FF4D;
-
+  --brown-dark: #5C4D4D; 
+  --error-red: #FF2626;
+  --cyan-alpha-20: #0FF3;
+  --cyan-alpha-40: #0FF6;
 } 
 
 *, *::before, *::after {
@@ -31,6 +46,7 @@ const resetStyle = css`
 html {
   font-family: Pretendard, sans-serif;
   font-size: 62.5%; /* 62.5% = 10px */
+  word-break: keep-all;
 }
 
 body {
