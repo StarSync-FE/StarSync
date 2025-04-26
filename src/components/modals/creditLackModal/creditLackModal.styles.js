@@ -45,5 +45,4 @@ export const buttonStyle = css`
   padding: 0.5rem 1rem;
   font-weight: 700;
   color: var(--white-full);
- 
 `;

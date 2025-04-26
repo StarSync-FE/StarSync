@@ -1,9 +1,9 @@
 import nextIcon from '@/assets/icons/next-icon.png';
 import addIcon from '@/assets/icons/plus-icon.png';
 import prevIcon from '@/assets/icons/prev-icon.png';
-import Avatar from '@/components/avatar';
-import AvatarButton from '@/components/avatarButton';
-import CustomButton from '@/components/customButton';
+import { Avatar } from '@/components/avatar';
+import { AvatarButton } from '@/components/avatarButton';
+import { CustomButton } from '@/components/customButton';
 import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import * as S from './myPage.styles';

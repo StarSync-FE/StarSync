@@ -1,5 +1,6 @@
 import media from '@/styles/responsive';
 import { css } from '@emotion/react';
+
 export const avatarWrapper = css`
   display: flex;
   position: relative;
@@ -12,7 +13,7 @@ export const avatarWrapper = css`
 export const avatarBox = css`
   position: relative;
   ${media({ width: ['10rem', '7rem', '10rem', '10rem', '10rem'] })}
-  `;
+`;
 
 export const exitButton = css`
   position: absolute;
@@ -25,7 +26,7 @@ export const exitButton = css`
   border: 2px solid var(--black-deep);
   border-radius: 50%;
   background-color: var(--white);
-  `;
+`;
 
 export const buttonImage = css`
   ${media({ width: ['0.8rem', '0.8rem', '1.1rem', '1.1rem', '1.1rem'] })}

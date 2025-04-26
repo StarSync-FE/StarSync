@@ -104,7 +104,7 @@ export const titleContent = css`
     white-space: nowrap;
     text-overflow: ellipsis;
     color: var(--white-full);
-}
+  }
 `;
 
 export const inputContent = (hasNomoney) => css`
@@ -122,7 +122,6 @@ export const inputContent = (hasNomoney) => css`
     font-weight: 700;
     background-color: #272f3d; /* 색상 변수로 변경 예정 */
     
-
 
     &::placeholder {
       font-size: 2rem;

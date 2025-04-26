@@ -10,6 +10,7 @@ export const myPageWrapper = css`
     margin: 3.2rem 0 5.7rem;
   }
 `;
+
 export const scrollStyle = css`
   overflow-y: auto;
   padding-right: 12px; 
@@ -31,6 +32,7 @@ export const scrollStyle = css`
     background-color: rgb(255 255 255 / 70%);
   }
 `;
+
 export const horizonList = css`
   display: flex;
   overflow-x: scroll;
@@ -40,30 +42,35 @@ export const horizonList = css`
   padding: 0 2.4rem 3.2rem;
   border-bottom: 1px solid var(--white-alpha-10);
 `;
+
 export const allProfileSize = css`
   margin: 0 2.4rem;
   ${media({ height: ['15.1rem', '15.1rem', '18.3rem', '18.3rem', '18.3rem'] })}
   ${media({ width: ['9.8rem', '9.8rem', '12.8rem', '12.8rem', '12.8rem'] })}
 `;
+
 export const idolName = css`
   margin: 0.8rem 0 0.2rem;
   font-size: 1.6rem;
   font-weight: 700;
   text-align: center;
   color: var(--white);
-  `;
+`;
+
 export const groupName = css`
   margin: 0.2rem;
   font-size: 1.4rem;
   font-weight: 400;
   text-align: center;
   color: #FFF9;
-  `;
+`;
+
 export const title = css`
   margin: 1.4rem;
   ${media({ fontSize: ['1.6rem', '1.6rem', '2rem', '2.4rem', '2.4rem'] })}
   font-weight: 700;
 `;
+
 export const idolListWrapper = css`
   display: flex;
   justify-content: center;
@@ -72,6 +79,7 @@ export const idolListWrapper = css`
   width: 100%;
   margin: 4rem 0 0;
 `;
+
 export const idolList = css`
   display: grid;
   min-width: fit-content;
@@ -81,6 +89,7 @@ export const idolList = css`
   ${media({ gridTemplaterRows: ['1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr'] })};
   justify-items: center;
 `;
+
 export const customButtonWrapper = css`
   display: flex;
   justify-content: center;
@@ -91,6 +100,7 @@ export const customButtonStyle = css`
   width: 25.5rem;
   height: 4.8rem;
 `;
+
 export const buttonIcon = css`
   width: 2.4rem;
 `;

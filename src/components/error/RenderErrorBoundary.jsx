@@ -1,6 +1,6 @@
+import { CustomButton } from '@/components/customButton';
 import { UI_ERRORS } from '@/constants/errors';
 import { Component } from 'react';
-import CustomButton from '../customButton';
 import * as S from './errorBoundary.styles';
 
 /**

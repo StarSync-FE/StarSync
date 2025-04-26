@@ -26,32 +26,32 @@ export const modalContent = css`
 `;
 
 export const radioButtons = css`
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    box-sizing: border-box;
-    width: 29.5rem;
-    margin-bottom: 0.5rem;
-    padding: 0.4rem;
-    font-size: 1rem;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  box-sizing: border-box;
+  width: 29.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem;
+  font-size: 1rem;
+  cursor: pointer;
 `;
 
 export const buttonStyle = css`
-    width: 29rem;
-    height: 6.2rem;
-    border: 1px solid var(--white);
-    border-radius: 8px;
-    transition: border-color 0.3s ease;
-    
-    input {
-        margin-right: 2.3rem;
-    }
+  width: 29rem;
+  height: 6.2rem;
+  border: 1px solid var(--white);
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  
+  input {
+      margin-right: 2.3rem;
+  }
 
-    &:has(input[type="radio"]:checked) { 
-      border-color: var(--orange); 
-      color: var(--gray);
-    } 
+  &:has(input[type="radio"]:checked) { 
+    border-color: var(--orange); 
+    color: var(--gray);
+  } 
 `;
 
 export const radioButtonContent = css`

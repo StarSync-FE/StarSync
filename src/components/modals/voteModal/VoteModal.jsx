@@ -1,7 +1,7 @@
 import { Alert } from '@/components/alert';
-import Avatar from '@/components/avatar/Avatar';
-import CustomButton from '@/components/customButton';
-import RadioButton from '@/components/radioButton/RadioButton';
+import { Avatar } from '@/components/avatar';
+import { CustomButton } from '@/components/customButton';
+import { RadioButton } from '@/components/radioButton';
 import { ENDPOINTS } from '@/constants/api';
 import { requestGet, requestPost } from '@/utils/api';
 import { addCommas } from '@/utils/format';
@@ -95,11 +95,19 @@ const VoteModal = ({ gender, updateCredit, setModalType }) => {
           : console.log('idols state가 없습니다')}
       </div>
       <CustomButton
-
-        onClick={() => (checkedItem ? voteForIdol(checkedItem) : null)}
-        onKeyDown={(e) => e.key === 'Enter' && checkedItem ? voteForIdol(checkedItem) : triggerAlert('투표할 아이돌을 선택해주세요');}
+        onClick={() =>
+          checkedItem ? voteForIdol(checkedItem) : triggerAlert('투표할 아이돌을 선택해주세요')
+        }
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            if (checkedItem) {
+              voteForIdol(checkedItem);
+            } else {
+              triggerAlert('투표할 아이돌을 선택해주세요');
+            }
+          }
+        }}
         style={S.buttonStyle}
-
       >
         투표하기
       </CustomButton>

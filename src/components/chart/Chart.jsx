@@ -1,9 +1,9 @@
 import chartImg from '@/assets/images/chart.png';
 import loadingSpinner from '@/assets/images/loading-spinner.gif';
+import { CustomButton } from '@/components/customButton';
 import { ENDPOINTS } from '@/constants/api';
 import { requestGet } from '@/utils/api';
 import { useEffect, useState } from 'react';
-import CustomButton from '../customButton';
 import * as S from './chart.styles';
 
 const getScreenSize = () => {
@@ -14,7 +14,7 @@ const getScreenSize = () => {
   return 'desktop';
 };
 
-const Chart = () => {
+const Chart = ({ setModalType }) => {
   const [selectedTab, setSelectedTab] = useState('females');
   const [femaleData, setFemaleData] = useState([]);
   const [maleData, setMaleData] = useState([]);

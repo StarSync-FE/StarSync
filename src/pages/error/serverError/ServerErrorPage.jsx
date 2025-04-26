@@ -1,4 +1,4 @@
-import CustomButton from '@/components/customButton';
+import { CustomButton } from '@/components/customButton';
 import { UI_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import * as S from '@/pages/error/styles';

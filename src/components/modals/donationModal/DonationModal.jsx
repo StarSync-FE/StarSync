@@ -1,5 +1,5 @@
 import creditImg from '@/assets/images/credit.png';
-import CustomButton from '@/components/customButton';
+import { CustomButton } from '@/components/customButton';
 import { ENDPOINTS } from '@/constants/api';
 import { requestPut } from '@/utils/api';
 import { useRef, useState } from 'react';
@@ -82,13 +82,12 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
 
       <CustomButton
         onClick={handleClick}
-onKeyDown={(e) => e.key === 'Enter' && onClose()}
+        onKeyDown={(e) => e.key === 'Enter' && onClose()}
         disabled={!inputRef.current?.value || isDonating || hasNoMoney}
         style={{ marginTop: '1.2rem' }}
       >
         후원하기
       </CustomButton>
-
     </div>
   );
 };
