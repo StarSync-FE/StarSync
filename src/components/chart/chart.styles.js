@@ -1,52 +1,66 @@
 import media from '@/styles/responsive';
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
+
+export const chartWrapper = css`
+  margin-bottom: 10rem;
+`;
 
 export const chartSectionHeader = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.5rem;
 
   div {
+    font-weight: 700;
     ${media({
       fontSize: ['1.5rem', '1.5rem', '1.8rem', '2rem'],
-      marginBottom: ['1.5rem', '1.5rem', '0', '0'],
     })}
-    font-weight: 700;
   }
 `;
 
-export const customButton = css`
-    ${media({
-      fontSize: ['1.5rem', '1.5rem', '1.8rem', '2rem'],
-      width: ['9rem', '9rem', '9rem', '9rem'],
-    })}
-    height: 2rem;
-    border: none;
-    border-radius: 0.3rem;
-    font-size: 0.8rem;
-    font-weight: 900;
-    background-color: var(--orange);
+export const voteButtonFlow = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
 
-    &:hover {
-      background-color: var(--pink);
-    }
+export const voteButton = css`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(45deg, var(--orange-deep) 0%, var(--orange-pink) 51%, var(--pink) 100%);
+  background-position: left center; /* 기본 시작 위치 */
+  background-size: 400%; /* 배경 크기 확장 */
+  transition: all 0.1s ease;
+  animation: ${voteButtonFlow} 2s ease infinite; /* 애니메이션 흐름 */
 
-    div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.4rem;
+  img {
+    width: 2rem;
+    height: 2.4rem;
+    margin-bottom: 0.2rem;
+  }
 
-    img {
-    width: 1.4rem;
-    height: 1.4rem;
-    }
+  span {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
 
-    span {
-      font-size: 1rem;
-      font-weight: 900;
-    }
+  &:hover {
+    background-position: right center; /* hover 시 배경 이동 */
+    transform: translateY(1px);
+    opacity: 0.9;
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 `;
 
@@ -54,6 +68,7 @@ export const tabButtonWrapper = css`
   display: flex;
   justify-content: center;
   align-items: center;
+
   ${media({
     marginTop: ['1rem', '2rem', '3rem', '4rem'],
   })}
@@ -67,9 +82,12 @@ export const idolListButton = css`
   margin: 0 auto;
   border: none;
   border-radius: 3.2px;
+  border-bottom: 1px solid var(--white-alpha-20);
   text-align: center;
   color: var(--white);
-  background-color: var(--black-deep);
+  background-color: transparent;
+  transition: background-color 0.7s ease, color 2s ease; /* 추가: 부드럽게 변환 */
+
   ${media({
     fontSize: ['1.2rem', '1.3rem', '1.5rem', '1.7rem'],
     height: ['3rem', '4rem', '4.5rem', '5rem'],
@@ -77,15 +95,15 @@ export const idolListButton = css`
 `;
 
 export const activeButton = css`
-  background-color: var(--black);
+  background-color: var(--white-alpha-10);
   border-bottom: 1px solid var(--white);
 `;
 
 export const idolList = css`
   display: grid;
-  margin-top: 1rem;
   ${media({
-    fontSize: ['1.1rem', '1.3rem', '1.5rem', '1.7rem'],
+    marginTop: ['1rem', '1.2rem', '1.7rem', '1.7rem'],
+    fontSize: ['1.1rem', '1.2rem', '1.4rem', '1.6rem'],
     gap: ['0.5rem', '0.7rem', '1.2rem', '1.7rem'],
     gridTemplateColumns: ['1fr', '1fr', '1fr 1fr', '1fr 1fr'],
   })}
@@ -93,12 +111,12 @@ export const idolList = css`
   li {
     display: flex;
     justify-content: space-between;
-    ${media({
-      padding: ['0.3rem 0 0.7rem', '0.5rem 0 0.7rem', '0.8rem 0 1.7rem', '1rem 0 2rem'],
-    })}
     text-align: center;
     border-bottom: 1px solid var(--black);
     list-style: none;
+    ${media({
+      paddingBottom: ['0.7rem', '0.7rem', '1.5rem', '1.7rem'],
+    })}
 
     span {
       display: flex;
@@ -107,19 +125,23 @@ export const idolList = css`
     }
 
     img {
-      width: 4rem;
-      height: 4rem;
-      margin-right: .5rem;
       border: 2px solid var(--black);
       border-radius: 50%;
       box-shadow: 0 0 2px 1.6px var(--orange);
       box-shadow: 0 0 0 0.1rem var(--orange);
       object-fit: cover;
+
+      ${media({
+        width: ['4rem', '4rem', '5rem', '5rem'],
+        height: ['4rem', '4rem', '5rem', '5rem'],
+        marginInline: ['0.1rem', '0.2rem', '0.5rem', '0.5rem'],
+      })}
     }
   }
 `;
 
 export const rankStyle = css`
+  margin: 0 0.5rem;
   color: var(--orange);
 `;
 
@@ -127,17 +149,21 @@ export const moreButton = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 15rem;
-  height: 2.5rem;
-  margin: 2rem auto;
+  margin-inline: auto;
+  margin-block: 3rem;
   border: 1px solid var(--white);
   border-radius: 3.2px;
-  font-size: 1.2rem;
   color: var(--white-full);
-  background-color: var(--black);
+  background-color: var(--white-alpha-05);
+
+  ${media({
+    fontSize: ['1.1rem', '1.2rem', '1.4rem', '1.6rem'],
+    width: ['10rem', '15rem', '20rem', '25rem'],
+    height: ['2rem', '2.7rem', '3.2rem', '3.5rem'],
+  })}
 
   &:hover {
-    background-color: var(--black-full);
+    background-color: var(--white-alpha-10);
   }
 
   &:disabled {
@@ -153,8 +179,11 @@ export const spinner = css`
   padding: 4rem;
 
   img {
-    width: 15rem;
-    height: 15rem;
     object-fit: contain;
+
+    ${media({
+      width: ['12rem', '15rem', '20rem', '25rem'],
+      height: ['12rem', '15rem', '20rem', '25rem'],
+    })}
   }
 `;
