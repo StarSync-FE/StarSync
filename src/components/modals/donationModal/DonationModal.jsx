@@ -73,7 +73,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
         <input
           placeholder="크레딧 입력"
           value={donateAmount}
-          onChange={handleChageAmount}
+          onChange={handleChangeAmount}
           onKeyDown={handleKeyDown}
           ref={inputRef}
         />

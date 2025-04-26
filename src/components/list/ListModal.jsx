@@ -20,6 +20,7 @@ const ListModal = ({ modalType, setModalType, credit, updateCredit, gender, dona
       case 'creditLack':
         return <CreditLackModal />;
       case 'donation':
+        if (!donations) return null;
         return (
           <DonationModal
             data={donations}
