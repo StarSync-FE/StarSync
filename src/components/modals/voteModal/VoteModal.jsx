@@ -1,7 +1,7 @@
 import { Alert } from '@/components/alert';
 import { Avatar } from '@/components/avatar';
 import { CustomButton } from '@/components/customButton';
-import RadioButton from '@/components/radioButton/RadioButton';
+import { RadioButton } from '@/components/radioButton';
 import { ENDPOINTS } from '@/constants/api';
 import { requestGet, requestPost } from '@/utils/api';
 import { addCommas } from '@/utils/format';

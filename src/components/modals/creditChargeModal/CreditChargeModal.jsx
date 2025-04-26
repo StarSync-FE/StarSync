@@ -1,7 +1,7 @@
 import creditWhiteImg from '@/assets/images/credit-white.png';
 import creditImg from '@/assets/images/credit.png';
 import { CustomButton } from '@/components/customButton';
-import RadioButton from '@/components/radioButton';
+import { RadioButton } from '@/components/radioButton';
 import { prices } from '@/data/mockData';
 import { useState } from 'react';
 import * as S from './creditChargeModal.styles';
