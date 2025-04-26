@@ -91,8 +91,6 @@ export const header = css`
       animation: ${marquee} 8s linear infinite; 
     }
   }
-
-
 `;
 
 export const info = css`

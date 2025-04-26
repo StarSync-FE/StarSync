@@ -1,5 +1,5 @@
 import creditImg from '@/assets/images/credit.png';
-import CustomButton from '@/components/customButton';
+import { CustomButton } from '@/components/customButton';
 import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/format';
 import { useEffect, useState } from 'react';
 import * as S from './card.styles';

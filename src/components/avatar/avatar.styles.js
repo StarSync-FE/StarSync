@@ -1,11 +1,12 @@
 import checkIcon from '@/assets/icons/check-icon.png';
 import { css } from '@emotion/react';
+
 export const imageWrapper = (imgSize) => css`
   position: relative;
   user-select: none;
 `;
 export const imageSelected = css`
-   &::before {
+  &::before {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -33,7 +34,7 @@ export const imageSelected = css`
     background-position: center;
     background-size: 50%;
     content: "";  
-   }
+  }
 `;
 export const image = (size) => css`
   box-sizing: border-box;

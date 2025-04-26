@@ -47,18 +47,18 @@ export const tabButtonWrapper = css`
 `;
 
 export const idolListButton = css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 4rem;
-    margin: 0 auto;
-    border: none;
-    border-radius: 3.2px;
-    font-size: 1rem;
-    text-align: center;
-    color: var(--white);
-    background-color: var(--black-deep);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
+  margin: 0 auto;
+  border: none;
+  border-radius: 3.2px;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--white);
+  background-color: var(--black-deep);
 `;
 
 export const activeButton = css`

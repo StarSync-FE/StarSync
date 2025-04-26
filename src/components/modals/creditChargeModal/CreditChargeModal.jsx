@@ -1,6 +1,6 @@
 import creditWhiteImg from '@/assets/images/credit-white.png';
 import creditImg from '@/assets/images/credit.png';
-import CustomButton from '@/components/customButton';
+import { CustomButton } from '@/components/customButton';
 import RadioButton from '@/components/radioButton';
 import { prices } from '@/data/mockData';
 import { useState } from 'react';
@@ -56,7 +56,6 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
       >
         <img src={creditWhiteImg} alt="크레딧" />
         <p>충전하기</p>
-
       </CustomButton>
     </div>
   );

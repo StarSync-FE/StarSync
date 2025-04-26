@@ -1,7 +1,7 @@
+import { CustomButton } from '@/components/customButton';
 import { UI_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import { useRouteError } from 'react-router-dom';
-import CustomButton from '../customButton';
 import * as S from './errorBoundary.styles';
 
 /**

@@ -1,6 +1,6 @@
 import { Alert } from '@/components/alert';
-import Avatar from '@/components/avatar/Avatar';
-import CustomButton from '@/components/customButton';
+import { Avatar } from '@/components/avatar';
+import { CustomButton } from '@/components/customButton';
 import RadioButton from '@/components/radioButton/RadioButton';
 import { ENDPOINTS } from '@/constants/api';
 import { requestGet, requestPost } from '@/utils/api';
