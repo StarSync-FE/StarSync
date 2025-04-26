@@ -50,7 +50,7 @@ const ListPage = () => {
         credit={credit}
         updateCredit={updateCredit}
         gender={selectedTab}
-        donations={donations.list[selectedIndex]}
+        donations={selectedIndex != null ? donations.list[selectedIndex] : null}
       />
     </div>
   );

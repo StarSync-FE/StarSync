@@ -12,14 +12,14 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
   const inputRef = useRef(null);
   const prevCredit = credit;
 
-  const handleChageAmount = (e) => {
+  const handleChangeAmount = (e) => {
     const amount = e.target.value;
 
     if (amount.startsWith('0') || Number.isNaN(Number(amount))) {
       return;
     }
 
-    if (prevCredit < amount) {
+    if (prevCredit < Number(amount)) {
       setHasNoMoney(true);
       return;
     }
@@ -51,6 +51,8 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
     } catch (e) {
       console.error('후원 처리 중 오류 발생', e);
       alert('후원 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
+    } finally {
+      setIsDonating(false);
     }
   };
 
@@ -79,7 +81,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
       </div>
       <CustomButton
         onClick={handleClick}
-        disabled={!inputRef.current?.value || isDonating}
+        disabled={!inputRef.current?.value || isDonating || hasNoMoney}
         style={{ marginTop: '1.2rem' }}
       >
         후원하기
