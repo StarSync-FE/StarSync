@@ -12,7 +12,7 @@ export const ModalWrapper = css`
   })}  
   ${media({
     overflow: ['hidden'],
-  })}
+  })} /*전부 hidden이면 반응형 안써도 될 거 같아요!*/
   padding: 2.4rem;
   border-radius: 1.2rem;
   background-color: var(--black);
@@ -44,7 +44,7 @@ export const scrollStyle = css`
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(255 255 255 / 70%);
+    background-color: var(--white-alpha-70);
   }
 `;
 
@@ -56,7 +56,7 @@ export const headerBox = css`
 
 export const idolItem = css`
   padding: 0.8rem 0;
-  border-bottom: 1px solid #FFFFFF1A;
+  border-bottom: 1px solid var(--white-alpha-10);
 `;
 
 export const voteRadioButton = css`
@@ -115,7 +115,7 @@ export const idolName = css`
 
 export const votes = css`
   font-weight: 400;
-  color: rgb(255 255 255 / 60%);
+  color: var(--white-alpha-60);
 `;
 
 export const guideQuote = css`

@@ -8,7 +8,7 @@ export const footerWrapper = css`
   align-items: center;
   height: ${LAYOUT.FOOTER_HEIGHT}px;
   padding: 1.6rem 2rem;
-  border-top: 1px solid rgb(255 255 255 / 20%);
+  border-top: 1px solid var(--white-alpha-20);
   font-size: 1.2rem;
   color: var(--gray-light);
   background-color: var(--black-deep);
