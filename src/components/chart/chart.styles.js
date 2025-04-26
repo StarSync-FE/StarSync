@@ -125,4 +125,22 @@ export const moreButton = css`
   &:hover {
     background-color: var(--black-full);
   }
+
+  &:disabled {
+    cursor:not-allowed;
+    opacity: 0.6;
+  }
+`;
+
+export const spinner = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+
+  img {
+    width: 15rem;
+    height: 15rem;
+    object-fit: contain;
+  }
 `;
