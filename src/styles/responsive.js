@@ -1,6 +1,6 @@
 import facepaint from 'facepaint';
 
-const breakpoints = [375, 744, 1024, 1280];
+const breakpoints = [375, 744, 1280, 1920];
 /**
  * `facepaint`를 사용하여 브레이크포인트에 맞는 미디어 쿼리를 반환하는 함수
  *
