@@ -13,8 +13,8 @@ import axiosInstance from './axiosInstance';
  * @example
  * const updated = await requestPut('/api/idols/1', { name: '장원영', group: '아이브' });
  */
-const requestPut = async (endpoint) => {
-  const response = await axiosInstance.put(endpoint);
+const requestPut = async (endpoint, data) => {
+  const response = await axiosInstance.put(endpoint, data);
   return response.data;
 };
 

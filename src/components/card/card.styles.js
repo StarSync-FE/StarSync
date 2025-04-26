@@ -1,5 +1,10 @@
 import media from '@/styles/responsive';
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
+
+const marquee = keyframes`
+  0%   { transform: translateX(30%); }
+  100% { transform: translateX(-100%); }
+`;
 
 export const card = css`
   width: 28.5rem;
@@ -59,6 +64,7 @@ export const content = css`
 
 export const header = css`
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   gap: 0.8rem;
   margin-top: 1.2rem;
@@ -73,16 +79,20 @@ export const header = css`
   }
 
   h2 {
-    overflow: hidden;
     font-size: 1.8rem;
     ${media({
       fontSize: ['1.4rem', '1.4rem', '1.8rem', '1.8rem'],
     })}
     font-weight: 500;
-    text-overflow: ellipsis;
     white-space: nowrap;
     color: var(--white);
+
+    &:hover {
+      animation: ${marquee} 8s linear infinite; 
+    }
   }
+
+
 `;
 
 export const info = css`
