@@ -30,6 +30,7 @@ const ListPage = () => {
 
   return (
     <div css={S.wrapper}>
+      <div css={S.listTheme} />
       <Charge credit={credit} setModalType={setModalType} /> {/* Charge에 credit 전달 */}
       <Carousel data={donations} setModalType={setModalType} setSelectedIndex={setSelectedIndex} />
       <Chart

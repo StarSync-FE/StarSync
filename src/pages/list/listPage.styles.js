@@ -9,3 +9,17 @@ export const wrapper = css`
     margin-left: 4rem;
   }
 `;
+
+export const listTheme = css`
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 250px;
+    height: 250px;
+    border-radius: 300px;
+    background: rgb(20 195 254 / 20%);
+    pointer-events: none;
+    filter: blur(100px);
+    transform: translateX(-30%) translateY(-20%);
+`;
