@@ -4,21 +4,21 @@ export const errorButtonStyle = css`
   display: inline-block;
   width: 16rem;
   padding: 1.2rem 2.4rem;
-  border: 2px solid rgb(255 255 255 / 30%);
-  box-shadow: 0 0 12px rgb(0 255 255 / 20%);
+  border: 2px solid var(--white-alpha-30);
+  box-shadow: 0 0 12px var(--cyan-alpha-20);
   font-weight: 600;
   color: var(--white);
   background: linear-gradient(
     135deg,
-    rgb(255 255 255 / 10%) 0%,
-    rgb(255 255 255 / 5%) 100%
+    var(--white-alpha-10) 0%,
+    var(--white-alpha-05) 100%
   );
   transition: all 0.3s ease-in-out;
   backdrop-filter: blur(8px);
 
   &:hover {
-    border-color: rgb(255 255 255 / 60%);
-    box-shadow: 0 0 16px rgb(0 255 255 / 40%);
+    border-color: var(--white-alpha-60);
+    box-shadow: 0 0 16px var(--cyan-alpha-40);
     transform: translateY(-2px);
   }
 

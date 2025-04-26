@@ -27,8 +27,8 @@ export const alertWrapper = css`
   margin: auto;
   padding: 2.7rem ;
   border-radius: 3.6rem;
-  color: #5C4D4D;
-  background-color: #FFF0F0;
+  color: var(--brown-dark);
+  background-color: var(--pink-soft);
   ${media({
     top: ['10rem', '10rem', '10rem', '2rem', '2rem'],
   })}

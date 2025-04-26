@@ -21,7 +21,7 @@ const getButtonStyle = (size, isRound) => css`
   font-size: ${size.fontSize};
   font-weight: 600;
   line-height: 1;
-  background: linear-gradient(90deg, var(--orange) 0%, var(--pink) 100%);
+  background: linear-gradient(90deg, var(--orange-deep) 0%, var(--pink) 100%);
 
   &:hover {
     opacity: 0.8;

@@ -28,7 +28,7 @@ export const wrapper = css`
     z-index: 1;
     width: 100%;
     height: 100%;
-    background: linear-gradient(360deg, #000, transparent);
+    background: linear-gradient(360deg, var(--black-full), transparent);
     pointer-events: none; ;
   }
 `;
