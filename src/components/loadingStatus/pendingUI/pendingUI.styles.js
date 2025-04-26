@@ -20,18 +20,18 @@ const twinkle = keyframes`
 `;
 
 const pulse = keyframes`
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 `;
 
 export const backgroundStarsStyle = css`
@@ -50,7 +50,7 @@ export const baseStarStyle = css`
   background-size: contain;
   opacity: 0.3;
   animation: ${twinkle} 3s infinite;
-  `;
+`;
 
 export const pendingStyle = css`
   display: flex;

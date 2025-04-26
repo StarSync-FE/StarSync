@@ -17,6 +17,7 @@ export const ModalWrapper = css`
   border-radius: 1.2rem;
   background-color: var(--black);
 `;
+
 export const itemsWrapper = css`
   overflow-y: scroll;
   ${media({
@@ -46,15 +47,18 @@ export const scrollStyle = css`
     background-color: rgb(255 255 255 / 70%);
   }
 `;
+
 export const headerBox = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
+
 export const idolItem = css`
   padding: 0.8rem 0;
   border-bottom: 1px solid #FFFFFF1A;
 `;
+
 export const voteRadioButton = css`
   width: 32.7rem;
   height: 7rem;
@@ -93,10 +97,12 @@ export const memberInfoBox = css`
     font-size: 1.4rem;
   };
 `;
+
 export const avatar = css`
   width: 7rem;
   height: 7rem;
 `;
+
 export const voteBox = css`
   display: flex;
   flex-direction: column;
