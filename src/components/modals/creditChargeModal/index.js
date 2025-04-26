@@ -1,1 +1,1 @@
-export { default as CreditChargeModal } from './creditChargeModal';
+export { default as CreditChargeModal } from './CreditChargeModal';
