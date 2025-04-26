@@ -127,14 +127,12 @@ const Chart = ({ setModalType }) => {
   };
 
   return (
-    <div>
+    <div css={S.chartWrapper}>
       <div css={S.chartSectionHeader}>
         <div>이달의 차트</div>
-        <CustomButton onClick={() => setModalType('vote')} style={S.customButton}>
-          <div>
-            <img src={chartImg} alt="차트" />
-            <span>차트 투표하기</span>
-          </div>
+        <CustomButton variant="vote" onClick={() => setModalType('vote')} style={S.voteButton}>
+          <img src={chartImg} alt="차트" />
+          <span>차트 투표하기</span>
         </CustomButton>
       </div>
 
