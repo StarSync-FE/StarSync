@@ -1,3 +1,4 @@
+import { fetchCharts, fetchDonations, fetchIdols } from '@/api';
 import { ENDPOINTS } from '@/constants/api';
 import { THROWN_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
@@ -26,28 +27,21 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              const LIMIT = 10;
-              const CURSOR = 0;
-              const url = `${ENDPOINTS.GET_IDOLS}?pageSize=${LIMIT}&cursor=${CURSOR}`;
-
               let idols;
-
               try {
-                idols = await requestGet(url);
+                idols = await fetchIdols({ limit: 10, cursor: 0 });
                 console.log('✅ idols:', idols);
               } catch (err) {
                 console.error('❌ idols 에러:', err?.response?.data || err.message);
-              }
-
-              if (Array.isArray(idols) && idols.length === 0) {
-                throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
-                  status: STATUS_CODES.NOT_FOUND,
+                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
+                  status: STATUS_CODES.SERVER_ERROR,
                 });
               }
 
-              if (!idols) {
-                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
-                  status: STATUS_CODES.SERVER_ERROR,
+              // 요청은 성공했는데 데이터가 문제일 때
+              if (Array.isArray(idols) && idols.length === 0) {
+                throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
+                  status: STATUS_CODES.NOT_FOUND,
                 });
               }
 
@@ -68,26 +62,29 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              const LIMIT = 10;
-              const CURSOR = 0;
-              const idolsUrl = `${ENDPOINTS.GET_IDOLS}?pageSize=${LIMIT}&cursor=${CURSOR}`;
-              const donationsUrl = ENDPOINTS.GET_DONATIONS;
-
               let idols;
               let donations;
+              let charts;
 
               try {
-                idols = await requestGet(idolsUrl);
+                idols = await fetchIdols({ limit: 10, cursor: 0 });
                 console.log('✅ idols:', idols);
               } catch (err) {
                 console.error('❌ idols 에러:', err?.response?.data || err.message);
               }
 
               try {
-                donations = await requestGet(donationsUrl);
+                donations = await fetchDonations({ limit: 10, cursor: 0 });
                 console.log('✅ donations:', donations);
               } catch (err) {
                 console.error('❌ donations 에러:', err?.response?.data || err.message);
+              }
+
+              try {
+                charts = await fetchCharts({ limit: 10, cursor: 0 });
+                console.log('✅ charts:', charts);
+              } catch (err) {
+                console.error('❌ charts 에러:', err?.response?.data || err.message);
               }
 
               // 404: 정상 응답이지만 빈 배열
@@ -95,7 +92,9 @@ const router = createBrowserRouter([
                 Array.isArray(idols) &&
                 idols.length === 0 &&
                 Array.isArray(donations) &&
-                donations.length === 0
+                donations.length === 0 &&
+                Array.isArray(charts) &&
+                charts.length === 0
               ) {
                 throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
                   status: STATUS_CODES.NOT_FOUND,
@@ -103,13 +102,13 @@ const router = createBrowserRouter([
               }
 
               // 500: 요청 자체 실패 (undefined)
-              if (!idols || !donations) {
+              if (!idols || !donations || !charts) {
                 throw new Response(THROWN_ERRORS.FETCH_FAILED, {
                   status: STATUS_CODES.SERVER_ERROR,
                 });
               }
 
-              return { idols, donations };
+              return { idols, donations, charts };
             },
           };
         },
@@ -126,31 +125,22 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              const LIMIT = 30;
-              const CURSOR = 0;
-              const url = `${ENDPOINTS.GET_IDOLS}?pageSize=${LIMIT}&cursor=${CURSOR}`;
-
               let idols;
-
               try {
-                idols = await requestGet(url);
+                idols = await fetchIdols({ limit: 30, cursor: 0 });
                 console.log('✅ idols:', idols);
               } catch (err) {
                 console.error('❌ idols 에러:', err?.response?.data || err.message);
+                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
+                  status: STATUS_CODES.SERVER_ERROR,
+                });
               }
-
+              // 요청은 성공했는데 데이터가 문제일 때
               if (Array.isArray(idols) && idols.length === 0) {
                 throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
                   status: STATUS_CODES.NOT_FOUND,
                 });
               }
-
-              if (!idols) {
-                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
-                  status: STATUS_CODES.SERVER_ERROR,
-                });
-              }
-
               return idols;
             },
           };
