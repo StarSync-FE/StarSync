@@ -116,6 +116,7 @@ export const activeButton = css`
 
 export const idolList = css`
   display: grid;
+  color: var(--gray-light);
   ${media({
     marginTop: ['1rem', '1.2rem', '1.7rem', '1.7rem'],
     fontSize: ['1.1rem', '1.2rem', '1.4rem', '1.6rem'],
@@ -154,9 +155,28 @@ export const idolList = css`
   }
 `;
 
+export const idolContent = css`
+  display: flex;
+  flex-direction: column;
+  ${media({
+    gap: ['0.6rem', '0.5rem', '0.8rem', '1rem'],
+  })}
+`;
+
 export const rankStyle = css`
-  margin: 0 0.5rem;
+  margin: 0 0.9rem 0 0.5rem;
   color: var(--orange);
+`;
+
+export const groupStyle = css`
+${media({
+  fontSize: ['0.9rem', '1rem', '1.2rem', '1.35rem'],
+})}
+`;
+
+export const nameStyle = css`
+  font-weight: 700;
+  color: var(--white);
 `;
 
 export const moreButton = css`
