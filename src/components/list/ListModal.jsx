@@ -1,8 +1,10 @@
-import { Modal } from '@/components/modal';
-import { CreditChargeModal } from '@/components/modals/creditChargeModal';
-import { CreditLackModal } from '@/components/modals/creditLackModal';
-import { DonationModal } from '@/components/modals/donationModal';
-import { VoteModal } from '@/components/modals/voteModal';
+import {
+  CreditChargeModal,
+  CreditLackModal,
+  DonationModal,
+  Modal,
+  VoteModal,
+} from '@/components/modals';
 
 const ListModal = ({ modalType, setModalType, credit, updateCredit, gender, donations }) => {
   const onCloseModal = () => setModalType(null);

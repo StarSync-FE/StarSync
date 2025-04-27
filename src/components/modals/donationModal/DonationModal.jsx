@@ -1,6 +1,6 @@
 import creditImg from '@/assets/images/credit.png';
 import { Alert } from '@/components/alert';
-import { CustomButton } from '@/components/customButton';
+import { CustomButton } from '@/components/button';
 import { ENDPOINTS } from '@/constants/api';
 import { requestPut } from '@/utils/api';
 import { useRef, useState } from 'react';
