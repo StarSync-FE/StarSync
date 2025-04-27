@@ -1,25 +1,38 @@
 import { Alert } from '@/components/alert';
 import { registerAlertTrigger } from '@/utils/alert/alertController';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 const AlertManager = () => {
   const [visible, setVisible] = useState(false);
   const [content, setContent] = useState('');
   const [type, setType] = useState('warning');
   const [customStyle, setCustomStyle] = useState({});
-
-  const triggerAlert = (message, type = 'warning', style = {}) => {
+  const timeoutRef = useRef(null);
+  const triggerAlert = (message, type = 'warning', style = {}, duration = 2000) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
     setVisible(true);
     setContent(message);
     setType(type);
     setCustomStyle(style);
-    setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       setVisible(false);
-    }, 700);
+      timeoutRef.current = null;
+    }, duration);
   };
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    registerAlertTrigger(triggerAlert);
+    try {
+      registerAlertTrigger(triggerAlert);
+    } catch (error) {
+      console.log(error);
+    }
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, []);
   if (!visible) return null;
 

@@ -14,15 +14,19 @@ export const registerAlertTrigger = (fn) => {
  * S.변수명 형식은 알림창 자체가 호출이 되지 않습니다.
  *
  * @param {string} message - 알림창의 내용을 입력합니다.
- * @param {'warning' | 'success'} - 알림창의 타입을 결정합니다.
- * @param {Object} - 추가적으로 입힐 스타일을 입력합니다.
- *
+ * @param {'warning' | 'success'} type - 알림창의 타입을 결정합니다.
+ * @param {number} duration - 얼마나 알림창을 띄워둘지 입력합니다.
+ * @param {Object} style - 추가적으로 입힐 스타일을 입력합니다.
  * @returns {void} - 함수만 호출할뿐 아무 값도 반환하지 않습니다.
  */
-export const showAlert = (message = 'toast content', type = 'warning', style = {}) => {
-  console.log('showAlert called:', { message, type, style });
+export const showAlert = (
+  message = 'toast content',
+  type = 'warning',
+  style = {},
+  duration = 2000,
+) => {
   if (externalTriggerAlert) {
-    externalTriggerAlert(message, type, style);
+    externalTriggerAlert(message, type, duration, style);
   } else {
     console.warn('Alert system not ready');
   }
