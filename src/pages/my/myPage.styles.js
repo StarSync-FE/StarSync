@@ -75,7 +75,6 @@ export const idolListWrapper = css`
   gap: 2.7rem;
   width: 100%;
   margin: 4rem 0 0;
-  border: 1px solid pink;
 `;
 export const idolList = css`
   display: grid;
