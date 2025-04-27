@@ -27,7 +27,7 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }));
+              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }), 'idols');
               throwIfEmptyArray(idols);
               return idols;
             },
@@ -46,9 +46,15 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }));
-              const donations = await safeRequest(() => fetchDonations({ limit: 10, cursor: 0 }));
-              const charts = await safeRequest(() => fetchCharts({ limit: 10, cursor: 0 }));
+              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }), 'idols');
+              const donations = await safeRequest(
+                () => fetchDonations({ limit: 10, cursor: 0 }),
+                'donations',
+              );
+              const charts = await safeRequest(
+                () => fetchCharts({ gender: 'female', limit: 10, cursor: 0 }),
+                'charts',
+              );
 
               throwIfEmptyArray(idols);
               throwIfEmptyArray(donations);
@@ -71,7 +77,7 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }));
+              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }), 'idols');
               throwIfEmptyArray(idols);
               return idols;
             },

@@ -23,8 +23,7 @@ const Card = ({ data, setModalType, setSelectedIndex, index }) => {
     <article css={S.card}>
       <div css={S.wrapper}>
         <figure>
-          <img src={data.profilePicture} alt={data.name} css={S.image} />
-          {/* 서버에서 보내는 데이터에 idol프로퍼티가 없어서 data.idol이 아니라 data.로 받아야 해서 수정했어요. */}
+          <img src={data.idol.profilePicture} alt={data.idol.name} css={S.image} />
         </figure>
 
         <CustomButton

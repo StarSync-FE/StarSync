@@ -12,13 +12,13 @@ import { STATUS_CODES } from '@/constants/statusCodes';
  * @returns {Promise<T>} 요청에 성공한 경우 반환되는 데이터
  * @throws {Response} 요청 실패 시 500 상태 코드를 가진 Response를 던집니다.
  */
-async function safeRequest(apiCall) {
+async function safeRequest(apiCall, label = '') {
   try {
     const data = await apiCall();
-    console.log('✅ data:', data);
+    console.log(`✅ ${label} data:`, data);
     return data;
   } catch (err) {
-    console.error('❌ 요청 에러:', err?.response?.data || err.message);
+    console.error(`❌ ${label} 요청 에러:`, err?.response?.data || err.message);
     throw new Response(THROWN_ERRORS.FETCH_FAILED, {
       status: STATUS_CODES.SERVER_ERROR,
     });
