@@ -22,16 +22,46 @@ const MyPage = () => {
   const [myIdol, setMyIdol] = useState([]);
   const [selectedProfiles, setSelectedProfiles] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 16;
+  const [pageSize, setPageSize] = useState(16);
+  // const pageSize = 16;
 
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const currentIdols = allIdols.slice(startIndex, endIndex);
   const maxPage = Math.ceil(allIdols.length / pageSize);
+  const [screenSize, setScreenSize] = useState('desktop');
 
   useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width <= 743) {
+        setScreenSize('mobile');
+      } else if (width <= 1279) {
+        setScreenSize('tablet');
+      } else if (width <= 1919) {
+        setScreenSize('desktop');
+      } else {
+        setScreenSize('desktopL');
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (screenSize === 'mobile') {
+      setPageSize(6);
+    } else if (screenSize === 'tablet') {
+      setPageSize(12);
+    } else {
+      setPageSize(16);
+    }
+    console.log(screenSize);
+  }, [screenSize]);
+  useEffect(() => {
     const savedMyIdols = localStorage.getItem('myIdol');
-    const savedAllIdols = localStorage.getItem('allIdols');
 
     const parsedMyIdols = savedMyIdols ? JSON.parse(savedMyIdols) : [];
     const myIdolIds = new Set(parsedMyIdols.map((idol) => String(idol.id)));
@@ -115,18 +145,21 @@ const MyPage = () => {
         })}
       </section>
 
-      <h2 css={S.title}>관심 있는 아이돌을 추가해보세요.</h2>
+      <h2 css={[S.title, S.allIdolTitle]}>관심 있는 아이돌을 추가해보세요.</h2>
       <div css={S.idolListWrapper}>
-        <Button
-          iconImage={'prev'}
-          styles={S.prev}
-          goToPage={() => {
-            if (currentPage > 1) {
-              setCurrentPage((prev) => prev - 1);
-            }
-          }}
-        />
-        <section css={S.idolList}>
+        {screenSize !== 'mobile' && currentIdols.length > 0 ? (
+          <Button
+            iconImage={'prev'}
+            styles={S.prev}
+            goToPage={() => {
+              if (currentPage > 1) {
+                setCurrentPage((prev) => prev - 1);
+              }
+            }}
+          />
+        ) : null}
+
+        <section css={[S.idolList]}>
           {currentIdols.map((idol) => {
             return (
               <div key={idol.id} css={S.allProfileSize}>
@@ -141,15 +174,17 @@ const MyPage = () => {
             );
           })}
         </section>
-        <Button
-          iconImage={'next'}
-          styles={S.next}
-          goToPage={() => {
-            if (currentPage < maxPage) {
-              setCurrentPage((prev) => prev + 1);
-            }
-          }}
-        />
+        {screenSize !== 'mobile' && currentIdols.length > 0 ? (
+          <Button
+            iconImage={'next'}
+            styles={S.next}
+            goToPage={() => {
+              if (currentPage < maxPage) {
+                setCurrentPage((prev) => prev + 1);
+              }
+            }}
+          />
+        ) : null}
       </div>
       <div css={S.customButtonWrapper}>
         <CustomButton type="button" isRound={true} style={S.customButtonStyle} onClick={addMyIdols}>
