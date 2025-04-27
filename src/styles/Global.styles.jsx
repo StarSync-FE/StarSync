@@ -30,6 +30,7 @@ const resetStyle = css`
   --pink-soft: #FFF0F0;
   --pink-rose-alpha-50: #FE578F80;
   --blue-sky: #1C9EFB;
+  --blue-medium: #62B9F7;
   --blue-dark: #3D2FA9;
   --blue-navy: #272F3D;
   --purple: #8D42FB;
