@@ -18,12 +18,16 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
 
   const handleTabClick = (e) => {
     const newTab = e.currentTarget.value;
-    setSelectedTab(newTab);
 
-    // 탭 변경 시 데이터 초기화
-    setChartData([]);
-    setCursor(0);
-    setHasMore(true);
+    // 동일한 탭을 클릭할 경우, 데이터 초기화가 안 되도록 조건 추가
+    if (selectedTab !== newTab) {
+      setSelectedTab(newTab);
+
+      // 새로운 탭을 클릭할 경우, 데이터 초기화
+      setChartData([]);
+      setCursor(0);
+      setHasMore(true);
+    }
   };
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
