@@ -14,7 +14,7 @@ export const card = css`
   })}
 
   &:hover h2 {
-      animation: ${marquee} 8s linear infinite; 
+    animation: ${marquee} 8s linear infinite; 
   }
 `;
 
