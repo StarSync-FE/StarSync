@@ -18,7 +18,7 @@ const bounceIn = keyframes`
   }
 `;
 
-export const alertWrapper = (isSmall) => css`
+export const alertWrapper = css`
   display: flex;
   position: fixed;
   top: 8vh;
@@ -40,11 +40,6 @@ export const alertWrapper = (isSmall) => css`
       ],
       left: ['25%', '25%', '25%', '35%', '35%'],
     })}
-  /* ${media({
-    top: isSmall
-      ? ['7rem', '7rem', '10rem', '10rem', '10rem']
-      : ['10rem', '10rem', '10rem', '2rem', '2rem'],
-  })} */
   animation: ${bounceIn} 0.5s ease forwards;
 `;
 
