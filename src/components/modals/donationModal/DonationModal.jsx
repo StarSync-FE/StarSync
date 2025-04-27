@@ -4,6 +4,7 @@ import { CustomButton } from '@/components/customButton';
 import { ENDPOINTS } from '@/constants/api';
 import { requestPut } from '@/utils/api';
 import { useRef, useState } from 'react';
+import { useRevalidator } from 'react-router-dom';
 import * as S from './donationModal.styles';
 
 const DonationModal = ({ data, credit, updateCredit, onClose }) => {
@@ -16,6 +17,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
   const [alertType, setAlertType] = useState('warning');
   const inputRef = useRef(null);
   const prevCredit = credit;
+  const revalidator = useRevalidator();
 
   const triggerAlert = (message, type = 'warning') => {
     setAlertContent(message);
@@ -32,12 +34,14 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
     if (amount.startsWith('0') || Number.isNaN(Number(amount))) {
       setHasNoMoney(false);
       setIsInvalidNumber(true);
+      setDonateAmount('');
       return;
     }
 
     if (prevCredit < Number(amount)) {
       setIsInvalidNumber(false);
       setHasNoMoney(true);
+      setDonateAmount(amount);
       return;
     }
 
@@ -67,6 +71,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
       triggerAlert('후원에 성공했습니다', 'success');
       setTimeout(() => {
         onClose();
+        revalidator.revalidate();
       }, 700);
     } catch (e) {
       console.error('후원 처리 중 오류 발생', e);
@@ -107,7 +112,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
       <CustomButton
         onButtonClick={handleClick}
         onKeyDown={(e) => e.key === 'Enter' && onClose()}
-        disabled={!inputRef.current?.value || isDonating}
+        disabled={!donateAmount || isDonating || isInvalidNumber || hasNoMoney}
         style={{ marginTop: '1.2rem' }}
       >
         후원하기
