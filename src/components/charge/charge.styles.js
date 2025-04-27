@@ -1,3 +1,4 @@
+import media from '@/styles/responsive';
 import { css, keyframes } from '@emotion/react';
 
 export const voteButtonFlow = keyframes`
@@ -17,11 +18,12 @@ export const creditWrapper = css`
   justify-content: space-between;
   align-items: center;
   margin: 2rem 0;
-  padding: 4rem 6rem;
   border: 1px solid var(--white);
   border-radius: 0.5rem;
   font-weight: 700;
-  
+  ${media({
+    padding: ['2.5rem 3.5rem', '4rem 6rem', '4rem 6rem', '4rem 6rem'],
+  })}
 
   button {
     width: 8rem;
