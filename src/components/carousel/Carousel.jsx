@@ -1,4 +1,4 @@
-import { ArrowButton } from '@/components/arrowButton';
+import { ArrowButton } from '@/components/button';
 import { Card } from '@/components/card';
 import { getItemMetrics } from '@/utils/carousel';
 import { useCallback, useEffect, useRef, useState } from 'react';

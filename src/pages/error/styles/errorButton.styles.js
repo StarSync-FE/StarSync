@@ -1,7 +1,15 @@
 import { css } from '@emotion/react';
 
+export const buttonWrapper = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const errorButtonStyle = css`
-  display: inline-block;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
   width: 16rem;
   padding: 1.2rem 2.4rem;
   border: 2px solid var(--white-alpha-30);
@@ -32,5 +40,4 @@ export const logoIconStyle = css`
   width: 2rem;
   height: 2rem;
   margin-right: 0.8rem;
-  vertical-align: middle;
 `;
