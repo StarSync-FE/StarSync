@@ -34,7 +34,7 @@ export const creditWrapper = css`
     font-weight: 700;
     letter-spacing: 0.1rem;
     color: var(--white);
-    background: linear-gradient(45deg, var(--pink) 0%, var(--orange-pink) 51%, var(--pink) 100%);
+    background: linear-gradient(45deg, var(--pink-purple) 0%, var(--orange) 51%, var(--pink-purple) 100%);
     background-color: var(--white-alpha-10);
     background-position: left center; /* 기본 시작 위치 */
     background-size: 400%; /* 배경 크기 확장 */
