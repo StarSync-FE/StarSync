@@ -58,12 +58,11 @@ export const voteButton = css`
   &:hover {
     background-position: right center; /* hover 시 배경 이동 */
     animation: ${voteButtonFlow} 6s ease infinite; /* 애니메이션 흐름 */
-    transform: translateY(1px);
     opacity: 0.9;
   }
 
   &:active {
-    transform: scale(0.95);
+    transform: scale(0.97);
   }
 `;
 
@@ -202,7 +201,7 @@ export const moreButton = css`
   }
 
   &:active {
-    transform: translateY(1px);
+    transform: scale(0.97);
   }
 
   &:disabled {
