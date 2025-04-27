@@ -1,7 +1,7 @@
-import { ApiErrorBoundary, GlobalErrorBoundary, RenderErrorBoundary } from '@/components/error';
 import { ENDPOINTS } from '@/constants/api';
 import { THROWN_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
+import { ApiErrorBoundary, GlobalErrorBoundary, RenderErrorBoundary } from '@/errorBoundary';
 import { requestGet } from '@/utils/api';
 import { createBrowserRouter } from 'react-router-dom';
 
