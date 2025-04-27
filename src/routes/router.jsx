@@ -1,9 +1,8 @@
 import { fetchCharts, fetchDonations, fetchIdols } from '@/api';
-import { ENDPOINTS } from '@/constants/api';
 import { THROWN_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import { ApiErrorBoundary, GlobalErrorBoundary, RenderErrorBoundary } from '@/errorBoundary';
-import { requestGet } from '@/utils/api';
+import { safeRequest } from '@/utils/api';
 import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -27,16 +26,7 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              let idols;
-              try {
-                idols = await fetchIdols({ limit: 10, cursor: 0 });
-                console.log('✅ idols:', idols);
-              } catch (err) {
-                console.error('❌ idols 에러:', err?.response?.data || err.message);
-                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
-                  status: STATUS_CODES.SERVER_ERROR,
-                });
-              }
+              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }));
 
               // 요청은 성공했는데 데이터가 문제일 때
               if (Array.isArray(idols) && idols.length === 0) {
@@ -62,30 +52,9 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              let idols;
-              let donations;
-              let charts;
-
-              try {
-                idols = await fetchIdols({ limit: 10, cursor: 0 });
-                console.log('✅ idols:', idols);
-              } catch (err) {
-                console.error('❌ idols 에러:', err?.response?.data || err.message);
-              }
-
-              try {
-                donations = await fetchDonations({ limit: 10, cursor: 0 });
-                console.log('✅ donations:', donations);
-              } catch (err) {
-                console.error('❌ donations 에러:', err?.response?.data || err.message);
-              }
-
-              try {
-                charts = await fetchCharts({ limit: 10, cursor: 0 });
-                console.log('✅ charts:', charts);
-              } catch (err) {
-                console.error('❌ charts 에러:', err?.response?.data || err.message);
-              }
+              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }));
+              const donations = await safeRequest(() => fetchDonations({ limit: 10, cursor: 0 }));
+              const charts = await safeRequest(() => fetchCharts({ limit: 10, cursor: 0 }));
 
               // 404: 정상 응답이지만 빈 배열
               if (
@@ -98,13 +67,6 @@ const router = createBrowserRouter([
               ) {
                 throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
                   status: STATUS_CODES.NOT_FOUND,
-                });
-              }
-
-              // 500: 요청 자체 실패 (undefined)
-              if (!idols || !donations || !charts) {
-                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
-                  status: STATUS_CODES.SERVER_ERROR,
                 });
               }
 
@@ -125,22 +87,15 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              let idols;
-              try {
-                idols = await fetchIdols({ limit: 30, cursor: 0 });
-                console.log('✅ idols:', idols);
-              } catch (err) {
-                console.error('❌ idols 에러:', err?.response?.data || err.message);
-                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
-                  status: STATUS_CODES.SERVER_ERROR,
-                });
-              }
+              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }));
+
               // 요청은 성공했는데 데이터가 문제일 때
               if (Array.isArray(idols) && idols.length === 0) {
                 throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
                   status: STATUS_CODES.NOT_FOUND,
                 });
               }
+
               return idols;
             },
           };
