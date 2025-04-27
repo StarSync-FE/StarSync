@@ -164,7 +164,7 @@ export const idolContent = css`
 `;
 
 export const rankStyle = css`
-  margin: 0 0.9rem 0 0.5rem;
+  margin-inline: 0.5rem 0.9rem;
   color: var(--orange);
 `;
 
