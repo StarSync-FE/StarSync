@@ -7,7 +7,7 @@ const AlertManager = () => {
   const [type, setType] = useState('warning');
   const [customStyle, setCustomStyle] = useState({});
   const timeoutRef = useRef(null);
-  const triggerAlert = (message, type = 'warning', style = {}, duration = 2000) => {
+  const triggerAlert = (message, type = 'warning', duration = 2000, style = {}) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
