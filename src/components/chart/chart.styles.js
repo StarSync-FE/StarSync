@@ -167,17 +167,3 @@ export const moreButton = css`
     opacity: 0.6;
   }
 `;
-
-export const spinner = css`
-  ${flexCenter};
-  padding: 4rem;
-
-  img {
-    object-fit: contain;
-
-    ${media({
-      width: ['12rem', '15rem', '20rem', '25rem'],
-      height: ['12rem', '15rem', '20rem', '25rem'],
-    })}
-  }
-`;
