@@ -1,4 +1,5 @@
 import creditImg from '@/assets/images/credit.png';
+import { Alert } from '@/components/alert';
 import { CustomButton } from '@/components/customButton';
 import { ENDPOINTS } from '@/constants/api';
 import { requestPut } from '@/utils/api';
@@ -9,22 +10,39 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
   const [donateAmount, setDonateAmount] = useState('');
   const [hasNoMoney, setHasNoMoney] = useState(false);
   const [isDonating, setIsDonating] = useState(false);
+  const [isInvalidNumber, setIsInvalidNumber] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertContent, setAlertContent] = useState('');
+  const [alertType, setAlertType] = useState('warning');
   const inputRef = useRef(null);
   const prevCredit = credit;
+
+  const triggerAlert = (message, type = 'warning') => {
+    setAlertContent(message);
+    setAlertType(type);
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  };
 
   const handleChangeAmount = (e) => {
     const amount = e.target.value;
 
     if (amount.startsWith('0') || Number.isNaN(Number(amount))) {
+      setHasNoMoney(false);
+      setIsInvalidNumber(true);
       return;
     }
 
     if (prevCredit < Number(amount)) {
+      setIsInvalidNumber(false);
       setHasNoMoney(true);
       return;
     }
 
     setHasNoMoney(false);
+    setIsInvalidNumber(false);
     setDonateAmount(amount);
   };
 
@@ -46,11 +64,13 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
       localStorage.setItem('selectedCredit', total);
       updateCredit(total);
 
-      alert(`후원 성공 기존 : ${prevCredit}  현재 : ${total}`);
-      onClose();
+      triggerAlert('후원에 성공했습니다', 'success');
+      setTimeout(() => {
+        onClose();
+      }, 700);
     } catch (e) {
       console.error('후원 처리 중 오류 발생', e);
-      alert('후원 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
+      triggerAlert('후원에 실패했습니다', 'warning');
     } finally {
       setIsDonating(false);
     }
@@ -68,7 +88,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
           <h3>{data.title}</h3>
         </div>
       </div>
-      <div css={S.inputContent(hasNoMoney)}>
+      <div css={S.inputContent(hasNoMoney, isInvalidNumber)}>
         <img src={creditImg} alt="크레딧" />
         <input
           placeholder="크레딧 입력"
@@ -77,17 +97,22 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
           onKeyDown={handleKeyDown}
           ref={inputRef}
         />
-        {hasNoMoney && <p>갖고 있는 크레딧보다 더 많이 후원할 수 없어요</p>}
+        {isInvalidNumber ? (
+          <p>1 이상의 숫자만 입력할 수 있어요</p>
+        ) : hasNoMoney ? (
+          <p>갖고 있는 크레딧보다 더 많이 후원할 수 없어요</p>
+        ) : null}
       </div>
 
       <CustomButton
         onButtonClick={handleClick}
         onKeyDown={(e) => e.key === 'Enter' && onClose()}
-        disabled={!inputRef.current?.value || isDonating || hasNoMoney}
+        disabled={!inputRef.current?.value || isDonating}
         style={{ marginTop: '1.2rem' }}
       >
         후원하기
       </CustomButton>
+      {showAlert && <Alert content={alertContent} type={alertType} isSmall />}
     </div>
   );
 };
