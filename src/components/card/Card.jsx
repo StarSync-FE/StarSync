@@ -14,9 +14,8 @@ const Card = ({ data, setModalType, setSelectedIndex, index }) => {
     const interval = setInterval(() => {
       const newDaysLeft = getDaysRemaining(data.deadline);
       setDaysLeft(newDaysLeft); // 갱신된 남은 일수로 상태 업데이트
-    }, 55000); // 1분마다 갱신 (원하는 주기로 설정)
+    }, 55000);
 
-    // 컴포넌트가 unmount될 때 interval을 정리
     return () => clearInterval(interval);
   }, [data.deadline]);
 
