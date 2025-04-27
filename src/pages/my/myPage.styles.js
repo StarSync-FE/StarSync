@@ -111,16 +111,9 @@ export const buttonIcon = css`
 
 // 이전, 다음 버튼 컴포넌트
 export const arrowButton = css`
-  position: relative;
-  top: 40%;
-  z-index: 1;
   min-width: 2.9rem;
   height: 13.5rem;
-  background-color: var(--gray-dark-alpha-80);
 
-  &:active {
-    background-color: var(--gray-light-02);
-  }
 `;
 
 export const prev = css`

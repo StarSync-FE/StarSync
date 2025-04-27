@@ -1,6 +1,7 @@
 import nextIcon from '@/assets/icons/next-icon.png';
 import addIcon from '@/assets/icons/plus-icon.png';
 import prevIcon from '@/assets/icons/prev-icon.png';
+import { ArrowButton } from '@/components/arrowButton';
 import { Avatar } from '@/components/avatar';
 import { AvatarButton } from '@/components/avatarButton';
 import { CustomButton } from '@/components/customButton';
@@ -55,6 +56,8 @@ const MyPage = () => {
       setPageSize(6);
     } else if (screenSize === 'tablet') {
       setPageSize(12);
+    } else if (screenSize === 'desktop') {
+      setPageSize(16);
     } else {
       setPageSize(20);
     }
@@ -148,10 +151,10 @@ const MyPage = () => {
       <h2 css={[S.title, S.allIdolTitle]}>관심 있는 아이돌을 추가해보세요.</h2>
       <div css={S.idolListWrapper}>
         {screenSize !== 'mobile' && currentIdols.length > 0 ? (
-          <Button
-            iconImage={'prev'}
-            styles={S.prev}
-            goToPage={() => {
+          <ArrowButton
+            direction={'left'}
+            styles={[S.arrowButton, S.prev]}
+            onButtonClick={() => {
               if (currentPage > 1) {
                 setCurrentPage((prev) => prev - 1);
               }
@@ -175,10 +178,10 @@ const MyPage = () => {
           })}
         </section>
         {screenSize !== 'mobile' && currentIdols.length > 0 ? (
-          <Button
-            iconImage={'next'}
-            styles={S.next}
-            goToPage={() => {
+          <ArrowButton
+            direction="right"
+            styles={[S.arrowButton, S.next]}
+            onButtonClick={() => {
               if (currentPage < maxPage) {
                 setCurrentPage((prev) => prev + 1);
               }
