@@ -15,7 +15,11 @@ function Root() {
     <>
       {isLoading && <PendingUI />}
       {!isLanding && <Header />}
-      <main style={{ paddingTop: !isLanding ? `${LAYOUT.HEADER_HEIGHT}px` : 0 }}>
+      <main
+        style={{
+          paddingTop: !isLanding ? `${LAYOUT.HEADER_HEIGHT}px` : 0,
+        }}
+      >
         <Outlet />
       </main>
       {!isLanding && <Footer />}

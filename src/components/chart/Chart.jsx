@@ -1,5 +1,5 @@
 import chartImg from '@/assets/images/chart.png';
-import { CustomButton } from '@/components/customButton';
+import { CustomButton } from '@/components/button';
 import { LoadingSpinner } from '@/components/loadingStatus/loadingSpinner';
 import { ENDPOINTS } from '@/constants/api';
 import { requestGet } from '@/utils/api';
@@ -129,7 +129,11 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
     <div css={S.chartWrapper}>
       <div css={S.chartSectionHeader}>
         <div>이달의 차트</div>
-        <CustomButton variant="vote" onButtonClick={() => setModalType('vote')} style={S.voteButton}>
+        <CustomButton
+          variant="vote"
+          onButtonClick={() => setModalType('vote')}
+          style={S.voteButton}
+        >
           <img src={chartImg} alt="차트" />
           <span>차트 투표하기</span>
         </CustomButton>

@@ -1,4 +1,5 @@
 import exitImg from '@/assets/icons/exit-icon.png';
+import { useEffect, useState } from 'react';
 import * as S from './modal.styles';
 
 /**
@@ -20,16 +21,36 @@ import * as S from './modal.styles';
 function Modal({ isOpen, onClose, children }) {
   if (!isOpen) return null;
 
-  const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) {
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleMouseDown = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = () => {
+    setIsDragging(true);
+  };
+
+  const handleMouseUp = (e) => {
+    if (!isDragging && e.target === e.currentTarget) {
       onClose();
     }
+    setIsDragging(false);
   };
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional polling without deps
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   return (
     <div
       css={S.overlay}
-      onClick={handleOverlayClick}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
       onKeyDown={(e) => e.key === 'Escape' && onClose()}
       role="presentation"
     >
