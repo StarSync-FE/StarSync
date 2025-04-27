@@ -24,7 +24,8 @@ import getButtonStyle from './customButton.styles';
  * @param {boolean} [props.isRound=false] - 버튼이 원형인지 여부. 기본값은 false.
  * @param {boolean} [props.disabled=false] - 버튼이 비활성화 상태인지 여부. 기본값은 false.
  * @param {React.CSSProperties} [props.style] - 버튼에 추가적인 스타일을 적용할 수 있는 객체.
- * @param {function} [props.onButtonClick] - 버튼 클릭 시 실행될 이벤트 핸들러.
+ * @param {(e: React.MouseEvent<HTMLButtonElement>) => void} [props.onButtonClick] - 버튼 클릭 시 실행될 이벤트 핸들러.
+ * @param {(e: React.KeyboardEvent<HTMLButtonElement>) => void} [props.onKeyDown] - 키보드 이벤트 핸들러.
  * @param {React.ReactNode} [props.children] - 버튼 내부에 표시될 내용.
  *
  * @returns {JSX.Element} 렌더링된 버튼 요소
