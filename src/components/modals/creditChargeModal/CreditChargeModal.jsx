@@ -1,8 +1,7 @@
 import starTwoImg from '@/assets/images/2-star.png';
 import starThreeImg from '@/assets/images/3-star.png';
 import starImg from '@/assets/images/star.png';
-import { CustomButton } from '@/components/customButton';
-import { RadioButton } from '@/components/radioButton';
+import { CustomButton, RadioButton } from '@/components/button';
 import { Prices } from '@/constants/creditPrice';
 import { useState } from 'react';
 import * as S from './creditChargeModal.styles';

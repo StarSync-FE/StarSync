@@ -1,5 +1,5 @@
+import rollingStarImg from '@/assets/images/logo-star.png';
 import logoImg from '@/assets/images/logo.png';
-import rollingStarImg from '@/assets/images/logo_star.png';
 import * as S from './splashScreen.styles';
 
 function SplashScreen() {

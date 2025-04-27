@@ -18,7 +18,7 @@ const bounceIn = keyframes`
   }
 `;
 
-export const alertWrapper = css`
+export const alertWrapper = (isSmall) => css`
   display: flex;
   position: fixed;
   z-index: 1111;
@@ -30,7 +30,9 @@ export const alertWrapper = css`
   color: var(--brown-dark);
   background-color: var(--pink-soft);
   ${media({
-    top: ['10rem', '10rem', '10rem', '2rem', '2rem'],
+    top: isSmall
+      ? ['7rem', '7rem', '10rem', '10rem', '10rem']
+      : ['10rem', '10rem', '10rem', '2rem', '2rem'],
   })}
   animation: ${bounceIn} 0.5s ease forwards;
 `;

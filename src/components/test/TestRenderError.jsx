@@ -1,4 +1,4 @@
-import { RenderErrorBoundary } from '@/components/error';
+import { RenderErrorBoundary } from '@/errorBoundary';
 import BrokenComponent from './BrokenComponent';
 
 const TestRenderError = () => {

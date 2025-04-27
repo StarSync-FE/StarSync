@@ -1,2 +1,2 @@
-export * from './notFound/';
-export * from './serverError/';
+export { default as NotFoundPage } from './notFound';
+export { default as ServerErrorPage } from './serverError';

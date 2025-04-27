@@ -1,5 +1,5 @@
 import chartImg from '@/assets/images/chart.png';
-import { CustomButton } from '@/components/customButton';
+import { CustomButton } from '@/components/button';
 import { LoadingSpinner } from '@/components/loadingStatus/loadingSpinner';
 import { useEffect, useState } from 'react';
 import LoadMoreButton from './LoadMoreButton';
