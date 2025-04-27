@@ -127,7 +127,7 @@ export const sectionContent = css`
     letter-spacing: 0.2rem;
     word-break: keep-all;
     color: var(--white);
-    text-shadow: 2px 2px 4px rgb(0 0 0 / 70%);
+    text-shadow: 2px 2px 4px var(--black-alpha-70);
     cursor: pointer;
     transition: opacity 0.3s ease;
     animation: ${glow} 2s infinite ease-in-out;
@@ -153,7 +153,7 @@ export const sectionContent = css`
     white-space: pre-line;
     word-break: keep-all;
     color: var(--white);
-    text-shadow: 2px 2px 4px rgb(0 0 0 / 70%);
+    text-shadow: 2px 2px 4px var(--black-alpha-70);
     cursor: pointer;
     transition: opacity 0.3s ease;
 

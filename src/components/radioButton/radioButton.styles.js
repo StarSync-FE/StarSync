@@ -9,7 +9,7 @@ export const buttonArea = css`
   input[type="radio"] {
     width: 16px;
     height: 16px;
-    border: 4px solid white;
+    border: 4px solid var(--white-full);
     border-radius: 50%;
     outline: none;
     background-color: var(--gray-cool);
@@ -17,7 +17,7 @@ export const buttonArea = css`
   }
 
   input[type="radio"]:checked {
-    border: 4px solid #fff;
+    border: 4px solid var(--white-full);
     box-shadow: 0 0 0 1.6px var(--orange);
     background-color: var(--orange);
   }

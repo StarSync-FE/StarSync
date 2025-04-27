@@ -24,7 +24,7 @@ export const scrollStyle = css`
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(255 255 255 / 70%);
+    background-color: var(--white-alpha-70);
   }
 `;
 export const horizonList = css`
@@ -55,8 +55,9 @@ export const groupName = css`
   font-size: 1.4rem;
   font-weight: 400;
   text-align: center;
-  color: #FFF9;
-  `;
+  color: var(--white-alpha-60);
+`;
+
 export const title = css`
   ${media({ fontSize: ['1.6rem', '1.6rem', '2rem', '2.4rem', '2.4rem'] })}
   font-weight: 700;
@@ -115,10 +116,10 @@ export const arrowButton = css`
   z-index: 1;
   min-width: 2.9rem;
   height: 13.5rem;
-  background-color: #1B1B1BCC;
+  background-color: var(--gray-dark-alpha-80);
 
   &:active {
-    background-color:rgb(184 184 184);
+    background-color: var(--gray-light-02);
   }
 `;
 

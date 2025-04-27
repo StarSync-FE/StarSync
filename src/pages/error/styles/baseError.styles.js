@@ -32,7 +32,7 @@ export const auroraStyle = (colors) => css`
   height: 100vh;
   color: var(--white);
   background: var(--black-deep);
-  text-shadow: 2px 2px 4px rgb(0 0 0 / 70%);
+  text-shadow: 2px 2px 4px var(--black-alpha-70);
 
   &::before {
     position: absolute;

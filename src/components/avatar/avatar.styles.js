@@ -16,8 +16,8 @@ export const imageSelected = css`
     border-radius: 50%;
     background: linear-gradient(
       271.36deg,
-      rgb(249 110 104 / 50%) -9.84%,
-      rgb(254 87 143 / 50%) 107.18%
+      var(--orange-alpha-50) -9.84%,
+      var(--pink-rose-alpha-50) 107.18%
     );
     content: ""; 
   }

@@ -116,11 +116,11 @@ export const inputContent = (hasNomoney) => css`
     width: 100%;
     height: 100%;
     padding: 1.6rem 4rem 1.6rem 1.6rem; 
-    border: 1px solid ${hasNomoney ? '#FF2626' : 'var(--white-full)'}; /* 색상 변수로 변경 예정 */
+    border: 1px solid ${hasNomoney ? 'var(--error-red)' : 'var(--white-full)'};
     border-radius: 8px;
     font-size: 2rem;
     font-weight: 700;
-    background-color: #272f3d; /* 색상 변수로 변경 예정 */
+    background-color: var(--blue-navy);
     
 
     &::placeholder {
@@ -151,6 +151,6 @@ export const inputContent = (hasNomoney) => css`
     margin-top: 0.6rem;
     font-size: 1.2rem;
     font-weight:500;
-    color: #ff2626 /* 색상 변수로 변경 예정 */
+    color: var(--error-red);
   }
 `;

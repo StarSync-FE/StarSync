@@ -18,7 +18,6 @@ export const modalContent = css`
     margin: 0.5rem 0;
     border: none;
     border-radius: 4px;
-    font-size: 1rem;
     color: white;
     background-color: var(--orange);
     transition: background-color 0.3s ease;
