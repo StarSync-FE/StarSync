@@ -67,7 +67,7 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
       console.count('마운트 해제 및 중복 요청 취소');
       controller.abort();
     };
-  }, [selectedTab, screenSize]);
+  }, [selectedTab, screenSize, updateCredit]);
 
   const fetchMaleData = async (cursor) => {
     try {
