@@ -39,7 +39,7 @@ export const voteButtonFlow = keyframes`
 export const voteButton = css`
   ${flexCenter};
   gap: 0.4rem;
-  background: linear-gradient(45deg, var(--blue-dark) 0%, var(--blue-medium) 51%, var(--blue-dark) 100%);
+  background: linear-gradient(45deg, var(--pink) 0%, var(--orange-pink) 51%, var(--pink) 100%);
   background-position: left center; /* 기본 시작 위치 */
   background-size: 400%; /* 배경 크기 확장 */
   transition: all 0.1s ease;
@@ -69,7 +69,6 @@ export const voteButton = css`
 
 export const tabButtonWrapper = css`
   ${flexCenter};
-
   ${media({
     marginTop: ['1rem', '2rem', '3rem', '4rem'],
   })}
@@ -84,18 +83,35 @@ export const idolListButton = css`
   border-bottom: 1px solid var(--white-alpha-20);
   text-align: center;
   color: var(--white);
-  background-color: transparent;
+  background: linear-gradient(45deg, var(--black-full) 0%, var(--white-alpha-20) 51%, var(--black-full) 100%);
+  background-position: right center; /* 기본 시작 위치 */
+  background-size: 400%; /* 배경 크기 확장 */
   transition: background-color 0.7s ease, color 2s ease; /* 추가: 부드럽게 변환 */
 
   ${media({
     fontSize: ['1.2rem', '1.3rem', '1.5rem', '1.7rem'],
     height: ['3rem', '4rem', '4.5rem', '5rem'],
   })}
+
+  &:hover {
+    background-position: right center; /* hover 시 배경 이동 */
+    animation: ${voteButtonFlow} 4s ease infinite; /* 애니메이션 흐름 */
+    opacity: 0.9;
+  }
 `;
 
 export const activeButton = css`
-  background-color: var(--white-alpha-10);
   border-bottom: 1px solid var(--white);
+  background: linear-gradient(45deg, var(--black) 0%, var(--white-alpha-20) 51%, var(--white-alpha-10) 100%);
+  background-position: left center; /* 기본 시작 위치 */
+  background-size: 400%; /* 배경 크기 확장 */
+  transition: all 0.1s ease;
+
+  &:hover {
+    background-position: right center; /* hover 시 배경 이동 */
+    animation: ${voteButtonFlow} 4s ease infinite; /* 애니메이션 흐름 */
+    opacity: 0.9;
+  }
 `;
 
 export const idolList = css`
@@ -147,23 +163,30 @@ export const moreButton = css`
   ${flexCenter};
   margin-inline: auto;
   margin-block: 3rem;
-  border: 1px solid var(--white);
-  border-radius: 3.2px;
-  color: var(--white-full);
-  background-color: var(--white-alpha-05);
+  border-radius: 8px;
+  background: linear-gradient(45deg, var(--black) 0%, var(--white-alpha-20) 51%, var(--white-alpha-10) 100%);
+  background-position: left center; /* 기본 시작 위치 */
+  background-size: 400%; /* 배경 크기 확장 */
+  transition: all 0.1s ease;
 
   ${media({
     fontSize: ['1.1rem', '1.2rem', '1.4rem', '1.6rem'],
     width: ['10rem', '15rem', '20rem', '25rem'],
-    height: ['2rem', '2.7rem', '3.2rem', '3.5rem'],
+    height: ['2.3rem', '2.7rem', '3.5rem', '4rem'],
   })}
 
   &:hover {
-    background-color: var(--white-alpha-10);
+    background-position: right center; /* hover 시 배경 이동 */
+    animation: ${voteButtonFlow} 4s ease infinite; /* 애니메이션 흐름 */
+    opacity: 0.9;
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 
   &:disabled {
-    cursor:not-allowed;
+    cursor: not-allowed;
     opacity: 0.6;
   }
 `;
