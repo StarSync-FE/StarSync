@@ -39,6 +39,10 @@ export const creditWrapper = css`
     transition: all 0.1s ease;
     animation: ${voteButtonFlow} 3s ease infinite; /* 애니메이션 흐름 */
 
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+
     &:hover {
       animation-play-state: paused;
     }
