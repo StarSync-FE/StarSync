@@ -110,7 +110,7 @@ export const requestPut = async (endpoint, data) => {
  * @example
  * const updated = await requestPatch('/api/idols/1', { name: '장원영' });
  */
-export const requestPatch = async (endpoint) => {
-  const response = await axiosInstance.patch(endpoint);
+export const requestPatch = async (endpoint, data) => {
+  const response = await axiosInstance.patch(endpoint, data);
   return response.data;
 };

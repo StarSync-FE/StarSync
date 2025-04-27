@@ -1,3 +1,4 @@
+import { fetchCharts } from '@/api';
 import chartImg from '@/assets/images/chart.png';
 import { CustomButton } from '@/components/button';
 import { LoadingSpinner } from '@/components/loadingStatus/loadingSpinner';
@@ -72,9 +73,14 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
   const fetchMaleData = async (cursor) => {
     try {
       setIsMaleLoading(true); // 로딩 시작
-      const response = await requestGet(
-        `${ENDPOINTS.GET_CHART}?gender=male&pageSize=${PAGESIZE}&cursor=${cursor}`,
-      );
+      // const response = await requestGet(
+      //   `${ENDPOINTS.GET_CHART}?gender=male&pageSize=${PAGESIZE}&cursor=${cursor}`,
+      // );
+      const response = await fetchCharts({
+        gender: 'male',
+        limit: PAGESIZE,
+        cursor: cursor,
+      });
 
       const newData = response?.idols || [];
       const nextCursor = response?.nextCursor;
@@ -100,10 +106,15 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
   const fetchFemaleData = async (cursor, controller) => {
     try {
       setIsFemaleLoading(true); // 로딩 시작
-      const response = await requestGet(
-        `${ENDPOINTS.GET_CHART}?gender=female&pageSize=${PAGESIZE}&cursor=${cursor}`,
-        controller ? { signal: controller.signal } : undefined,
-      );
+      const response = await fetchCharts({
+        gender: 'female',
+        limit: PAGESIZE,
+        cursor: cursor,
+      });
+      // const response = await requestGet(
+      //   `${ENDPOINTS.GET_CHART}?gender=female&pageSize=${PAGESIZE}&cursor=${cursor}`,
+      //   controller ? { signal: controller.signal } : undefined,
+      // );
 
       const newData = response?.idols || [];
       const nextCursor = response?.nextCursor;
