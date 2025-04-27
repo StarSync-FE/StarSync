@@ -22,7 +22,7 @@ const ServerErrorPage = () => {
           variant="error"
           isRound="true"
           style={S.errorButtonStyle}
-          onClick={() => window.location.reload()} //여기도 onButtonClick으로 바뀌면 변경
+          onButtonClick={() => window.location.reload()} //여기도 onButtonClick으로 바뀌면 변경
         >
           다시 시도
         </CustomButton>

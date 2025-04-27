@@ -129,7 +129,7 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab }) => {
     <div>
       <div css={S.chartSectionHeader}>
         <div>이달의 차트</div>
-        <CustomButton onClick={() => setModalType('vote')}>
+        <CustomButton onButtonClick={() => setModalType('vote')}>
           <div>
             <img src={chartImg} alt="차트" />
             <span>차트 투표하기</span>

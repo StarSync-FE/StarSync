@@ -50,7 +50,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
       </div>
 
       <CustomButton
-        onClick={handleCharge}
+        onButtonClick={handleCharge}
         onKeyDown={(e) => e.key === 'Enter' && handleCharge()}
         style={S.buttonStyle}
       >

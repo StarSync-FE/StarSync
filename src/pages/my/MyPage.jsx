@@ -180,7 +180,12 @@ const MyPage = () => {
         ) : null}
       </div>
       <div css={S.customButtonWrapper}>
-        <CustomButton type="button" isRound={true} style={S.customButtonStyle} onClick={addMyIdols}>
+        <CustomButton
+          type="button"
+          isRound={true}
+          style={S.customButtonStyle}
+          onButtonClick={addMyIdols}
+        >
           <img src={addIcon} alt="addIcon" css={S.buttonIcon} />
           추가하기
         </CustomButton>
