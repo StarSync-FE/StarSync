@@ -46,6 +46,7 @@ export const creditWrapper = css`
     }
 
     &:hover {
+      opacity: 0.9;
       animation-play-state: paused;
     }
 
