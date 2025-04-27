@@ -10,7 +10,7 @@ import * as S from './listPage.styles';
 const ListPage = () => {
   const [modalType, setModalType] = useState(null); // 모달 타입 상태 관리
   const [credit, setCredit] = useState(0); // 크레딧 상태 관리
-  const { idols, donations, chart } = useLoaderData(); // 여기서 데이터 받음
+  const { idols, donations } = useLoaderData(); // 여기서 데이터 받음
   const [selectedTab, setSelectedTab] = useState('females');
   const [selectedIndex, setSelectedIndex] = useState(null); // 후원의 인덱스를 받아옴
 
@@ -34,7 +34,6 @@ const ListPage = () => {
       <Charge credit={credit} setModalType={setModalType} /> {/* Charge에 credit 전달 */}
       <Carousel data={donations} setModalType={setModalType} setSelectedIndex={setSelectedIndex} />
       <Chart
-        data={chart}
         setModalType={setModalType}
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
