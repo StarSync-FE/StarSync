@@ -1,26 +1,20 @@
+import media from '@/styles/responsive';
 import { css } from '@emotion/react';
 
 export const modalContent = css`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  width: 32.7rem;
-  height: 37.2rem;
-  padding: 2.4rem 1.6rem;
+  justify-content: center;
+  align-items: baseline;
+  
+  ${media({
+    margin: ['2.4rem 1.6rem', '2.4rem 1.6rem', '3rem 3rem', '3rem 3rem', '3rem 3rem'],
+    gap: ['1rem', '1rem', '2rem', '2rem', '2rem'],
+  })}
 
   h2 {
-    margin: 0.2rem 0 1rem;
+    margin-block: 0.2rem 1rem;
     font-size: 1.8rem;
-  }
-
-  button {
-    width: 100%;
-    margin: 0.5rem 0;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    background-color: var(--orange);
-    transition: background-color 0.3s ease;
   }
 `;
 
@@ -37,8 +31,10 @@ export const radioButtons = css`
 `;
 
 export const buttonStyle = css`
-  width: 29rem;
-  height: 6.2rem;
+  ${media({
+    width: ['28rem', '29rem', '29rem', '32rem', '32rem'],
+    height: ['7rem', '7rem', '7rem', '8rem', '8rem'],
+  })}
   border: 1px solid var(--white);
   border-radius: 8px;
   transition: border-color 0.3s ease;
@@ -57,6 +53,16 @@ export const buttonStyle = css`
   }
 `;
 
+export const customButton = css`
+  ${media({
+    width: ['28.7rem', '29.8rem', '29.8rem', '32.8rem', '32.8rem'],
+    height: ['3.8rem', '4rem', '4rem', '5rem', '5rem'],
+  })}
+  img {
+    height: 2rem;
+  }
+`;
+
 export const radioButtonContent = css`
   display: flex;
   align-items: center;
@@ -70,6 +76,7 @@ export const radioButtonContent = css`
   }
 
   span {
+    margin: 0.2rem 0 0 0.3rem;
     font-size: 2rem;
     font-weight: 700;
   }
