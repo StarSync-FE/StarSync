@@ -23,7 +23,8 @@ import getButtonStyle from './customButton.styles';
  * @param {boolean} [props.isRound=false] - 버튼이 원형인지 여부. 기본값은 false.
  * @param {boolean} [props.disabled=false] - 버튼이 비활성화 상태인지 여부. 기본값은 false.
  * @param {React.CSSProperties} [props.style] - 버튼에 추가적인 스타일을 적용할 수 있는 객체.
- * @param {function} [props.onClick] - 버튼 클릭 시 실행될 이벤트 핸들러.
+ * @param {(e: React.MouseEvent<HTMLButtonElement>) => void} [props.onButtonClick] - 버튼 클릭 시 실행될 이벤트 핸들러.
+ * @param {(e: React.KeyboardEvent<HTMLButtonElement>) => void} [props.onKeyDown] - 키보드 이벤트 핸들러.
  * @param {React.ReactNode} [props.children] - 버튼 내부에 표시될 내용.
  *
  * @returns {JSX.Element} 렌더링된 버튼 요소
@@ -36,7 +37,7 @@ import getButtonStyle from './customButton.styles';
  *   isRound={true} // true일 경우 isRound만 작성해도 true로 취급된다.
  *   disabled={false}
  *   style={{ backgroundColor: 'blue', color: 'white', borderRadius: '12px' }}
- *   onClick={() => alert('버튼이 클릭되었습니다!')}
+ *   onButtonClick={() => alert('버튼이 클릭되었습니다!')}
  * >
  *   스타일이 적용된 원형 버튼
  * </CustomButton>
@@ -48,7 +49,8 @@ const CustomButton = ({
   isRound = false,
   disabled = false,
   style,
-  onClick,
+  onButtonClick,
+  onKeyDown,
   children,
 }) => {
   const sizeMap = {
@@ -61,7 +63,7 @@ const CustomButton = ({
       mobileHeight: '3.1rem',
       fontSize: '1.3rem',
     },
-    vote: { width: '12.8rem', height: '3.2rem', fontSize: '1.3rem' },
+    vote: { width: '12rem', height: '3.2rem', fontSize: '2rem' },
     landing: { width: '47.7rem', height: '4.8rem', mobileWidth: '23rem', fontSize: '1.4rem' },
     error: {
       height: '4.2rem',
@@ -78,7 +80,8 @@ const CustomButton = ({
       type={type}
       css={[buttonStyle, style && css(style)]}
       disabled={disabled}
-      onClick={onClick}
+      onClick={onButtonClick}
+      onKeyDown={onKeyDown}
     >
       {children}
     </button>
@@ -86,6 +89,3 @@ const CustomButton = ({
 };
 
 export default CustomButton;
-
-// 팀의 컨벤션이 공식 HTML/DOM 이벤트 핸들러 prop 이름(onClick 등)을 그대로 쓰지 않고, onButtonClick 같은 식으로 혼란 방지
-// onClick={onClick} -> onClick={onButtonClick} 같은걸로 수정 제안

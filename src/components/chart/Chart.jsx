@@ -1,6 +1,6 @@
 import chartImg from '@/assets/images/chart.png';
-import loadingSpinner from '@/assets/images/loading-spinner.gif';
 import { CustomButton } from '@/components/button';
+import { LoadingSpinner } from '@/components/loadingStatus/loadingSpinner';
 import { ENDPOINTS } from '@/constants/api';
 import { requestGet } from '@/utils/api';
 import { useEffect, useState } from 'react';
@@ -14,8 +14,7 @@ const getScreenSize = () => {
   return 'desktop';
 };
 
-const Chart = ({ setModalType }) => {
-  const [selectedTab, setSelectedTab] = useState('females');
+const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
   const [femaleData, setFemaleData] = useState([]);
   const [maleData, setMaleData] = useState([]);
   const [femaleCursor, setFemaleCursor] = useState(0);
@@ -68,7 +67,7 @@ const Chart = ({ setModalType }) => {
       console.count('마운트 해제 및 중복 요청 취소');
       controller.abort();
     };
-  }, [selectedTab, screenSize]);
+  }, [selectedTab, screenSize, updateCredit]);
 
   const fetchMaleData = async (cursor) => {
     try {
@@ -127,14 +126,16 @@ const Chart = ({ setModalType }) => {
   };
 
   return (
-    <div>
+    <div css={S.chartWrapper}>
       <div css={S.chartSectionHeader}>
         <div>이달의 차트</div>
-        <CustomButton onClick={() => setModalType('vote')}>
-          <div>
-            <img src={chartImg} alt="차트" />
-            <span>차트 투표하기</span>
-          </div>
+        <CustomButton
+          variant="vote"
+          onButtonClick={() => setModalType('vote')}
+          style={S.voteButton}
+        >
+          <img src={chartImg} alt="차트" />
+          <span>차트 투표하기</span>
         </CustomButton>
       </div>
 
@@ -173,11 +174,7 @@ const Chart = ({ setModalType }) => {
                 </li>
               ))}
             </ul>
-            {isFemaleLoading && (
-              <div css={S.spinner}>
-                <img src={loadingSpinner} alt="로딩 스피너" />
-              </div>
-            )}
+            <LoadingSpinner isLoading={isFemaleLoading} />
             {hasMoreFemales && (
               <button
                 type="button"
@@ -205,11 +202,7 @@ const Chart = ({ setModalType }) => {
                 </li>
               ))}
             </ul>
-            {isMaleLoading && (
-              <div css={S.spinner}>
-                <img src={loadingSpinner} alt="로딩 스피너" />
-              </div>
-            )}
+            <LoadingSpinner isLoading={isMaleLoading} />
             {hasMoreMales && (
               <button
                 type="button"

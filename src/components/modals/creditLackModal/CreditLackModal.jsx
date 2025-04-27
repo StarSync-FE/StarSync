@@ -12,7 +12,7 @@ const CreditLackModal = ({ setModalType }) => {
         </p>
       </div>
       <CustomButton
-        onClick={() => setModalType('creditCharge')}
+        onButtonClick={() => setModalType('creditCharge')}
         onKeyDown={(e) => e.key === 'Enter' && setModalType('creditCharge')}
         style={S.buttonStyle}
       >

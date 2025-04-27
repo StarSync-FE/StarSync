@@ -31,7 +31,7 @@ const Card = ({ data, setModalType, setSelectedIndex, index }) => {
           variant="carousel"
           style={S.button}
           disabled={!isActive}
-          onClick={handleClick}
+          onButtonClick={handleClick}
         >
           {isActive ? '후원하기' : '후원 마감'}
         </CustomButton>

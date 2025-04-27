@@ -1,5 +1,5 @@
 import creditWhiteImg from '@/assets/images/credit-white.png';
-import creditImg from '@/assets/images/credit.png';
+import creditImg from '@/assets/images/star.png';
 import { CustomButton, RadioButton } from '@/components/button';
 import { prices } from '@/data/mockData';
 import { useState } from 'react';
@@ -49,7 +49,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
       </div>
 
       <CustomButton
-        onClick={handleCharge}
+        onButtonClick={handleCharge}
         onKeyDown={(e) => e.key === 'Enter' && handleCharge()}
         style={S.buttonStyle}
       >

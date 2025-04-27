@@ -1,3 +1,4 @@
+import { ArrowButton } from '@/components/button';
 import { Card } from '@/components/card';
 import { getItemMetrics } from '@/utils/carousel';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -49,19 +50,12 @@ const Carousel = ({ data, setModalType, setSelectedIndex }) => {
     <div css={S.wrapper}>
       <h2 css={S.carouselTitle}>후원을 기다리는 조공</h2>
       <div css={S.viewportArea}>
-        <button
-          type="button"
-          onClick={handlePrev}
-          css={S.navigationButton}
+        <ArrowButton
+          direction="left"
+          onButtonClick={handlePrev}
           disabled={currentIndex === 0}
-          aria-label="이전"
-        >
-          <svg css={S.arrowIcon} viewBox="0 0 8 14" xmlns="http://www.w3.org/2000/svg">
-            <title>이전</title>
-            <path d="M7 1L1 7L7 13" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-
+          styles={S.navigationButton}
+        />
         <div ref={containerRef} css={S.carouselContainer}>
           <div
             css={S.carouselTrack}
@@ -85,19 +79,11 @@ const Carousel = ({ data, setModalType, setSelectedIndex }) => {
             )}
           </div>
         </div>
-
-        <button
-          type="button"
-          onClick={handleNext}
-          css={S.navigationButton}
+        <ArrowButton
+          direction="right"
+          onButtonClick={handleNext}
           disabled={currentIndex >= maxIndex}
-          aria-label="다음"
-        >
-          <svg css={S.arrowIcon} viewBox="0 0 8 14" xmlns="http://www.w3.org/2000/svg">
-            <title>다음</title>
-            <path d="M1 1L7 7L1 13" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
+        />
       </div>
     </div>
   );

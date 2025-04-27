@@ -42,14 +42,11 @@ const router = createBrowserRouter([
             loader: async () => {
               const LIMIT = 10;
               const CURSOR = 0;
-              const GENDER = 'female';
               const idolsUrl = `${ENDPOINTS.GET_IDOLS}?pageSize=${LIMIT}&cursor=${CURSOR}`;
               const donationsUrl = ENDPOINTS.GET_DONATIONS;
-              const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${GENDER}&pageSize=${LIMIT}&cursor=${CURSOR}`;
 
               let idols;
               let donations;
-              let chart;
 
               try {
                 idols = await requestGet(idolsUrl);
@@ -65,21 +62,12 @@ const router = createBrowserRouter([
                 console.error('❌ donations 에러:', err?.response?.data || err.message);
               }
 
-              try {
-                chart = await requestGet(chartUrl);
-                console.log('✅ chart:', chart);
-              } catch (err) {
-                console.error('❌ chart 에러:', err?.response?.data || err.message);
-              }
-
               // 404: 정상 응답이지만 빈 배열
               if (
                 Array.isArray(idols) &&
                 idols.length === 0 &&
                 Array.isArray(donations) &&
-                donations.length === 0 &&
-                Array.isArray(chart) &&
-                chart.length === 0
+                donations.length === 0
               ) {
                 throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
                   status: STATUS_CODES.NOT_FOUND,
@@ -87,13 +75,13 @@ const router = createBrowserRouter([
               }
 
               // 500: 요청 자체 실패 (undefined)
-              if (!idols || !donations || !chart) {
+              if (!idols || !donations) {
                 throw new Response(THROWN_ERRORS.FETCH_FAILED, {
                   status: STATUS_CODES.SERVER_ERROR,
                 });
               }
 
-              return { idols, donations, chart };
+              return { idols, donations };
             },
           };
         },

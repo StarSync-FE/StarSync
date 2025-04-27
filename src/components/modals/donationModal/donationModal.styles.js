@@ -107,7 +107,7 @@ export const titleContent = css`
   }
 `;
 
-export const inputContent = (hasNomoney) => css`
+export const inputContent = (hasNomoney, isInvalidNumber) => css`
   position: relative;
   width: 29.5rem;
   height: 5.8rem;
@@ -116,7 +116,7 @@ export const inputContent = (hasNomoney) => css`
     width: 100%;
     height: 100%;
     padding: 1.6rem 4rem 1.6rem 1.6rem; 
-    border: 1px solid ${hasNomoney ? 'var(--error-red)' : 'var(--white-full)'};
+    border: 1px solid ${hasNomoney || isInvalidNumber ? 'var(--error-red)' : 'var(--white-full)'};
     border-radius: 8px;
     font-size: 2rem;
     font-weight: 700;
@@ -130,10 +130,10 @@ export const inputContent = (hasNomoney) => css`
     } 
     
     ${
-      hasNomoney &&
+      (hasNomoney || isInvalidNumber) &&
       css`
-      animation: ${shakeTitle} 0.3s ease-in-out;
-    `
+        animation: ${shakeTitle} 0.3s ease-in-out;
+      `
     }
   }
 

@@ -43,6 +43,6 @@ export const image = (size) => css`
   aspect-ratio: 1/1;
   border: 4px solid var(--black);
   border-radius: 50%;
-  box-shadow: 0 0 0 1px var(--orange);
+  box-shadow: 0 0 0 2px var(--orange);
   object-fit: cover;
 `;
