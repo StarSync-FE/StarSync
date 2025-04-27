@@ -90,7 +90,7 @@ export const idolList = css`
       'repeat(3, minmax(9.8rem, 1fr))',
       'repeat(auto-fill, minmax(12.8rem, 1fr))',
       'repeat(8, minmax(9.8rem, 1fr))',
-      'repeat(8, minmax(12.8rem, 1fr))',
+      'repeat(10, minmax(12.8rem, 1fr))',
     ],
     gridTemplateRows: ['1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr'],
   })}

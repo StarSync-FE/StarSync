@@ -56,7 +56,7 @@ const MyPage = () => {
     } else if (screenSize === 'tablet') {
       setPageSize(12);
     } else {
-      setPageSize(16);
+      setPageSize(20);
     }
     console.log(screenSize);
   }, [screenSize]);
