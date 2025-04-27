@@ -14,7 +14,6 @@ const MyPage = () => {
   const [selectedProfiles, setSelectedProfiles] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(16);
-  // const pageSize = 16;
 
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
@@ -57,7 +56,6 @@ const MyPage = () => {
     } else {
       setPageSize(20);
     }
-    console.log(screenSize);
   }, [screenSize]);
   useEffect(() => {
     const savedMyIdols = localStorage.getItem('myIdol');
