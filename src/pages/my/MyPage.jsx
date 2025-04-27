@@ -27,6 +27,10 @@ const MyPage = () => {
       const width = window.innerWidth;
       if (width <= 743) {
         setScreenSize('mobile');
+      } else if (width <= 981) {
+        setScreenSize('tablet');
+      } else if (width <= 1134) {
+        setScreenSize('tabletWide');
       } else if (width <= 1279) {
         setScreenSize('tablet');
       } else if (width <= 1919) {
@@ -46,6 +50,8 @@ const MyPage = () => {
       setPageSize(6);
     } else if (screenSize === 'tablet') {
       setPageSize(12);
+    } else if (screenSize === 'tabletLarge') {
+      setPageSize(15);
     } else if (screenSize === 'desktop') {
       setPageSize(16);
     } else {
