@@ -27,7 +27,9 @@ const getDaysRemaining = (deadline) => {
   if (Number.isNaN(deadlineDate.getTime())) return null;
 
   const now = new Date();
-  const timeDifference = deadlineDate - now;
+  const deadlineKST = new Date(deadlineDate.getTime() + 9 * 60 * 60 * 1000);
+  const nowKST = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+  const timeDifference = deadlineKST - nowKST;
   const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 
   return daysLeft > 0 ? daysLeft : 0;
