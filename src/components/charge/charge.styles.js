@@ -48,6 +48,10 @@ export const creditWrapper = css`
     &:hover {
       animation-play-state: paused;
     }
+
+    &:active {
+      transform: scale(0.97);
+    }
   }
 `;
 
