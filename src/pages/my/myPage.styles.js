@@ -3,8 +3,7 @@ import { css } from '@emotion/react';
 
 export const myPageWrapper = css`
   margin: auto;
-  
-  ${media({ width: ['calc(100% - 4.8rem)', 'calc(100% - 4.8rem)', 'calc(100% - 4.8rem)', 'calc(100% - 72rem)', 'calc(100% - 72rem)'] })}
+  ${media({ padding: ['0 4rem', '0 4rem', '0 6rem', '0 7rem', '0 7rem'] })}
 
 `;
 export const scrollStyle = css`
@@ -59,9 +58,14 @@ export const groupName = css`
   color: #FFF9;
   `;
 export const title = css`
-  margin: 1.4rem;
   ${media({ fontSize: ['1.6rem', '1.6rem', '2rem', '2.4rem', '2.4rem'] })}
   font-weight: 700;
+`;
+export const myIdolTitle = css`
+  ${media({ margin: ['1.4rem 0 1.2rem', '1.4rem 0 1.2rem', '1.4rem 0 2.5rem', '7.6rem 0 3.2rem', '7.6rem 0 3.2rem'] })}
+  `;
+export const allIdolTitle = css`
+  ${media({ margin: ['3.2rem 0 1.6rem', '3.2rem 0 1.6rem', '3.2rem 0 5.7rem', '4rem 0 3.2rem', '4rem 0 3.2rem'] })}
 `;
 export const idolListWrapper = css`
   display: flex;
@@ -77,12 +81,13 @@ export const idolList = css`
   justify-content: center;
   width: 100%;
   ${media({
-    gap: ['1.7rem', '1.7rem', '2.4rem', '2.4rem', '2.4rem'],
+    columnGap: ['1.7rem', '1.7rem', '2.4rem', '2.4rem', '2.4rem'],
+    rowGap: ['1rem', '1rem', '2.4rem', '2.4rem', '2.4rem'],
     gridTemplateColumns: [
       'repeat(auto-fill, minmax(9.8rem, 1fr))',
       'repeat(3, minmax(9.8rem, 1fr))',
       'repeat(auto-fill, minmax(12.8rem, 1fr))',
-      'repeat(auto-fill, minmax(12.8rem, 1fr))',
+      'repeat(8, minmax(12.8rem, 1fr))',
       'repeat(8, minmax(12.8rem, 1fr))',
     ],
     gridTemplateRows: ['1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr'],
@@ -106,6 +111,7 @@ export const buttonIcon = css`
 // 이전, 다음 버튼 컴포넌트
 export const arrowButton = css`
   position: relative;
+  top: 40%;
   z-index: 1;
   min-width: 2.9rem;
   height: 13.5rem;
@@ -117,10 +123,8 @@ export const arrowButton = css`
 `;
 
 export const prev = css`
-  top: 40%;
   left: 0;
 `;
 export const next = css`
-  top: 40%;
   right: 0;
 `;

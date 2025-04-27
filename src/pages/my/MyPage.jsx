@@ -132,7 +132,7 @@ const MyPage = () => {
 
   return (
     <div css={S.myPageWrapper}>
-      <h2 css={S.title}>내가 관심있는 아이돌</h2>
+      <h2 css={[S.title, S.myIdolTitle]}>내가 관심있는 아이돌</h2>
       <section css={[S.horizonList, S.scrollStyle]}>
         {myIdol.map((idol) => {
           return (
