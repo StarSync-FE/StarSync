@@ -8,14 +8,11 @@ import { fetchData } from './fetchData';
 import { useScreenSize } from './useScreenSize';
 
 const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
-  const [femaleData, setFemaleData] = useState([]);
-  const [maleData, setMaleData] = useState([]);
-  const [femaleCursor, setFemaleCursor] = useState(0);
-  const [maleCursor, setMaleCursor] = useState(0);
-  const [hasMoreMales, setHasMoreMales] = useState(true);
-  const [hasMoreFemales, setHasMoreFemales] = useState(true);
-  const [isFemaleLoading, setIsFemaleLoading] = useState(false);
-  const [isMaleLoading, setIsMaleLoading] = useState(false);
+  const [chartData, setChartData] = useState([]);
+  const [cursor, setCursor] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
   const screenSize = useScreenSize();
   const PAGESIZE = screenSize === 'desktop' ? 10 : 5;
 
@@ -23,56 +20,47 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
     const newTab = e.currentTarget.value;
     setSelectedTab(newTab);
 
-    // 탭이 변경될 때마다 데이터와 상태 초기화
-    if (newTab === 'females') {
-      setFemaleData([]);
-      setFemaleCursor(0);
-      setHasMoreFemales(true);
-    } else {
-      setMaleData([]);
-      setMaleCursor(0);
-      setHasMoreMales(true);
-    }
+    // 탭 변경 시 데이터 초기화
+    setChartData([]);
+    setCursor(0);
+    setHasMore(true);
   };
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     const controller = new AbortController();
 
-    if (selectedTab === 'females') {
-      setFemaleData([]);
-      setFemaleCursor(0);
-      fetchData(
-        'female',
-        0,
-        PAGESIZE,
-        setFemaleData,
-        setFemaleCursor,
-        setHasMoreFemales,
-        setIsFemaleLoading,
-        controller,
-      );
-    }
+    setChartData([]);
+    setCursor(0);
+    setHasMore(true);
 
-    if (selectedTab === 'males') {
-      setMaleData([]);
-      setMaleCursor(0);
-      fetchData(
-        'male',
-        0,
-        PAGESIZE,
-        setMaleData,
-        setMaleCursor,
-        setHasMoreMales,
-        setIsMaleLoading,
-        controller,
-      );
-    }
+    fetchData(
+      selectedTab === 'females' ? 'female' : 'male',
+      0,
+      PAGESIZE,
+      setChartData,
+      setCursor,
+      setHasMore,
+      setIsLoading,
+      controller,
+    );
 
     return () => {
       controller.abort();
     };
   }, [selectedTab, screenSize, updateCredit]);
+
+  const loadMore = () => {
+    fetchData(
+      selectedTab === 'females' ? 'female' : 'male',
+      cursor,
+      PAGESIZE,
+      setChartData,
+      setCursor,
+      setHasMore,
+      setIsLoading,
+    );
+  };
 
   return (
     <div css={S.chartWrapper}>
@@ -108,76 +96,23 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
           </button>
         </div>
 
-        {selectedTab === 'females' && (
-          <>
-            <ul css={S.idolList}>
-              {femaleData.map((female, index) => (
-                <li key={female.id}>
-                  <span>
-                    <img src={female.profilePicture} alt={female.name} />
-                    <span css={S.rankStyle}>{index + 1}</span>
-                    <div css={S.idolContent}>
-                      <span css={S.groupStyle}>{female.group}</span>
-                      <span css={S.nameStyle}>{female.name}</span>
-                    </div>
-                  </span>
-                  <span>{female.totalVotes}표</span>
-                </li>
-              ))}
-            </ul>
-            <LoadingSpinner isLoading={isFemaleLoading} />
-            <LoadMoreButton
-              isLoading={isFemaleLoading}
-              hasMore={hasMoreFemales}
-              onClick={() =>
-                fetchData(
-                  'female',
-                  femaleCursor,
-                  PAGESIZE,
-                  setFemaleData,
-                  setFemaleCursor,
-                  setHasMoreFemales,
-                  setIsFemaleLoading,
-                )
-              }
-            />
-          </>
-        )}
-        {selectedTab === 'males' && (
-          <>
-            <ul css={S.idolList}>
-              {maleData.map((male, index) => (
-                <li key={male.id}>
-                  <span>
-                    <img src={male.profilePicture} alt={male.name} />
-                    <span css={S.rankStyle}>{index + 1}</span>
-                    <div css={S.idolContent}>
-                      <span css={S.groupStyle}>{male.group}</span>
-                      <span css={S.nameStyle}>{male.name}</span>
-                    </div>
-                  </span>
-                  <span>{male.totalVotes}표</span>
-                </li>
-              ))}
-            </ul>
-            <LoadingSpinner isLoading={isMaleLoading} />
-            <LoadMoreButton
-              isLoading={isMaleLoading}
-              hasMore={hasMoreMales}
-              onClick={() =>
-                fetchData(
-                  'male',
-                  maleCursor,
-                  PAGESIZE,
-                  setMaleData,
-                  setMaleCursor,
-                  setHasMoreMales,
-                  setIsMaleLoading,
-                )
-              }
-            />
-          </>
-        )}
+        <ul css={S.idolList}>
+          {chartData.map((idol, index) => (
+            <li key={idol.id}>
+              <span>
+                <img src={idol.profilePicture} alt={idol.name} />
+                <span css={S.rankStyle}>{index + 1}</span>
+                <div css={S.idolContent}>
+                  <span css={S.groupStyle}>{idol.group}</span>
+                  <span css={S.nameStyle}>{idol.name}</span>
+                </div>
+              </span>
+              <span>{idol.totalVotes}표</span>
+            </li>
+          ))}
+        </ul>
+        <LoadingSpinner isLoading={isLoading} />
+        <LoadMoreButton isLoading={isLoading} hasMore={hasMore} onClick={loadMore} />
       </div>
     </div>
   );
