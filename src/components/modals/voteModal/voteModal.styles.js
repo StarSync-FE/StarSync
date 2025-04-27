@@ -3,16 +3,14 @@ import { css } from '@emotion/react';
 
 export const ModalWrapper = css`
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   ${media({
-    width: ['100vw', '80vw', '52.5rem', '52.5rem', '52.5rem'],
-    height: ['100vh', '80vh', '69.3rem', '69.3rem', '69.3rem'],
+    width: ['100vw', '80vw', '47.7rem', '47.7rem', '47.7rem'],
+    height: ['100vh', '80vh', '51.4rem', '51.4rem', '69.3rem'],
   })}  
-  ${media({
-    overflow: ['hidden'],
-  })} /*전부 hidden이면 반응형 안써도 될 거 같아요!*/
   padding: 2.4rem;
   border-radius: 1.2rem;
   background-color: var(--black);
@@ -20,8 +18,8 @@ export const ModalWrapper = css`
 
 export const itemsWrapper = css`
   overflow-y: scroll;
+  width: 100%;
   ${media({
-    width: ['100%', '100%', '47.7rem', '47.7rem', '47.7rem'],
     height: ['100%', '100%', '51.4rem', '51.4rem', '51.4rem'],
   })}  
 `;
@@ -55,7 +53,7 @@ export const headerBox = css`
 `;
 
 export const idolItem = css`
-  padding: 0.8rem 0;
+  padding: 0.8rem 1rem;
   border-bottom: 1px solid var(--white-alpha-10);
 `;
 
@@ -73,8 +71,9 @@ export const exitIcon = css`
 
 export const title = css`
   width: 100%;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0 1.9rem 1rem;
   font-size: 1.8rem;
+  ${media({ fontSize: ['1.4rem', '1.4rem', '1.8rem', '1.8rem', '1.8rem'] })}
   font-weight: 500;
   text-align: left;
   color: var(--white);
@@ -93,7 +92,6 @@ export const memberInfoBox = css`
   height: 7rem;
 
   & p {
-    margin: 0;
     font-size: 1.4rem;
   };
 `;
@@ -114,6 +112,7 @@ export const idolName = css`
 `;
 
 export const votes = css`
+  margin: 0.4rem 0 ;
   font-weight: 400;
   color: var(--white-alpha-60);
 `;
