@@ -95,7 +95,7 @@ const VoteModal = ({ gender, updateCredit, setModalType }) => {
           : console.log('idols state가 없습니다')}
       </div>
       <CustomButton
-        onClick={() =>
+        onButtonClick={() =>
           checkedItem ? voteForIdol(checkedItem) : triggerAlert('투표할 아이돌을 선택해주세요')
         }
         onKeyDown={(e) => {

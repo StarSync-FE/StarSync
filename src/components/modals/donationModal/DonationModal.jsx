@@ -81,7 +81,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
       </div>
 
       <CustomButton
-        onClick={handleClick}
+        onButtonClick={handleClick}
         onKeyDown={(e) => e.key === 'Enter' && onClose()}
         disabled={!inputRef.current?.value || isDonating || hasNoMoney}
         style={{ marginTop: '1.2rem' }}
