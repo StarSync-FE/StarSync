@@ -25,6 +25,34 @@ const router = createBrowserRouter([
                 <LandingPage />
               </RenderErrorBoundary>
             ),
+            loader: async () => {
+              const LIMIT = 10;
+              const CURSOR = 0;
+              const url = `${ENDPOINTS.GET_IDOLS}?pageSize=${LIMIT}&cursor=${CURSOR}`;
+
+              let idols;
+
+              try {
+                idols = await requestGet(url);
+                console.log('✅ idols:', idols);
+              } catch (err) {
+                console.error('❌ idols 에러:', err?.response?.data || err.message);
+              }
+
+              if (Array.isArray(idols) && idols.length === 0) {
+                throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
+                  status: STATUS_CODES.NOT_FOUND,
+                });
+              }
+
+              if (!idols) {
+                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
+                  status: STATUS_CODES.SERVER_ERROR,
+                });
+              }
+
+              return idols;
+            },
           };
         },
       },
