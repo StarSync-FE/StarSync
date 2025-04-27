@@ -48,7 +48,7 @@ class RenderErrorBoundary extends Component {
           <CustomButton
             variant="error"
             style={S.retryButtonStyle}
-            onClick={() => window.location.reload()} // 컨벤션에 따라 onButtonClick 등으로 바뀌면 수정 예정
+            onButtonClick={() => window.location.reload()} // 컨벤션에 따라 onButtonClick 등으로 바뀌면 수정 예정
           >
             다시 시도
           </CustomButton>
