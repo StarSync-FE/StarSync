@@ -1,3 +1,4 @@
+import addIcon from '@/assets/icons/plus-icon.png';
 import { ArrowButton } from '@/components/arrowButton';
 import { Avatar } from '@/components/avatar';
 import { AvatarButton } from '@/components/avatarButton';
