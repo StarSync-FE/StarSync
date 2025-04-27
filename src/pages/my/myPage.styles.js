@@ -33,7 +33,7 @@ export const horizonList = css`
   width: 100%;
   ${media({ gap: ['3.2rem', '3.2rem', '2.4rem', '2.4rem', '2.4rem'] })}
   min-height: 12.3rem;
-  padding: 0.1rem 2.4rem 3.2rem;
+  padding: 1rem 2.4rem 3.2rem;
   border-bottom: 1px solid var(--white-alpha-10);
 `;
 export const allProfileSize = css`
@@ -63,7 +63,7 @@ export const title = css`
   font-weight: 700;
 `;
 export const myIdolTitle = css`
-  ${media({ margin: ['1.4rem 0 1.2rem', '1.4rem 0 1.2rem', '1.4rem 0 2.5rem', '7.6rem 0 3.2rem', '7.6rem 0 3.2rem'] })}
+  ${media({ margin: ['1.4rem 0 0.2rem', '1.4rem 0 0.2rem', '1.4rem 0 1.5rem', '7.6rem 0 2.2rem', '7.6rem 0 2.2rem'] })}
   `;
 export const allIdolTitle = css`
   ${media({ margin: ['3.2rem 0 1.6rem', '3.2rem 0 1.6rem', '3.2rem 0 5.7rem', '4rem 0 3.2rem', '4rem 0 3.2rem'] })}
