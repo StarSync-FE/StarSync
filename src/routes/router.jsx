@@ -2,7 +2,7 @@ import { fetchCharts, fetchDonations, fetchIdols } from '@/api';
 import { THROWN_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import { ApiErrorBoundary, GlobalErrorBoundary, RenderErrorBoundary } from '@/errorBoundary';
-import { safeRequest } from '@/utils/api';
+import { safeRequest, throwIfEmptyArray } from '@/utils/api';
 import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -27,14 +27,7 @@ const router = createBrowserRouter([
             ),
             loader: async () => {
               const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }));
-
-              // 요청은 성공했는데 데이터가 문제일 때
-              if (Array.isArray(idols) && idols.length === 0) {
-                throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
-                  status: STATUS_CODES.NOT_FOUND,
-                });
-              }
-
+              throwIfEmptyArray(idols);
               return idols;
             },
           };
@@ -56,19 +49,8 @@ const router = createBrowserRouter([
               const donations = await safeRequest(() => fetchDonations({ limit: 10, cursor: 0 }));
               const charts = await safeRequest(() => fetchCharts({ limit: 10, cursor: 0 }));
 
-              // 404: 정상 응답이지만 빈 배열
-              if (
-                Array.isArray(idols) &&
-                idols.length === 0 &&
-                Array.isArray(donations) &&
-                donations.length === 0 &&
-                Array.isArray(charts) &&
-                charts.length === 0
-              ) {
-                throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
-                  status: STATUS_CODES.NOT_FOUND,
-                });
-              }
+              // idols가 빈 배열이면 404
+              throwIfEmptyArray(idols);
 
               return { idols, donations, charts };
             },
@@ -88,14 +70,7 @@ const router = createBrowserRouter([
             ),
             loader: async () => {
               const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }));
-
-              // 요청은 성공했는데 데이터가 문제일 때
-              if (Array.isArray(idols) && idols.length === 0) {
-                throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
-                  status: STATUS_CODES.NOT_FOUND,
-                });
-              }
-
+              throwIfEmptyArray(idols);
               return idols;
             },
           };
