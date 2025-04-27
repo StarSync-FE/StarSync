@@ -13,7 +13,7 @@ const ListPage = () => {
   const { idols, donations, chart } = useLoaderData(); // 여기서 데이터 받음
   const [selectedTab, setSelectedTab] = useState('females');
   const [selectedIndex, setSelectedIndex] = useState(null); // 후원의 인덱스를 받아옴
-  // localStorage에서 크레딧 값을 불러옴
+
   useEffect(() => {
     const storedCredit = localStorage.getItem('selectedCredit');
     if (storedCredit) {
@@ -38,6 +38,7 @@ const ListPage = () => {
         setModalType={setModalType}
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
+        updateCredit={updateCredit}
       />
       <ListModal
         modalType={modalType}
