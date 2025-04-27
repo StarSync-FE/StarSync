@@ -20,7 +20,19 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
   const PAGESIZE = screenSize === 'desktop' ? 10 : 5;
 
   const handleTabClick = (e) => {
-    setSelectedTab(e.currentTarget.value);
+    const newTab = e.currentTarget.value;
+    setSelectedTab(newTab);
+
+    // 탭이 변경될 때마다 데이터와 상태 초기화
+    if (newTab === 'females') {
+      setFemaleData([]);
+      setFemaleCursor(0);
+      setHasMoreFemales(true);
+    } else {
+      setMaleData([]);
+      setMaleCursor(0);
+      setHasMoreMales(true);
+    }
   };
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
