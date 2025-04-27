@@ -19,12 +19,14 @@ const NotFoundPage = () => {
         <h1>{status}</h1>
         <h2>{statusText}</h2>
         <p>{uiMessage}</p>
-        <Link to="/">
-          <CustomButton variant="error" isRound="true" style={S.errorButtonStyle}>
-            <img src={logoImg} alt="StarSync 로고" css={S.logoIconStyle} />
-            StarSync 홈
-          </CustomButton>
-        </Link>
+        <div css={S.buttonWrapper}>
+          <Link to="/">
+            <CustomButton variant="error" isRound="true" style={S.errorButtonStyle}>
+              <img src={logoImg} alt="StarSync 로고" css={S.logoIconStyle} />
+              StarSync 홈
+            </CustomButton>
+          </Link>
+        </div>
       </div>
     </div>
   );
