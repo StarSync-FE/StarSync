@@ -2,7 +2,8 @@ import { fetchCharts, fetchDonations, fetchIdols } from '@/api';
 import { THROWN_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import { ApiErrorBoundary, GlobalErrorBoundary, RenderErrorBoundary } from '@/errorBoundary';
-import { safeRequest, throwIfEmptyArray } from '@/utils/api';
+import { safeRequest } from '@/utils/api';
+import { throwIfEmptyArray } from '@/utils/validate';
 import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -49,8 +50,9 @@ const router = createBrowserRouter([
               const donations = await safeRequest(() => fetchDonations({ limit: 10, cursor: 0 }));
               const charts = await safeRequest(() => fetchCharts({ limit: 10, cursor: 0 }));
 
-              // idols가 빈 배열이면 404
               throwIfEmptyArray(idols);
+              throwIfEmptyArray(donations);
+              throwIfEmptyArray(charts);
 
               return { idols, donations, charts };
             },
