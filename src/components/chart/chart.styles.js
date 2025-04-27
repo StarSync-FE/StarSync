@@ -58,12 +58,11 @@ export const voteButton = css`
   &:hover {
     background-position: right center; /* hover 시 배경 이동 */
     animation: ${voteButtonFlow} 6s ease infinite; /* 애니메이션 흐름 */
-    transform: translateY(1px);
     opacity: 0.9;
   }
 
   &:active {
-    transform: scale(0.95);
+    transform: scale(0.97);
   }
 `;
 
@@ -116,6 +115,7 @@ export const activeButton = css`
 
 export const idolList = css`
   display: grid;
+  color: var(--gray-light);
   ${media({
     marginTop: ['1rem', '1.2rem', '1.7rem', '1.7rem'],
     fontSize: ['1.1rem', '1.2rem', '1.4rem', '1.6rem'],
@@ -154,9 +154,28 @@ export const idolList = css`
   }
 `;
 
+export const idolContent = css`
+  display: flex;
+  flex-direction: column;
+  ${media({
+    gap: ['0.6rem', '0.5rem', '0.8rem', '1rem'],
+  })}
+`;
+
 export const rankStyle = css`
-  margin: 0 0.5rem;
+  margin-inline: 0.5rem 0.9rem;
   color: var(--orange);
+`;
+
+export const groupStyle = css`
+${media({
+  fontSize: ['0.9rem', '1rem', '1.2rem', '1.35rem'],
+})}
+`;
+
+export const nameStyle = css`
+  font-weight: 700;
+  color: var(--white);
 `;
 
 export const moreButton = css`
@@ -182,7 +201,7 @@ export const moreButton = css`
   }
 
   &:active {
-    transform: translateY(1px);
+    transform: scale(0.97);
   }
 
   &:disabled {
