@@ -1,5 +1,17 @@
 import media from '@/styles/responsive';
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
+
+export const voteButtonFlow = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
 
 export const modalContent = css`
   display: flex;
@@ -49,18 +61,41 @@ export const buttonStyle = css`
   } 
   
   img {
-    width: 2rem;
+    width: 2.4rem;
   }
 `;
 
 export const customButton = css`
+  background: linear-gradient(45deg, var(--pink-purple) 0%, var(--orange) 51%, var(--pink-purple) 100%);
+  background-color: var(--white-alpha-10);
+  background-position: left center; /* 기본 시작 위치 */
+  background-size: 400%; /* 배경 크기 확장 */
+  transition: all 0.1s ease;
+  animation: ${voteButtonFlow} 3s ease infinite; /* 애니메이션 흐름 */
+  
   ${media({
     width: ['28.7rem', '29.8rem', '29.8rem', '32.8rem', '32.8rem'],
     height: ['3.8rem', '4rem', '4rem', '5rem', '5rem'],
   })}
+  
   img {
+    width: 2rem;
     height: 2rem;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
+  &:hover {
+    animation-play-state: paused;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }  
+
+
 `;
 
 export const radioButtonContent = css`
