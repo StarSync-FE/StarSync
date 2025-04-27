@@ -1,6 +1,6 @@
 import chartImg from '@/assets/images/chart.png';
-import loadingSpinner from '@/assets/images/loading-spinner.gif';
 import { CustomButton } from '@/components/customButton';
+import { LoadingSpinner } from '@/components/loadingStatus/loadingSpinner';
 import { ENDPOINTS } from '@/constants/api';
 import { requestGet } from '@/utils/api';
 import { useEffect, useState } from 'react';
@@ -171,11 +171,7 @@ const Chart = ({ setModalType }) => {
                 </li>
               ))}
             </ul>
-            {isFemaleLoading && (
-              <div css={S.spinner}>
-                <img src={loadingSpinner} alt="로딩 스피너" />
-              </div>
-            )}
+            <LoadingSpinner isLoading={isFemaleLoading} />
             {hasMoreFemales && (
               <button
                 type="button"
@@ -203,11 +199,7 @@ const Chart = ({ setModalType }) => {
                 </li>
               ))}
             </ul>
-            {isMaleLoading && (
-              <div css={S.spinner}>
-                <img src={loadingSpinner} alt="로딩 스피너" />
-              </div>
-            )}
+            <LoadingSpinner isLoading={isMaleLoading} />
             {hasMoreMales && (
               <button
                 type="button"
