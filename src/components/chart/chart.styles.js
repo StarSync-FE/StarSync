@@ -1,6 +1,12 @@
 import media from '@/styles/responsive';
 import { css, keyframes } from '@emotion/react';
 
+export const flexCenter = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const chartWrapper = css`
   margin-bottom: 10rem;
 `;
@@ -31,20 +37,16 @@ export const voteButtonFlow = keyframes`
 `;
 
 export const voteButton = css`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  ${flexCenter};
   gap: 0.4rem;
-  background: linear-gradient(45deg, var(--orange-deep) 0%, var(--orange-pink) 51%, var(--pink) 100%);
+  background: linear-gradient(45deg, var(--blue-dark) 0%, var(--blue-medium) 51%, var(--blue-dark) 100%);
   background-position: left center; /* 기본 시작 위치 */
   background-size: 400%; /* 배경 크기 확장 */
   transition: all 0.1s ease;
-  animation: ${voteButtonFlow} 2s ease infinite; /* 애니메이션 흐름 */
 
   img {
     width: 2rem;
-    height: 2.4rem;
+    height: 2.3rem;
     margin-bottom: 0.2rem;
   }
 
@@ -55,6 +57,7 @@ export const voteButton = css`
 
   &:hover {
     background-position: right center; /* hover 시 배경 이동 */
+    animation: ${voteButtonFlow} 6s ease infinite; /* 애니메이션 흐름 */
     transform: translateY(1px);
     opacity: 0.9;
   }
@@ -65,9 +68,7 @@ export const voteButton = css`
 `;
 
 export const tabButtonWrapper = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${flexCenter};
 
   ${media({
     marginTop: ['1rem', '2rem', '3rem', '4rem'],
@@ -75,9 +76,7 @@ export const tabButtonWrapper = css`
 `;
 
 export const idolListButton = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${flexCenter};
   width: 100%;
   margin: 0 auto;
   border: none;
@@ -127,7 +126,6 @@ export const idolList = css`
     img {
       border: 2px solid var(--black);
       border-radius: 50%;
-      box-shadow: 0 0 2px 1.6px var(--orange);
       box-shadow: 0 0 0 0.1rem var(--orange);
       object-fit: cover;
 
@@ -146,9 +144,7 @@ export const rankStyle = css`
 `;
 
 export const moreButton = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${flexCenter};
   margin-inline: auto;
   margin-block: 3rem;
   border: 1px solid var(--white);
@@ -173,9 +169,7 @@ export const moreButton = css`
 `;
 
 export const spinner = css`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${flexCenter};
   padding: 4rem;
 
   img {
