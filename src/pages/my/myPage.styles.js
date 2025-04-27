@@ -33,7 +33,7 @@ export const horizonList = css`
   width: 100%;
   ${media({ gap: ['3.2rem', '3.2rem', '2.4rem', '2.4rem', '2.4rem'] })}
   min-height: 12.3rem;
-  padding: 0 2.4rem 3.2rem;
+  padding: 0.1rem 2.4rem 3.2rem;
   border-bottom: 1px solid var(--white-alpha-10);
 `;
 export const allProfileSize = css`
