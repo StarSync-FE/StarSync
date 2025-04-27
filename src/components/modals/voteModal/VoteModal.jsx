@@ -3,30 +3,21 @@ import { Avatar } from '@/components/avatar';
 import { CustomButton } from '@/components/customButton';
 import { RadioButton } from '@/components/radioButton';
 import { ENDPOINTS } from '@/constants/api';
+import { showAlert } from '@/utils/alert/alertController';
 import { requestGet, requestPost } from '@/utils/api';
 import { addCommas } from '@/utils/format';
 import { useEffect, useState } from 'react';
 import * as S from './voteModal.styles';
-
 const VoteModal = ({ gender, updateCredit, setModalType }) => {
   const [idols, setIdols] = useState([]);
   const [checkedItem, setCheckedItem] = useState();
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertContent, setAlertContent] = useState('');
-  const [alertType, setAlertType] = useState('warning');
+
   const loadData = async (gender) => {
     const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${gender}&pageSize=30&`;
     const response = await requestGet(chartUrl);
     return response;
   };
-  const triggerAlert = (message, type = 'warning') => {
-    setAlertContent(message);
-    setAlertType(type);
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 2000);
-  };
+
   const voteForIdol = async (idolId) => {
     const voteUrl = `${ENDPOINTS.REGISTER_VOTE}`;
     const getCredit = localStorage.getItem('selectedCredit');
@@ -37,16 +28,16 @@ const VoteModal = ({ gender, updateCredit, setModalType }) => {
         if (response) {
           localStorage.setItem('selectedCredit', Number(getCredit) - 1000);
           updateCredit(Number(getCredit) - 1000);
-          triggerAlert('투표에 성공했습니다', 'success');
+          showAlert('투표에 성공했습니다', 'success');
         } else {
-          triggerAlert('투표에 실패했습니다', 'warning');
+          showAlert('투표에 실패했습니다', 'warning');
         }
       } else {
         setModalType('creditLack'); // 크레딧 부족 시 modalType 설정
       }
     } catch (err) {
       console.error('투표 중 오류 발생:', err);
-      triggerAlert('투표 중 오류 발생', 'warning');
+      showAlert('투표 중 오류 발생', 'warning');
     }
   };
 
@@ -96,14 +87,16 @@ const VoteModal = ({ gender, updateCredit, setModalType }) => {
       </div>
       <CustomButton
         onButtonClick={() =>
-          checkedItem ? voteForIdol(checkedItem) : triggerAlert('투표할 아이돌을 선택해주세요')
+          checkedItem
+            ? voteForIdol(checkedItem)
+            : showAlert('투표할 아이돌을 선택해주세요', 'warning')
         }
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             if (checkedItem) {
               voteForIdol(checkedItem);
             } else {
-              triggerAlert('투표할 아이돌을 선택해주세요');
+              showAlert('투표할 아이돌을 선택해주세요', 'warning');
             }
           }
         }}
@@ -114,7 +107,6 @@ const VoteModal = ({ gender, updateCredit, setModalType }) => {
       <p css={S.guideQuote}>
         투표하는 데 <b css={S.highlightText}>1000 크레딧</b>이 소요됩니다.
       </p>
-      {showAlert && <Alert content={alertContent} type={alertType} />}
     </div>
   );
 };
