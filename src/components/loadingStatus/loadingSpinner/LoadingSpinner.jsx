@@ -1,4 +1,4 @@
-import loadingSpinner from '@/assets/images/loading-spinner.gif';
+import loadingSpinnerGif from '@/assets/images/loading-spinner.gif';
 import * as S from './loadingSpinner.styles';
 
 /**
@@ -16,7 +16,7 @@ const LoadingSpinner = ({ isLoading }) => {
 
   return (
     <div css={S.spinner}>
-      <img src={loadingSpinner} alt="로딩 스피너" />
+      <img src={loadingSpinnerGif} alt="로딩 스피너" />
     </div>
   );
 };
