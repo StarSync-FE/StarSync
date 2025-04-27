@@ -129,7 +129,11 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
     <div css={S.chartWrapper}>
       <div css={S.chartSectionHeader}>
         <div>이달의 차트</div>
-        <CustomButton variant="vote" onButtonClick={() => setModalType('vote')} style={S.voteButton}>
+        <CustomButton
+          variant="vote"
+          onButtonClick={() => setModalType('vote')}
+          style={S.voteButton}
+        >
           <img src={chartImg} alt="차트" />
           <span>차트 투표하기</span>
         </CustomButton>
@@ -163,8 +167,10 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
                   <span>
                     <img src={female.profilePicture} alt={female.name} />
                     <span css={S.rankStyle}>{index + 1}</span>
-                    <span>{female.group}</span>
-                    <span>{female.name}</span>
+                    <div css={S.idolContent}>
+                      <span css={S.groupStyle}>{female.group}</span>
+                      <span css={S.nameStyle}>{female.name}</span>
+                    </div>
                   </span>
                   <span>{female.totalVotes}표</span>
                 </li>
@@ -191,8 +197,10 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
                   <span>
                     <img src={male.profilePicture} alt={male.name} />
                     <span css={S.rankStyle}>{index + 1}</span>
-                    <span>{male.group}</span>
-                    <span>{male.name}</span>
+                    <div css={S.idolContent}>
+                      <span css={S.groupStyle}>{male.group}</span>
+                      <span css={S.nameStyle}>{male.name}</span>
+                    </div>
                   </span>
                   <span>{male.totalVotes}표</span>
                 </li>
