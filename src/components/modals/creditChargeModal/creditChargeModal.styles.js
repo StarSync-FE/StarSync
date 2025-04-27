@@ -51,6 +51,10 @@ export const buttonStyle = css`
     border-color: var(--orange); 
     color: var(--gray);
   } 
+  
+  img {
+    width: 2rem;
+  }
 `;
 
 export const radioButtonContent = css`
