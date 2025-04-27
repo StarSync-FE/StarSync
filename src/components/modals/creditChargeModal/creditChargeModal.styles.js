@@ -78,9 +78,8 @@ export const customButton = css`
     height: ['3.8rem', '4rem', '4rem', '5rem', '5rem'],
   })}
   
-  img {
-    width: 2rem;
-    height: 2rem;
+  p {
+    font-weight: 700;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -94,8 +93,6 @@ export const customButton = css`
   &:active {
     transform: scale(0.97);
   }  
-
-
 `;
 
 export const radioButtonContent = css`
@@ -105,21 +102,11 @@ export const radioButtonContent = css`
   margin-left: 1rem;
   padding: 0.5rem;
 
-  img {
-    width: 2.4rem;
-    height: 2.4rem;
-  }
-
   span {
     margin: 0.2rem 0 0 0.3rem;
     font-size: 2rem;
     font-weight: 700;
   }
-`;
-
-export const imgStyle = css`
-  width: 2.3rem;
-  height: 2.4rem;
 `;
 
 export const ChargeContent = css` 
