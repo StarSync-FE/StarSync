@@ -18,7 +18,12 @@ import * as S from './arrowButton.styles';
  *
  * @returns {JSX.Element|null} 좌측 또는 우측 화살표 버튼을 반환하며, 방향에 따라 다르게 렌더링됩니다.
  */
-const ArrowButton = ({ direction = 'left', styles = {}, onButtonClick = {}, disabled = false }) => {
+const ArrowButton = ({
+  direction = 'left',
+  styles = {},
+  onButtonClick = () => {},
+  disabled = false,
+}) => {
   return (
     <>
       {direction === 'left' ? (
