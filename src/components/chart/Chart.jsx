@@ -14,8 +14,7 @@ const getScreenSize = () => {
   return 'desktop';
 };
 
-const Chart = ({ setModalType }) => {
-  const [selectedTab, setSelectedTab] = useState('females');
+const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
   const [femaleData, setFemaleData] = useState([]);
   const [maleData, setMaleData] = useState([]);
   const [femaleCursor, setFemaleCursor] = useState(0);
