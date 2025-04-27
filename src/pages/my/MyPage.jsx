@@ -1,6 +1,3 @@
-import nextIcon from '@/assets/icons/next-icon.png';
-import addIcon from '@/assets/icons/plus-icon.png';
-import prevIcon from '@/assets/icons/prev-icon.png';
 import { ArrowButton } from '@/components/arrowButton';
 import { Avatar } from '@/components/avatar';
 import { AvatarButton } from '@/components/avatarButton';
@@ -8,14 +5,6 @@ import { CustomButton } from '@/components/customButton';
 import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import * as S from './myPage.styles';
-
-const Button = ({ iconImage, styles, goToPage }) => {
-  return (
-    <button type="button" css={[S.arrowButton, styles]} onClick={goToPage}>
-      <img src={iconImage === 'prev' ? prevIcon : nextIcon} alt="" />
-    </button>
-  );
-};
 
 const MyPage = () => {
   const { list, nextCursor } = useLoaderData();
