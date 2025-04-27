@@ -49,7 +49,7 @@ const MyPage = () => {
       setPageSize(6);
     } else if (screenSize === 'tablet') {
       setPageSize(12);
-    } else if (screenSize === 'tabletLarge') {
+    } else if (screenSize === 'tabletWide') {
       setPageSize(15);
     } else if (screenSize === 'desktop') {
       setPageSize(16);
