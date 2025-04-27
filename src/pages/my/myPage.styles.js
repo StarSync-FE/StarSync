@@ -75,6 +75,7 @@ export const idolListWrapper = css`
   gap: 2.7rem;
   width: 100%;
   margin: 4rem 0 0;
+  border: 1px solid pink;
 `;
 export const idolList = css`
   display: grid;
@@ -88,7 +89,7 @@ export const idolList = css`
       'repeat(auto-fill, minmax(9.8rem, 1fr))',
       'repeat(3, minmax(9.8rem, 1fr))',
       'repeat(auto-fill, minmax(12.8rem, 1fr))',
-      'repeat(8, minmax(12.8rem, 1fr))',
+      'repeat(8, minmax(9.8rem, 1fr))',
       'repeat(8, minmax(12.8rem, 1fr))',
     ],
     gridTemplateRows: ['1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr'],
