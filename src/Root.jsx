@@ -6,15 +6,21 @@ import { PendingUI } from './components/loadingStatus/pendingUI';
 
 function Root() {
   const navigation = useNavigation();
-  const isLoading = navigation.state !== 'idle'; // 'loading' 또는 'submitting'
+  const location = useLocation();
 
-  const { pathname } = useLocation();
-  const isLanding = pathname === '/';
+  const currentPath = location.pathname;
+  const nextPath = navigation.location?.pathname;
+  const isSamePath = currentPath === nextPath;
+
+  const isLoading = navigation.state !== 'idle' && !isSamePath;
+
+  const isLanding = currentPath === '/';
 
   return (
     <>
       {isLoading && <PendingUI />}
       {!isLanding && <Header />}
+
       <main
         style={{
           paddingTop: !isLanding ? `${LAYOUT.HEADER_HEIGHT}px` : 0,
@@ -22,6 +28,7 @@ function Root() {
       >
         <Outlet />
       </main>
+
       {!isLanding && <Footer />}
     </>
   );
