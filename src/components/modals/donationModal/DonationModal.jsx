@@ -1,8 +1,8 @@
 import creditImg from '@/assets/images/credit.png';
-import { Alert } from '@/components/alert';
 import { CustomButton } from '@/components/button';
 import { ENDPOINTS } from '@/constants/api';
 import { requestPut } from '@/utils/api';
+import { showAlert } from '@/utils/alert/alertController';
 import { useRef, useState } from 'react';
 import { useRevalidator } from 'react-router-dom';
 import * as S from './donationModal.styles';
@@ -12,21 +12,9 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
   const [hasNoMoney, setHasNoMoney] = useState(false);
   const [isDonating, setIsDonating] = useState(false);
   const [isInvalidNumber, setIsInvalidNumber] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertContent, setAlertContent] = useState('');
-  const [alertType, setAlertType] = useState('warning');
   const inputRef = useRef(null);
   const prevCredit = credit;
   const revalidator = useRevalidator();
-
-  const triggerAlert = (message, type = 'warning') => {
-    setAlertContent(message);
-    setAlertType(type);
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 2000);
-  };
 
   const handleChangeAmount = (e) => {
     const amount = e.target.value;
@@ -51,7 +39,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === '.') {
+    if (e.key === '.' || e.key === ' ') {
       e.preventDefault();
     }
   };
@@ -67,15 +55,14 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
       const total = prevCredit - donateAmountNum;
       localStorage.setItem('selectedCredit', total);
       updateCredit(total);
-
-      triggerAlert('후원에 성공했습니다', 'success');
+      showAlert('투표에 성공했습니다', 'success');
       setTimeout(() => {
         onClose();
         revalidator.revalidate();
       }, 700);
     } catch (e) {
+      showAlert('투표에 실패했습니다.', 'warning');
       console.error('후원 처리 중 오류 발생', e);
-      triggerAlert('후원에 실패했습니다', 'warning');
     } finally {
       setIsDonating(false);
     }
@@ -96,6 +83,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
       <div css={S.inputContent(hasNoMoney, isInvalidNumber)}>
         <img src={creditImg} alt="크레딧" />
         <input
+          type="text"
           placeholder="크레딧 입력"
           value={donateAmount}
           onChange={handleChangeAmount}
@@ -117,7 +105,6 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
       >
         후원하기
       </CustomButton>
-      {showAlert && <Alert content={alertContent} type={alertType} isSmall />}
     </div>
   );
 };
