@@ -3,11 +3,11 @@ import { CustomButton } from '@/components/button';
 import { LoadingSpinner } from '@/components/loadingStatus';
 import chartImg from '@/assets/images/chart.png';
 import { fetchData } from './fetchData';
-import { useScreenSize } from './useScreenSize';
-import LoadMoreButton from './LoadMoreButton';
+import { useScreenSize } from '@/utils/responsive';
+import { LoadMoreButton } from '@/components/button';
 import * as S from './chart.styles';
 
-const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
+const Chart = ({ setModalType, selectedTab, setSelectedTab, voteSuccessTrigger }) => {
   const [chartData, setChartData] = useState([]);
   const [cursor, setCursor] = useState(0);
   const [hasMore, setHasMore] = useState(true);
@@ -52,7 +52,7 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
     return () => {
       controller.abort();
     };
-  }, [selectedTab, screenSize, updateCredit]);
+  }, [selectedTab, screenSize, voteSuccessTrigger]);
 
   const loadMore = () => {
     fetchData(

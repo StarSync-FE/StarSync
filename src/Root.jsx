@@ -18,7 +18,6 @@ function Root() {
 
   return (
     <>
-
       {isLoading ? (
         <PendingUI />
       ) : (
@@ -34,7 +33,6 @@ function Root() {
           {!isLanding && <Footer />}
         </>
       )}
-
     </>
   );
 }
