@@ -13,7 +13,7 @@ const getDonationPercentage = (targetAmount, receivedAmount) => {
   }
   const percentage = (receivedAmount / targetAmount) * 100;
 
-  return Math.min(percentage, 100).toFixed(2);
+  return Math.min(percentage, 100).toFixed(0);
 };
 
 export default getDonationPercentage;
