@@ -1,6 +1,6 @@
+import { css } from '@emotion/react';
 import { LAYOUT } from '@/constants/layout';
 import media from '@/styles/responsive';
-import { css } from '@emotion/react';
 
 export const footerWrapper = css`
   height: ${LAYOUT.FOOTER_HEIGHT}px;

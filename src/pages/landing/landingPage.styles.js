@@ -1,6 +1,6 @@
-import starImg from '@/assets/images/star.png';
-import media from '@/styles/responsive';
 import { css, keyframes } from '@emotion/react';
+import media from '@/styles/responsive';
+import starImg from '@/assets/images/star.png';
 
 const auroraMove = keyframes`
   0% {

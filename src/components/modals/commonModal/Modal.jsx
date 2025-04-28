@@ -1,5 +1,5 @@
-import exitImg from '@/assets/icons/exit-icon.png';
 import { useEffect, useState } from 'react';
+import exitImg from '@/assets/icons/exit-icon.png';
 import * as S from './modal.styles';
 
 /**

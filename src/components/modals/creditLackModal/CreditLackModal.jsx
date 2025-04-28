@@ -1,5 +1,5 @@
-import creditImg from '@/assets/images/credit.png';
 import { CustomButton } from '@/components/button';
+import creditImg from '@/assets/images/logo-star.png';
 import * as S from './creditLackModal.styles';
 
 const CreditLackModal = ({ setModalType }) => {

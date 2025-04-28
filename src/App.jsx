@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { AlertManager } from './components/alertManager';
-import { SplashScreen } from './components/loadingStatus/splashScreen';
+import { SplashScreen } from './components/loadingStatus';
+
 export default function App({ router }) {
   const [showSplashScreen, setShowSplashScreen] = useState(true);
 

@@ -1,10 +1,10 @@
-import creditImg from '@/assets/images/credit.png';
-import { Alert } from '@/components/alert';
-import { CustomButton } from '@/components/button';
-import { ENDPOINTS } from '@/constants/api';
-import { requestPut } from '@/utils/api';
 import { useRef, useState } from 'react';
 import { useRevalidator } from 'react-router-dom';
+import { CustomButton } from '@/components/button';
+import { Alert } from '@/components/alert';
+import { ENDPOINTS } from '@/constants/api';
+import { requestPut } from '@/utils/api';
+import creditImg from '@/assets/images/credit.png';
 import * as S from './donationModal.styles';
 
 const DonationModal = ({ data, credit, updateCredit, onClose }) => {

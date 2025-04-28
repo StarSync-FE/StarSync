@@ -1,6 +1,6 @@
+import React from 'react';
 import successIcon from '@/assets/icons/success-icon.png';
 import warningIcon from '@/assets/icons/warning-icon.png';
-import React from 'react';
 import * as S from './alert.styles';
 
 const Alert = ({ content = 'toast content', type = 'warning', customStyle }) => {

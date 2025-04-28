@@ -1,5 +1,5 @@
-import media from '@/styles/responsive';
 import { css } from '@emotion/react';
+import media from '@/styles/responsive';
 
 export const myPageWrapper = css`
   /* ${media({ padding: ['0 4rem', '0 4rem', '0 6rem', '0 7rem', '0 7rem'] })} */

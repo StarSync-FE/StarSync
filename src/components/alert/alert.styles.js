@@ -1,5 +1,5 @@
-import media from '@/styles/responsive';
 import { css, keyframes } from '@emotion/react';
+import media from '@/styles/responsive';
 
 const bounceIn = keyframes`
   0% {
