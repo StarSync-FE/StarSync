@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { useRevalidator } from 'react-router-dom';
 import { CustomButton } from '@/components/button';
-import { showAlert } from '@/utils/alert/alertController';
+import { showAlert } from '@/utils/alert';
 import { ENDPOINTS } from '@/constants/api';
 import { requestPut } from '@/utils/api';
 import starImg from '@/assets/images/logo.png';
@@ -55,7 +55,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
       const total = prevCredit - donateAmountNum;
       localStorage.setItem('selectedCredit', total);
       updateCredit(total);
-      showAlert('투표에 성공했습니다', 'success');
+      showAlert('후원 완료!', 'success');
       setTimeout(() => {
         onClose();
         revalidator.revalidate();
