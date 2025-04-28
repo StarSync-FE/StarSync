@@ -3,7 +3,7 @@ import { CustomButton } from '@/components/button';
 import { LoadingSpinner } from '@/components/loadingStatus';
 import chartImg from '@/assets/images/chart.png';
 import { fetchData } from './fetchData';
-import { useScreenSize } from './useScreenSize';
+import { useScreenSize } from '@/utils/responsive';
 import { LoadMoreButton } from '@/components/button';
 import * as S from './chart.styles';
 
