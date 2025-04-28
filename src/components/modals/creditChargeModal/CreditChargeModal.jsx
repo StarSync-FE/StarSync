@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { CustomButton, RadioButton } from '@/components/button';
 import { Prices } from '@/constants/creditPrice';
+import { addCommas } from '@/utils/format';
+import { showAlert } from '@/utils/alert';
 import starTwoImg from '@/assets/images/2-star.png';
 import starThreeImg from '@/assets/images/3-star.png';
 import logoImg from '@/assets/images/logo.png';
 import starImg from '@/assets/images/star.png';
-import { addCommas } from '@/utils/format';
 import * as S from './creditChargeModal.styles';
 
 const imageMap = {
@@ -23,7 +24,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
 
   const handleCharge = () => {
     if (!selectedValue) {
-      alert('충전할 크레딧을 선택해주세요!');
+      showAlert('충전할 크레딧을 선택해주세요!', 'warning');
       return;
     }
 
@@ -31,8 +32,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
     const newTotal = prev + Number(selectedValue);
     localStorage.setItem('selectedCredit', newTotal);
     updateCredit(newTotal); // 업데이트된 credit을 ListPage에 전달
-    alert(`크레딧 ${selectedValue} 충전 완료! 총 보유: ${newTotal}`);
-
+    showAlert(`${selectedValue} 크레딧 충전 완료!`, 'success');
     // 모달 닫기 로직
     onClose();
   };
