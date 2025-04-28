@@ -3,11 +3,11 @@ import warningIcon from '@/assets/icons/warning-icon.png';
 import React from 'react';
 import * as S from './alert.styles';
 
-const Alert = ({ content = 'toast content', type = 'warning', isSmall = false }) => {
+const Alert = ({ content = 'toast content', type = 'warning', customStyle }) => {
   const iconSrc = type === 'success' ? successIcon : warningIcon;
 
   return (
-    <div css={S.alertWrapper(isSmall)}>
+    <div css={[customStyle, S.alertWrapper]}>
       <div css={S.contentBox}>
         <img src={iconSrc} alt={`${type}-icon`} />
         <p>{content}</p>

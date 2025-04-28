@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 export const wrapper = css`
+  min-width: 30rem;
   max-width: 120rem;
   margin: 0 auto;
 

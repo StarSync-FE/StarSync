@@ -22,7 +22,7 @@ export const creditWrapper = css`
   border-radius: 0.5rem;
   font-weight: 700;
   ${media({
-    padding: ['2.5rem 3.5rem', '4rem 6rem', '4rem 6rem', '4rem 6rem'],
+    padding: ['2.5rem 3rem', '2.5rem 3.5rem', '4rem 6rem', '4rem 6rem', '4rem 6rem'],
   })}
 
   button {
@@ -46,7 +46,12 @@ export const creditWrapper = css`
     }
 
     &:hover {
+      opacity: 0.9;
       animation-play-state: paused;
+    }
+
+    &:active {
+      transform: scale(0.97);
     }
   }
 `;
@@ -58,7 +63,9 @@ export const creditContent = css`
 `;
 
 export const myCredit = css`
-  font-size: 1.6rem;
+  ${media({
+    fontSize: ['1rem', '1.2rem', '1.6rem', '1.6rem', '1.6rem'],
+  })}
   color: var(--white-alpha-60);
 `;
 

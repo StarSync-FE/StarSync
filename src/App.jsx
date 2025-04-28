@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { RouterProvider } from 'react-router-dom';
+import { AlertManager } from './components/alertManager';
 import { SplashScreen } from './components/loadingStatus/splashScreen';
-
 export default function App({ router }) {
   const [showSplashScreen, setShowSplashScreen] = useState(true);
 
@@ -19,5 +19,10 @@ export default function App({ router }) {
     () => clearInterval(splashScreenInterval);
   }, []);
 
-  return <>{showSplashScreen ? <SplashScreen /> : <RouterProvider router={router} />}</>;
+  return (
+    <>
+      <AlertManager />
+      {showSplashScreen ? <SplashScreen /> : <RouterProvider router={router} />}
+    </>
+  );
 }

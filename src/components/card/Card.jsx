@@ -5,14 +5,19 @@ import { useEffect, useState } from 'react';
 import * as S from './card.styles';
 
 const Card = ({ data, setModalType, setSelectedIndex, index }) => {
-  const [isActive, setIsActive] = useState(false);
-  const daysLeft = getDaysRemaining(data.deadline);
+  const [daysLeft, setDaysLeft] = useState(getDaysRemaining(data.deadline));
   const percent = `${getDonationPercentage(data.targetDonation, data.receivedDonations)}%`;
-  const isCompleted = daysLeft > 0;
+  const isDonationAvailable = daysLeft > 0;
 
+  // 실시간으로 남은 일수를 갱신하기 위해 setInterval 사용
   useEffect(() => {
-    setIsActive(isCompleted);
-  }, [isCompleted]);
+    const interval = setInterval(() => {
+      const newDaysLeft = getDaysRemaining(data.deadline);
+      setDaysLeft(newDaysLeft); // 갱신된 남은 일수로 상태 업데이트
+    }, 55000);
+
+    return () => clearInterval(interval);
+  }, [data.deadline]);
 
   const handleClick = () => {
     setSelectedIndex(index);
@@ -30,10 +35,10 @@ const Card = ({ data, setModalType, setSelectedIndex, index }) => {
           type="button"
           variant="carousel"
           style={S.button}
-          disabled={!isActive}
+          disabled={!isDonationAvailable}
           onButtonClick={handleClick}
         >
-          {isActive ? '후원하기' : '후원 마감'}
+          {isDonationAvailable ? '후원하기' : '후원 마감'}
         </CustomButton>
       </div>
 
@@ -47,7 +52,7 @@ const Card = ({ data, setModalType, setSelectedIndex, index }) => {
           <div css={S.statusBar}>
             <div css={S.statusLeft}>
               <img src={creditImg} alt="크레딧" css={S.icon} />
-              <p>{addCommas(data.receivedDonations)}</p>
+              <p>{`${addCommas(data.receivedDonations)} / ${addCommas(data.targetDonation)}`}</p>
             </div>
             <p>{daysLeft > 1 ? `D-${daysLeft}` : daysLeft === 1 ? '오늘 마감' : '마감 완료'}</p>
           </div>
