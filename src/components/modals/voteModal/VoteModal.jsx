@@ -1,3 +1,4 @@
+import { fetchCharts } from '@/api';
 import { Alert } from '@/components/alert';
 import { Avatar } from '@/components/avatar';
 import { CustomButton, RadioButton } from '@/components/button';
@@ -12,8 +13,9 @@ const VoteModal = ({ gender, updateCredit, setModalType }) => {
   const [checkedItem, setCheckedItem] = useState();
 
   const loadData = async (gender) => {
-    const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${gender}&pageSize=30&`;
-    const response = await requestGet(chartUrl);
+    // const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${gender}&pageSize=30&`;
+    // const response = await requestGet(chartUrl);
+    const response = await fetchCharts({ gender, limit: 30 });
     return response;
   };
 

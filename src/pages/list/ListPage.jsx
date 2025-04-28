@@ -11,6 +11,7 @@ const ListPage = () => {
   const [modalType, setModalType] = useState(null); // 모달 타입 상태 관리
   const [credit, setCredit] = useState(0); // 크레딧 상태 관리
   const { idols, donations } = useLoaderData(); // 여기서 데이터 받음
+  console.log('여기', donations);
   const [selectedTab, setSelectedTab] = useState('females');
   const [selectedIndex, setSelectedIndex] = useState(null); // 후원의 인덱스를 받아옴
 

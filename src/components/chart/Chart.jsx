@@ -1,3 +1,4 @@
+import { fetchCharts } from '@/api';
 import chartImg from '@/assets/images/chart.png';
 import { CustomButton } from '@/components/button';
 import { LoadingSpinner } from '@/components/loadingStatus/loadingSpinner';
