@@ -1,5 +1,5 @@
-import { UI_ERRORS } from '@/constants/errors';
 import axios from 'axios';
+import { UI_ERRORS } from '@/constants/errors';
 
 /**
  * Axios 인스턴스

@@ -1,7 +1,7 @@
+import { Component } from 'react';
 import { CustomButton } from '@/components/button';
 import { UI_ERRORS } from '@/constants/errors';
 import * as S from '@/errorBoundary/styles';
-import { Component } from 'react';
 
 /**
  * RenderErrorBoundary

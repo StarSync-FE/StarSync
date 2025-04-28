@@ -1,5 +1,5 @@
-import media from '@/styles/responsive';
 import { css } from '@emotion/react';
+import media from '@/styles/responsive';
 
 export const myPageWrapper = css`
   margin: auto;

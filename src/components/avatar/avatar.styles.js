@@ -1,5 +1,5 @@
-import checkIcon from '@/assets/icons/check-icon.png';
 import { css } from '@emotion/react';
+import checkIcon from '@/assets/icons/check-icon.png';
 
 export const imageWrapper = (imgSize) => css`
   position: relative;

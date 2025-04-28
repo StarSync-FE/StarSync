@@ -1,7 +1,7 @@
+import { Link } from 'react-router-dom';
 import textLogoImg from '@/assets/images/logo-text-temp.png';
 import logoImg from '@/assets/images/logo.png';
 import profileImg from '@/assets/images/stupid.png';
-import { Link } from 'react-router-dom';
 import * as S from './header.styles';
 
 const Header = () => {

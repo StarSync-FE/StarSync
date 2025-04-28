@@ -1,8 +1,8 @@
-import addIcon from '@/assets/icons/plus-icon.png';
-import { Avatar } from '@/components/avatar';
-import { ArrowButton, AvatarButton, CustomButton } from '@/components/button';
 import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { Avatar } from '@/components/avatar';
+import { ArrowButton, AvatarButton, CustomButton } from '@/components/button';
+import addIcon from '@/assets/icons/plus-icon.png';
 import * as S from './myPage.styles';
 
 const MyPage = () => {
