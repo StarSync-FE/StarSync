@@ -1,6 +1,6 @@
-import { css, keyframes } from '@emotion/react';
+import { css } from '@emotion/react';
 import media from '@/styles/responsive';
-import { chargeButtonFlow } from '@/utils/animation';
+import { chargeButtonFlow, moreheartbeat } from '@/utils/animation';
 
 export const creditWrapper = css`
   display: flex;
@@ -60,7 +60,7 @@ export const buttonStyle = css`
   font-weight: 700;
   letter-spacing: 0.1rem;
   color: var(--white);
-  background: linear-gradient(45deg, var(--pink-purple) 0%, var(--white) 51%, var(--pink-purple) 100%);
+  background: linear-gradient(45deg, var(--pink-purple) 0%, #F996D2 51%, var(--orange-pink) 100%);
   background-color: var(--white-alpha-10);
   background-position: left center; /* 기본 시작 위치 */
   background-size: 300%; /* 배경 크기 확장 */
@@ -73,7 +73,7 @@ export const buttonStyle = css`
 
   &:hover {
     opacity: 0.9;
-    animation-duration: 4s; /* hover하면 천천히 흐르기 */
+    animation: ${moreheartbeat} 1.5s ease-in-out; /* 애니메이션 흐름 */
   }
 
   &:active {
