@@ -87,11 +87,11 @@ export const idolList = css`
   justify-content: center;
   width: 100%;
   ${media({
-    columnGap: ['1.7rem', '1.7rem', '2.4rem', '2.4rem', '2.4rem'],
+    columnGap: ['1rem', '1rem', '2.4rem', '2.4rem', '2.4rem'],
     rowGap: ['1rem', '1rem', '2.4rem', '2.4rem', '2.4rem'],
     gridTemplateColumns: [
       'repeat(3, minmax(9.8rem, 1fr))',
-      'repeat(3, minmax(9.8rem, 1fr))',
+      'repeat(3, minmax(2.8rem, 1fr))',
       'repeat(4, minmax(12.8rem, 1fr))',
       'repeat(8, minmax(9.8rem, 1fr))',
       'repeat(8, minmax(12.8rem, 1fr))',
@@ -125,4 +125,17 @@ export const prev = css`
 `;
 export const next = css`
   right: 0;
+`;
+
+export const mobileAllIdols = css`
+  /* height: 47rem; */
+  overflow: scroll hidden;
+  gap: 2.5rem;
+  grid-template-rows: repeat(2, 12rem); 
+  height: 36rem;
+  padding-top: 1rem;
+  padding-left: 2.4rem;
+  grid-auto-flow: column ;
+  grid-auto-columns: 9.8rem;
+  scroll-padding-left: 2.4rem;
 `;
