@@ -9,15 +9,15 @@ const Card = ({ data, setModalType, setSelectedIndex, index }) => {
   const percent = `${getDonationPercentage(data.targetDonation, data.receivedDonations)}%`;
   const isDonationAvailable = daysLeft > 0;
 
-  // 실시간으로 남은 일수를 갱신하기 위해 setInterval 사용
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     const interval = setInterval(() => {
       const newDaysLeft = getDaysRemaining(data.deadline);
-      setDaysLeft(newDaysLeft); // 갱신된 남은 일수로 상태 업데이트
-    }, 55000);
+      setDaysLeft(newDaysLeft);
+    }, 60000);
 
     return () => clearInterval(interval);
-  }, [data.deadline]);
+  }, []);
 
   const handleClick = () => {
     setSelectedIndex(index);
