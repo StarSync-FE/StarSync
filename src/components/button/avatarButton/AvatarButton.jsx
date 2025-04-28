@@ -1,6 +1,6 @@
-import exitIcon from '@/assets/icons/exit-icon-black.png';
-import { Avatar } from '@/components/avatar';
 import React from 'react';
+import { Avatar } from '@/components/avatar';
+import exitIcon from '@/assets/icons/exit-icon-black.png';
 import * as S from './avatarButton.styles';
 
 const AvatarButton = ({ imgUrl, boxSize, removeIdol }) => {

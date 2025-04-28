@@ -1,11 +1,11 @@
-import chartImg from '@/assets/images/chart.png';
-import { CustomButton } from '@/components/button';
-import { LoadingSpinner } from '@/components/loadingStatus/loadingSpinner';
 import { useEffect, useState } from 'react';
-import LoadMoreButton from './LoadMoreButton';
-import * as S from './chart.styles';
+import { CustomButton } from '@/components/button';
+import { LoadingSpinner } from '@/components/loadingStatus';
+import chartImg from '@/assets/images/chart.png';
 import { fetchData } from './fetchData';
 import { useScreenSize } from './useScreenSize';
+import LoadMoreButton from './LoadMoreButton';
+import * as S from './chart.styles';
 
 const Chart = ({ setModalType, selectedTab, setSelectedTab, updateCredit }) => {
   const [chartData, setChartData] = useState([]);

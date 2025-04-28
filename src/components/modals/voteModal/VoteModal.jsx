@@ -1,19 +1,20 @@
-import { Alert } from '@/components/alert';
+import { useEffect, useState } from 'react';
 import { Avatar } from '@/components/avatar';
 import { CustomButton, RadioButton } from '@/components/button';
+import { fetchCharts } from '@/api';
 import { ENDPOINTS } from '@/constants/api';
-import { showAlert } from '@/utils/alert/alertController';
-import { requestGet, requestPost } from '@/utils/api';
+import { showAlert } from '@/utils/alert';
+import { requestPost } from '@/utils/api';
 import { addCommas } from '@/utils/format';
-import { useEffect, useState } from 'react';
 import * as S from './voteModal.styles';
 const VoteModal = ({ gender, updateCredit, setModalType }) => {
   const [idols, setIdols] = useState([]);
   const [checkedItem, setCheckedItem] = useState();
 
   const loadData = async (gender) => {
-    const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${gender}&pageSize=30&`;
-    const response = await requestGet(chartUrl);
+    // const chartUrl = `${ENDPOINTS.GET_CHART}${gender}?gender=${gender}&pageSize=10`;
+    // const response = await requestGet(chartUrl);
+    const response = await fetchCharts({ gender, limit: 30 });
     return response;
   };
 

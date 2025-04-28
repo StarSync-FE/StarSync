@@ -1,8 +1,8 @@
+import { useRouteError } from 'react-router-dom';
 import { CustomButton } from '@/components/button';
 import { UI_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import * as S from '@/pages/error/styles';
-import { useRouteError } from 'react-router-dom';
 
 const ServerErrorPage = () => {
   const error = useRouteError();
@@ -18,14 +18,16 @@ const ServerErrorPage = () => {
         <h1>{status}</h1>
         <h2>{statusText}</h2>
         <p>{uiMessage}</p>
-        <CustomButton
-          variant="error"
-          isRound="true"
-          style={S.errorButtonStyle}
-          onButtonClick={() => window.location.reload()}
-        >
-          다시 시도
-        </CustomButton>
+        <div css={S.buttonWrapper}>
+          <CustomButton
+            variant="error"
+            isRound="true"
+            style={S.errorButtonStyle}
+            onButtonClick={() => window.location.reload()}
+          >
+            다시 시도
+          </CustomButton>
+        </div>
       </div>
     </div>
   );

@@ -1,10 +1,9 @@
+import { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { Carousel } from '@/components/carousel';
 import { Charge } from '@/components/charge';
 import { Chart } from '@/components/chart';
 import { ListModal } from '@/components/list';
-import { css } from '@emotion/react';
-import { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
 import * as S from './listPage.styles';
 
 const ListPage = () => {

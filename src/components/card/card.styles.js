@@ -1,5 +1,5 @@
-import media from '@/styles/responsive';
 import { css, keyframes } from '@emotion/react';
+import media from '@/styles/responsive';
 
 const marquee = keyframes`
   0%   { transform: translateX(30%); }
@@ -12,6 +12,10 @@ export const card = css`
   ${media({
     width: ['15.8rem', '15.8rem', '28.2rem', '28.2rem'],
   })}
+
+  &:hover h2 {
+    animation: ${marquee} 8s linear infinite; 
+  }
 `;
 
 export const wrapper = css`
@@ -86,10 +90,6 @@ export const header = css`
     font-weight: 500;
     white-space: nowrap;
     color: var(--white);
-
-    &:hover {
-      animation: ${marquee} 8s linear infinite; 
-    }
   }
 `;
 

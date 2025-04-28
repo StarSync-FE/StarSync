@@ -1,8 +1,8 @@
+import { useRouteError } from 'react-router-dom';
 import { CustomButton } from '@/components/button';
 import { UI_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
 import * as S from '@/errorBoundary/styles';
-import { useRouteError } from 'react-router-dom';
 
 /**
  * ApiErrorBoundary

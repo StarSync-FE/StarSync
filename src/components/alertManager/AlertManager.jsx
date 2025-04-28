@@ -1,6 +1,7 @@
-import { Alert } from '@/components/alert';
-import { registerAlertTrigger } from '@/utils/alert/alertController';
 import { useEffect, useRef, useState } from 'react';
+import { Alert } from '@/components/alert';
+import { registerAlertTrigger } from '@/utils/alert';
+
 const AlertManager = () => {
   const [visible, setVisible] = useState(false);
   const [content, setContent] = useState('');

@@ -1,5 +1,5 @@
-import starImg from '@/assets/images/star.png';
 import { css, keyframes } from '@emotion/react';
+import starImg from '@/assets/images/star.png';
 
 const rotate = keyframes`
   0% {
