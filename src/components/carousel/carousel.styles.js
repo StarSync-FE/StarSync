@@ -68,8 +68,7 @@ export const navigationButton = (isRight) => css`
   ${isRight ? 'right: 0.5%' : 'left: 0.5%'};
   z-index: 1;
   width: 3rem;
-  background: transparent;
-  backdrop-filter: blur(5px);
+  opacity: 0.5;
   transition: opacity 0.3s ease-in-out; /* 버튼에 부드러운 비활성화 효과 추가 */
   transform: translateY(-125%);
 `;
