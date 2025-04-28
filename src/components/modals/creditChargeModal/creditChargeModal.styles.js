@@ -1,5 +1,4 @@
 import { css, keyframes } from '@emotion/react';
-import media from '@/styles/responsive';
 
 export const voteButtonFlow = keyframes`
   0% {
@@ -16,25 +15,26 @@ export const voteButtonFlow = keyframes`
 export const modalContent = css`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
   width: 32.7rem;
-  height: 37.2rem;
+  height: 38rem;
   padding: 2.4rem 1.6rem;
 `;
 
 export const modalTitle = css`
   display: flex;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
 
   img {
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     margin-right: 0.5rem;
+    margin-bottom: 0.1rem;
   }
 
   h2 {
-      font-size: 1.8rem;
+      font-size: 2rem;
   }
 `;
 
