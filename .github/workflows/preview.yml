@@ -30,6 +30,11 @@ jobs:
     - name: 의존성 설치 (npm ci)
       run: npm ci
 
+    - name: env 파일 생성 (Static Base 경로 추가)
+      run: |
+        echo "VITE_STATIC_BASE=/preview/pr-${{ github.event.pull_request.number }}/" >> .env.production
+        echo "VITE_BASE_URL=${{ env.VITE_BASE_URL }}" >> .env.production
+
     - name: 프로젝트 빌드 (Vite)
       run: npm run build -- --mode production
 

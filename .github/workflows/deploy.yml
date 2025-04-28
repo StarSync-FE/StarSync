@@ -14,7 +14,7 @@ jobs:
       VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
     
     steps:
-      - name: Github Repository 파일 불러오기기
+      - name: Github Repository 파일 불러오기
         uses: actions/checkout@v4
 
       - name: Node.js 환경 설정

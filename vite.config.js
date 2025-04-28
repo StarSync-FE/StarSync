@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
 
   return {
-    base: './',
+    base: env.VITE_STATIC_BASE || './',
     plugins: [
       react({
         jsxImportSource: '@emotion/react',
