@@ -5,8 +5,14 @@ export const voteButtonFlow = keyframes`
   0% {
     background-position: 0% 50%;
   }
+  40% {
+    background-position: 100% 50%;
+  }
   50% {
     background-position: 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%;
   }
   100% {
     background-position: 0% 50%;
@@ -21,39 +27,10 @@ export const creditWrapper = css`
   border: 1px solid var(--white);
   border-radius: 0.5rem;
   font-weight: 700;
+
   ${media({
     padding: ['2.5rem 3rem', '2.5rem 3.5rem', '4rem 6rem', '4rem 6rem', '4rem 6rem'],
   })}
-
-  button {
-    width: 8rem;
-    height: 4rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: 0.1rem;
-    color: var(--white);
-    background: linear-gradient(45deg, var(--pink-purple) 0%, var(--orange) 51%, var(--pink-purple) 100%);
-    background-color: var(--white-alpha-10);
-    background-position: left center; /* 기본 시작 위치 */
-    background-size: 400%; /* 배경 크기 확장 */
-    transition: all 0.1s ease;
-    animation: ${voteButtonFlow} 3s ease infinite; /* 애니메이션 흐름 */
-
-    @media (prefers-reduced-motion: reduce) {
-      animation: none;
-    }
-
-    &:hover {
-      opacity: 0.9;
-      animation-play-state: paused;
-    }
-
-    &:active {
-      transform: scale(0.97);
-    }
-  }
 `;
 
 export const creditContent = css`
@@ -88,5 +65,61 @@ export const credit = css`
     margin-top: 0.3rem;
     font-size: 2rem;
     font-weight: 700;
+  }
+`;
+
+export const buttonStyle = css`
+  width: 8rem;
+  height: 4rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  color: var(--white);
+  background: linear-gradient(45deg, var(--pink-purple) 0%, var(--white) 51%, var(--pink-purple) 100%);
+  background-color: var(--white-alpha-10);
+  background-position: left center; /* 기본 시작 위치 */
+  background-size: 300%; /* 배경 크기 확장 */
+  transition: all 0.1s ease;
+  animation: ${voteButtonFlow} 6s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    animation-duration: 10s; /* hover하면 천천히 흐르기 */
+  }
+
+  &:active {
+    transform: scale(0.97);
+    }
+`;
+
+export const animationStyle = css`
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 30%);
+    transition: width 0.5s ease, height 0.5s ease, opacity 1s ease;
+    transform: translate(-50%, -50%);
+    content: '';
+    opacity: 0;
+  }
+
+  &:active::after {
+    width: 200%;
+    height: 200%;
+    opacity: 1;
+    transition: 0s;
   }
 `;
