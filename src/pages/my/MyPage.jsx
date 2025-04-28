@@ -4,6 +4,7 @@ import { Avatar } from '@/components/avatar';
 import { ArrowButton, AvatarButton, CustomButton } from '@/components/button';
 import addIcon from '@/assets/icons/plus-icon.png';
 import * as S from './myPage.styles';
+import { showAlert } from '@/utils/alert/alertController';
 
 const MyPage = () => {
   const { list, nextCursor } = useLoaderData();
@@ -42,17 +43,18 @@ const MyPage = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [allIdols]);
+
   useEffect(() => {
     if (screenSize === 'mobile') {
       setPageSize(6);
     } else if (screenSize === 'tablet') {
-      setPageSize(12);
-    } else if (screenSize === 'tabletWide') {
-      setPageSize(15);
-    } else if (screenSize === 'desktop') {
-      setPageSize(16);
+      setPageSize(8);
     } else {
-      setPageSize(20);
+      setPageSize(16);
     }
   }, [screenSize]);
   useEffect(() => {
@@ -127,41 +129,15 @@ const MyPage = () => {
 
   return (
     <div css={S.myPageWrapper}>
-      <h2 css={[S.title, S.myIdolTitle]}>내가 관심있는 아이돌</h2>
-      <section css={[S.horizonList, S.scrollStyle]}>
-        {myIdol.map((idol) => {
-          return (
-            <div key={idol.id}>
-              <AvatarButton imgUrl={idol.profilePicture} removeIdol={() => removeMyIdol(idol.id)} />
-              <h3 css={S.idolName}>{idol.name}</h3>
-              <p css={S.groupName}>{idol.group}</p>
-            </div>
-          );
-        })}
-      </section>
-
-      <h2 css={[S.title, S.allIdolTitle]}>관심 있는 아이돌을 추가해보세요.</h2>
-      <div css={S.idolListWrapper}>
-        {screenSize !== 'mobile' && currentIdols.length > 0 ? (
-          <ArrowButton
-            direction={'left'}
-            styles={[S.arrowButton, S.prev]}
-            onButtonClick={() => {
-              if (currentPage > 1) {
-                setCurrentPage((prev) => prev - 1);
-              }
-            }}
-          />
-        ) : null}
-
-        <section css={[S.idolList]}>
-          {currentIdols.map((idol) => {
+      <div css={S.contentBox}>
+        <h2 css={[S.title, S.myIdolTitle]}>내가 관심있는 아이돌</h2>
+        <section css={[S.horizonList, S.scrollStyle]}>
+          {myIdol.map((idol) => {
             return (
-              <div key={idol.id} css={S.allProfileSize}>
-                <Avatar
+              <div key={idol.id}>
+                <AvatarButton
                   imgUrl={idol.profilePicture}
-                  onSelectToggle={() => toggleProfile(idol)}
-                  isSelected={selectedProfiles[idol.id]}
+                  removeIdol={() => removeMyIdol(idol.id)}
                 />
                 <h3 css={S.idolName}>{idol.name}</h3>
                 <p css={S.groupName}>{idol.group}</p>
@@ -169,28 +145,69 @@ const MyPage = () => {
             );
           })}
         </section>
-        {screenSize !== 'mobile' && currentIdols.length > 0 ? (
-          <ArrowButton
-            direction="right"
-            styles={[S.arrowButton, S.next]}
+
+        <h2 css={[S.title, S.allIdolTitle]}>관심 있는 아이돌을 추가해보세요.</h2>
+        <div css={S.idolListWrapper}>
+          {screenSize !== 'mobile' && currentIdols.length > 0 ? (
+            <ArrowButton
+              direction={'left'}
+              styles={[S.arrowButton, S.prev]}
+              onButtonClick={() => {
+                if (currentPage > 1) {
+                  setCurrentPage((prev) => prev - 1);
+                }
+              }}
+              disabled={currentPage === 1}
+            />
+          ) : null}
+
+          <section css={[S.idolList]}>
+            {currentIdols.map((idol) => {
+              return (
+                <div key={idol.id} css={S.allProfileSize}>
+                  <Avatar
+                    imgUrl={idol.profilePicture}
+                    onSelectToggle={() => toggleProfile(idol)}
+                    isSelected={selectedProfiles[idol.id]}
+                  />
+                  <h3 css={S.idolName}>{idol.name}</h3>
+                  <p css={S.groupName}>{idol.group}</p>
+                </div>
+              );
+            })}
+          </section>
+          {screenSize !== 'mobile' && currentIdols.length > 0 ? (
+            <ArrowButton
+              direction="right"
+              styles={[S.arrowButton, S.next]}
+              onButtonClick={() => {
+                if (currentPage < maxPage) {
+                  setCurrentPage((prev) => prev + 1);
+                }
+              }}
+              disabled={currentPage === maxPage}
+            />
+          ) : null}
+        </div>
+        <div css={S.customButtonWrapper}>
+          <CustomButton
+            type="button"
+            isRound={true}
+            style={S.customButtonStyle}
             onButtonClick={() => {
-              if (currentPage < maxPage) {
-                setCurrentPage((prev) => prev + 1);
+              const hasSelected = Object.values(selectedProfiles).some((isSelected) => isSelected);
+
+              if (hasSelected) {
+                addMyIdols();
+              } else {
+                showAlert('관심있는 아이돌을 추가해 주세요', 'warning', 2000);
               }
             }}
-          />
-        ) : null}
-      </div>
-      <div css={S.customButtonWrapper}>
-        <CustomButton
-          type="button"
-          isRound={true}
-          style={S.customButtonStyle}
-          onButtonClick={addMyIdols}
-        >
-          <img src={addIcon} alt="addIcon" css={S.buttonIcon} />
-          추가하기
-        </CustomButton>
+          >
+            <img src={addIcon} alt="addIcon" css={S.buttonIcon} />
+            추가하기
+          </CustomButton>
+        </div>
       </div>
     </div>
   );
