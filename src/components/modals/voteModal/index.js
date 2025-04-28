@@ -1,1 +1,1 @@
-export { default as VoteModal } from './VoteModal';
+export { default } from './VoteModal';

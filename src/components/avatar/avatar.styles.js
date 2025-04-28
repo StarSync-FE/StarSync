@@ -1,5 +1,5 @@
-import checkIcon from '@/assets/icons/check-icon.png';
 import { css } from '@emotion/react';
+import checkIcon from '@/assets/icons/check-icon.png';
 
 export const imageWrapper = (imgSize) => css`
   position: relative;
@@ -12,7 +12,7 @@ export const imageSelected = css`
     z-index: 0;
     width: 100%;
     height: 100%;
-    border: 4px solid var(--black);
+    border: 4px solid var(--black-deep);
     border-radius: 50%;
     background: linear-gradient(
       271.36deg,
@@ -41,8 +41,8 @@ export const image = (size) => css`
   width: 100%;
   height: 100%;
   aspect-ratio: 1/1;
-  border: 4px solid var(--black);
+  border: 4px solid var(--black-deep);
   border-radius: 50%;
-  box-shadow: 0 0 0 1px var(--orange);
+  box-shadow: 0 0 0 2px var(--orange);
   object-fit: cover;
 `;

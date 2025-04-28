@@ -1,21 +1,27 @@
+import { css } from '@emotion/react';
 import { LAYOUT } from '@/constants/layout';
 import media from '@/styles/responsive';
-import { css } from '@emotion/react';
 
 export const footerWrapper = css`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: ${LAYOUT.FOOTER_HEIGHT}px;
   padding: 1.6rem 2rem;
   border-top: 1px solid var(--white-alpha-20);
   font-size: 1.2rem;
   color: var(--gray-light);
-  background-color: var(--black-deep);
 
   ${media({
     padding: ['1.6rem 2rem', '1.6rem 4rem', '1.6rem 6rem', '1.6rem 8rem'],
   })}
+`;
+
+export const contentSection = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 30rem;
+  max-width: 120rem;
+  height: 100%;
+  margin: 0 auto;
 `;
 
 export const leftSection = css`

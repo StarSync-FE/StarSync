@@ -1,10 +1,16 @@
-import creditWhiteImg from '@/assets/images/credit-white.png';
-import creditImg from '@/assets/images/credit.png';
-import { CustomButton } from '@/components/customButton';
-import { RadioButton } from '@/components/radioButton';
-import { prices } from '@/data/mockData';
 import { useState } from 'react';
+import { CustomButton, RadioButton } from '@/components/button';
+import { Prices } from '@/constants/creditPrice';
+import starTwoImg from '@/assets/images/2-star.png';
+import starThreeImg from '@/assets/images/3-star.png';
+import starImg from '@/assets/images/star.png';
 import * as S from './creditChargeModal.styles';
+
+const imageMap = {
+  1: starImg,
+  2: starTwoImg,
+  3: starThreeImg,
+};
 
 const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
   const [selectedValue, setSelectedValue] = useState(null);
@@ -33,28 +39,30 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
     <div css={S.modalContent}>
       <h2>크레딧 충전하기</h2>
       <div css={S.radioButtons}>
-        {prices.map((price) => (
-          <RadioButton
-            key={price.id}
-            name={price.value}
-            itemLabel={price.name}
-            style={S.buttonStyle} // ✅ 스타일 prop으로 전달
-            handleSelect={() => handleRadioSelect(price.value)}
-          >
-            <div css={S.radioButtonContent}>
-              <img src={creditImg} alt="크레딧" />
-              <span>{price.value}</span>
-            </div>
-          </RadioButton>
-        ))}
+        {Prices.map((price) => {
+          const imgSrc = imageMap[price.id] || starImg;
+          return (
+            <RadioButton
+              key={price.id}
+              name={price.value}
+              itemLabel={price.name}
+              style={[S.buttonStyle]} // ✅ 이렇게 배열로 전달
+              handleSelect={() => handleRadioSelect(price.value)}
+            >
+              <div css={S.radioButtonContent}>
+                <img src={imgSrc} alt="크레딧" />
+                <span>{price.value}</span>
+              </div>
+            </RadioButton>
+          );
+        })}
       </div>
 
       <CustomButton
-        onClick={handleCharge}
+        onButtonClick={handleCharge}
         onKeyDown={(e) => e.key === 'Enter' && handleCharge()}
-        style={S.buttonStyle}
+        style={S.customButton}
       >
-        <img src={creditWhiteImg} alt="크레딧" />
         <p>충전하기</p>
       </CustomButton>
     </div>

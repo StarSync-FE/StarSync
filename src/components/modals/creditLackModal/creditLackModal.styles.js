@@ -8,10 +8,11 @@ export const modalContent = css`
   width: 32.7rem;
   height: auto;
   margin: 0 auto;
-  padding: 2.4rem 1.6rem; /* 다른 모달들과 동일한 패딩 값 */
+  padding: 2.4rem 1.6rem; 
+  border-radius: 8px; 
   text-align: center;
   color: var(--white-full);
-  background-color: var(--black); 
+  background-color: var(--black);
 `;
 
 export const contentWrapper = css`

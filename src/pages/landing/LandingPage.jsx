@@ -1,7 +1,7 @@
-import { CustomButton } from '@/components/customButton';
-import { motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
+import { Link, useLoaderData } from 'react-router-dom';
+import { CustomButton } from '@/components/button';
 import * as S from './landingPage.styles';
 
 const stars = [
@@ -52,6 +52,8 @@ const sections = [
 const LandingPage = () => {
   const sectionRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const { list } = useLoaderData();
+  console.log('리스트:', list);
 
   const handleClearStorage = () => {
     localStorage.clear();

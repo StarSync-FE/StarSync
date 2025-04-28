@@ -1,9 +1,9 @@
-import logoImg from '@/assets/images/logo.png';
-import { CustomButton } from '@/components/customButton';
+import { Link, useRouteError } from 'react-router-dom';
+import { CustomButton } from '@/components/button';
 import { UI_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
+import logoImg from '@/assets/images/logo.png';
 import * as S from '@/pages/error/styles';
-import { Link, useRouteError } from 'react-router-dom';
 
 const NotFoundPage = () => {
   const error = useRouteError();
@@ -19,12 +19,14 @@ const NotFoundPage = () => {
         <h1>{status}</h1>
         <h2>{statusText}</h2>
         <p>{uiMessage}</p>
-        <Link to="/">
-          <CustomButton variant="error" isRound="true" style={S.errorButtonStyle}>
-            <img src={logoImg} alt="StarSync 로고" css={S.logoIconStyle} />
-            StarSync 홈
-          </CustomButton>
-        </Link>
+        <div css={S.buttonWrapper}>
+          <Link to="/">
+            <CustomButton variant="error" isRound="true" style={S.errorButtonStyle}>
+              <img src={logoImg} alt="StarSync 로고" css={S.logoIconStyle} />
+              StarSync 홈
+            </CustomButton>
+          </Link>
+        </div>
       </div>
     </div>
   );

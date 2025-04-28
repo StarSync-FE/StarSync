@@ -23,12 +23,14 @@ const resetStyle = css`
   --orange: #F96D69;
   --orange-deep: #F86F65;
   --orange-alpha-50: #F96E6880;
+  --orange-pink: #FF94B5;
   --pink: #FE5493;
   --pink-bright: #ED56C2;
   --pink-purple: #EA2FB6;
   --pink-soft: #FFF0F0;
   --pink-rose-alpha-50: #FE578F80;
   --blue-sky: #1C9EFB;
+  --blue-medium: #62B9F7;
   --blue-dark: #3D2FA9;
   --blue-navy: #272F3D;
   --purple: #8D42FB;

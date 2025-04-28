@@ -1,6 +1,6 @@
+import { css } from '@emotion/react';
 import { LAYOUT } from '@/constants/layout';
 import media from '@/styles/responsive';
-import { css } from '@emotion/react';
 
 export const headerWrapper = css`
   display: flex;
@@ -11,19 +11,23 @@ export const headerWrapper = css`
   z-index: 999;
   justify-content: center;
   align-items: center;
+  min-width: 30rem;
+  max-width: 120rem;
   height: ${LAYOUT.HEADER_HEIGHT}px;
-  background-color: var(--black-deep);
+  margin: 0 auto;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+
+  ${media({
+    margin: ['0 4rem', '0 4rem', '0 4rem', '0 auto'],
+  })}
 `;
 
 export const landingButton = css`
   position: absolute;
-  left: 2rem;
+  left: 0;
   border: none;
   background: none;
-
-  ${media({
-    left: ['2rem', '4rem', '6rem', '8rem'],
-  })}
 `;
 
 export const landingImage = css`
@@ -57,13 +61,9 @@ export const textLogoImage = css`
 
 export const profileButton = css`
   position: absolute;
-  right: 2rem;
+  right: 0;
   border: none;
   background: none;
-
-  ${media({
-    right: ['2rem', '4rem', '6rem', '8rem'],
-  })}
 `;
 
 export const profileImage = css`

@@ -1,24 +1,40 @@
+import { Outlet, useLocation, useNavigation } from 'react-router-dom';
 import { Header } from '@/components/header';
 import { LAYOUT } from '@/constants/layout';
-import { Outlet, useLocation, useNavigation } from 'react-router-dom';
-import { Footer } from './components/footer';
-import { PendingUI } from './components/loadingStatus/pendingUI';
+import { Footer } from '@/components/footer';
+import { PendingUI } from './components/loadingStatus';
 
 function Root() {
   const navigation = useNavigation();
-  const isLoading = navigation.state !== 'idle'; // 'loading' 또는 'submitting'
+  const location = useLocation();
 
-  const { pathname } = useLocation();
-  const isLanding = pathname === '/';
+  const currentPath = location.pathname;
+  const nextPath = navigation.location?.pathname;
+  const isSamePath = currentPath === nextPath;
+
+  const isLoading = navigation.state !== 'idle' && !isSamePath;
+
+  const isLanding = currentPath === '/';
 
   return (
     <>
-      {isLoading && <PendingUI />}
-      {!isLanding && <Header />}
-      <main style={{ paddingTop: !isLanding ? `${LAYOUT.HEADER_HEIGHT}px` : 0 }}>
-        <Outlet />
-      </main>
-      {!isLanding && <Footer />}
+
+      {isLoading ? (
+        <PendingUI />
+      ) : (
+        <>
+          {!isLanding && <Header />}
+          <main
+            style={{
+              paddingTop: !isLanding ? `${LAYOUT.HEADER_HEIGHT}px` : 0,
+            }}
+          >
+            <Outlet />
+          </main>
+          {!isLanding && <Footer />}
+        </>
+      )}
+
     </>
   );
 }

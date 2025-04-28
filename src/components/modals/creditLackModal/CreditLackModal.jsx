@@ -1,5 +1,5 @@
-import creditImg from '@/assets/images/credit.png';
-import { CustomButton } from '@/components/customButton';
+import { CustomButton } from '@/components/button';
+import creditImg from '@/assets/images/logo-star.png';
 import * as S from './creditLackModal.styles';
 
 const CreditLackModal = ({ setModalType }) => {
@@ -12,7 +12,7 @@ const CreditLackModal = ({ setModalType }) => {
         </p>
       </div>
       <CustomButton
-        onClick={() => setModalType('creditCharge')}
+        onButtonClick={() => setModalType('creditCharge')}
         onKeyDown={(e) => e.key === 'Enter' && setModalType('creditCharge')}
         style={S.buttonStyle}
       >

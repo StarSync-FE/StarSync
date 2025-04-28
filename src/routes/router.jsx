@@ -1,9 +1,10 @@
-import { ApiErrorBoundary, GlobalErrorBoundary, RenderErrorBoundary } from '@/components/error';
-import { ENDPOINTS } from '@/constants/api';
+import { createBrowserRouter } from 'react-router-dom';
+import { fetchCharts, fetchDonations, fetchIdols } from '@/api';
+import { ApiErrorBoundary, GlobalErrorBoundary, RenderErrorBoundary } from '@/errorBoundary';
 import { THROWN_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
-import { requestGet } from '@/utils/api';
-import { createBrowserRouter } from 'react-router-dom';
+import { safeRequest } from '@/utils/api';
+import { throwIfEmptyArray } from '@/utils/validate';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
                 <LandingPage />
               </RenderErrorBoundary>
             ),
+            loader: async () => {
+              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }), 'idols');
+              throwIfEmptyArray(idols);
+              return idols;
+            },
           };
         },
       },
@@ -40,60 +46,21 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              const LIMIT = 10;
-              const CURSOR = 0;
-              const GENDER = 'female';
-              const idolsUrl = `${ENDPOINTS.GET_IDOLS}?pageSize=${LIMIT}&cursor=${CURSOR}`;
-              const donationsUrl = ENDPOINTS.GET_DONATIONS;
-              const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${GENDER}&pageSize=${LIMIT}&cursor=${CURSOR}`;
+              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }), 'idols');
+              const donations = await safeRequest(
+                () => fetchDonations({ limit: 30, cursor: 0 }),
+                'donations',
+              );
+              const charts = await safeRequest(
+                () => fetchCharts({ gender: 'female', limit: 10, cursor: 0 }),
+                'charts',
+              );
 
-              let idols;
-              let donations;
-              let chart;
+              throwIfEmptyArray(idols);
+              throwIfEmptyArray(donations);
+              throwIfEmptyArray(charts);
 
-              try {
-                idols = await requestGet(idolsUrl);
-                console.log('✅ idols:', idols);
-              } catch (err) {
-                console.error('❌ idols 에러:', err?.response?.data || err.message);
-              }
-
-              try {
-                donations = await requestGet(donationsUrl);
-                console.log('✅ donations:', donations);
-              } catch (err) {
-                console.error('❌ donations 에러:', err?.response?.data || err.message);
-              }
-
-              try {
-                chart = await requestGet(chartUrl);
-                console.log('✅ chart:', chart);
-              } catch (err) {
-                console.error('❌ chart 에러:', err?.response?.data || err.message);
-              }
-
-              // 404: 정상 응답이지만 빈 배열
-              if (
-                Array.isArray(idols) &&
-                idols.length === 0 &&
-                Array.isArray(donations) &&
-                donations.length === 0 &&
-                Array.isArray(chart) &&
-                chart.length === 0
-              ) {
-                throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
-                  status: STATUS_CODES.NOT_FOUND,
-                });
-              }
-
-              // 500: 요청 자체 실패 (undefined)
-              if (!idols || !donations || !chart) {
-                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
-                  status: STATUS_CODES.SERVER_ERROR,
-                });
-              }
-
-              return { idols, donations, chart };
+              return { idols, donations, charts };
             },
           };
         },
@@ -110,31 +77,8 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              const LIMIT = 30;
-              const CURSOR = 0;
-              const url = `${ENDPOINTS.GET_IDOLS}?pageSize=${LIMIT}&cursor=${CURSOR}`;
-
-              let idols;
-
-              try {
-                idols = await requestGet(url);
-                console.log('✅ idols:', idols);
-              } catch (err) {
-                console.error('❌ idols 에러:', err?.response?.data || err.message);
-              }
-
-              if (Array.isArray(idols) && idols.length === 0) {
-                throw new Response(THROWN_ERRORS.DATA_NOT_FOUND, {
-                  status: STATUS_CODES.NOT_FOUND,
-                });
-              }
-
-              if (!idols) {
-                throw new Response(THROWN_ERRORS.FETCH_FAILED, {
-                  status: STATUS_CODES.SERVER_ERROR,
-                });
-              }
-
+              const idols = await safeRequest(() => fetchIdols({ limit: 30, cursor: 0 }), 'idols');
+              throwIfEmptyArray(idols);
               return idols;
             },
           };
