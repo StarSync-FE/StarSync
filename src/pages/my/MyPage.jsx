@@ -156,6 +156,7 @@ const MyPage = () => {
                   setCurrentPage((prev) => prev - 1);
                 }
               }}
+              disabled={currentPage === 1}
             />
           ) : null}
 
@@ -183,6 +184,7 @@ const MyPage = () => {
                   setCurrentPage((prev) => prev + 1);
                 }
               }}
+              disabled={currentPage === maxPage}
             />
           ) : null}
         </div>
