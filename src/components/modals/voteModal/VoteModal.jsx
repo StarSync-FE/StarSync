@@ -6,16 +6,22 @@ import { ENDPOINTS } from '@/constants/api';
 import { showAlert } from '@/utils/alert';
 import { requestPost } from '@/utils/api';
 import { addCommas } from '@/utils/format';
+import { LoadingSpinner } from '@/components/loadingStatus';
 import * as S from './voteModal.styles';
+
 const VoteModal = ({ gender, updateCredit, setVoteSuccessTrigger, setModalType }) => {
   const [idols, setIdols] = useState([]);
   const [checkedItem, setCheckedItem] = useState();
+  const [isLoading, setIsLoading] = useState(false); // 로딩 상태 추가
 
   const loadData = async (gender) => {
-    // const chartUrl = `${ENDPOINTS.GET_CHART}${gender}?gender=${gender}&pageSize=10`;
-    // const response = await requestGet(chartUrl);
-    const response = await fetchCharts({ gender, limit: 30 });
-    return response;
+    setIsLoading(true); // 로딩 시작
+    try {
+      const response = await fetchCharts({ gender, limit: 30 });
+      return response;
+    } finally {
+      setIsLoading(false); // 로딩 종료
+    }
   };
 
   const voteForIdol = async (idolId) => {
@@ -28,13 +34,13 @@ const VoteModal = ({ gender, updateCredit, setVoteSuccessTrigger, setModalType }
         if (response) {
           localStorage.setItem('selectedCredit', Number(getCredit) - 1000);
           updateCredit(Number(getCredit) - 1000);
-          setVoteSuccessTrigger((prev) => !prev); // 차트에 투표 수 반영하는 상태변수
+          setVoteSuccessTrigger((prev) => !prev);
           showAlert('투표에 성공했습니다', 'success');
         } else {
           showAlert('투표에 실패했습니다', 'warning');
         }
       } else {
-        setModalType('creditLack'); // 크레딧 부족 시 modalType 설정
+        setModalType('creditLack');
       }
     } catch (err) {
       console.error('투표 중 오류 발생:', err);
@@ -55,10 +61,11 @@ const VoteModal = ({ gender, updateCredit, setVoteSuccessTrigger, setModalType }
   return (
     <div css={S.ModalWrapper}>
       <h2 css={S.title}>이달의 {gender === 'females' ? '여자' : '남자'} 아이돌</h2>
+      <LoadingSpinner isLoading={isLoading} />
       <div css={[S.itemsWrapper, S.scrollStyle]}>
-        {idols.length > 0
-          ? idols.map((idol) => {
-              return (
+        {
+          idols.length > 0
+            ? idols.map((idol) => (
                 <div key={idol.name} css={S.idolItem}>
                   <RadioButton
                     style={S.voteRadioButton}
@@ -82,9 +89,9 @@ const VoteModal = ({ gender, updateCredit, setVoteSuccessTrigger, setModalType }
                     </div>
                   </RadioButton>
                 </div>
-              );
-            })
-          : console.log('idols state가 없습니다')}
+              ))
+            : !isLoading && <p>아이돌 데이터가 없습니다.</p> /* 로딩중 아닐때만 */
+        }
       </div>
       <CustomButton
         onButtonClick={() =>
