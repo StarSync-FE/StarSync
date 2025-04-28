@@ -106,6 +106,7 @@ export const sectionContent = css`
   position: relative;
   z-index: 1;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
   width: 100%;
   max-width: 144rem;
@@ -127,8 +128,9 @@ export const sectionContent = css`
     letter-spacing: 0.2rem;
     word-break: keep-all;
     color: var(--white);
-    text-shadow: 2px 2px 4px var(--black-alpha-70);
-    cursor: pointer;
+
+    /* text-shadow: 2px 2px 4px var(--black-alpha-70); */
+    cursor: default;
     transition: opacity 0.3s ease;
     animation: ${glow} 2s infinite ease-in-out;
     
@@ -139,7 +141,7 @@ export const sectionContent = css`
     ${media({
       fontSize: ['3.2rem', '4rem', '5rem', '6rem'],
       letterSpacing: ['0.2rem', '0.3rem', '0.4rem', '0.5rem'],
-      lineHeight: ['1.3', '1.2', '1.2', '1.2'],
+      lineHeight: ['1.3', '1.2', '1.2', '1.2', '1.2'],
     })}
   }
 
@@ -149,12 +151,12 @@ export const sectionContent = css`
     padding: 0 1.6rem;
     font-size: 1.4rem;
     font-weight: 500;
-    line-height: 1.6;
+    line-height: 1.2;
     white-space: pre-line;
     word-break: keep-all;
     color: var(--white);
     text-shadow: 2px 2px 4px var(--black-alpha-70);
-    cursor: pointer;
+    cursor: default;
     transition: opacity 0.3s ease;
 
     &:hover {
@@ -164,7 +166,7 @@ export const sectionContent = css`
     ${media({
       fontSize: ['1.6rem', '1.8rem', '2rem', '2.4rem'],
       maxWidth: ['30rem', '50rem', '60rem', '80rem'],
-      lineHeight: ['1.7', '1.7', '1.7', '1.7'],
+      lineHeight: ['1.3', '1.3', '1.3', '1.3', '1.3'],
       padding: ['1.6rem', '1.6rem', '2rem', '2.4rem'],
     })}
   }
@@ -268,4 +270,8 @@ export const scrollGuide = css`
       transform: translateX(-50%) translateY(-0.3rem);
     }
   }
+`;
+
+export const logo = css`
+  width: 25%;
 `;

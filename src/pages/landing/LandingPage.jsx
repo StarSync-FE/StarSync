@@ -2,7 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { CustomButton } from '@/components/button';
+import logoImage from '@/assets/images/starSync-logo.svg';
+import imageUrl from '@/assets/images/wonyoung.png';
 import * as S from './landingPage.styles';
+import { StarFrame } from '@/components/starFrame';
 
 const stars = [
   { id: 1, top: '10%', left: '15%', width: 30, height: 30 },
@@ -24,7 +27,7 @@ const sections = [
   {
     id: 'main',
     title: 'StarSync',
-    description: '후원과 투표를 통해 아이돌을 응원하세요. 당신의 선택이 그들의 무대가 됩니다.',
+    description: '후원과 투표를 통해 아이돌을 응원하세요.\n당신의 선택이 그들의 무대가 됩니다.',
     buttonText: '지금 시작하기',
     showScrollGuide: true,
   },
@@ -128,13 +131,18 @@ const LandingPage = () => {
             animate={{ opacity: activeIndex === idx ? 1 : 0.3, y: activeIndex === idx ? 0 : 50 }}
             transition={{ duration: 0.8 }}
           >
-            <h1>{section.title}</h1>
+            {/* <h1>{section.title}</h1> */}
             <p>{section.description}</p>
-            <Link to="/list" onClick={handleClearStorage}>
-              <CustomButton type="button" variant="landing">
-                {section.buttonText}
-              </CustomButton>
-            </Link>
+            <img src={logoImage} css={S.logo} alt="StarSyncLogo" />
+            <StarFrame imageUrl={imageUrl} width={50} height={60} />
+
+            <div css={S.buttonWrapper}>
+              <Link to="/list" onClick={handleClearStorage}>
+                <CustomButton type="button" variant="landing">
+                  {section.buttonText}
+                </CustomButton>
+              </Link>
+            </div>
             {section.showScrollGuide && (
               <button
                 type="button"
