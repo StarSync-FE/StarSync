@@ -77,7 +77,7 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }), 'idols');
+              const idols = await safeRequest(() => fetchIdols({ limit: 30, cursor: 0 }), 'idols');
               throwIfEmptyArray(idols);
               return idols;
             },

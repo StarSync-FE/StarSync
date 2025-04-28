@@ -2,10 +2,15 @@ import media from '@/styles/responsive';
 import { css } from '@emotion/react';
 
 export const myPageWrapper = css`
-  margin: auto;
-  ${media({ padding: ['0 4rem', '0 4rem', '0 6rem', '0 7rem', '0 7rem'] })}
-
-`;
+  /* ${media({ padding: ['0 4rem', '0 4rem', '0 6rem', '0 7rem', '0 7rem'] })} */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  `;
+export const contentBox = css`
+  ${media({ width: ['calc(100% - 4.7rem)', 'calc(100% - 4.7rem)', 'calc(100% - 4.8rem)', 'calc(100% - 25.8rem)', 'calc(100% - 37.8rem)'] })}
+  `;
 export const scrollStyle = css`
   overflow-y: auto;
   padding-right: 12px; 
@@ -85,11 +90,11 @@ export const idolList = css`
     columnGap: ['1.7rem', '1.7rem', '2.4rem', '2.4rem', '2.4rem'],
     rowGap: ['1rem', '1rem', '2.4rem', '2.4rem', '2.4rem'],
     gridTemplateColumns: [
-      'repeat(auto-fill, minmax(9.8rem, 1fr))',
       'repeat(3, minmax(9.8rem, 1fr))',
-      'repeat(auto-fill, minmax(12.8rem, 1fr))',
+      'repeat(3, minmax(9.8rem, 1fr))',
+      'repeat(4, minmax(12.8rem, 1fr))',
       'repeat(8, minmax(9.8rem, 1fr))',
-      'repeat(10, minmax(12.8rem, 1fr))',
+      'repeat(8, minmax(12.8rem, 1fr))',
     ],
     gridTemplateRows: ['1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr', '1fr 1fr'],
   })}
@@ -113,7 +118,6 @@ export const buttonIcon = css`
 export const arrowButton = css`
   min-width: 2.9rem;
   height: 13.5rem;
-
 `;
 
 export const prev = css`
