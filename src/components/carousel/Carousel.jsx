@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowButton } from '@/components/button';
 import { Card } from '@/components/card';
 import { CAROUSEL } from '@/constants/carousel';
@@ -6,17 +6,36 @@ import * as S from './carousel.styles';
 
 const Carousel = ({ data, setModalType, setSelectedIndex }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsView, setItemsView] = useState(CAROUSEL.ITEMS_VIEW); // 동적으로 ITEMS_VIEW 값을 설정
   const itemsLength = data?.list?.length || 0;
 
-  // 마지막 인덱스를 계산 (데이터가 10개라면 maxIndex는 6, 즉 마지막 페이지까지 고려)
-  const maxIndex = Math.max(0, Math.ceil(itemsLength / CAROUSEL.ITEMS_VIEW) - 1);
+  useEffect(() => {
+    const updateItemsView = () => {
+      if (window.innerWidth >= 1200) {
+        setItemsView(3); // 1200px 이상에서는 3개
+      } else if (window.innerWidth >= 1000) {
+        setItemsView(2); // 1000px 이상에서는 2개
+      } else {
+        setItemsView(1); // 그 외에는 1개
+      }
+    };
+
+    updateItemsView(); // 컴포넌트가 마운트 될 때 바로 실행
+    window.addEventListener('resize', updateItemsView); // 화면 크기 변경 시에도 실행
+
+    return () => {
+      window.removeEventListener('resize', updateItemsView); // 컴포넌트 언마운트 시 이벤트 리스너 제거
+    };
+  }, []); // 빈 배열을 주어 한 번만 실행되도록 설정
+
+  const maxIndex = Math.max(0, Math.ceil(itemsLength / itemsView) - 1);
 
   const handleNext = () => {
-    setCurrentIndex((prev) => Math.min(prev + CAROUSEL.ITEMS_VIEW, maxIndex * CAROUSEL.ITEMS_VIEW)); // 4개씩 이동
+    setCurrentIndex((prev) => Math.min(prev + itemsView, maxIndex * itemsView));
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => Math.max(prev - CAROUSEL.ITEMS_VIEW, 0)); // 4개씩 이동
+    setCurrentIndex((prev) => Math.max(prev - itemsView, 0));
   };
 
   const getSlideOffset = () => {

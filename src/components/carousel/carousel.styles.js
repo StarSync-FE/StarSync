@@ -39,9 +39,15 @@ export const carouselContainer = css`
 export const carouselTrack = (slide) => css`
   display: flex;
   gap: 1.2rem;
-  transition: transform 1.5s ease-in-out;
+  transition: transform 0.4s ease-in-out;
 
   ${media({
+    transition: [
+      'transform 0.4s ease-in-out',
+      'transform 0.4s ease-in-out',
+      'transform 0.7s ease-in-out',
+      'transform 1s ease-in-out',
+    ],
     transform: ['none', 'none', `translateX(-${slide}px)`, `translateX(-${slide}px)`],
   })}
 `;
