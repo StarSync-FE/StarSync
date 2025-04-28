@@ -75,3 +75,21 @@ export const heartbeat = keyframes`
     transform: scale(1.05);
   }
 `;
+
+export const moreheartbeat = keyframes`
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.05);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.03);
+  }
+  70% {
+    transform: scale(1);
+  }
+`;
