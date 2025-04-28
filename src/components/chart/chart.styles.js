@@ -1,5 +1,6 @@
-import { css, keyframes } from '@emotion/react';
+import { css } from '@emotion/react';
 import media from '@/styles/responsive';
+import { voteButtonFlow, rotateWithPause, heartbeat } from '@/utils/animation';
 
 export const flexCenter = css`
   display: flex;
@@ -24,18 +25,6 @@ export const chartSectionHeader = css`
   }
 `;
 
-export const voteButtonFlow = keyframes`
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-`;
-
 export const voteButton = css`
   ${flexCenter};
   gap: 0.4rem;
@@ -57,7 +46,7 @@ export const voteButton = css`
 
   &:hover {
     background-position: right center; /* hover 시 배경 이동 */
-    animation: ${voteButtonFlow} 6s ease infinite; /* 애니메이션 흐름 */
+    animation: ${heartbeat} 0.7s ease-in-out; /* 애니메이션 흐름 */
     opacity: 0.9;
   }
 
@@ -122,40 +111,69 @@ export const idolList = css`
     gap: ['0.5rem', '0.7rem', '1.2rem', '1.7rem'],
     gridTemplateColumns: ['1fr', '1fr', '1fr 1fr', '1fr 1fr'],
   })}
+`;
 
-  li {
+export const idolData = css`
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  border-bottom: 1px solid var(--black);
+  list-style: none;
+  ${media({
+    paddingBottom: ['0.7rem', '0.7rem', '1.5rem', '1.7rem'],
+  })}
+
+  span {
     display: flex;
-    justify-content: space-between;
-    text-align: center;
-    border-bottom: 1px solid var(--black);
-    list-style: none;
-    ${media({
-      paddingBottom: ['0.7rem', '0.7rem', '1.5rem', '1.7rem'],
-    })}
-
-    span {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    img {
-      border: 2px solid var(--black-deep);
-      border-radius: 50%;
-      box-shadow: 0 0 0 0.1rem var(--orange);
-      object-fit: cover;
-
-      ${media({
-        width: ['4rem', '4rem', '5rem', '5rem'],
-        height: ['4rem', '4rem', '5rem', '5rem'],
-        marginInline: ['0.1rem', '0.2rem', '0.5rem', '0.5rem'],
-      })}
-    }
-    
-    &:active {
-      transform: scale(1.015);
-    }
+    align-items: center;
+    gap: 0.5rem;
   }
+  
+  &:hover img, &:hover span {
+    animation: ${heartbeat} 0.7s ease-in-out;
+  }
+
+  &:active {
+    transform: scale(1.015);
+  }
+`;
+
+export const firstStyle = css`
+  position: relative;
+`;
+
+export const starIcon = css`
+  position: absolute;
+  bottom: 3.7rem;
+  left: 1.1rem;
+  z-index: 1;
+  width: 4rem;
+  animation: ${rotateWithPause} 3s linear infinite; /* 7초 애니메이션을 무한 반복 */
+  transform-style: preserve-3d;
+
+  ${media({
+    width: ['1.8rem', '1.8rem', '2.2rem', '2.2rem', '2rem'],
+    bottom: ['2.7rem', '2.7rem', '3.5rem', '3.5rem', '3.5rem'],
+    left: ['3rem', '3rem', '4rem', '4rem', '4rem'],
+  })}
+`;
+
+export const profileStyle = css`
+  border: 2px solid var(--black-deep);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.1rem var(--orange);
+  object-fit: cover;
+
+  ${media({
+    width: ['4rem', '4rem', '5rem', '5rem'],
+    height: ['4rem', '4rem', '5rem', '5rem'],
+    marginInline: ['0.1rem', '0.2rem', '0.5rem', '0.5rem'],
+  })}
+`;
+
+export const rankStyle = css`
+  margin-inline: 0.5rem 0.9rem;
+  color: var(--orange);
 `;
 
 export const idolContent = css`
@@ -166,18 +184,27 @@ export const idolContent = css`
   })}
 `;
 
-export const rankStyle = css`
-  margin-inline: 0.5rem 0.9rem;
-  color: var(--orange);
+export const groupStyle = css`
+  ${media({
+    fontSize: ['0.9rem', '1rem', '1.2rem', '1.35rem'],
+  })}
 `;
 
-export const groupStyle = css`
-${media({
-  fontSize: ['0.9rem', '1rem', '1.2rem', '1.35rem'],
-})}
+export const nameContent = css`
+  display: flex;
 `;
 
 export const nameStyle = css`
   font-weight: 700;
+  color: var(--white-full);
+`;
+
+export const starNameIcon = css`
+  width: 1.5rem;
+  margin-bottom: 0.1rem;
+  margin-left: 0.2rem;
+`;
+
+export const voteStyle = css`
   color: var(--white);
 `;

@@ -6,7 +6,7 @@ import { useScreenSize } from '@/utils/responsive';
 import { LoadMoreButton } from '@/components/button';
 import chartImg from '@/assets/images/chart.png';
 import starImg from '@/assets/images/star.png';
-import starAuroraImg from '@/assets/images/logo.png';
+import logoImg from '@/assets/images/logo.png';
 import * as S from './chart.styles';
 
 const Chart = ({ setModalType, selectedTab, setSelectedTab, voteSuccessTrigger }) => {
@@ -123,7 +123,7 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, voteSuccessTrigger }
                     <span css={S.nameStyle}>{idol.name}</span>
                     {index === 0 && (
                       <img
-                        src={starAuroraImg} // ⭐별 이미지
+                        src={logoImg} // ⭐별 이미지
                         alt="1등"
                         css={S.starNameIcon}
                       />
