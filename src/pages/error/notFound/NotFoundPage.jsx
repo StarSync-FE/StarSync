@@ -1,9 +1,9 @@
-import logoImg from '@/assets/images/logo.png';
+import { Link, useRouteError } from 'react-router-dom';
 import { CustomButton } from '@/components/button';
 import { UI_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
+import logoImg from '@/assets/images/logo.png';
 import * as S from '@/pages/error/styles';
-import { Link, useRouteError } from 'react-router-dom';
 
 const NotFoundPage = () => {
   const error = useRouteError();

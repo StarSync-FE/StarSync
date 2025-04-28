@@ -1,7 +1,7 @@
-import { CustomButton } from '@/components/button';
-import { motion } from 'motion/react';
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { CustomButton } from '@/components/button';
 import * as S from './landingPage.styles';
 
 const stars = [

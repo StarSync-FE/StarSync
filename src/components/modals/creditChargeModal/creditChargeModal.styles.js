@@ -1,4 +1,3 @@
-import media from '@/styles/responsive';
 import { css, keyframes } from '@emotion/react';
 
 export const voteButtonFlow = keyframes`
@@ -16,17 +15,26 @@ export const voteButtonFlow = keyframes`
 export const modalContent = css`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: baseline;
-  
-  ${media({
-    margin: ['2.4rem 1.6rem', '2.4rem 1.6rem', '3rem 3rem', '3rem 3rem', '3rem 3rem'],
-    gap: ['1rem', '1rem', '2rem', '2rem', '2rem'],
-  })}
+  gap: 1.2rem;
+  width: 32.7rem;
+  height: 38rem;
+  padding: 2.4rem 1.6rem;
+`;
+
+export const modalTitle = css`
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.7rem;
+
+  img {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.1rem;
+  }
 
   h2 {
-    margin-block: 0.2rem 1rem;
-    font-size: 1.8rem;
+      font-size: 2rem;
   }
 `;
 
@@ -43,10 +51,8 @@ export const radioButtons = css`
 `;
 
 export const buttonStyle = css`
-  ${media({
-    width: ['28rem', '29rem', '29rem', '32rem', '32rem'],
-    height: ['7rem', '7rem', '7rem', '8rem', '8rem'],
-  })}
+  width: 29rem;
+  height: 6.8rem;
   border: 1px solid var(--white);
   border-radius: 8px;
   transition: border-color 0.3s ease;
@@ -58,11 +64,14 @@ export const buttonStyle = css`
   &:has(input[type="radio"]:checked) { 
     border-color: var(--orange); 
     color: var(--gray);
+    transform: scale(1.015);
   } 
-  
-  img {
-    width: 2.4rem;
-  }
+`;
+
+export const creditImg = (id) => css`
+  margin-inline: ${id === 1 ? '0.8rem' : id === 2 ? '0.2rem' : '0.1rem'};
+  width: ${id === 1 ? '2.5rem' : id === 2 ? '3.7rem' : '4rem'};
+  height: ${id === 1 ? '2.45rem' : id === 2 ? '2.6rem' : '3rem'};
 `;
 
 export const customButton = css`
@@ -72,11 +81,6 @@ export const customButton = css`
   background-size: 400%; /* 배경 크기 확장 */
   transition: all 0.1s ease;
   animation: ${voteButtonFlow} 3s ease infinite; /* 애니메이션 흐름 */
-  
-  ${media({
-    width: ['28.7rem', '29.8rem', '29.8rem', '32.8rem', '32.8rem'],
-    height: ['3.8rem', '4rem', '4rem', '5rem', '5rem'],
-  })}
   
   p {
     font-weight: 700;
@@ -103,7 +107,6 @@ export const radioButtonContent = css`
   padding: 0.5rem;
 
   span {
-    margin: 0.2rem 0 0 0.3rem;
     font-size: 2rem;
     font-weight: 700;
   }

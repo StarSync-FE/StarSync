@@ -1,19 +1,18 @@
-import { fetchCharts } from '@/api';
-import { Alert } from '@/components/alert';
+import { useEffect, useState } from 'react';
 import { Avatar } from '@/components/avatar';
 import { CustomButton, RadioButton } from '@/components/button';
+import { fetchCharts } from '@/api';
 import { ENDPOINTS } from '@/constants/api';
-import { showAlert } from '@/utils/alert/alertController';
-import { requestGet, requestPost } from '@/utils/api';
+import { showAlert } from '@/utils/alert';
+import { requestPost } from '@/utils/api';
 import { addCommas } from '@/utils/format';
-import { useEffect, useState } from 'react';
 import * as S from './voteModal.styles';
-const VoteModal = ({ gender, updateCredit, setModalType }) => {
+const VoteModal = ({ gender, updateCredit, setVoteSuccessTrigger, setModalType }) => {
   const [idols, setIdols] = useState([]);
   const [checkedItem, setCheckedItem] = useState();
 
   const loadData = async (gender) => {
-    // const chartUrl = `${ENDPOINTS.GET_CHART}?gender=${gender}&pageSize=30&`;
+    // const chartUrl = `${ENDPOINTS.GET_CHART}${gender}?gender=${gender}&pageSize=10`;
     // const response = await requestGet(chartUrl);
     const response = await fetchCharts({ gender, limit: 30 });
     return response;
@@ -29,6 +28,7 @@ const VoteModal = ({ gender, updateCredit, setModalType }) => {
         if (response) {
           localStorage.setItem('selectedCredit', Number(getCredit) - 1000);
           updateCredit(Number(getCredit) - 1000);
+          setVoteSuccessTrigger((prev) => !prev); // 차트에 투표 수 반영하는 상태변수
           showAlert('투표에 성공했습니다', 'success');
         } else {
           showAlert('투표에 실패했습니다', 'warning');

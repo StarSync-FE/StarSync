@@ -1,0 +1,59 @@
+name: PR Preview Deploy to S3 and CloudFront
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+permissions:
+  pull-requests: write
+  contents: read      
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      BUCKET_NAME: starsync
+      VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
+
+    steps:
+    - name: Github Repository 파일 불러오기
+      uses: actions/checkout@v4
+
+    - name: Node.js 환경 설정
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22.14.0
+
+    - name: 의존성 설치 (npm ci)
+      run: npm ci
+
+    - name: env 파일 생성 (Static Base 경로 추가)
+      run: |
+        echo "VITE_STATIC_BASE=/preview/pr-${{ github.event.pull_request.number }}/" >> .env.production
+        echo "VITE_BASE_URL=${{ env.VITE_BASE_URL }}" >> .env.production
+
+    - name: 프로젝트 빌드 (Vite)
+      run: npm run build -- --mode production
+
+    - name: AWS 인증 정보 설정
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Preview S3 업로드 (PR 번호 기준)
+      run: |
+        PREVIEW_PATH="preview/pr-${{ github.event.pull_request.number }}"
+        echo "Preview 경로: s3://$BUCKET_NAME/$PREVIEW_PATH/"
+        aws s3 sync dist/ s3://$BUCKET_NAME/$PREVIEW_PATH/ --delete
+
+    - name: PR에 Preview 링크 남기기
+      uses: marocchino/sticky-pull-request-comment@v2
+      with:
+        message: |
+          🚀 **PR Preview 배포 완료!**
+          🔗 [Preview 확인하기](https://preview.starsync.wiki/preview/pr-${{ github.event.pull_request.number }})

@@ -1,5 +1,5 @@
-import { css } from '@emotion/react';
 import { useNavigation } from 'react-router-dom';
+import { css } from '@emotion/react';
 import * as S from './pendingUI.styles';
 
 const stars = [

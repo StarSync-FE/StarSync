@@ -1,10 +1,10 @@
+import { createBrowserRouter } from 'react-router-dom';
 import { fetchCharts, fetchDonations, fetchIdols } from '@/api';
+import { ApiErrorBoundary, GlobalErrorBoundary, RenderErrorBoundary } from '@/errorBoundary';
 import { THROWN_ERRORS } from '@/constants/errors';
 import { STATUS_CODES } from '@/constants/statusCodes';
-import { ApiErrorBoundary, GlobalErrorBoundary, RenderErrorBoundary } from '@/errorBoundary';
 import { safeRequest } from '@/utils/api';
 import { throwIfEmptyArray } from '@/utils/validate';
-import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
             loader: async () => {
               const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }), 'idols');
               const donations = await safeRequest(
-                () => fetchDonations({ limit: 10, cursor: 0 }),
+                () => fetchDonations({ limit: 30, cursor: 0 }),
                 'donations',
               );
               const charts = await safeRequest(
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
               </RenderErrorBoundary>
             ),
             loader: async () => {
-              const idols = await safeRequest(() => fetchIdols({ limit: 10, cursor: 0 }), 'idols');
+              const idols = await safeRequest(() => fetchIdols({ limit: 30, cursor: 0 }), 'idols');
               throwIfEmptyArray(idols);
               return idols;
             },

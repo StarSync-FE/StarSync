@@ -1,1 +1,1 @@
-export { default as PendingUI } from './PendingUI';
+export { default } from './PendingUI';

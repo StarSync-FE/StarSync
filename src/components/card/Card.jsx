@@ -1,7 +1,7 @@
-import creditImg from '@/assets/images/credit.png';
-import { CustomButton } from '@/components/button';
-import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/format';
 import { useEffect, useState } from 'react';
+import { CustomButton } from '@/components/button';
+import creditImg from '@/assets/images/credit.png';
+import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/format';
 import * as S from './card.styles';
 
 const Card = ({ data, setModalType, setSelectedIndex, index }) => {

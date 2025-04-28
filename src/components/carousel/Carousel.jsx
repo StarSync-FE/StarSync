@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { ArrowButton } from '@/components/button';
 import { Card } from '@/components/card';
-import { useState } from 'react';
 import { CAROUSEL } from '@/constants/carousel';
 import * as S from './carousel.styles';
 

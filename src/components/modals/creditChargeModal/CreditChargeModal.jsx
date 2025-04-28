@@ -1,9 +1,12 @@
-import starTwoImg from '@/assets/images/2-star.png';
-import starThreeImg from '@/assets/images/3-star.png';
-import starImg from '@/assets/images/star.png';
+import { useState } from 'react';
 import { CustomButton, RadioButton } from '@/components/button';
 import { Prices } from '@/constants/creditPrice';
-import { useState } from 'react';
+import { addCommas } from '@/utils/format';
+import { showAlert } from '@/utils/alert';
+import starTwoImg from '@/assets/images/2-star.png';
+import starThreeImg from '@/assets/images/3-star.png';
+import logoImg from '@/assets/images/logo.png';
+import starImg from '@/assets/images/star.png';
 import * as S from './creditChargeModal.styles';
 
 const imageMap = {
@@ -21,7 +24,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
 
   const handleCharge = () => {
     if (!selectedValue) {
-      alert('충전할 크레딧을 선택해주세요!');
+      showAlert('충전할 크레딧을 선택해주세요!', 'warning');
       return;
     }
 
@@ -29,15 +32,17 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
     const newTotal = prev + Number(selectedValue);
     localStorage.setItem('selectedCredit', newTotal);
     updateCredit(newTotal); // 업데이트된 credit을 ListPage에 전달
-    alert(`크레딧 ${selectedValue} 충전 완료! 총 보유: ${newTotal}`);
-
+    showAlert(`${selectedValue} 크레딧 충전 완료!`, 'success');
     // 모달 닫기 로직
     onClose();
   };
 
   return (
     <div css={S.modalContent}>
-      <h2>크레딧 충전하기</h2>
+      <span css={S.modalTitle}>
+        <img src={logoImg} alt="크레딧" />
+        <h2>크레딧 충전하기</h2>
+      </span>
       <div css={S.radioButtons}>
         {Prices.map((price) => {
           const imgSrc = imageMap[price.id] || starImg;
@@ -50,8 +55,8 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
               handleSelect={() => handleRadioSelect(price.value)}
             >
               <div css={S.radioButtonContent}>
-                <img src={imgSrc} alt="크레딧" />
-                <span>{price.value}</span>
+                <img src={imgSrc} alt="크레딧" css={S.creditImg(price.id)} />
+                <span>{addCommas(Number(price.value))}</span>
               </div>
             </RadioButton>
           );
