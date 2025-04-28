@@ -4,7 +4,7 @@ import { CustomButton } from '@/components/button';
 import { showAlert } from '@/utils/alert/alertController';
 import { ENDPOINTS } from '@/constants/api';
 import { requestPut } from '@/utils/api';
-import creditImg from '@/assets/images/credit.png';
+import starImg from '@/assets/images/logo.png';
 import * as S from './donationModal.styles';
 
 const DonationModal = ({ data, credit, updateCredit, onClose }) => {
@@ -81,7 +81,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
         </div>
       </div>
       <div css={S.inputContent(hasNoMoney, isInvalidNumber)}>
-        <img src={creditImg} alt="크레딧" />
+        <img src={starImg} alt="크레딧" />
         <input
           type="text"
           placeholder="크레딧 입력"

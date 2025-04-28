@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CustomButton } from '@/components/button';
-import creditImg from '@/assets/images/credit.png';
+import starImg from '@/assets/images/logo.png';
 import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/format';
 import * as S from './card.styles';
 
@@ -51,7 +51,7 @@ const Card = ({ data, setModalType, setSelectedIndex, index }) => {
         <div css={S.info}>
           <div css={S.statusBar}>
             <div css={S.statusLeft}>
-              <img src={creditImg} alt="크레딧" css={S.icon} />
+              <img src={starImg} alt="크레딧" css={S.icon} />
               <p>{`${addCommas(data.receivedDonations)} / ${addCommas(data.targetDonation)}`}</p>
             </div>
             <p>{daysLeft > 1 ? `D-${daysLeft}` : daysLeft === 1 ? '오늘 마감' : '마감 완료'}</p>
