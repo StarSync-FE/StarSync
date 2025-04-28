@@ -27,9 +27,9 @@ export const viewportArea = css`
 
 export const carouselContainer = css`
   overflow-x: scroll;
-  width: 100%;
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  width: 100%;
+
 
   &::-webkit-scrollbar {
     display: none;
@@ -44,9 +44,9 @@ export const carouselTrack = (slide) => css`
   ${media({
     transition: [
       'transform 0.4s ease-in-out',
-      'transform 0.4s ease-in-out',
+      'transform 0.6s ease-in-out',
       'transform 0.7s ease-in-out',
-      'transform 1s ease-in-out',
+      'transform 0.9s ease-in-out',
     ],
     transform: ['none', 'none', `translateX(-${slide}px)`, `translateX(-${slide}px)`],
   })}
@@ -55,6 +55,7 @@ export const carouselTrack = (slide) => css`
 export const carouselItem = css`
   flex-basis: 15.8rem;
   min-width: 15.8rem;
+  scroll-snap-align: start;
 
   ${media({
     flexBasis: ['15.8rem', '15.8rem', '28.2rem', '28.2rem'],
