@@ -1,5 +1,25 @@
 import { keyframes } from '@emotion/react';
 
+// 배경 흐름 애니메이션
+export const chargeButtonFlow = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  40% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  60% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
+
+// 배경 흐름 애니메이션
 export const voteButtonFlow = keyframes`
   0% {
     background-position: 0% 50%;
@@ -12,6 +32,7 @@ export const voteButtonFlow = keyframes`
   }
 `;
 
+// y축 기준 360도 회전
 export const rotateWithPause = keyframes`
   0% {
     transform: rotateY(0deg);
@@ -44,6 +65,7 @@ export const rotateWithPause = keyframes`
   }
 `;
 
+// 심장 박동 느낌
 export const heartbeat = keyframes`
   0%, 100% {
     transform: scale(1);
