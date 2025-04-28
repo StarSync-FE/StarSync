@@ -50,7 +50,7 @@ const MyPage = () => {
 
   useEffect(() => {
     if (screenSize === 'mobile') {
-      setPageSize(6);
+      setPageSize(30);
     } else if (screenSize === 'tablet') {
       setPageSize(8);
     } else {
@@ -161,10 +161,12 @@ const MyPage = () => {
             />
           ) : null}
 
-          <section css={[S.idolList]}>
+          <section
+            css={[screenSize === 'mobile' ? [S.mobileAllIdols, S.scrollStyle] : null, S.idolList]}
+          >
             {currentIdols.map((idol) => {
               return (
-                <div key={idol.id} css={S.allProfileSize}>
+                <div key={idol.id} css={[S.allProfileSize]}>
                   <Avatar
                     imgUrl={idol.profilePicture}
                     onSelectToggle={() => toggleProfile(idol)}
