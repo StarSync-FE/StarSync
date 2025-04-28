@@ -6,32 +6,33 @@ import * as S from './carousel.styles';
 
 const Carousel = ({ data, setModalType, setSelectedIndex }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsView, setItemsView] = useState(CAROUSEL.ITEMS_VIEW); // 동적으로 ITEMS_VIEW 값을 설정
+  const [itemsView, setItemsView] = useState(CAROUSEL.ITEMS_VIEW);
   const itemsLength = data?.list?.length || 0;
 
   useEffect(() => {
     const updateItemsView = () => {
       if (window.innerWidth >= 1200) {
-        setItemsView(3); // 1200px 이상에서는 3개
+        setItemsView(3);
       } else if (window.innerWidth >= 1000) {
-        setItemsView(2); // 1000px 이상에서는 2개
+        setItemsView(2);
       } else {
-        setItemsView(1); // 그 외에는 1개
+        setItemsView(1);
       }
     };
 
-    updateItemsView(); // 컴포넌트가 마운트 될 때 바로 실행
-    window.addEventListener('resize', updateItemsView); // 화면 크기 변경 시에도 실행
+    updateItemsView();
+    window.addEventListener('resize', updateItemsView);
 
     return () => {
-      window.removeEventListener('resize', updateItemsView); // 컴포넌트 언마운트 시 이벤트 리스너 제거
+      window.removeEventListener('resize', updateItemsView);
     };
-  }, []); // 빈 배열을 주어 한 번만 실행되도록 설정
-
-  const maxIndex = Math.max(0, Math.ceil(itemsLength / itemsView) - 1);
+  }, []);
 
   const handleNext = () => {
-    setCurrentIndex((prev) => Math.min(prev + itemsView, maxIndex * itemsView));
+    setCurrentIndex((prev) => {
+      const nextIndex = prev + itemsView;
+      return nextIndex >= itemsLength ? prev : nextIndex;
+    });
   };
 
   const handlePrev = () => {
@@ -39,14 +40,7 @@ const Carousel = ({ data, setModalType, setSelectedIndex }) => {
   };
 
   const getSlideOffset = () => {
-    const offset = currentIndex * (CAROUSEL.DESKTOP_ITEM_WIDTH + CAROUSEL.ITEM_GAP);
-    if (currentIndex === maxIndex) {
-      return Math.min(
-        offset,
-        (itemsLength - CAROUSEL.ITEMS_VIEW) * (CAROUSEL.DESKTOP_ITEM_WIDTH + CAROUSEL.ITEM_GAP),
-      );
-    }
-    return offset;
+    return currentIndex * (CAROUSEL.DESKTOP_ITEM_WIDTH + CAROUSEL.ITEM_GAP);
   };
 
   return (
@@ -80,7 +74,7 @@ const Carousel = ({ data, setModalType, setSelectedIndex }) => {
         <ArrowButton
           direction="right"
           onButtonClick={handleNext}
-          disabled={currentIndex >= maxIndex * CAROUSEL.ITEMS_VIEW}
+          disabled={currentIndex + itemsView >= itemsLength}
           styles={S.navigationButton(true)}
         />
       </div>
