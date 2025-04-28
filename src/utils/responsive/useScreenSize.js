@@ -18,7 +18,7 @@ const getScreenSize = () => {
  * const screenSize = useScreenSize();
  * console.log(screenSize); // 'mobile', 'tablet', 또는 'desktop'
  */
-export const useScreenSize = () => {
+const useScreenSize = () => {
   const [screenSize, setScreenSize] = useState(getScreenSize());
 
   useEffect(() => {
@@ -36,3 +36,5 @@ export const useScreenSize = () => {
 
   return screenSize;
 };
+
+export default useScreenSize;

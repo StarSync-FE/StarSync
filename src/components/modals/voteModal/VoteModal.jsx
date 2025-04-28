@@ -7,7 +7,7 @@ import { showAlert } from '@/utils/alert';
 import { requestPost } from '@/utils/api';
 import { addCommas } from '@/utils/format';
 import * as S from './voteModal.styles';
-const VoteModal = ({ gender, updateCredit, setModalType }) => {
+const VoteModal = ({ gender, updateCredit, setVoteSuccessTrigger, setModalType }) => {
   const [idols, setIdols] = useState([]);
   const [checkedItem, setCheckedItem] = useState();
 
@@ -28,6 +28,7 @@ const VoteModal = ({ gender, updateCredit, setModalType }) => {
         if (response) {
           localStorage.setItem('selectedCredit', Number(getCredit) - 1000);
           updateCredit(Number(getCredit) - 1000);
+          setVoteSuccessTrigger((prev) => !prev); // 차트에 투표 수 반영하는 상태변수
           showAlert('투표에 성공했습니다', 'success');
         } else {
           showAlert('투표에 실패했습니다', 'warning');
