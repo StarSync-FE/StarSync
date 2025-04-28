@@ -4,6 +4,7 @@ import { ArrowButton, AvatarButton, CustomButton } from '@/components/button';
 import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import * as S from './myPage.styles';
+import { showAlert } from '@/utils/alert/alertController';
 
 const MyPage = () => {
   const { list, nextCursor } = useLoaderData();
@@ -193,7 +194,15 @@ const MyPage = () => {
             type="button"
             isRound={true}
             style={S.customButtonStyle}
-            onButtonClick={addMyIdols}
+            onButtonClick={() => {
+              const hasSelected = Object.values(selectedProfiles).some((isSelected) => isSelected);
+
+              if (hasSelected) {
+                addMyIdols();
+              } else {
+                showAlert('관심있는 아이돌을 추가해 주세요', 'warning', 2000);
+              }
+            }}
           >
             <img src={addIcon} alt="addIcon" css={S.buttonIcon} />
             추가하기
