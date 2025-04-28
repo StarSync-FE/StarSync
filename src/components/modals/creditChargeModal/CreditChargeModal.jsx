@@ -1,8 +1,10 @@
 import starTwoImg from '@/assets/images/2-star.png';
 import starThreeImg from '@/assets/images/3-star.png';
+import logoImg from '@/assets/images/logo.png';
 import starImg from '@/assets/images/star.png';
 import { CustomButton, RadioButton } from '@/components/button';
 import { Prices } from '@/constants/creditPrice';
+import { addCommas } from '@/utils/format';
 import { useState } from 'react';
 import * as S from './creditChargeModal.styles';
 
@@ -37,7 +39,10 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
 
   return (
     <div css={S.modalContent}>
-      <h2>크레딧 충전하기</h2>
+      <span css={S.modalTitle}>
+        <img src={logoImg} alt="크레딧" />
+        <h2>크레딧 충전하기</h2>
+      </span>
       <div css={S.radioButtons}>
         {Prices.map((price) => {
           const imgSrc = imageMap[price.id] || starImg;
@@ -50,8 +55,8 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
               handleSelect={() => handleRadioSelect(price.value)}
             >
               <div css={S.radioButtonContent}>
-                <img src={imgSrc} alt="크레딧" />
-                <span>{price.value}</span>
+                <img src={imgSrc} alt="크레딧" css={S.creditImg(price.id)} />
+                <span>{addCommas(Number(price.value))}</span>
               </div>
             </RadioButton>
           );
