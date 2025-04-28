@@ -1,23 +1,6 @@
 import { css, keyframes } from '@emotion/react';
 import media from '@/styles/responsive';
-
-export const voteButtonFlow = keyframes`
-  0% {
-    background-position: 0% 50%;
-  }
-  40% {
-    background-position: 100% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  60% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-`;
+import { chargeButtonFlow } from '@/utils/animation';
 
 export const creditWrapper = css`
   display: flex;
@@ -82,7 +65,7 @@ export const buttonStyle = css`
   background-position: left center; /* 기본 시작 위치 */
   background-size: 300%; /* 배경 크기 확장 */
   transition: all 0.1s ease;
-  animation: ${voteButtonFlow} 6s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  animation: ${chargeButtonFlow} 4s linear infinite;
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
@@ -90,36 +73,10 @@ export const buttonStyle = css`
 
   &:hover {
     opacity: 0.9;
-    animation-duration: 10s; /* hover하면 천천히 흐르기 */
+    animation-duration: 4s; /* hover하면 천천히 흐르기 */
   }
 
   &:active {
     transform: scale(0.97);
     }
-`;
-
-export const animationStyle = css`
-  overflow: hidden;
-  position: relative;
-
-  &::after {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgb(255 255 255 / 30%);
-    transition: width 0.5s ease, height 0.5s ease, opacity 1s ease;
-    transform: translate(-50%, -50%);
-    content: '';
-    opacity: 0;
-  }
-
-  &:active::after {
-    width: 200%;
-    height: 200%;
-    opacity: 1;
-    transition: 0s;
-  }
 `;
