@@ -130,11 +130,17 @@ const LandingPage = () => {
           >
             <h1>{section.title}</h1>
             <p>{section.description}</p>
-            <Link to="/list" onClick={handleClearStorage}>
-              <CustomButton type="button" variant="landing">
+            <div css={S.buttonWrapper}>
+              <CustomButton
+                type="button"
+                variant="landing"
+                onClick={handleClearStorage}
+                as={Link}
+                to="/list"
+              >
                 {section.buttonText}
               </CustomButton>
-            </Link>
+            </div>
             {section.showScrollGuide && (
               <button
                 type="button"

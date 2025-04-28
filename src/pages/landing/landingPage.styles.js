@@ -128,7 +128,7 @@ export const sectionContent = css`
     word-break: keep-all;
     color: var(--white);
     text-shadow: 2px 2px 4px var(--black-alpha-70);
-    cursor: pointer;
+    cursor: default;
     transition: opacity 0.3s ease;
     animation: ${glow} 2s infinite ease-in-out;
     
@@ -154,7 +154,7 @@ export const sectionContent = css`
     word-break: keep-all;
     color: var(--white);
     text-shadow: 2px 2px 4px var(--black-alpha-70);
-    cursor: pointer;
+    cursor: default;
     transition: opacity 0.3s ease;
 
     &:hover {
