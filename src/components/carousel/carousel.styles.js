@@ -28,7 +28,6 @@ export const viewportArea = css`
     content: '';
     background: linear-gradient(to bottom, rgb(0 0 0 / 50%), rgb(0 0 0 / 70%));
   }
- 
 `;
 
 export const carouselContainer = css`
@@ -42,18 +41,13 @@ export const carouselContainer = css`
   }
 `;
 
-export const carouselTrack = css`
+export const carouselTrack = (slide) => css`
   display: flex;
   gap: 1.2rem;
   transition: transform 1.5s ease-in-out;
 
   ${media({
-    transform: [
-      'none',
-      'none',
-      'translateX(var(--slide-offset))',
-      'translateX(var(--slide-offset))',
-    ],
+    transform: ['none', 'none', `translateX(-${slide}px)`, `translateX(-${slide}px)`],
   })}
 `;
 
@@ -67,15 +61,23 @@ export const carouselItem = css`
   })}
 `;
 
-export const navigationButton = (isRight, isAnimating) => css`
+export const navigationButton = (isRight) => css`
   position: absolute;
   top: 50%;
   ${isRight ? 'right: 0.5%' : 'left: 0.5%'};
   z-index: 1;
   width: 3rem;
   background-color: var(--black);
-  pointer-events: ${isAnimating ? 'none' : 'auto'}; /* 애니메이션 중 버튼 클릭 방지 */
   transition: opacity 0.3s ease-in-out; /* 버튼에 부드러운 비활성화 효과 추가 */
   transform: translateY(-125%);
-  opacity: ${isAnimating ? 0.3 : 0.5}; /* 애니메이션 중 버튼의 불투명도 변경 */
+`;
+
+export const notthingTitle = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-block: 7rem;
 `;
