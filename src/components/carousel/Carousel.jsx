@@ -1,49 +1,41 @@
 import { ArrowButton } from '@/components/button';
 import { Card } from '@/components/card';
-import { getItemMetrics } from '@/utils/carousel';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import { CAROUSEL } from '@/constants/carousel';
 import * as S from './carousel.styles';
 
 const Carousel = ({ data, setModalType, setSelectedIndex }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(4);
-  const containerRef = useRef(null);
-
-  // data.list의 길이를 사용
+  const [isAnimating, setIsAnimating] = useState(false); // 애니메이션 상태 추가
   const itemsLength = data?.list?.length || 0;
 
-  const updateItemsPerView = useCallback(() => {
-    if (!containerRef.current) return;
-
-    const viewportWidth = containerRef.current.offsetWidth;
-    const { itemWidth, gap } = getItemMetrics();
-    const totalItemWidth = itemWidth + gap;
-    const calculatedItemsPerView = Math.floor(viewportWidth / totalItemWidth);
-
-    setItemsPerView(calculatedItemsPerView);
-    const newMaxIndex = Math.max(0, itemsLength - calculatedItemsPerView);
-    setCurrentIndex((prev) => Math.min(prev, newMaxIndex));
-  }, [itemsLength]);
-
-  useEffect(() => {
-    updateItemsPerView();
-    window.addEventListener('resize', updateItemsPerView);
-    return () => window.removeEventListener('resize', updateItemsPerView);
-  }, [updateItemsPerView]);
-
-  const maxIndex = Math.max(0, itemsLength - itemsPerView);
+  // 마지막 인덱스를 계산 (데이터가 10개라면 maxIndex는 6, 즉 마지막 페이지까지 고려)
+  const maxIndex = Math.max(0, Math.ceil(itemsLength / CAROUSEL.ITEMS_VIEW) - 1);
 
   const handleNext = () => {
-    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
+    if (isAnimating) return; // 애니메이션 중이면 클릭을 막음
+    setIsAnimating(true); // 애니메이션 시작
+    setCurrentIndex((prev) => Math.min(prev + CAROUSEL.ITEMS_VIEW, maxIndex * CAROUSEL.ITEMS_VIEW)); // 4개씩 이동
+    setTimeout(() => setIsAnimating(false), 400); // 400ms 후에 애니메이션 완료 처리
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    if (isAnimating) return; // 애니메이션 중이면 클릭을 막음
+    setIsAnimating(true); // 애니메이션 시작
+    setCurrentIndex((prev) => Math.max(prev - CAROUSEL.ITEMS_VIEW, 0)); // 4개씩 이동
+    setTimeout(() => setIsAnimating(false), 400); // 400ms 후에 애니메이션 완료 처리
   };
 
   const getSlideOffset = () => {
-    const { itemWidth, gap } = getItemMetrics();
-    return currentIndex * (itemWidth + gap);
+    const offset = currentIndex * (CAROUSEL.DESKTOP_ITEM_WIDTH + CAROUSEL.ITEM_GAP);
+    // 마지막 인덱스에 대해서도 공백을 추가
+    if (currentIndex === maxIndex) {
+      return Math.min(
+        offset,
+        (itemsLength - CAROUSEL.ITEMS_VIEW) * (CAROUSEL.DESKTOP_ITEM_WIDTH + gap),
+      );
+    }
+    return offset;
   };
 
   return (
@@ -53,10 +45,10 @@ const Carousel = ({ data, setModalType, setSelectedIndex }) => {
         <ArrowButton
           direction="left"
           onButtonClick={handlePrev}
-          disabled={currentIndex === 0}
-          styles={S.navigationButton}
+          disabled={currentIndex === 0 || isAnimating}
+          styles={S.navigationButton(false, isAnimating)}
         />
-        <div ref={containerRef} css={S.carouselContainer}>
+        <div css={S.carouselContainer}>
           <div
             css={S.carouselTrack}
             style={{
@@ -82,7 +74,8 @@ const Carousel = ({ data, setModalType, setSelectedIndex }) => {
         <ArrowButton
           direction="right"
           onButtonClick={handleNext}
-          disabled={currentIndex >= maxIndex}
+          disabled={currentIndex >= maxIndex * CAROUSEL.ITEMS_VIEW || isAnimating}
+          styles={S.navigationButton(true, isAnimating)}
         />
       </div>
     </div>
