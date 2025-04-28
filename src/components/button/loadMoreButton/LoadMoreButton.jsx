@@ -1,4 +1,4 @@
-import * as S from './loadmorebutton.styles';
+import * as S from './loadMoreButton.styles';
 
 /**
  * '더 보기' 버튼 컴포넌트. 더 많은 데이터를 로드할 수 있을 때 버튼을 표시하고, 로딩 중에는 비활성화 상태로 표시합니다.
