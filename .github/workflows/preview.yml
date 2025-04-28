@@ -31,7 +31,7 @@ jobs:
       run: npm ci
 
     - name: 프로젝트 빌드 (Vite)
-      run: npm run build
+      run: npm run build -- --mode production
 
     - name: AWS 인증 정보 설정
       uses: aws-actions/configure-aws-credentials@v4
