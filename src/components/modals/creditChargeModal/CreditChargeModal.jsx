@@ -51,7 +51,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
               key={price.id}
               name={price.value}
               itemLabel={price.name}
-              style={[S.buttonStyle]} // ✅ 이렇게 배열로 전달
+              style={S.buttonStyle}
               handleSelect={() => handleRadioSelect(price.value)}
             >
               <div css={S.radioButtonContent}>
