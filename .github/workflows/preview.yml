@@ -6,6 +6,10 @@ on:
       - develop
       - main
 
+permissions:
+  pull-requests: write
+  contents: read      
+
 jobs:
   Deploy:
     runs-on: ubuntu-latest
