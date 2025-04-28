@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { CustomButton } from '@/components/button';
 import { LoadingSpinner } from '@/components/loadingStatus';
-import chartImg from '@/assets/images/chart.png';
 import { fetchData } from './fetchData';
 import { useScreenSize } from '@/utils/responsive';
 import { LoadMoreButton } from '@/components/button';
+import chartImg from '@/assets/images/chart.png';
+import starImg from '@/assets/images/star.png';
+import logoImg from '@/assets/images/logo.png';
 import * as S from './chart.styles';
 
 const Chart = ({ setModalType, selectedTab, setSelectedTab, voteSuccessTrigger }) => {
@@ -102,16 +104,37 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, voteSuccessTrigger }
 
         <ul css={S.idolList}>
           {chartData.map((idol, index) => (
-            <li key={idol.id}>
+            <li key={idol.id} css={S.idolData}>
               <span>
-                <img src={idol.profilePicture} alt={idol.name} />
+                <div css={S.firstStyle}>
+                  {index === 0 && (
+                    <img
+                      src={starImg} // ⭐별 이미지
+                      alt="1등"
+                      css={S.starIcon}
+                    />
+                  )}
+                  <img src={idol.profilePicture} alt={idol.name} css={S.profileStyle} />
+                </div>
                 <span css={S.rankStyle}>{index + 1}</span>
                 <div css={S.idolContent}>
                   <span css={S.groupStyle}>{idol.group}</span>
-                  <span css={S.nameStyle}>{idol.name}</span>
+                  <div css={S.nameContent}>
+                    <span css={S.nameStyle}>{idol.name}</span>
+                    {index === 0 && (
+                      <img
+                        src={logoImg} // ⭐별 이미지
+                        alt="1등"
+                        css={S.starNameIcon}
+                      />
+                    )}
+                  </div>
                 </div>
               </span>
-              <span>{idol.totalVotes}표</span>
+              <span>
+                <div css={S.voteStyle}>{idol.totalVotes}</div>
+                <div>표</div>
+              </span>
             </li>
           ))}
         </ul>
