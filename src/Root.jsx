@@ -6,15 +6,11 @@ import { PendingUI } from './components/loadingStatus';
 
 function Root() {
   const navigation = useNavigation();
-  const location = useLocation();
+  const isLoading = navigation.state !== 'idle';
 
-  const currentPath = location.pathname;
-  const nextPath = navigation.location?.pathname;
-  const isSamePath = currentPath === nextPath;
+  const { pathname } = useLocation();
 
-  const isLoading = navigation.state !== 'idle' && !isSamePath;
-
-  const isLanding = currentPath === '/';
+  const isLanding = pathname === '/';
 
   return (
     <>
