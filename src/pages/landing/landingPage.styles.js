@@ -116,7 +116,7 @@ export const sectionContent = css`
   text-align: center;
 
   ${media({
-    gap: ['2.4rem', '2.8rem', '2rem', '2rem'],
+    gap: ['1rem', '1rem', '2rem', '2rem', '2rem'],
     padding: ['2.4rem', '2.8rem', '3.2rem', '3.6rem'],
     paddingBottom: ['8rem', '8rem', '8rem', '10rem'],
   })}
@@ -164,7 +164,7 @@ export const sectionContent = css`
     }
     
     ${media({
-      fontSize: ['1.6rem', '1.8rem', '2rem', '2.4rem'],
+      fontSize: ['1rem', '1rem', '2rem', '2rem', '2rem'],
       maxWidth: ['30rem', '50rem', '60rem', '80rem'],
       lineHeight: ['1.3', '1.3', '1.3', '1.3', '1.3'],
       padding: ['1.6rem', '1.6rem', '2rem', '2.4rem'],
@@ -273,5 +273,5 @@ export const scrollGuide = css`
 `;
 
 export const logo = css`
-  width: 25%;
+  width: 50%;
 `;
