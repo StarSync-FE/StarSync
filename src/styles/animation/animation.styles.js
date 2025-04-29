@@ -76,7 +76,7 @@ export const heartbeat = keyframes`
   }
 `;
 
-export const moreheartbeat = keyframes`
+export const moreHeartbeat = keyframes`
   0%, 100% {
     transform: scale(1);
   }
