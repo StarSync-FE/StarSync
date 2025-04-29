@@ -2,7 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { CustomButton } from '@/components/button';
+import logoImage from '@/assets/images/starSync-logo.svg';
+import idolImage1 from '@/assets/images/idols/taesan2.png';
+import idolImage2 from '@/assets/images/idols/minji.png';
+import idolImage3 from '@/assets/images/idols/keiju.png';
+import idolImage4 from '@/assets/images/idols/wonyoung.png';
 import * as S from './landingPage.styles';
+import { StarFrame } from '@/components/starFrame';
 
 const stars = [
   { id: 1, top: '10%', left: '15%', width: 30, height: 30 },
@@ -24,28 +30,33 @@ const sections = [
   {
     id: 'main',
     title: 'StarSync',
-    description: '후원과 투표를 통해 아이돌을 응원하세요. 당신의 선택이 그들의 무대가 됩니다.',
+    description: '별처럼 연결되는 우리,\n모든 별이 하나로 이어지는 순간',
     buttonText: '지금 시작하기',
     showScrollGuide: true,
+    idolImage: idolImage1,
   },
   {
     id: 'voting',
     title: '투명한 투표 시스템',
-    description: '투명하고 신뢰할 수 있는 투표 시스템으로 여러분의 소중한 한 표를 행사하세요.',
+    description: '투명하고 신뢰할 수 있는 투표 시스템으로\n여러분의 소중한 한 표를 행사하세요.',
     buttonText: '투표하러 가기',
+    showScrollGuide: true,
+    idolImage: idolImage2,
   },
   {
     id: 'funding',
     title: '팬덤의 힘을 보여주세요',
-    description: '여러분이 좋아하는 아이돌의 활동을 직접 후원하고 특별한 혜택도 받아가세요.',
+    description: '여러분이 좋아하는 아이돌의 활동을\n직접 후원하고 특별한 혜택도 받아가세요.',
     buttonText: '후원하러 가기',
+    showScrollGuide: true,
+    idolImage: idolImage3,
   },
   {
     id: 'my-idol',
     title: '나만의 아이돌을 위한 특별한 공간',
-    description:
-      '여러 아이돌 중에서 오직 당신의 최애만 선택하고 팬심을 가장 나다운 방식으로 표현해보세요.',
-    buttonText: '내 최애 선택하기',
+    description: '당신의 최애를 선택하고\n팬심을 가장 나다운 방식으로 표현해보세요.',
+    buttonText: '바로 시작하기',
+    idolImage: idolImage4,
   },
 ];
 
@@ -128,13 +139,26 @@ const LandingPage = () => {
             animate={{ opacity: activeIndex === idx ? 1 : 0.3, y: activeIndex === idx ? 0 : 50 }}
             transition={{ duration: 0.8 }}
           >
-            <h1>{section.title}</h1>
             <p>{section.description}</p>
-            <Link to="/list" onClick={handleClearStorage}>
-              <CustomButton type="button" variant="landing">
-                {section.buttonText}
-              </CustomButton>
-            </Link>
+            <img src={logoImage} css={S.logo} alt="StarSyncLogo" />
+            {idx === 0 ? (
+              <StarFrame
+                imageUrls={[idolImage1, idolImage2, idolImage3, idolImage4]}
+                interval={700}
+              />
+            ) : (
+              <StarFrame imageUrls={[section.idolImage]} />
+            )}
+
+            {idx === sections.length - 1 ? (
+              <div css={S.buttonWrapper}>
+                <Link to="/list" onClick={handleClearStorage}>
+                  <CustomButton type="button" variant="landing">
+                    {section.buttonText}
+                  </CustomButton>
+                </Link>
+              </div>
+            ) : null}
             {section.showScrollGuide && (
               <button
                 type="button"

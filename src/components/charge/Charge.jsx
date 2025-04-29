@@ -7,9 +7,9 @@ const Charge = ({ setModalType, credit }) => {
   return (
     <div css={S.creditWrapper}>
       <div css={S.creditContent}>
-        <div css={S.myCredit}>내 크레딧</div>
+        <div css={S.myCredit}>내 스타</div>
         <div css={S.credit}>
-          <img src={creditImg} alt="크레딧" />
+          <img src={creditImg} alt="스타" />
           <span>{addCommas(credit)}</span>
         </div>
       </div>

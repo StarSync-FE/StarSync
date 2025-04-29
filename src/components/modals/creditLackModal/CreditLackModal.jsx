@@ -6,9 +6,9 @@ const CreditLackModal = ({ setModalType }) => {
   return (
     <div css={S.modalContent}>
       <div css={S.contentWrapper}>
-        <img src={creditImg} alt="크레딧 부족" css={S.image} />
+        <img src={creditImg} alt="스타 부족" css={S.image} />
         <p css={S.message}>
-          앗! 투표하기 위한 <span>크레딧</span>이 부족해요
+          앗! 투표하기 위한 <span>스타</span>가 부족해요
         </p>
       </div>
       <CustomButton

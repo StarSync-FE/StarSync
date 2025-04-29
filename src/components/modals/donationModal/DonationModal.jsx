@@ -81,10 +81,10 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
         </div>
       </div>
       <div css={S.inputContent(hasNoMoney, isInvalidNumber)}>
-        <img src={starImg} alt="크레딧" />
+        <img src={starImg} alt="스타" />
         <input
           type="text"
-          placeholder="크레딧 입력"
+          placeholder="스타 입력"
           value={donateAmount}
           onChange={handleChangeAmount}
           onKeyDown={handleKeyDown}
@@ -93,7 +93,7 @@ const DonationModal = ({ data, credit, updateCredit, onClose }) => {
         {isInvalidNumber ? (
           <p>1 이상의 숫자만 입력할 수 있어요</p>
         ) : hasNoMoney ? (
-          <p>갖고 있는 크레딧보다 더 많이 후원할 수 없어요</p>
+          <p>갖고 있는 스타보다 더 많이 후원할 수 없어요</p>
         ) : null}
       </div>
 
