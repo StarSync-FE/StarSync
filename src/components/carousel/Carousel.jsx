@@ -14,10 +14,8 @@ const Carousel = ({ data, setModalType, setSelectedIndex }) => {
       if (window.innerWidth < 1000) {
         setItemsView(CAROUSEL.ITEMS_VIEW);
       } else if (window.innerWidth < 1200) {
-        setItemsView(2);
-      } else if (window.innerWidth < 1920) {
         setItemsView(3);
-      } else {
+      } else if (window.innerWidth < 1920) {
         setItemsView(4);
       }
     };
