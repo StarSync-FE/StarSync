@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import textLogoImg from '@/assets/images/logo-text-temp.png';
 import logoImg from '@/assets/images/logo.png';
-import profileImg from '@/assets/images/stupid.png';
+import test from '@/assets/icons/mypage-icon.gif';
+import textLogo from '@/assets/images/starsync-text-logo.svg';
 import * as S from './header.styles';
 
 const Header = () => {
@@ -13,11 +13,11 @@ const Header = () => {
         </Link>
 
         <Link to="/list" css={S.textLogoButton}>
-          <img src={textLogoImg} alt="StarSync 텍스트 로고" css={S.textLogoImage} />
+          <img src={textLogo} alt="StarSync 텍스트 로고" css={S.textLogoImage} />
         </Link>
 
         <Link to="/mypage" css={S.profileButton}>
-          <img src={profileImg} alt="마이페이지" css={S.profileImage} />
+          <img src={test} alt="마이페이지" css={S.profileImage} />
         </Link>
       </div>
     </header>
