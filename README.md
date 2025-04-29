@@ -12,29 +12,25 @@
   - 팀원 모두가 좋아하는 '오로라'를 테마로, 랜딩/에러 페이지 및 웹사이트 전반에 오로라 느낌을 적용했습니다.
   - 귀여운 '모코코'를 팀 통합 아이덴티티로 사용했습니다.
 
-
 ## 📢 팀 구성 및 역할 (R&R)
 
-| <p align="center"> [박지섭](https://github.com/HarrySeop) </p> |  <p align="center"> [송시은](https://github.com/sgoldenbird) </p> | <p align="center"> [조인성](https://github.com/Insung-Jo) </p> | <p align="center"> [전유진](https://github.com/yuj2n) </p> | <p align="center"> [손수진](https://github.com/pappaya109) </p> |
-|:---|:---|:---|:---|:---|
-|<p align="center"> <img src="https://github.com/user-attachments/assets/5667790d-d978-409e-a854-fbd6109ec370" width="100"/> <br> 팀장 </p> |  <p align="center"><img src="https://github.com/user-attachments/assets/6fc86c9b-3c6f-4ee4-b274-a94ec9206b51" width="100" /> <br> 팀원</p>  |<p align="center"> <img src="https://github.com/user-attachments/assets/a1cb972e-48a3-4c23-bc16-1baed83498a5" width="100"/> <br> 팀원 </p> |<p align="center"> <img src="https://github.com/user-attachments/assets/d0e2e31b-2852-49ac-a19c-494f385febe6" width="115"/> <br> 팀원 </p> |<p align="center"> <img src="https://github.com/user-attachments/assets/923b8af4-48ab-446b-9a63-319f354106eb" width="100"/> <br> 팀원 </p> |
-| - 프로젝트 초기 구성<br>- CI/CD 구축<br>- 랜딩 페이지<br>- Header/Footer<br>- SEO 설정<br>- 데모 발표 | - 라우터 설정<br>- API 함수 관리<br> (axiosInstance, request 유틸 함수)<br>- 에러 처리 관리<br> (Global, API, Render 바운더리 /<br> 404, 500 에러 페이지)<br>- 로딩 UI (PendingUI, Splash)<br>- 크레딧 부족 모달<br>- 리드미 작성 및 문서 정리 | - 스타일 시스템 구축<br>- 반응형 대응<br>- 버튼 컴포넌트 개발<br>- 후원 캐러셀<br>- 후원하기 모달<br>- 데모 PPT | - 크레딧 충전 모달<br>- 리스트 페이지<br>- 차트 페이지네이션<br>- 모달 시스템 구축<br>- 로딩 스피너 구현<br>- 데모 PPT | - 마이페이지 구현<br>- 라디오 버튼 UI<br>- 투표 모달<br>- 토스트 알림 컴포넌트<br>- 랜딩페이지<br>- 데모 영상, gif |
-
-
-
+| <p align="center"> [박지섭](https://github.com/HarrySeop) </p>                                                                             | <p align="center"> [송시은](https://github.com/sgoldenbird) </p>                                                                                                                                                                               | <p align="center"> [조인성](https://github.com/Insung-Jo) </p>                                                                             | <p align="center"> [전유진](https://github.com/yuj2n) </p>                                                                                 | <p align="center"> [손수진](https://github.com/pappaya109) </p>                                                                            |
+| :----------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| <p align="center"> <img src="https://github.com/user-attachments/assets/5667790d-d978-409e-a854-fbd6109ec370" width="100"/> <br> 팀장 </p> | <p align="center"><img src="https://github.com/user-attachments/assets/6fc86c9b-3c6f-4ee4-b274-a94ec9206b51" width="100" /> <br> 팀원</p>                                                                                                      | <p align="center"> <img src="https://github.com/user-attachments/assets/a1cb972e-48a3-4c23-bc16-1baed83498a5" width="100"/> <br> 팀원 </p> | <p align="center"> <img src="https://github.com/user-attachments/assets/d0e2e31b-2852-49ac-a19c-494f385febe6" width="115"/> <br> 팀원 </p> | <p align="center"> <img src="https://github.com/user-attachments/assets/923b8af4-48ab-446b-9a63-319f354106eb" width="100"/> <br> 팀원 </p> |
+| - 프로젝트 초기 구성<br>- CI/CD 구축<br>- 랜딩 페이지<br>- Header/Footer<br>- SEO 설정<br>- 데모 발표                                      | - 라우터 설정<br>- API 함수 관리<br> (axiosInstance, request 유틸 함수)<br>- 에러 처리 관리<br> (Global, API, Render 바운더리 /<br> 404, 500 에러 페이지)<br>- 로딩 UI (PendingUI, Splash)<br>- 크레딧 부족 모달<br>- 리드미 작성 및 문서 정리 | - 스타일 시스템 구축<br>- 반응형 대응<br>- 버튼 컴포넌트 개발<br>- 후원 캐러셀<br>- 후원하기 모달<br>- 데모 PPT                            | - 크레딧 충전 모달<br>- 리스트 페이지<br>- 차트 페이지네이션<br>- 모달 시스템 구축<br>- 로딩 스피너 구현<br>- 데모 PPT                     | - 마이페이지 구현<br>- 라디오 버튼 UI<br>- 투표 모달<br>- 토스트 알림 컴포넌트<br>- 랜딩페이지<br>- 데모 영상, gif                         |
 
 ## 📎 프로젝트 리소스
 
-- [🔗 GitHub Repository](https://github.com/StarSync-FE/StarSync)
-- [🔗 디자인(Figma)](https://www.figma.com/design/lccVqOCzq7XCUYztyC7KlQ/-AAA-Fandom-K?node-id=8-1008&p=f&t=lT3R2yX7dOHfNm8h-0)
-- [🔗 API 명세(Swagger)](https://fandom-k-api.vercel.app/docs/)
-- [🔗 개발 가이드라인(스타일 가이드, 브랜치 전략 등)](https://github.com/StarSync-FE/StarSync/discussions/categories/development-guidelines)
-- [🔗 전체 프로젝트 문서(Notion)](https://bony-snipe-e7b.notion.site/1d72526f72c1808bafc0f9b01217e31d?pvs=4)
+- 🔗 [ GitHub Repository](https://github.com/StarSync-FE/StarSync)
+- 🔗 [기반 디자인(Figma)](https://www.figma.com/design/lccVqOCzq7XCUYztyC7KlQ/-AAA-Fandom-K?node-id=8-1008&p=f&t=lT3R2yX7dOHfNm8h-0)
+- 🔗 [API 명세(Swagger)](https://fandom-k-api.vercel.app/docs/)
+- 🔗 [개발 가이드라인(스타일 가이드, 브랜치 전략 등)](https://github.com/StarSync-FE/StarSync/discussions/categories/development-guidelines)
+- 🔗 [전체 프로젝트 문서(Notion)](https://bony-snipe-e7b.notion.site/1d72526f72c1808bafc0f9b01217e31d?pvs=4)
 
 ## 📋 프로젝트 관리 (GitHub Projects)
 
-- 🔗 [칸반보드 바로 가기](https://github.com/orgs/StarSync-FE/projects/1/views/2)
-- 🔗 [로드맵 보기(Milestones)](https://github.com/orgs/StarSync-FE/projects/1/views/1)
+- 📌⭐🌟🌠💫 [칸반보드 바로 가기](https://github.com/orgs/StarSync-FE/projects/1/views/2)
+- 📌 [로드맵 보기(Milestones)](https://github.com/orgs/StarSync-FE/projects/1/views/1)
 
 GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하고, 칸반보드로 각 작업의 진행상태를 실시간으로 트래킹하였습니다.
 또한 주요 기능 완성 목표를 마일스톤으로 설정하여 프로젝트 전체 일정을 관리하였습니다.
@@ -52,91 +48,91 @@ GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하�
 - Barrel 패턴 적용
 - 역할별 명확한 폴더화 (components, pages, utils, constants, errorBoundary 등)
 
-  ```
-  src/
-  ├── main.jsx                 // 앱 진입 파일 (React DOM 렌더링)
-  ├── App.jsx                  // 초기 로딩(Splash) + 전역 알림(Alert) + Router 연결
-  ├── Root.jsx                 // 페이지 레이아웃(Header/Footer) 및 전환 로딩 관리
-  │
-  ├── api/                     // API 요청 함수 모음
-  │   ├── chart.js
-  │   ├── donation.js
-  │   ├── idol.js
-  │   └── index.js
-  │
-  ├── assets/                  // 이미지, 아이콘 등 정적 리소스
-  │   ├── icons/
-  │   └── images/
-  │
-  ├── components/              // 재사용 가능한 UI 컴포넌트
-  │   ├── alert/
-  │   ├── alertManager/
-  │   ├── avatar/
-  │   ├── button/
-  │   ├── card/
-  │   ├── carousel/
-  │   ├── charge/
-  │   ├── chart/
-  │   ├── footer/
-  │   ├── header/
-  │   ├── list/
-  │   ├── loadingStatus/
-  │   ├── modals/              // 모달 컴포넌트 묶음
-  │   │   ├── creditChargeModal/
-  │   │   ├── creditLackModal/
-  │   │   ├── donationModal/
-  │   │   ├── voteModal/
-  │   │   └── index.js
-  │   ├── template/
-  │   └── test/
-  │
-  ├── constants/               // 공통 상수 관리
-  │   ├── api/
-  │   │   ├── base.js
-  │   │   ├── endpoints.js
-  │   │   └── index.js
-  │   ├── carousel/
-  │   ├── creditPrice/
-  │   ├── errors/
-  │   │   ├── index.js
-  │   │   ├── thrownErrors.js
-  │   │   └── uiErrors.js
-  │   ├── layout/
-  │   └── statusCodes/
-  │
-  ├── errorBoundary/           // 에러 바운더리 컴포넌트
-  │   ├── apiErrorBoundary/
-  │   ├── globalErrorBoundary/
-  │   ├── renderErrorBoundary/
-  │   └── styles/
-  │
-  ├── pages/                   // 페이지 컴포넌트
-  │   ├── error/
-  │   ├── landing/
-  │   ├── list/
-  │   └── my/
-  │
-  ├── routes/                  // 라우터 설정
-  │   └── router.jsx
-  │
-  ├── styles/                  // 글로벌 스타일 및 반응형 스타일
-  │   ├── Global.styles.jsx
-  │   ├── responsive.js
-  │   └── animation/
-  │
-  ├── utils/                   // 유틸리티 함수 모음
-  │   ├── alert/
-  │   ├── api/
-  │   │   ├── axiosInstance.js
-  │   │   ├── request.js
-  │   │   ├── safeRequest.js
-  │   │   └── index.js
-  │   ├── carousel/
-  │   ├── format/
-  │   ├── responsive/
-  │   └── validate/
+```
+📂 src
+├── 📄 main.jsx                  // 앱 진입 파일 (React DOM 렌더링)
+├── 📄 App.jsx                   // 초기 로딩(Splash) + 전역 알림(Alert) + Router 연결
+├── 📄 Root.jsx                  // 페이지 레이아웃(Header/Footer) 및 전환 로딩 관리
 
-  ```
+├── 📂 api // API 요청 함수 모음
+│ ├── 📄 chart.js
+│ ├── 📄 donation.js
+│ ├── 📄 idol.js
+│ └── 📄 index.js
+
+├── 📂 assets // 이미지, 아이콘 등 정적 리소스
+│ ├── 📂 icons
+│ └── 📂 images
+
+├── 📂 components // 재사용 가능한 UI 컴포넌트
+│ ├── 📂 alert
+│ ├── 📂 alertManager
+│ ├── 📂 avatar
+│ ├── 📂 button
+│ ├── 📂 card
+│ ├── 📂 carousel
+│ ├── 📂 charge
+│ ├── 📂 chart
+│ ├── 📂 footer
+│ ├── 📂 header
+│ ├── 📂 list
+│ ├── 📂 loadingStatus
+│ ├── 📂 modals // 모달 컴포넌트 묶음
+│ │ ├── 📂 creditChargeModal
+│ │ ├── 📂 creditLackModal
+│ │ ├── 📂 donationModal
+│ │ ├── 📂 voteModal
+│ │ └── 📄 index.js
+│ ├── 📂 template
+│ └── 📂 test
+
+├── 📂 constants // 공통 상수 관리
+│ ├── 📂 api
+│ │ ├── 📄 base.js
+│ │ ├── 📄 endpoints.js
+│ │ └── 📄 index.js
+│ ├── 📂 carousel
+│ ├── 📂 creditPrice
+│ ├── 📂 errors
+│ │ ├── 📄 index.js
+│ │ ├── 📄 thrownErrors.js
+│ │ └── 📄 uiErrors.js
+│ ├── 📂 layout
+│ └── 📂 statusCodes
+
+├── 📂 errorBoundary // 에러 바운더리 컴포넌트
+│ ├── 📂 apiErrorBoundary
+│ ├── 📂 globalErrorBoundary
+│ ├── 📂 renderErrorBoundary
+│ └── 📂 styles
+
+├── 📂 pages // 페이지 컴포넌트
+│ ├── 📂 error
+│ ├── 📂 landing
+│ ├── 📂 list
+│ └── 📂 my
+
+├── 📂 routes // 라우터 설정
+│ └── 📄 router.jsx
+
+├── 📂 styles // 글로벌 스타일 및 반응형 스타일
+│ ├── 📄 Global.styles.jsx
+│ ├── 📄 responsive.js
+│ └── 📂 animation
+
+├── 📂 utils // 유틸리티 함수 모음
+│ ├── 📂 alert
+│ ├── 📂 api
+│ │ ├── 📄 axiosInstance.js
+│ │ ├── 📄 request.js
+│ │ ├── 📄 safeRequest.js
+│ │ └── 📄 index.js
+│ ├── 📂 carousel
+│ ├── 📂 format
+│ ├── 📂 responsive
+│ └── 📂 validate
+
+```
 
 ## 💬 고민 & 주요 개선 사항
 
@@ -147,9 +143,9 @@ GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하�
 - 캐러셀 바 위에 후원 목표 금액을 표시하여 사용자 혼란 최소화
 - 차트 1등 아이돌에 대한 시각적 강조 디자인 추가
 - [로딩 경험 최적화](https://github.com/StarSync-FE/StarSync/discussions/303)
-  - 첫 진입 시 Splash Screen 적용
-  - 페이지 전환 시 Pending UI 적용
-  - 데이터 응답 느릴 때 로딩 스피너 사용
+- 첫 진입 시 Splash Screen 적용
+- 페이지 전환 시 Pending UI 적용
+- 데이터 응답 느릴 때 로딩 스피너 사용
 
 ### 🔹 개발 생산성 & 품질 향상
 
