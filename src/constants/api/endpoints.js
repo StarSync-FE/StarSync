@@ -9,7 +9,7 @@ const ENDPOINTS = {
   UPDATE_DONATION: '/15-1/donations/{id}',
   DELETE_DONATION: '/15-1/donations/{id}',
   CONTRIBUTE_DONATION: (id) => `/15-1/donations/${id}/contribute`,
-  GET_CHART: '/15-1/charts/{gender}',
+  GET_CHART: (gender) => `/15-1/charts/${gender}`,
   UPLOAD_IMAGE: '/images/upload',
 };
 
