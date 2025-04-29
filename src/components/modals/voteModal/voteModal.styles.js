@@ -58,7 +58,7 @@ export const idolItem = css`
 `;
 
 export const voteRadioButton = css`
-  width: 32.7rem;
+  min-width: 20rem;
   height: 7rem;
   margin: auto;
   padding-bottom: 0.8rem;
