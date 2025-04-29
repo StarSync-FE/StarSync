@@ -15,8 +15,10 @@ const LoadingSpinner = ({ isLoading }) => {
   if (!isLoading) return null;
 
   return (
-    <div css={S.spinner}>
-      <img src={loadingSpinnerGif} alt="로딩 스피너" />
+    <div css={S.spinnerOverlay}>
+      <div css={S.spinner}>
+        <img src={loadingSpinnerGif} alt="로딩 스피너" />
+      </div>
     </div>
   );
 };

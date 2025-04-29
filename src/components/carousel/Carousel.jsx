@@ -1,49 +1,46 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowButton } from '@/components/button';
 import { Card } from '@/components/card';
-import { getItemMetrics } from '@/utils/carousel';
+import { CAROUSEL } from '@/constants/carousel';
 import * as S from './carousel.styles';
 
 const Carousel = ({ data, setModalType, setSelectedIndex }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(4);
-  const containerRef = useRef(null);
-
-  // data.list의 길이를 사용
+  const [itemsView, setItemsView] = useState(CAROUSEL.ITEMS_VIEW);
   const itemsLength = data?.list?.length || 0;
 
-  const updateItemsPerView = useCallback(() => {
-    if (!containerRef.current) return;
-
-    const viewportWidth = containerRef.current.offsetWidth;
-    const { itemWidth, gap } = getItemMetrics();
-    const totalItemWidth = itemWidth + gap;
-    const calculatedItemsPerView = Math.floor(viewportWidth / totalItemWidth);
-
-    setItemsPerView(calculatedItemsPerView);
-    const newMaxIndex = Math.max(0, itemsLength - calculatedItemsPerView);
-    setCurrentIndex((prev) => Math.min(prev, newMaxIndex));
-  }, [itemsLength]);
-
   useEffect(() => {
-    updateItemsPerView();
-    window.addEventListener('resize', updateItemsPerView);
-    return () => window.removeEventListener('resize', updateItemsPerView);
-  }, [updateItemsPerView]);
+    const updateItemsView = () => {
+      if (window.innerWidth < 1000) {
+        setItemsView(CAROUSEL.ITEMS_VIEW);
+      } else if (window.innerWidth < 1200) {
+        setItemsView(3);
+      } else if (window.innerWidth < 1920) {
+        setItemsView(4);
+      }
+    };
 
-  const maxIndex = Math.max(0, itemsLength - itemsPerView);
+    updateItemsView();
+    window.addEventListener('resize', updateItemsView);
+
+    return () => {
+      window.removeEventListener('resize', updateItemsView);
+    };
+  }, []);
 
   const handleNext = () => {
-    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
+    setCurrentIndex((prev) => {
+      const nextIndex = prev + itemsView;
+      return nextIndex >= itemsLength ? prev : nextIndex;
+    });
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    setCurrentIndex((prev) => Math.max(prev - itemsView, 0));
   };
 
   const getSlideOffset = () => {
-    const { itemWidth, gap } = getItemMetrics();
-    return currentIndex * (itemWidth + gap);
+    return currentIndex * (CAROUSEL.DESKTOP_ITEM_WIDTH + CAROUSEL.ITEM_GAP);
   };
 
   return (
@@ -54,15 +51,10 @@ const Carousel = ({ data, setModalType, setSelectedIndex }) => {
           direction="left"
           onButtonClick={handlePrev}
           disabled={currentIndex === 0}
-          styles={S.navigationButton}
+          styles={S.navigationButton(false)}
         />
-        <div ref={containerRef} css={S.carouselContainer}>
-          <div
-            css={S.carouselTrack}
-            style={{
-              '--slide-offset': `-${getSlideOffset()}px`,
-            }}
-          >
+        <div css={S.carouselContainer}>
+          <div css={S.carouselTrack(getSlideOffset())}>
             {data?.list?.length > 0 ? (
               data.list.map((item, index) => (
                 <div key={item.id} css={S.carouselItem}>
@@ -75,14 +67,15 @@ const Carousel = ({ data, setModalType, setSelectedIndex }) => {
                 </div>
               ))
             ) : (
-              <div>표시할 항목이 없습니다</div>
+              <div css={S.notthingTitle}>현재 등록된 후원이 없습니다.</div>
             )}
           </div>
         </div>
         <ArrowButton
           direction="right"
           onButtonClick={handleNext}
-          disabled={currentIndex >= maxIndex}
+          disabled={currentIndex + itemsView >= itemsLength}
+          styles={S.navigationButton(true)}
         />
       </div>
     </div>
