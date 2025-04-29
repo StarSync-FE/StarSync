@@ -113,7 +113,7 @@ const VoteModal = ({ gender, updateCredit, setVoteSuccessTrigger, setModalType }
         투표하기
       </CustomButton>
       <p css={S.guideQuote}>
-        투표하는 데 <b css={S.highlightText}>1000 크레딧</b>이 소요됩니다.
+        투표하는 데 <b css={S.highlightText}>1000 스타</b>가 소요됩니다.
       </p>
     </div>
   );
