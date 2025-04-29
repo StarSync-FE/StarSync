@@ -102,11 +102,16 @@ export const info = css`
 export const statusBar = css`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   p {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-weight: 400; 
     color: var(--white);
+
+    ${media({
+      fontSize: ['0.9rem', '0.9rem', '1rem', '1.1rem', '1.2rem'],
+    })}
   }
 
   & > div > p {
