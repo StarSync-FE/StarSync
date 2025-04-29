@@ -30,7 +30,7 @@ const sections = [
   {
     id: 'main',
     title: 'StarSync',
-    description: '후원과 투표를 통해 아이돌을 응원하세요.\n당신의 선택이 그들의 무대가 됩니다.',
+    description: '별처럼 연결되는 우리, 모든 별이 하나로 이어지는 순간',
     buttonText: '지금 시작하기',
     showScrollGuide: true,
     idolImage: idolImage1,
@@ -55,7 +55,7 @@ const sections = [
     id: 'my-idol',
     title: '나만의 아이돌을 위한 특별한 공간',
     description:
-      '여러 아이돌 중에서 오직 당신의 최애만 선택하고\n팬심을 가장 나다운 방식으로 표현해보세요.',
+      '여러 아이돌 중에서 오직 당신의 최애를를 선택하고\n팬심을 가장 나다운 방식으로 표현해보세요.',
     buttonText: '내 최애 선택하기',
     idolImage: idolImage4,
   },

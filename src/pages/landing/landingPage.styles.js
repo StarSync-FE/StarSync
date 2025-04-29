@@ -117,8 +117,8 @@ export const sectionContent = css`
 
   ${media({
     gap: ['1rem', '1rem', '2rem', '2rem', '2rem'],
-    padding: ['2.4rem', '2.8rem', '3.2rem', '3.6rem'],
-    paddingBottom: ['8rem', '8rem', '8rem', '10rem'],
+    padding: ['2.4rem', '2.4rem', '2.8rem', '3.2rem', '3.6rem'],
+    paddingBottom: ['8rem', '0rem', '8rem', '8rem', '10rem'],
   })}
 
   h1 {
@@ -139,7 +139,7 @@ export const sectionContent = css`
     }
     
     ${media({
-      fontSize: ['3.2rem', '4rem', '5rem', '6rem'],
+      fontSize: ['3.2rem', '3.2rem', '4rem', '5rem', '6rem'],
       letterSpacing: ['0.2rem', '0.3rem', '0.4rem', '0.5rem'],
       lineHeight: ['1.3', '1.2', '1.2', '1.2', '1.2'],
     })}
@@ -164,10 +164,10 @@ export const sectionContent = css`
     }
     
     ${media({
-      fontSize: ['1rem', '1rem', '2rem', '2rem', '2rem'],
-      maxWidth: ['30rem', '50rem', '60rem', '80rem'],
+      fontSize: ['1.4rem', '1.4rem', '1.4rem', '2.4rem', '2.4rem'],
+      maxWidth: ['30rem', '30rem', '50rem', '60rem', '80rem'],
       lineHeight: ['1.3', '1.3', '1.3', '1.3', '1.3'],
-      padding: ['1.6rem', '1.6rem', '2rem', '2.4rem'],
+      padding: ['1.6rem', '1.6rem', '1.6rem', '2rem', '2.4rem'],
     })}
   }
 
@@ -175,7 +175,7 @@ export const sectionContent = css`
     margin-top: 1.6rem;
     
     ${media({
-      marginTop: ['1.6rem', '2rem', '2.4rem', '2.8rem'],
+      marginTop: ['1.6rem', '1.6rem', '2rem', '2.4rem', '2.8rem'],
     })}
   }
 `;
@@ -191,8 +191,8 @@ export const navDots = css`
   transform: translateY(-50%);
   
   ${media({
-    right: ['1rem', '1.5rem', '2rem', '3rem'],
-    gap: ['0.8rem', '1rem', '1.2rem', '1.4rem'],
+    right: ['1rem', '1rem', '1.5rem', '2rem', '3rem'],
+    gap: ['0.8rem', '0.8rem', '1rem', '1.2rem', '1.4rem'],
   })}
 `;
 
@@ -214,8 +214,8 @@ export const dot = css`
   }
   
   ${media({
-    width: ['0.8rem', '1rem', '1.2rem', '1.4rem'],
-    height: ['0.8rem', '1rem', '1.2rem', '1.4rem'],
+    width: ['0.8rem', '0.8rem', '1rem', '1.2rem', '1.4rem'],
+    height: ['0.8rem', '0.8rem', '1rem', '1.2rem', '1.4rem'],
   })}
 `;
 
@@ -231,7 +231,7 @@ export const scrollGuide = css`
   left: 50%;
   align-items: center;
   gap: 1.2rem;
-  padding: 1rem;
+  padding: 1rem ;
   border: none;
   font-size: 1.4rem;
   white-space: nowrap;
@@ -253,8 +253,8 @@ export const scrollGuide = css`
   }
   
   ${media({
-    fontSize: ['1.2rem', '1.4rem', '1.6rem', '1.8rem'],
-    bottom: ['1rem', '1.4rem', '1.8rem', '2.2rem'],
+    fontSize: ['1.2rem', '1.2rem', '1.4rem', '1.6rem', '1.8rem'],
+    bottom: ['-2rem', '-1rem', '1.4rem', '1.8rem', '2rem'],
   })}
 
   @keyframes bounce {
@@ -273,5 +273,5 @@ export const scrollGuide = css`
 `;
 
 export const logo = css`
-  width: 50%;
+  ${media({ width: ['100%', '100%', '100%', '50%', '50%'] })}
 `;
