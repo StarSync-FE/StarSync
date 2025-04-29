@@ -4,7 +4,7 @@
 <img src="https://github.com/user-attachments/assets/ef54ec33-5dc8-4947-80ac-23f40fb9c330" width="35"/>
 <img src="https://github.com/user-attachments/assets/f7a5ba83-481b-44ca-a308-8611c82cf9a5" width="35"/>
 
-⭐🌟🌠💫 
+⭐🌟🌠💫 📌
 -->
 
 ## <img src="https://github.com/user-attachments/assets/97b1b579-70d2-485b-b838-96dde60129da" width="30"/>프로젝트 개요 
@@ -37,8 +37,8 @@
 
 ## <img src="https://github.com/user-attachments/assets/97b1b579-70d2-485b-b838-96dde60129da" width="30"/>프로젝트 관리 (GitHub Projects)
 
-⭐ [칸반보드 바로 가기](https://github.com/orgs/StarSync-FE/projects/1/views/2)<br>
-⭐ [로드맵 보기(Milestones)](https://github.com/orgs/StarSync-FE/projects/1/views/1)<br>
+📌 [칸반보드 바로 가기](https://github.com/orgs/StarSync-FE/projects/1/views/2)<br>
+📌 [로드맵 보기(Milestones)](https://github.com/orgs/StarSync-FE/projects/1/views/1)<br>
 
 GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하고, 칸반보드로 각 작업의 진행상태를 실시간으로 트래킹하였습니다.
 또한 주요 기능 완성 목표를 마일스톤으로 설정하여 프로젝트 전체 일정을 관리하였습니다.
@@ -53,8 +53,8 @@ GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하�
 
 ## <img src="https://github.com/user-attachments/assets/ef54ec33-5dc8-4947-80ac-23f40fb9c330" width="40"/>프로젝트 폴더 구조
 
-⭐ Barrel 패턴 적용<br>
-⭐ 역할별 명확한 폴더화 (components, pages, utils, constants, errorBoundary 등)<br>
+> - Barrel 패턴 적용<br>
+> - 역할별 명확한 폴더화 (components, pages, utils, constants, errorBoundary 등)<br>
 
 ```
 📂 src
@@ -146,22 +146,22 @@ GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하�
 
 ### <img src="https://github.com/user-attachments/assets/1b934fb5-06c6-417f-90c4-a1a08ad07760" width="30"/>UI/UX 설계 포인트
 
-> ⭐ 투표하기 → 크레딧 부족 → 크레딧 충전 모달로 자연스럽게 연결되는 UX 흐름 설계<br>
-⭐ [동일 페이지 navigation 클릭 시 새로고침 되도록 적용](https://github.com/StarSync-FE/StarSync/discussions/304)<br>
-⭐ 캐러셀 바 위에 후원 목표 금액을 표시하여 사용자 혼란 최소화<br>
-⭐ 차트 1등 아이돌에 대한 시각적 강조 디자인 추가<br>
-⭐ [로딩 경험 최적화](https://github.com/StarSync-FE/StarSync/discussions/303)<br>
-⭐ 첫 진입 시 Splash Screen 적용<br>
-⭐ 페이지 전환 시 Pending UI 적용<br>
-⭐ 데이터 응답 느릴 때 로딩 스피너 사용<br>
+> - 투표하기 → 크레딧 부족 → 크레딧 충전 모달로 자연스럽게 연결되는 UX 흐름 설계<br>
+> - [동일 페이지 navigation 클릭 시 새로고침 되도록 적용](https://github.com/StarSync-FE/StarSync/discussions/304)<br>
+> - 캐러셀 바 위에 후원 목표 금액을 표시하여 사용자 혼란 최소화<br>
+> - 차트 1등 아이돌에 대한 시각적 강조 디자인 추가<br>
+> - [로딩 경험 최적화](https://github.com/StarSync-FE/StarSync/discussions/303)<br>
+> - 첫 진입 시 Splash Screen 적용<br>
+> - 페이지 전환 시 Pending UI 적용<br>
+> - 데이터 응답 느릴 때 로딩 스피너 사용<br>
 
 ### <img src="https://github.com/user-attachments/assets/1b934fb5-06c6-417f-90c4-a1a08ad07760" width="30"/>개발 생산성 & 품질 향상
 
-> ⭐ Axios Interceptor 적용 → 서버에러에 자동 대응하고, 30초마다 재요청하여 프론트엔드 개발의 편의성 확보<br>
-⭐ CI/CD 파이프라인 구축 → 배포 자동화, 에러 최소화<br>
-⭐ 에러 바운더리 구조 설정 → Global, API, Render 별로 에러를 분리 대응해 안정성 강화<br>
-⭐ 폴더 및 파일 컨벤션 정리 → 유지보수성과 코드 가독성 향상<br>
-⭐ [PR 리뷰](https://github.com/StarSync-FE/StarSync/pulls?q=is%3Apr+is%3Aclosed)와 [데일리 스크럼](https://github.com/StarSync-FE/StarSync/discussions/categories/4%EC%9B%94-16%EC%9D%BC-4%EC%9B%94-21%EC%9D%BC), [디스커션](https://github.com/StarSync-FE/StarSync/discussions/categories/discussion) 등 다양한 커뮤니케이션 적극 활용 → 애자일 협업 방식으로 코드 품질 향상, 효율 증대<br>
+> - Axios Interceptor 적용 → 서버에러에 자동 대응하고, 30초마다 재요청하여 프론트엔드 개발의 편의성 확보<br>
+> - CI/CD 파이프라인 구축 → 배포 자동화, 에러 최소화<br>
+> - 에러 바운더리 구조 설정 → Global, API, Render 별로 에러를 분리 대응해 안정성 강화<br>
+> - 폴더 및 파일 컨벤션 정리 → 유지보수성과 코드 가독성 향상<br>
+> - [PR 리뷰](https://github.com/StarSync-FE/StarSync/pulls?q=is%3Apr+is%3Aclosed)와 [데일리 스크럼](https://github.com/StarSync-FE/StarSync/discussions/categories/4%EC%9B%94-16%EC%9D%BC-4%EC%9B%94-21%EC%9D%BC), [디스커션](https://github.com/StarSync-FE/StarSync/discussions/categories/discussion) 등 다양한 커뮤니케이션 적극 활용 → 애자일 협업 방식으로 코드 품질 향상, 효율 증대<br>
 
 ## <img src="https://github.com/user-attachments/assets/f7a5ba83-481b-44ca-a308-8611c82cf9a5" width="45"/>트러블슈팅
 
