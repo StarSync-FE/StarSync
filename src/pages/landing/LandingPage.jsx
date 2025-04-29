@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CustomButton } from '@/components/button';
-import logoImage from '@/assets/images/starSync-logo.svg';
+import logoImage from '@/assets/images/starsync-text-logo.svg';
 import idolImage1 from '@/assets/images/idols/taesan2.png';
 import idolImage2 from '@/assets/images/idols/minji.png';
 import idolImage3 from '@/assets/images/idols/keiju.png';
@@ -63,8 +63,6 @@ const sections = [
 const LandingPage = () => {
   const sectionRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
-  const { list } = useLoaderData();
-  console.log('리스트:', list);
 
   const handleClearStorage = () => {
     localStorage.clear();
