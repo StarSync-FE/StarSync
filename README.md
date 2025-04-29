@@ -1,10 +1,11 @@
-# <p align="center"><img src="https://github.com/user-attachments/assets/ad7b71ea-b45c-45e8-8f6b-aa824be81022" width="50"/>StarSync<img src="https://github.com/user-attachments/assets/969cfd46-aaf4-43e4-8a2a-3235a4de1809" width="45"/></p>
+# <p align="center"><img src="https://github.com/user-attachments/assets/ad7b71ea-b45c-45e8-8f6b-aa824be81022" width="50"/>StarSync<img src="https://github.com/user-attachments/assets/969cfd46-aaf4-43e4-8a2a-3235a4de1809" width="45"/></p> 
+[바로가기(배포링크)](https://www.starsync.wiki/) 
 
 <!--
 <img src="https://github.com/user-attachments/assets/ef54ec33-5dc8-4947-80ac-23f40fb9c330" width="35"/>
 <img src="https://github.com/user-attachments/assets/f7a5ba83-481b-44ca-a308-8611c82cf9a5" width="35"/>
 
-⭐🌟🌠💫 📌
+⭐🌟🌠💫 📌📝Docs: 
 -->
 
 ## <img src="https://github.com/user-attachments/assets/97b1b579-70d2-485b-b838-96dde60129da" width="30"/>프로젝트 개요
