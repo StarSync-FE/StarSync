@@ -55,6 +55,8 @@ const LandingPage = () => {
   const { list } = useLoaderData();
   console.log('리스트:', list);
 
+  const DEFAULT_OG_IMAGE = 'https://www.starsync.wiki/default-og.png';
+
   const handleClearStorage = () => {
     localStorage.clear();
   };
@@ -92,63 +94,90 @@ const LandingPage = () => {
   };
 
   return (
-    <div css={S.pageContainer}>
-      <div css={S.backgroundStarsWrapper}>
-        {stars.map((star) => (
-          <div key={star.id} css={S.starStyle(star)} />
+    <>
+      <title>StarSync</title>
+      <meta name="description" content="별처럼 연결되는 우리, 모든 별이 하나로 이어지는 순간" />
+      <meta name="keywords" content="StarSync, 스타싱크, 팬, 후원, 팬 활동, 팬심, 아이돌" />
+      <meta name="author" content="Team StarSync" />
+
+      {/* Open Graph */}
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="StarSync" />
+      <meta
+        property="og:description"
+        content="별처럼 연결되는 우리, 모든 별이 하나로 이어지는 순간"
+      />
+      <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+      <meta property="og:url" content="https://www.starsync.wiki/" />
+      <meta property="og:site_name" content="StarSync" />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="StarSync" />
+      <meta
+        name="twitter:description"
+        content="별처럼 연결되는 우리, 모든 별이 하나로 이어지는 순간"
+      />
+      <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
+
+      <div css={S.pageContainer}>
+        <div css={S.backgroundStarsWrapper}>
+          {stars.map((star) => (
+            <div key={star.id} css={S.starStyle(star)} />
+          ))}
+        </div>
+
+        {/* Dot Navigation */}
+        <nav css={S.navDots}>
+          {sections.map((section, idx) => (
+            <button
+              key={section.id}
+              type="button"
+              css={[S.dot, activeIndex === idx && S.activeDot]}
+              onClick={() => handleSmoothScroll(idx)}
+              aria-label={`Move to ${section.id} section`}
+            />
+          ))}
+        </nav>
+
+        {/* Sections */}
+        {sections.map((section, idx) => (
+          <section
+            key={section.id}
+            data-index={idx}
+            ref={(el) => {
+              sectionRefs.current[idx] = el;
+            }}
+            css={S.section}
+          >
+            <motion.div
+              css={S.sectionContent}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: activeIndex === idx ? 1 : 0.3, y: activeIndex === idx ? 0 : 50 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1>{section.title}</h1>
+              <p>{section.description}</p>
+              <Link to="/list" onClick={handleClearStorage}>
+                <CustomButton type="button" variant="landing">
+                  {section.buttonText}
+                </CustomButton>
+              </Link>
+              {section.showScrollGuide && (
+                <button
+                  type="button"
+                  css={S.scrollGuide}
+                  onClick={handleScrollGuideClick}
+                  aria-label="Scroll to next section"
+                >
+                  스크롤하여 아래로 이동
+                </button>
+              )}
+            </motion.div>
+          </section>
         ))}
       </div>
-
-      {/* Dot Navigation */}
-      <nav css={S.navDots}>
-        {sections.map((section, idx) => (
-          <button
-            key={section.id}
-            type="button"
-            css={[S.dot, activeIndex === idx && S.activeDot]}
-            onClick={() => handleSmoothScroll(idx)}
-            aria-label={`Move to ${section.id} section`}
-          />
-        ))}
-      </nav>
-
-      {/* Sections */}
-      {sections.map((section, idx) => (
-        <section
-          key={section.id}
-          data-index={idx}
-          ref={(el) => {
-            sectionRefs.current[idx] = el;
-          }}
-          css={S.section}
-        >
-          <motion.div
-            css={S.sectionContent}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: activeIndex === idx ? 1 : 0.3, y: activeIndex === idx ? 0 : 50 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1>{section.title}</h1>
-            <p>{section.description}</p>
-            <Link to="/list" onClick={handleClearStorage}>
-              <CustomButton type="button" variant="landing">
-                {section.buttonText}
-              </CustomButton>
-            </Link>
-            {section.showScrollGuide && (
-              <button
-                type="button"
-                css={S.scrollGuide}
-                onClick={handleScrollGuideClick}
-                aria-label="Scroll to next section"
-              >
-                스크롤하여 아래로 이동
-              </button>
-            )}
-          </motion.div>
-        </section>
-      ))}
-    </div>
+    </>
   );
 };
 
