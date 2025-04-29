@@ -24,7 +24,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
 
   const handleCharge = () => {
     if (!selectedValue) {
-      showAlert('충전할 크레딧을 선택해주세요!', 'warning');
+      showAlert('충전할 스타를 선택해주세요!', 'warning');
       return;
     }
 
@@ -32,7 +32,7 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
     const newTotal = prev + Number(selectedValue);
     localStorage.setItem('selectedCredit', newTotal);
     updateCredit(newTotal); // 업데이트된 credit을 ListPage에 전달
-    showAlert(`${selectedValue} 크레딧 충전 완료!`, 'success');
+    showAlert(`${selectedValue} 스타 충전 완료!`, 'success');
     // 모달 닫기 로직
     onClose();
   };
@@ -40,8 +40,8 @@ const CreditChargeModal = ({ credit, updateCredit, onClose }) => {
   return (
     <div css={S.modalContent}>
       <span css={S.modalTitle}>
-        <img src={logoImg} alt="크레딧" />
-        <h2>크레딧 충전하기</h2>
+        <img src={logoImg} alt="스타" />
+        <h2>스타 충전하기</h2>
       </span>
       <div css={S.radioButtons}>
         {Prices.map((price) => {

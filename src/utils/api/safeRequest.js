@@ -15,7 +15,7 @@ import { STATUS_CODES } from '@/constants/statusCodes';
 async function safeRequest(apiCall, label = '') {
   try {
     const data = await apiCall();
-    console.log(`✅ ${label} data:`, data);
+    // console.log(`✅ ${label} data:`, data);
     return data;
   } catch (err) {
     console.error(`❌ ${label} 요청 에러:`, err?.response?.data || err.message);

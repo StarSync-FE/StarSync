@@ -128,7 +128,6 @@ export const next = css`
 `;
 
 export const mobileAllIdols = css`
-  /* height: 47rem; */
   overflow: scroll hidden;
   gap: 2.5rem;
   grid-template-rows: repeat(2, 12rem); 
