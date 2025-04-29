@@ -1,3 +1,4 @@
+// Charge.tsx
 import creditImg from '@/assets/images/star.png';
 import { addCommas } from '@/utils/format';
 import * as S from './charge.styles';
@@ -9,10 +10,10 @@ const Charge = ({ setModalType, credit }) => {
         <div css={S.myCredit}>내 크레딧</div>
         <div css={S.credit}>
           <img src={creditImg} alt="크레딧" />
-          <span>{addCommas(credit)}</span> {/* ListPage에서 전달받은 credit 표시 */}
+          <span>{addCommas(credit)}</span>
         </div>
       </div>
-      <button type="button" onClick={() => setModalType('creditCharge')}>
+      <button type="button" onClick={() => setModalType('creditCharge')} css={S.buttonStyle}>
         충전하기
       </button>
     </div>

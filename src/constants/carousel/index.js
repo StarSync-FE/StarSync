@@ -1,1 +1,1 @@
-export { default as CAROUSEL_CONSTANTS } from './carouselConstants';
+export { default as CAROUSEL } from './carousel';

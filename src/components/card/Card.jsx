@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CustomButton } from '@/components/button';
-import creditImg from '@/assets/images/credit.png';
+import starImg from '@/assets/images/logo.png';
 import { addCommas, getDaysRemaining, getDonationPercentage } from '@/utils/format';
 import * as S from './card.styles';
 
@@ -9,15 +9,15 @@ const Card = ({ data, setModalType, setSelectedIndex, index }) => {
   const percent = `${getDonationPercentage(data.targetDonation, data.receivedDonations)}%`;
   const isDonationAvailable = daysLeft > 0;
 
-  // 실시간으로 남은 일수를 갱신하기 위해 setInterval 사용
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     const interval = setInterval(() => {
       const newDaysLeft = getDaysRemaining(data.deadline);
-      setDaysLeft(newDaysLeft); // 갱신된 남은 일수로 상태 업데이트
-    }, 55000);
+      setDaysLeft(newDaysLeft);
+    }, 60000);
 
     return () => clearInterval(interval);
-  }, [data.deadline]);
+  }, []);
 
   const handleClick = () => {
     setSelectedIndex(index);
@@ -51,7 +51,7 @@ const Card = ({ data, setModalType, setSelectedIndex, index }) => {
         <div css={S.info}>
           <div css={S.statusBar}>
             <div css={S.statusLeft}>
-              <img src={creditImg} alt="크레딧" css={S.icon} />
+              <img src={starImg} alt="크레딧" css={S.icon} />
               <p>{`${addCommas(data.receivedDonations)} / ${addCommas(data.targetDonation)}`}</p>
             </div>
             <p>{daysLeft > 1 ? `D-${daysLeft}` : daysLeft === 1 ? '오늘 마감' : '마감 완료'}</p>

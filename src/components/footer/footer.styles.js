@@ -18,7 +18,7 @@ export const contentSection = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 30rem;
+  min-width: 25rem;
   max-width: 120rem;
   height: 100%;
   margin: 0 auto;
