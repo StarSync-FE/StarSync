@@ -1,10 +1,5 @@
-import {
-  CreditChargeModal,
-  CreditLackModal,
-  DonationModal,
-  Modal,
-  VoteModal,
-} from '@/components/modals';
+import { CreditChargeModal, CreditLackModal, DonationModal, VoteModal } from '@/components/modals';
+import { Modal } from '@/components/template/modal';
 
 const ListModal = ({
   modalType,

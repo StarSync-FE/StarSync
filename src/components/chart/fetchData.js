@@ -30,7 +30,7 @@ export const fetchData = async (
   try {
     setIsLoading(true);
     const response = await requestGet(
-      `${ENDPOINTS.GET_CHART}?gender=${gender}&pageSize=${pageSize}&cursor=${cursor}`,
+      `${ENDPOINTS.GET_CHART(gender)}?gender=${gender}&pageSize=${pageSize}&cursor=${cursor}`,
       controller ? { signal: controller.signal } : undefined,
     );
     const newData = response?.idols || [];

@@ -67,7 +67,7 @@ const Carousel = ({ data, setModalType, setSelectedIndex }) => {
                 </div>
               ))
             ) : (
-              <div css={S.notthingTitle}>현재 등록된 후원이 없습니다.</div>
+              <div css={S.nothingTitle}>현재 등록된 후원이 없습니다.</div>
             )}
           </div>
         </div>

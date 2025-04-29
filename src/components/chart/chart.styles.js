@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import media from '@/styles/responsive';
-import { voteButtonFlow, rotateWithPause, heartbeat } from '@/utils/animation';
+import { voteButtonFlow, rotateWithPause, heartbeat } from '@/styles/animation';
 
 export const flexCenter = css`
   display: flex;
