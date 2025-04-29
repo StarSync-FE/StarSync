@@ -1,4 +1,3 @@
-export { default as Modal } from './commonModal';
 export { default as VoteModal } from './voteModal';
 export { default as DonationModal } from './donationModal';
 export { default as CreditChargeModal } from './creditChargeModal';
