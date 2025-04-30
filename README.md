@@ -177,6 +177,7 @@ GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하�
 > | [에러 바운더리 적용 범위 설정](https://github.com/StarSync-FE/StarSync/discussions/300)           | Global / API / Render 에러 바운더리를 명확히 분리 적용                   | 송시은 |
 > | [Git 이전 커밋 수정 방법 문제](https://github.com/StarSync-FE/StarSync/discussions/71)            | `git rebase -i`, `git reset --soft` 명령어를 활용                      | 전유진 |
 > | [export default 충돌 문제](https://github.com/StarSync-FE/StarSync/discussions/98)                | default as 로 통일하여 모듈 충돌 방지                     | 전유진 |
+> | [조건부 스타일링 문제](https://github.com/StarSync-FE/StarSync/discussions/314)                | 전역에서 관리                   | 조인성 |
 
 ## <img src="https://github.com/user-attachments/assets/f7a5ba83-481b-44ca-a308-8611c82cf9a5" width="45"/>TIL
 
@@ -201,5 +202,5 @@ GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하�
 - 경고창 하단에 진행바(Progress Bar) 추가
 - 차트 모달 생성 후 아이돌 정보 추가 연동
 - 리액트 라우터 액션 사용해보기
-- 마이페이지 반응형 
+- 아이돌 상세 페이지 생성
 - 투표해서 순위를 매기는 것이 아닌, 투표한 아이돌의 이름으로 아동 및 불우 이웃 후원하는 쪽으로 방향 전환
