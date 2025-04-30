@@ -1,5 +1,4 @@
-# <p align="center"><img src="https://github.com/user-attachments/assets/ad7b71ea-b45c-45e8-8f6b-aa824be81022" width="50"/>StarSync<img src="https://github.com/user-attachments/assets/969cfd46-aaf4-43e4-8a2a-3235a4de1809" width="45"/></p> 
-[바로가기(배포링크)](https://www.starsync.wiki/) 
+# <p align="center"><img src="https://github.com/user-attachments/assets/ad7b71ea-b45c-45e8-8f6b-aa824be81022" width="50"/> <a href="https://www.starsync.wiki/"><img width="200" alt="logo" src="https://github.com/user-attachments/assets/895d4218-d00e-42b2-975a-49c13f866ef1" /></a> <img src="https://github.com/user-attachments/assets/969cfd46-aaf4-43e4-8a2a-3235a4de1809" width="45"/></p> 
 
 <!--
 <img src="https://github.com/user-attachments/assets/ef54ec33-5dc8-4947-80ac-23f40fb9c330" width="35"/>
@@ -163,7 +162,8 @@ GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하�
 > - CI/CD 파이프라인 구축 → 배포 자동화, 에러 최소화<br>
 > - 에러 바운더리 구조 설정 → Global, API, Render 별로 에러를 분리 대응해 안정성 강화<br>
 > - 폴더 및 파일 컨벤션 정리 → 유지보수성과 코드 가독성 향상<br>
-> - [PR 리뷰](https://github.com/StarSync-FE/StarSync/pulls?q=is%3Apr+is%3Aclosed)와 [데일리 스크럼](https://github.com/StarSync-FE/StarSync/discussions/categories/4%EC%9B%94-16%EC%9D%BC-4%EC%9B%94-21%EC%9D%BC), [디스커션](https://github.com/StarSync-FE/StarSync/discussions/categories/discussion) 등 다양한 커뮤니케이션 적극 활용 → 애자일 협업 방식으로 코드 품질 향상, 효율 증대<br>
+> - JSDoc 주석 도입 → 함수/모듈 단위 명세화를 통해 팀 간 협업 시 코드 이해도 향상<br>
+> - [PR 리뷰(+코드레빗)](https://github.com/StarSync-FE/StarSync/pulls?q=is%3Apr+is%3Aclosed)와 [데일리 스크럼](https://github.com/StarSync-FE/StarSync/discussions/categories/4%EC%9B%94-16%EC%9D%BC-4%EC%9B%94-21%EC%9D%BC), [디스커션](https://github.com/StarSync-FE/StarSync/discussions/categories/discussion) 등 다양한 커뮤니케이션 적극 활용 → 애자일 협업 방식으로 코드 품질 향상, 효율 증대<br>
 
 ## <img src="https://github.com/user-attachments/assets/f7a5ba83-481b-44ca-a308-8611c82cf9a5" width="45"/>트러블슈팅
 
