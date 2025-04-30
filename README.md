@@ -17,7 +17,6 @@
 
 - 좋아하는 아이돌에게 직접 마음을 표현할 수 있는 웹사이트를 만들고 싶었습니다.
 - 트위터, 팬카페 등 여러 경로로 흩어져 있는 최애에 대한 정보를 한눈에 볼 수 있는 접근성이 높은 서비스의 필요성을 느꼈습니다.
-- 투표를 통한 순위 경쟁이 아닌, 아이돌 이름으로 선한 영향력(기부)을 전하는 구조를
 
 💫 **컨셉**<br>
 
@@ -29,7 +28,7 @@
 | <p align="center"> 🌟[박지섭](https://github.com/HarrySeop) </p>                                                                           | <p align="center"> 🌟[송시은](https://github.com/sgoldenbird) </p>                                                                                                                                                                             | <p align="center"> 🌟[조인성](https://github.com/Insung-Jo) </p>                                                                           | <p align="center"> 🌟[전유진](https://github.com/yuj2n) </p>                                                                               | <p align="center"> 🌟[손수진](https://github.com/pappaya109) </p>                                                                          |
 | :----------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
 | <p align="center"> <img src="https://github.com/user-attachments/assets/5667790d-d978-409e-a854-fbd6109ec370" width="100"/> <br> 팀장 </p> | <p align="center"><img src="https://github.com/user-attachments/assets/6fc86c9b-3c6f-4ee4-b274-a94ec9206b51" width="100" /> <br> 팀원</p>                                                                                                      | <p align="center"> <img src="https://github.com/user-attachments/assets/a1cb972e-48a3-4c23-bc16-1baed83498a5" width="100"/> <br> 팀원 </p> | <p align="center"> <img src="https://github.com/user-attachments/assets/d0e2e31b-2852-49ac-a19c-494f385febe6" width="115"/> <br> 팀원 </p> | <p align="center"> <img src="https://github.com/user-attachments/assets/923b8af4-48ab-446b-9a63-319f354106eb" width="100"/> <br> 팀원 </p> |
-| - 프로젝트 초기 구성<br>- CI/CD 구축<br>- 랜딩 페이지<br>- Header/Footer<br>- SEO 설정<br>- 데모 발표                                      | - 라우터 설정<br>- API 함수 관리<br> (axiosInstance, request 유틸 함수)<br>- 에러 처리 관리<br> (Global, API, Render 바운더리 /<br> 404, 500 에러 페이지)<br>- 로딩 UI (PendingUI, Splash)<br>- 크레딧 부족 모달<br>- 리드미 작성 및 문서 정리 | - 스타일 시스템 구축<br>- 반응형 대응<br>- 버튼 컴포넌트 개발<br>- 후원 캐러셀<br>- 후원하기 모달<br>- 데모 PPT                            | - 크레딧 충전 모달<br>- 리스트 페이지<br>- 차트 페이지네이션<br>- 모달 시스템 구축<br>- 로딩 스피너 구현<br>- 데모 PPT                     | - 마이페이지 구현<br>- 라디오 버튼 UI<br>- 투표 모달<br>- 토스트 알림 컴포넌트<br>- 랜딩페이지<br>- 데모 영상, gif                         |
+| - 프로젝트 초기 구성<br>(Github세팅, lefthook)<br>-배포(S3 + CloudFront)<br>- CI/CD 파이프라인 구축<br>- Header/Footer<br>- SEO 설정<br>- 데모 발표                                      | - 라우터 설정<br>- API 함수 관리<br> (axiosInstance, request 유틸 함수)<br>- 에러 처리 관리<br> (Global, API, Render 바운더리 /<br> 404, 500 에러 페이지)<br>- 로딩 UI (PendingUI, Splash)<br>- 크레딧 부족 모달<br>- 리드미 작성 및 문서 정리 | - 스타일 시스템 구축<br>- 반응형 대응<br>- 버튼 컴포넌트<br>- 후원 캐러셀<br>- 후원하기 모달<br>- 데모 PPT                            | - 크레딧 충전 모달<br>- 리스트 페이지<br>- 차트(페이지네이션)<br>- 공통 모달 시스템 구축<br>- 로딩 스피너<br>- 데모 PPT                     | - 마이페이지 구현<br>- 라디오 버튼 UI<br>- 투표 모달<br>- 공통 토스트 알림 <br>- 랜딩페이지<br>- 데모 영상, gif                         |
 
 ## <img src="https://github.com/user-attachments/assets/97b1b579-70d2-485b-b838-96dde60129da" width="30"/>프로젝트 리소스
 
@@ -172,12 +171,13 @@ GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하�
 >
 > | 문제 상황                                                                                         | 해결 방법           | 작성자 |
 > | :------------------------------------------------------------------------------------------------ | :------------------ | :----- |
-> | [서버 에러 대응](https://github.com/StarSync-FE/StarSync/discussions/67)                          | Axios Interceptor로 | 송시은 |
-> | [로딩 상태 관리<br>- splash screen 이슈](https://github.com/StarSync-FE/StarSync/discussions/138) |                     | 송시은 |
-> | [스타일 린트 설정 문제](https://github.com/StarSync-FE/StarSync/discussions/134)                  |                     | 박지섭 |
-> | [에러 바운더리 적용 범위 설정](https://github.com/StarSync-FE/StarSync/discussions/300)           |                     | 송시은 |
-> | [Git 이전 커밋 수정 방법 문제](https://github.com/StarSync-FE/StarSync/discussions/71)            |                     | 전유진 |
-> | [export default 충돌 문제](https://github.com/StarSync-FE/StarSync/discussions/98)                |                     | 전유진 |
+> | [서버 에러 대응](https://github.com/StarSync-FE/StarSync/discussions/67)                          | Axios Interceptor로 30초 동안 자동 재시도 | 송시은 |
+> | [로딩 상태 관리<br>- splash screen 이슈](https://github.com/StarSync-FE/StarSync/discussions/138) | Splash Screen 종료 타이밍을 navigation state 기반으로 제어  | 송시은 |
+> | [스타일 린트 설정 문제](https://github.com/StarSync-FE/StarSync/discussions/134)                  | lefthook 코드 품질 관리 자동화 시도                  | 박지섭 |
+> | [에러 바운더리 적용 범위 설정](https://github.com/StarSync-FE/StarSync/discussions/300)           | Global / API / Render 에러 바운더리를 명확히 분리 적용                   | 송시은 |
+> | [Git 이전 커밋 수정 방법 문제](https://github.com/StarSync-FE/StarSync/discussions/71)            | `git rebase -i`, `git reset --soft` 명령어를 활용                      | 전유진 |
+> | [export default 충돌 문제](https://github.com/StarSync-FE/StarSync/discussions/98)                | default as 로 통일하여 모듈 충돌 방지                     | 전유진 |
+> | [조건부 스타일링 문제](https://github.com/StarSync-FE/StarSync/discussions/314)                | 전역에서 관리                   | 조인성 |
 
 ## <img src="https://github.com/user-attachments/assets/f7a5ba83-481b-44ca-a308-8611c82cf9a5" width="45"/>TIL
 
