@@ -172,11 +172,11 @@ GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하�
 > | 문제 상황                                                                                         | 해결 방법           | 작성자 |
 > | :------------------------------------------------------------------------------------------------ | :------------------ | :----- |
 > | [서버 에러 대응](https://github.com/StarSync-FE/StarSync/discussions/67)                          | Axios Interceptor로 30초 동안 자동 재시도 | 송시은 |
-> | [로딩 상태 관리<br>- splash screen 이슈](https://github.com/StarSync-FE/StarSync/discussions/138) |  Splash Screen 종료 타이밍을 navigation state 기반으로 제어  | 송시은 |
-> | [스타일 린트 설정 문제](https://github.com/StarSync-FE/StarSync/discussions/134)                  |  Stylelint 설정 파일과 Biome, Emotion 문법 간 충돌을 조율하고 예외 규칙 추가                   | 박지섭 |
-> | [에러 바운더리 적용 범위 설정](https://github.com/StarSync-FE/StarSync/discussions/300)           |  Global / API / Render 경로를 구분하여 에러 바운더리를 명확히 분리 적용                   | 송시은 |
-> | [Git 이전 커밋 수정 방법 문제](https://github.com/StarSync-FE/StarSync/discussions/71)            | `git rebase -i`, `git reset --soft` 명령어를 활용해 커밋 내용 보존하며 수정                       | 전유진 |
-> | [export default 충돌 문제](https://github.com/StarSync-FE/StarSync/discussions/98)                | Barrel 파일 구조에서 export default 대신 default as 로 통일하여 모듈 충돌 방지                     | 전유진 |
+> | [로딩 상태 관리<br>- splash screen 이슈](https://github.com/StarSync-FE/StarSync/discussions/138) | Splash Screen 종료 타이밍을 navigation state 기반으로 제어  | 송시은 |
+> | [스타일 린트 설정 문제](https://github.com/StarSync-FE/StarSync/discussions/134)                  | lefthook 코드 품질 관리 자동화 시도                  | 박지섭 |
+> | [에러 바운더리 적용 범위 설정](https://github.com/StarSync-FE/StarSync/discussions/300)           | Global / API / Render 에러 바운더리를 명확히 분리 적용                   | 송시은 |
+> | [Git 이전 커밋 수정 방법 문제](https://github.com/StarSync-FE/StarSync/discussions/71)            | `git rebase -i`, `git reset --soft` 명령어를 활용                      | 전유진 |
+> | [export default 충돌 문제](https://github.com/StarSync-FE/StarSync/discussions/98)                | default as 로 통일하여 모듈 충돌 방지                     | 전유진 |
 
 ## <img src="https://github.com/user-attachments/assets/f7a5ba83-481b-44ca-a308-8611c82cf9a5" width="45"/>TIL
 
