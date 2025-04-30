@@ -1,4 +1,4 @@
-# <p align="center"><img src="https://github.com/user-attachments/assets/ad7b71ea-b45c-45e8-8f6b-aa824be81022" width="50"/> <a href="https://www.starsync.wiki/"><img width="200" alt="logo" src="https://github.com/user-attachments/assets/895d4218-d00e-42b2-975a-49c13f866ef1" /></a> <img src="https://github.com/user-attachments/assets/969cfd46-aaf4-43e4-8a2a-3235a4de1809" width="45"/></p> 
+# <p align="center"><img src="https://github.com/user-attachments/assets/ad7b71ea-b45c-45e8-8f6b-aa824be81022" width="50"/> <a href="https://www.starsync.wiki/"><img width="200" alt="logo" src="https://github.com/user-attachments/assets/dec9fda2-0e5b-49b7-a297-a60c5a27a048" /></a> <img src="https://github.com/user-attachments/assets/969cfd46-aaf4-43e4-8a2a-3235a4de1809" width="45"/></p> 
 
 <!--
 <img src="https://github.com/user-attachments/assets/ef54ec33-5dc8-4947-80ac-23f40fb9c330" width="35"/>
