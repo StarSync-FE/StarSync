@@ -273,5 +273,5 @@ export const scrollGuide = css`
 `;
 
 export const logo = css`
-  ${media({ width: ['100%', '100%', '100%', '50%', '50%'] })}
+  ${media({ width: ['100%', '100%', '70%', '50%', '50%'] })}
 `;
