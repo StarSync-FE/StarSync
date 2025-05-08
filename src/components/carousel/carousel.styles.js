@@ -74,7 +74,7 @@ export const navigationButton = (isRight) => css`
   transform: translateY(-125%);
 `;
 
-export const notthingTitle = css`
+export const nothingTitle = css`
   display: flex;
   justify-content: center;
   align-items: center;

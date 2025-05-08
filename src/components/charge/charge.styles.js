@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import media from '@/styles/responsive';
-import { chargeButtonFlow, moreheartbeat } from '@/utils/animation';
+import { chargeButtonFlow, moreHeartbeat } from '@/styles/animation';
 
 export const creditWrapper = css`
   display: flex;
@@ -73,7 +73,7 @@ export const buttonStyle = css`
 
   &:hover {
     opacity: 0.9;
-    animation: ${moreheartbeat} 1.5s ease-in-out; /* 애니메이션 흐름 */
+    animation: ${moreHeartbeat} 1.5s ease-in-out; /* 애니메이션 흐름 */
   }
 
   &:active {
