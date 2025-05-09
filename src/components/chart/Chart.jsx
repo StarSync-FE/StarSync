@@ -4,7 +4,7 @@ import { LoadingSpinner } from '@/components/loadingStatus';
 import { useScreenSize } from '@/utils/responsive';
 import { fetchCharts } from '@/api';
 import IdolList from './IdolList';
-import chartImg from '@/assets/images/csart.png';
+import chartImg from '@/assets/images/chart.png';
 import * as S from './chart.styles';
 
 const getGenderKey = (tab) => (tab === 'females' ? 'female' : 'male');
