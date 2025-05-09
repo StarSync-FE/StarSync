@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { CustomButton } from '@/components/button';
 import { LoadingSpinner } from '@/components/loadingStatus';
-import { fetchData } from './fetchData';
-import { useScreenSize } from '@/utils/responsive';
 import { LoadMoreButton } from '@/components/button';
-import chartImg from '@/assets/images/chart.png';
-import starImg from '@/assets/images/star.png';
-import logoImg from '@/assets/images/logo.png';
+import { useScreenSize } from '@/utils/responsive';
 import * as S from './chart.styles';
+
+import ChartHeader from './ChartHeader';
+import ChartTabButtons from './ChartTabButtons';
+import IdolList from './IdolList';
+import { fetchCharts } from '@/api'; // ✅ 새 API 경로로 수정
 
 const Chart = ({ setModalType, selectedTab, setSelectedTab, voteSuccessTrigger }) => {
   const [chartData, setChartData] = useState([]);
@@ -18,14 +18,31 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, voteSuccessTrigger }
   const screenSize = useScreenSize();
   const PAGESIZE = screenSize === 'desktop' ? 10 : 5;
 
+  const gender = selectedTab === 'females' ? 'female' : 'male';
+
+  const fetchAndSetData = async ({ gender, cursor, isNewTab = false, controller = null }) => {
+    try {
+      setIsLoading(true);
+      const response = await fetchCharts({ gender, limit: PAGESIZE, cursor });
+
+      const newData = response?.idols || [];
+      const nextCursor = response?.nextCursor ?? null;
+
+      setChartData((prev) => (isNewTab ? newData : [...prev, ...newData]));
+      setCursor(nextCursor);
+      if (nextCursor === null) setHasMore(false);
+    } catch (err) {
+      if (controller?.signal.aborted) return;
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleTabClick = (e) => {
     const newTab = e.currentTarget.value;
-
-    // 동일한 탭을 클릭할 경우, 데이터 초기화가 안 되도록 조건 추가
     if (selectedTab !== newTab) {
       setSelectedTab(newTab);
-
-      // 새로운 탭을 클릭할 경우, 데이터 초기화
       setChartData([]);
       setCursor(0);
       setHasMore(true);
@@ -40,107 +57,22 @@ const Chart = ({ setModalType, selectedTab, setSelectedTab, voteSuccessTrigger }
     setCursor(0);
     setHasMore(true);
 
-    fetchData(
-      selectedTab === 'females' ? 'female' : 'male',
-      0,
-      PAGESIZE,
-      setChartData,
-      setCursor,
-      setHasMore,
-      setIsLoading,
-      controller,
-    );
+    fetchAndSetData({ gender, cursor: 0, isNewTab: true, controller });
 
-    return () => {
-      controller.abort();
-    };
+    return () => controller.abort();
   }, [selectedTab, screenSize, voteSuccessTrigger]);
 
   const loadMore = () => {
-    fetchData(
-      selectedTab === 'females' ? 'female' : 'male',
-      cursor,
-      PAGESIZE,
-      setChartData,
-      setCursor,
-      setHasMore,
-      setIsLoading,
-    );
+    fetchAndSetData({ gender, cursor });
   };
 
   return (
     <div css={S.chartWrapper}>
-      <div css={S.chartSectionHeader}>
-        <div>이달의 차트</div>
-        <CustomButton
-          variant="vote"
-          onButtonClick={() => setModalType('vote')}
-          style={S.voteButton}
-        >
-          <img src={chartImg} alt="차트" />
-          <span>차트 투표하기</span>
-        </CustomButton>
-      </div>
-
-      <div>
-        <div css={S.tabButtonWrapper}>
-          <button
-            type="button"
-            css={[S.idolListButton, selectedTab === 'females' && S.activeButton]}
-            value="females"
-            onClick={handleTabClick}
-          >
-            이달의 여자 아이돌
-          </button>
-          <button
-            type="button"
-            css={[S.idolListButton, selectedTab === 'males' && S.activeButton]}
-            value="males"
-            onClick={handleTabClick}
-          >
-            이달의 남자 아이돌
-          </button>
-        </div>
-
-        <ul css={S.idolList}>
-          {chartData.map((idol, index) => (
-            <li key={idol.id} css={S.idolData}>
-              <span>
-                <div css={S.firstStyle}>
-                  {index === 0 && (
-                    <img
-                      src={starImg} // ⭐별 이미지
-                      alt="1등"
-                      css={S.starIcon}
-                    />
-                  )}
-                  <img src={idol.profilePicture} alt={idol.name} css={S.profileStyle} />
-                </div>
-                <span css={S.rankStyle}>{index + 1}</span>
-                <div css={S.idolContent}>
-                  <span css={S.groupStyle}>{idol.group}</span>
-                  <div css={S.nameContent}>
-                    <span css={S.nameStyle}>{idol.name}</span>
-                    {index === 0 && (
-                      <img
-                        src={logoImg} // ⭐별 이미지
-                        alt="1등"
-                        css={S.starNameIcon}
-                      />
-                    )}
-                  </div>
-                </div>
-              </span>
-              <span>
-                <div css={S.voteStyle}>{idol.totalVotes}</div>
-                <div>표</div>
-              </span>
-            </li>
-          ))}
-        </ul>
-        <LoadingSpinner isLoading={isLoading} />
-        <LoadMoreButton isLoading={isLoading} hasMore={hasMore} onClick={loadMore} />
-      </div>
+      <ChartHeader setModalType={setModalType} />
+      <ChartTabButtons selectedTab={selectedTab} handleTabClick={handleTabClick} />
+      <IdolList chartData={chartData} />
+      <LoadingSpinner isLoading={isLoading} />
+      <LoadMoreButton isLoading={isLoading} hasMore={hasMore} onClick={loadMore} />
     </div>
   );
 };
