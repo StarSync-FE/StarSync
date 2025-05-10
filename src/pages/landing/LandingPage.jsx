@@ -149,13 +149,11 @@ const LandingPage = () => {
             )}
 
             {idx === sections.length - 1 ? (
-              <div css={S.buttonWrapper}>
-                <Link to="/list" onClick={handleClearStorage}>
-                  <CustomButton type="button" variant="landing">
-                    {section.buttonText}
-                  </CustomButton>
-                </Link>
-              </div>
+              <Link to="/list" onClick={handleClearStorage}>
+                <CustomButton type="button" variant="landing">
+                  {section.buttonText}
+                </CustomButton>
+              </Link>
             ) : null}
             {section.showScrollGuide && (
               <button

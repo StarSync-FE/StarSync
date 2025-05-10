@@ -208,3 +208,10 @@ export const starNameIcon = css`
 export const voteStyle = css`
   color: var(--white);
 `;
+
+export const emptyState = css`
+  padding: 2rem;
+  font-size: 1rem;
+  text-align: center;
+  color: #999;
+`;
