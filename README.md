@@ -1,10 +1,13 @@
 # <p align="center"><a href="https://www.starsync.wiki/"><img src="https://github.com/user-attachments/assets/ad7b71ea-b45c-45e8-8f6b-aa824be81022" width="50"/> <img width="200" alt="logo" src="https://github.com/user-attachments/assets/895d4218-d00e-42b2-975a-49c13f866ef1" /><img src="https://github.com/user-attachments/assets/ad7b71ea-b45c-45e8-8f6b-aa824be81022" width="45"/></a> </p>
 
+🎬 [바로 보기(YouTube에서 재생됩니다)](https://youtu.be/L3vtQZOh29Y)<br>
+🎞️ [발표 자료(PPT 보기)](https://www.miricanvas.com/v/14jpguf)
+
 <!--
 <img src="https://github.com/user-attachments/assets/ef54ec33-5dc8-4947-80ac-23f40fb9c330" width="35"/>
 <img src="https://github.com/user-attachments/assets/f7a5ba83-481b-44ca-a308-8611c82cf9a5" width="35"/>
 
-⭐🌟🌠💫 📌📝Docs: 
+⭐🌟🌠💫 📌📝Docs:
 -->
 
 ## <img src="https://github.com/user-attachments/assets/97b1b579-70d2-485b-b838-96dde60129da" width="30"/>프로젝트 개요
@@ -58,7 +61,7 @@
     <td valign="top" style="min-height: 250px;">
       <ul>
         <li>프로젝트 인프라 구성</li>
-        <li>배포 (S3 + CloudFront)</li>
+        <li>배포(S3 + CloudFront)</li>
         <li>CI/CD 파이프라인 구축</li>
         <li>Header/Footer</li>
         <li>SEO 설정</li>
@@ -69,10 +72,10 @@
       <ul>
         <li>라우터 설정</li>
         <li>API 함수 관리</li>
-        <li>에러 처리 관리</li>
-        <li>로딩 UI</li>
+        <li>에러 처리 관리<br>(에러 바운더리 역할 분리,<br>404, 500 에러 페이지)</li>
+        <li>로딩 UI (PendingUI, Splash)</li>
         <li>크레딧 부족 모달</li>
-        <li>README 작성</li>
+        <li>README 작성 및 문서 정리</li>
       </ul>
     </td>
     <td valign="top" style="min-height: 250px;">
@@ -102,7 +105,7 @@
         <li>투표 모달</li>
         <li>공통 토스트 알림</li>
         <li>랜딩페이지</li>
-        <li>데모 영상, gif</li>
+        <li>데모 영상</li>
       </ul>
     </td>
   </tr>
@@ -248,28 +251,29 @@ GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하�
 
 > 🌟 [더 많은 트러블 슈팅을 보고싶다면 이곳을 클릭해 확인하세요.](https://github.com/StarSync-FE/StarSync/discussions/categories/trouble-shooting)
 >
-> | 문제 상황                                                                                         | 해결 방법           | 작성자 |
-> | :------------------------------------------------------------------------------------------------ | :------------------ | :----- |
-> | [서버 에러 대응](https://github.com/StarSync-FE/StarSync/discussions/67)                          | Axios Interceptor로 30초 동안 자동 재시도 | 송시은 |
-> | [로딩 상태 관리<br>- splash screen 이슈](https://github.com/StarSync-FE/StarSync/discussions/138) | Splash Screen 종료 타이밍을 navigation state 기반으로 제어  | 송시은 |
-> | [스타일 린트 설정 문제](https://github.com/StarSync-FE/StarSync/discussions/134)                  | lefthook 코드 품질 관리 자동화 시도                  | 박지섭 |
-> | [에러 바운더리 적용 범위 설정](https://github.com/StarSync-FE/StarSync/discussions/300)           | Global / API / Render 에러 바운더리를 명확히 분리 적용                   | 송시은 |
-> | [Git 이전 커밋 수정 방법 문제](https://github.com/StarSync-FE/StarSync/discussions/71)            | `git rebase -i`, `git reset --soft` 명령어를 활용                      | 전유진 |
-> | [export default 충돌 문제](https://github.com/StarSync-FE/StarSync/discussions/98)                | default as 로 통일하여 모듈 충돌 방지                     | 전유진 |
-> | [조건부 스타일링 문제](https://github.com/StarSync-FE/StarSync/discussions/314)                | 전역에서 관리                   | 조인성 |
+> | 문제 상황                                                                                         | 해결 방법                                                  | 작성자 |
+> | :------------------------------------------------------------------------------------------------ | :--------------------------------------------------------- | :----- |
+> | [서버 에러 대응](https://github.com/StarSync-FE/StarSync/discussions/67)                          | Axios Interceptor로 30초 동안 자동 재시도                  | 송시은 |
+> | [로딩 상태 관리<br>- splash screen 이슈](https://github.com/StarSync-FE/StarSync/discussions/138) | Splash Screen 종료 타이밍을 navigation state 기반으로 제어 | 송시은 |
+> | [스타일 린트 설정 문제](https://github.com/StarSync-FE/StarSync/discussions/134)                  | lefthook 코드 품질 관리 자동화 시도                        | 박지섭 |
+> | [에러 바운더리 적용 범위 설정](https://github.com/StarSync-FE/StarSync/discussions/300)           | Global / API / Render 에러 바운더리를 명확히 분리 적용     | 송시은 |
+> | [Git 이전 커밋 수정 방법 문제](https://github.com/StarSync-FE/StarSync/discussions/71)            | `git rebase -i`, `git reset --soft` 명령어를 활용          | 전유진 |
+> | [export default 충돌 문제](https://github.com/StarSync-FE/StarSync/discussions/98)                | default as 로 통일하여 모듈 충돌 방지                      | 전유진 |
+> | [facepaint 사용 관련 이슈](https://github.com/StarSync-FE/StarSync/discussions/314)               | null병합 연산자 사용 관리                                  | 조인성 |
 
 ## <img src="https://github.com/user-attachments/assets/f7a5ba83-481b-44ca-a308-8611c82cf9a5" width="45"/>TIL
 
 > 🌟 [더 많은 TIL을 보고 싶다면 이곳을 클릭해 확인하세요.](https://github.com/StarSync-FE/StarSync/discussions/categories/til)
 >
-> | 제목                                                                                                          | 작성자         |
-> | :------------------------------------------------------------------------------------------------------------ | :------------- |
-> | [폴더 배럴 패턴을 적용하며 구조적 설계의 중요성 이해](https://github.com/StarSync-FE/StarSync/discussions/60) | 송시은         |
-> | [극단의 칼라 사용 지양 및 색상 조화 고려](https://github.com/StarSync-FE/StarSync/discussions/68)             | 송시은, 박지섭 |
-> | [SPA 구조 설계 시 시멘틱 태그 계층화 고려](https://github.com/StarSync-FE/StarSync/discussions/61)            | 송시은         |
-> | [모달 컴포넌트 관리 위치의 중요성 인식](https://github.com/StarSync-FE/StarSync/discussions/63)               | 송시은         |
-> | [프로젝트 협업에서 배운 점](https://github.com/StarSync-FE/StarSync/discussions/74)                           | 전유진         |
-> | [동일 페이지 navigation 클릭 시 새로고침 여부 결정](https://github.com/StarSync-FE/StarSync/discussions/306)  | 송시은, 박지섭 |
+> | 제목                                                                                                          | 작성자                         |
+> | :------------------------------------------------------------------------------------------------------------ | :----------------------------- |
+> | [폴더 배럴 패턴을 적용하며 구조적 설계의 중요성 이해](https://github.com/StarSync-FE/StarSync/discussions/60) | 송시은                         |
+> | [극단의 칼라 사용 지양 및 색상 조화 고려](https://github.com/StarSync-FE/StarSync/discussions/68)             | 송시은, 박지섭                 |
+> | [SPA 구조 설계 시 시멘틱 태그 계층화 고려](https://github.com/StarSync-FE/StarSync/discussions/61)            | 송시은, 전유진                 |
+> | [모달 컴포넌트 관리 위치의 중요성 인식](https://github.com/StarSync-FE/StarSync/discussions/63)               | 송시은, 손수진, 전유진, 조인성 |
+> | [프로젝트 협업에서 배운 점](https://github.com/StarSync-FE/StarSync/discussions/74)                           | 전유진, 손수진                 |
+> | [동일 페이지 navigation 클릭 시 새로고침 여부 결정](https://github.com/StarSync-FE/StarSync/discussions/306)  | 송시은, 박지섭                 |
+> | [`useLoaderData()`를 사용했을 때 최신 상태 반영](https://github.com/StarSync-FE/StarSync/discussions/323)     | 조인성                         |
 
 ## <img src="https://github.com/user-attachments/assets/97b1b579-70d2-485b-b838-96dde60129da" width="30"/>팀 회고
 
