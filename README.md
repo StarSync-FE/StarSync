@@ -1,4 +1,4 @@
-# <p align="center"><a href="https://www.starsync.wiki/"><img src="https://github.com/user-attachments/assets/ad7b71ea-b45c-45e8-8f6b-aa824be81022" width="50"/> <img width="200" alt="logo" src="https://github.com/user-attachments/assets/895d4218-d00e-42b2-975a-49c13f866ef1" /><img src="https://github.com/user-attachments/assets/ad7b71ea-b45c-45e8-8f6b-aa824be81022" width="45"/></a> </p>
+# <p align="center"><a href="https://www.starsync.wiki/"><img src="https://github.com/user-attachments/assets/ad7b71ea-b45c-45e8-8f6b-aa824be81022" width="50"/> <img width="200" alt="logo" src="https://github.com/user-attachments/assets/a6434e1f-2b04-42e3-a2f6-a1a6be37ff92" /> <img src="https://github.com/user-attachments/assets/ad7b71ea-b45c-45e8-8f6b-aa824be81022" width="50"/></a> </p>
 
 🎬 [바로 보기(YouTube에서 재생됩니다)](https://youtu.be/L3vtQZOh29Y)<br>
 🎞️ [발표 자료(PPT 보기)](https://www.miricanvas.com/v/14jpguf)
