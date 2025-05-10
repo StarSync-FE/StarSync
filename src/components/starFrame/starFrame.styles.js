@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import frameImage from '@/assets/images/handle-frame.png';
+
 export const wrapper = css`
   position: relative;
   padding-top: 1rem;

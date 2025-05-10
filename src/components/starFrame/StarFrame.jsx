@@ -52,7 +52,6 @@ const StarFrame = ({ imageUrls = [], interval = 3000 }) => {
             duration: 1.5, // 1.5초 동안 fade-in
             ease: 'easeOut', // 끝날 때 자연스럽게
           }}
-          css={S.image} // 필요하면 스타일 적용
         />
       )}
       <div css={S.frame} />
