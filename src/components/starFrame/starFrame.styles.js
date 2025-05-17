@@ -19,7 +19,9 @@ export const wrapper = css`
 `;
 
 export const frame = css`
-  z-index: 1;
+  z-index: 2;
+  width: 34.5rem;
+  min-height: 47.9rem;
   background-image: url(${frameImage});
   background-repeat: no-repeat;
   background-position: center;
