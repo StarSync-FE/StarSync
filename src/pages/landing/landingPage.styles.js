@@ -118,36 +118,12 @@ export const sectionContent = css`
   ${media({
     gap: ['1rem', '1rem', '2rem', '2rem', '2rem'],
     padding: ['2.4rem', '2.4rem', '2.8rem', '3.2rem', '3.6rem'],
-    paddingBottom: ['8rem', '0rem', '8rem', '8rem', '10rem'],
   })}
 
-  h1 {
-    font-size: 3.2rem;
-    font-weight: 900;
-    line-height: 1.3;
-    letter-spacing: 0.2rem;
-    word-break: keep-all;
-    color: var(--white);
-
-    /* text-shadow: 2px 2px 4px var(--black-alpha-70); */
-    cursor: default;
-    transition: opacity 0.3s ease;
-    animation: ${glow} 2s infinite ease-in-out;
-    
-    &:hover {
-      opacity: 0.8;
-    }
-    
-    ${media({
-      fontSize: ['3.2rem', '3.2rem', '4rem', '5rem', '6rem'],
-      letterSpacing: ['0.2rem', '0.3rem', '0.4rem', '0.5rem'],
-      lineHeight: ['1.3', '1.2', '1.2', '1.2', '1.2'],
-    })}
-  }
+  
 
   p {
     max-width: 80rem;
-    margin: 0 auto;
     padding: 0 1.6rem;
     font-size: 1.4rem;
     font-weight: 500;
@@ -159,12 +135,10 @@ export const sectionContent = css`
     cursor: default;
     transition: opacity 0.3s ease;
 
-    &:hover {
-      opacity: 0.8;
-    }
+
     
     ${media({
-      fontSize: ['1.4rem', '1.4rem', '1.4rem', '2.4rem', '2.4rem'],
+      fontSize: ['1.4rem', '1.4rem', '1.4rem', '1.8rem', '1.8rem'],
       maxWidth: ['30rem', '30rem', '50rem', '60rem', '80rem'],
       lineHeight: ['1.3', '1.3', '1.3', '1.3', '1.3'],
       padding: ['1.6rem', '1.6rem', '1.6rem', '2rem', '2.4rem'],
@@ -226,21 +200,16 @@ export const activeDot = css`
 
 export const scrollGuide = css`
   display: inline-flex;
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
   align-items: center;
   gap: 1.2rem;
-  padding: 1rem ;
-  border: none;
+  padding: 1rem;
   font-size: 1.4rem;
   white-space: nowrap;
   color: var(--white);
   background: none;
-  cursor: pointer;
   transition: opacity 0.3s ease;
-  animation: bounce 2s infinite;
-  transform: translateX(-50%);
+  animation: bounce 1s ease infinite;
+  will-change: transform;
   
   &::before {
     content: '↓';
@@ -258,20 +227,21 @@ export const scrollGuide = css`
   })}
 
   @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-      transform: translateX(-50%) translateY(0);
-    }
-
-    40% {
-      transform: translateX(-50%) translateY(-0.5rem);
-    }
-
-    60% {
-      transform: translateX(-50%) translateY(-0.3rem);
-    }
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
   }
+
+  40% {
+    transform: translateY(-0.5rem);
+  }
+
+  60% {
+    transform: translateY(-0.3rem);
+  }
+}
 `;
 
 export const logo = css`
-  ${media({ width: ['100%', '100%', '70%', '50%', '50%'] })}
+  width: 45%;
+  ${media({ width: ['60%', '60%', '60%', '45%', '45%'] })}
 `;
