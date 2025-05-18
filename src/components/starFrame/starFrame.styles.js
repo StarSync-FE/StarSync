@@ -7,11 +7,11 @@ export const wrapper = css`
 
   img {
   position: absolute;
-  bottom: 1rem; 
   z-index: 2;
   ${media({
-    width: ['50%', '82%', '82%', '82%', '90%'],
-    left: ['2rem', '2rem', '2rem', '2.4rem', '2rem'],
+    bottom: ['2rem', '2rem', '2rem', '1rem', '1rem'],
+    width: ['82%', '82%', '82%', '75%', '90%'],
+    left: ['2rem', '2rem', '2rem', '3.5rem', '2rem'],
   })}
   height: auto;
   
@@ -20,8 +20,10 @@ export const wrapper = css`
 
 export const frame = css`
   z-index: 2;
-  width: 34.5rem;
-  min-height: 47.9rem;
+  ${media({
+    width: ['22.5rem', '22.5rem', '24.5rem', '29.5rem', '34.5rem'],
+    height: ['33.9rem', '33.9rem', '33.9rem', '33.9rem', '45.9rem'],
+  })}
   background-image: url(${frameImage});
   background-repeat: no-repeat;
   background-position: center;

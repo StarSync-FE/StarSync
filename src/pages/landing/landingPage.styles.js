@@ -23,15 +23,6 @@ const twinkle = keyframes`
   }
 `;
 
-const glow = keyframes`
-  0%, 100% {
-    text-shadow: 0 0 8px var(--pink), 0 0 16px var(--blue-sky), 0 0 24px var(--purple);
-  }
-  50% {
-    text-shadow: 0 0 12px var(--pink), 0 0 24px var(--blue-sky), 0 0 36px var(--purple);
-  }
-`;
-
 export const pageContainer = css`
   overflow: hidden auto;
   position: relative;
@@ -110,6 +101,7 @@ export const sectionContent = css`
   gap: 1rem;
   width: 100%;
   max-width: 144rem;
+  height: 98%;
   margin: 0 auto;
   padding: 2rem;
   padding-bottom: 6rem;
@@ -243,5 +235,5 @@ export const scrollGuide = css`
 
 export const logo = css`
   width: 45%;
-  ${media({ width: ['60%', '60%', '60%', '45%', '45%'] })}
+  ${media({ width: ['60%', '60%', '60%', '30%', '45%'] })}
 `;
