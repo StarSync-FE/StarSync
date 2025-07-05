@@ -233,10 +233,7 @@ GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하�
 > - [동일 페이지 navigation 클릭 시 새로고침 되도록 적용](https://github.com/StarSync-FE/StarSync/discussions/304)<br>
 > - 캐러셀 바 위에 후원 목표 금액을 표시하여 사용자 혼란 최소화<br>
 > - 차트 1등 아이돌에 대한 시각적 강조 디자인 추가<br>
-> - [로딩 경험 최적화](https://github.com/StarSync-FE/StarSync/discussions/303)<br>
-> - 첫 진입 시 Splash Screen 적용<br>
-> - 페이지 전환 시 Pending UI 적용<br>
-> - 데이터 응답 느릴 때 로딩 스피너 사용<br>
+> - [로딩 경험 최적화(Splash Screen, PendingUI, Loading Spinner)](https://github.com/StarSync-FE/StarSync/discussions/303)<br>
 
 ### <img src="https://github.com/user-attachments/assets/1b934fb5-06c6-417f-90c4-a1a08ad07760" width="30"/>개발 생산성 & 품질 향상
 
@@ -253,10 +250,10 @@ GitHub Projects를 적극 활용하며 이슈 기반으로 작업을 관리하�
 >
 > | 문제 상황                                                                                         | 해결 방법                                                  | 작성자 |
 > | :------------------------------------------------------------------------------------------------ | :--------------------------------------------------------- | :----- |
-> | [서버 에러 대응](https://github.com/StarSync-FE/StarSync/discussions/67)                          | Axios Interceptor로 30초 동안 자동 재시도                  | 송시은 |
+> | [서버 에러 대응](https://github.com/StarSync-FE/StarSync/discussions/300)                         | Axios Interceptor로 30초 동안 자동 재시도                  | 송시은 |
 > | [로딩 상태 관리<br>- splash screen 이슈](https://github.com/StarSync-FE/StarSync/discussions/138) | Splash Screen 종료 타이밍을 navigation state 기반으로 제어 | 송시은 |
 > | [스타일 린트 설정 문제](https://github.com/StarSync-FE/StarSync/discussions/134)                  | lefthook 코드 품질 관리 자동화 시도                        | 박지섭 |
-> | [에러 바운더리 적용 범위 설정](https://github.com/StarSync-FE/StarSync/discussions/300)           | Global / API / Render 에러 바운더리를 명확히 분리 적용     | 송시은 |
+> | [에러 바운더리 적용 범위 설정](https://github.com/StarSync-FE/StarSync/discussions/67)            | Global / API / Render 에러 바운더리를 명확히 분리 적용     | 송시은 |
 > | [Git 이전 커밋 수정 방법 문제](https://github.com/StarSync-FE/StarSync/discussions/71)            | `git rebase -i`, `git reset --soft` 명령어를 활용          | 전유진 |
 > | [export default 충돌 문제](https://github.com/StarSync-FE/StarSync/discussions/98)                | default as 로 통일하여 모듈 충돌 방지                      | 전유진 |
 > | [facepaint 사용 관련 이슈](https://github.com/StarSync-FE/StarSync/discussions/314)               | null병합 연산자 사용 관리                                  | 조인성 |
