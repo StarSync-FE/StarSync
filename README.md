@@ -114,7 +114,6 @@
 ## <img src="https://github.com/user-attachments/assets/97b1b579-70d2-485b-b838-96dde60129da" width="30"/>프로젝트 리소스
 
 🔗 [기반 디자인(Figma)](https://www.figma.com/design/lccVqOCzq7XCUYztyC7KlQ/-AAA-Fandom-K?node-id=8-1008&p=f&t=lT3R2yX7dOHfNm8h-0)<br>
-🔗 [API 명세(Swagger)](https://fandom-k-api.vercel.app/docs/)<br>
 🔗 [개발 가이드라인(스타일 가이드, 브랜치 전략 등)](https://github.com/StarSync-FE/StarSync/discussions/categories/development-guidelines)<br>
 🔗 [전체 프로젝트 문서(Notion)](https://bony-snipe-e7b.notion.site/1d72526f72c1808bafc0f9b01217e31d?pvs=4)<br>
 

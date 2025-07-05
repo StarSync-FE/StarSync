@@ -3,7 +3,7 @@ import { RouterProvider } from 'react-router-dom';
 import { AlertManager } from './components/alertManager';
 import { SplashScreen } from './components/loadingStatus';
 
-export default function App({ router }) {
+const App = ({ router }) => {
   const [showSplashScreen, setShowSplashScreen] = useState(true);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: intentional polling without deps
@@ -17,7 +17,7 @@ export default function App({ router }) {
       }
     }, 1000);
 
-    () => clearInterval(splashScreenInterval);
+    return () => clearInterval(splashScreenInterval);
   }, []);
 
   return (
@@ -26,4 +26,6 @@ export default function App({ router }) {
       {showSplashScreen ? <SplashScreen /> : <RouterProvider router={router} />}
     </>
   );
-}
+};
+
+export default App;

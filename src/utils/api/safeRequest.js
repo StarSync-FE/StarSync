@@ -7,9 +7,8 @@ import { STATUS_CODES } from '@/constants/statusCodes';
  * - API 요청 중 발생한 에러를 캐치하여 500 서버 에러로 통일합니다.
  * - 요청이 성공하면 응답 데이터를 반환합니다.
  *
- * @template T
- * @param {() => Promise<T>} apiCall - 실행할 비동기 API 호출 함수
- * @returns {Promise<T>} 요청에 성공한 경우 반환되는 데이터
+ * @param {Function} apiCall - 실행할 비동기 API 호출 함수
+ * @returns {Promise<any>} 요청에 성공한 경우 반환되는 데이터
  * @throws {Response} 요청 실패 시 500 상태 코드를 가진 Response를 던집니다.
  */
 async function safeRequest(apiCall, label = '') {
