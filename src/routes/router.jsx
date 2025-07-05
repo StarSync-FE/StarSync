@@ -126,7 +126,7 @@ const router = createBrowserRouter([
   {
     path: '*',
     lazy: async () => {
-      const { NotFoundPage } = await import('@/pages/error');
+      const { default: NotFoundPage } = await import('@/pages/error/notFound');
       return { Component: NotFoundPage };
     },
   },

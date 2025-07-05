@@ -53,7 +53,7 @@ const VoteModal = ({ gender, updateCredit, setVoteSuccessTrigger, setModalType }
     if (!gender) return;
     const load = async () => {
       const result = await loadData(gender === 'females' ? 'female' : 'male');
-      setIdols(result.idols);
+      setIdols(result?.idols || []);
     };
     load();
   }, [gender, updateCredit]);

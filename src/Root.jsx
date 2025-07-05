@@ -4,12 +4,11 @@ import { LAYOUT } from '@/constants/layout';
 import { Footer } from '@/components/footer';
 import { PendingUI } from './components/loadingStatus';
 
-function Root() {
+const Root = () => {
   const navigation = useNavigation();
   const isLoading = navigation.state !== 'idle';
 
   const { pathname } = useLocation();
-
   const isLanding = pathname === '/';
 
   return (
@@ -31,6 +30,6 @@ function Root() {
       )}
     </>
   );
-}
+};
 
 export default Root;
